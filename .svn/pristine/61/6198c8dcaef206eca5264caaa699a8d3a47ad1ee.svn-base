@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<meta http-equiv="pragram" content="no-cache">  
+		<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+		<meta http-equiv="expires" content="0">
+		
+		<title>微信快制造-报价</title>
+		<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/easydialog.css" />
+<!-- 		<link rel="stylesheet" href="css/m-css.css" /> -->
+		<script>document.write('<link rel="stylesheet" href="css/m-css.css?time="'  + Date.now() + '"><\/script>');</script>  
+	</head>
+	<body>
+		<div class="new_list container-fluid offer">
+			<!-- <div class="row row1">
+				<div class="row_in">
+					<a href="###" class="logo"><img src="../images/head.png" /></a>					
+				</div>
+			</div> -->
+			<div class="big_pic" id="big_pic">
+				<div class="colse"><span class="glyphicon glyphicon-remove" onclick="closeBigImg()"></span></div>
+					<div class="pic_bg"></div>
+					<div class="imgs"><img src=""></div>
+				</div>
+			<div class="row row2">
+				<button onclick="show_detail()" class="btn1">返回详情页面</button>
+				<button id="add_quote" onclick="submit_quote('1',this)">提交报价</button>				
+			</div>	
+			<div class="lj" id="product_list">
+				<div class="row bc" id="quote_select">
+					<div class="form-group clearfix">
+						<label class="pull-left">报价有效期</label>
+						<select class="form-control pull-right" id="validityDays">
+							<option value="7">7天</option>
+							<option value="30" selected>30天</option>
+							<option value="60">60天</option>
+						</select>
+					</div>
+					<div class="form-group tk clearfix">
+						<input type="text" id="payment_select" value="30%预付，其余出货后付清">
+						<label class="pull-left">支付条款</label>
+						<select class="form-control pull-right" id="select_sel">
+	                         <option value="30%预付，其余出货后付清">30%预付，其余出货后付清</option>
+	                         <option value="50%预付，其余出货后付清">50%预付，其余出货后付清</option>
+	                         <option value="（）%预付，其余出货后付清">（）%预付，其余出货后付清</option>
+	                         <option value="出货后30天付款">出货后30天付款</option>                          
+						</select>
+					</div>
+<!-- 					<div class="form-group bz">					 -->
+<!-- 						<label class="pull-left">报价备注</label> -->
+<!-- 						<textarea class="form-control" id="quote_remark"></textarea> -->
+<!-- 					</div> -->
+					<div class="form-group other ">						
+						<label class="pull-left">除了价格因素外，你觉得贵司为何适合做这个订单。（产品经验，技术，设备...）</label>
+						<textarea class="form-control" id="quote_remark"></textarea>
+					</div>
+				</div>
+
+			</div>
+			<div class="row row2 row2_end">
+				<button id="add_quote" onclick="submit_quote('1',this)">提交报价</button>
+			</div>				
+            <div id="footer"></div>
+		</div>
+	</body>
+</html>
+<script src="../lib/jquery/jquery.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="/js/cookie_util.js"></script> 
+<script type="text/javascript" src="/js/easydialog.min.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<!-- <script src="js/offer.js"></script> -->
+<script>document.write('<script src="js/offer.js?time="'+ Date.now() + '"><\/script>');</script>  
+<script>
+
+$('#footer').load('/m-zh/footer.html');
+
+        window.onload = window.onresize = function(){
+
+            var clientWidth =document.documentElement.clientWidth;
+
+            document.getElementsByTagName("html")[0].style.fontSize =
+
+                    clientWidth / 1200 * 40 + "px";
+        }
+
+</script>
+<script>
+
+	/*$('.offer .bc input').hide();
+	var con = $('.tk select option:selected').html();
+	if(con == "(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)%预付，其余出货后付清"){
+		$('.offer .bc input').show();
+		$('.offer .bc input').val(con);
+	}else{
+		$('.offer .bc input').hide();
+	}*/
+	
+	$('.offer .bc input').hide();
+	$('#select_sel').change(function() {
+		var $sel = $(this).find('option:selected').val();
+		if($sel == '（）%预付，其余出货后付清'){
+			$('.offer .bc input').show().val($sel);
+			
+		}else{
+			$('.offer .bc input').hide();
+			$('#payment_select').val($sel);
+		}
+
+	});
+
+
+	
+</script>
+<script>
+
+$('.foot div').click(function(){
+	$(this).find('ul').toggle();
+})
+
+
+$('.offer .pic_bg').on('click',function(){
+	$('.big_pic').hide();
+})
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<title>询盘发布和操作</title>
+		<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css">
+		<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css">
+		<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.7/iconfont.css" />
+		<style>			
+			.page-container{
+				width:1122px;
+			}			
+			.col-xs-2{
+				width:175px;
+				padding-right:0;
+			}
+			.col-xs-3{
+				width:300px;
+				padding-right:0;
+			}
+			.w88{
+				width:88px;
+				padding-right:0;
+			}
+			.w142{
+				width:142px;
+			}
+			.mt-20{
+		       margin-top: 15px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="page-container">
+			<div class="panel panel-default">
+				<div class="panel-header">询盘发布和操作</div>
+				<div class="panel-body">
+					<div class="responsive">
+						<div class="row cl">
+						  	<div class="col-xs-2 w88">询盘标题：</div>
+						  	<div class="col-xs-3" id="quote_title"></div>
+						  	<div class="col-xs-1">时间：</div>
+						  	<div class="col-xs-2" id="quote_date"></div>
+						  	<div class="col-xs-2">发布人：</div>
+						  	<div class="col-xs-2" id="factory_name"></div>
+						</div>
+						<div class="row cl mt-20" id="aid_choice" style="display:none;">
+				
+						  	<div class="col-xs-3">
+						  		<span class="select-box">
+									<select class="select">
+                                    
+                                               <option value="11">注塑</option>
+
+                                                <option value="12">吸塑</option>
+
+                                                <option value="13">滚塑</option>
+
+                                                <option value="14">吹塑</option>
+
+                                                <option value="15">挤塑</option>
+
+                                                <option value="16">其他塑料工艺</option>            
+
+                                                <option value="17">不锈钢铸造(硅溶胶、水玻璃)</option>
+
+                                                <option value="18">压铸(铝、锌、镁、铜等)</option>
+
+                                                <option value="19">砂铸(钢、铁、铜、铝等)</option>
+
+                                                <option value="20">重力铸造(铝、铜等)</option>
+
+                                                <option value="21">其他铸造</option>         
+
+
+                                                <option value="22">热锻</option>
+
+                                                <option value="23">冷锻</option>       
+
+                                                <option value="24">钣金加工（切割、折弯、焊接、组装）</option>
+
+                                                <option value="25">冲压拉伸</option>       
+                                                <option value="26">旋压</option>       
+                                                <option value="27">铝挤压</option>       
+
+                                                <option value="28">3轴以上精密加工</option>
+                                                <option value="29">高速车床</option>
+                                                <option value="30">高速铣床</option>
+                                                <option value="31">普通车铣钻磨</option>
+                                                <option value="32">其他机加工</option>
+             
+											    <option value="33">现成商品采购</option>
+												<option value="34">其他采购</option>	
+									</select>
+								</span>
+						  	</div>
+						  	<div class="col-xs-2">
+						  		<a href="javascript:void(0);"  class="btn btn-primary radius" onclick="select_main_process()">帮助选择工艺</a>
+						  	</div>
+						</div>
+						<div class="row cl mt-20" id="check_div">					
+						  	
+						  		<input type="text" id="reasons" class="input-text radius" placeholder="请输入原因" style="margin-left: 20px;width: 300px;"/>
+						  	
+						  
+						  		<a href="javascript:void(0);"  class="btn btn-primary radius" onclick="back_edit(7)">打回修改</a>
+						  		<a href="javascript:void(0);" id="confirm_edit"  class="btn btn-primary radius" onclick="confirm_edit(1)">审核通过</a>
+						  	    <span style="color:red;">(新询盘必须上传零件缩略图)</span>
+						</div>
+						<div class="row cl mt-20">
+						  	<div class="col-xs-2">
+						  		当前询盘总额为<span id="total_amount">X</span>万元
+						  	</div>
+						  	<div class="col-xs-2">
+						  		如果没有请输入询盘价格
+						  	</div>
+						  	<div class="col-xs-3">
+						  		<input type="text" class="input-text radius" placeholder="请输入询盘价格"/>
+						  	</div>
+						</div>
+						<div class="row cl mt-20">
+							<div class="col-xs-3">
+								<a href="#" id="details" target="_blank" class="btn btn-primary radius">点我到该询盘详情页面</a>
+							</div>
+						</div>
+						<div class="row cl mt-20">
+						  	<div class="col-xs-3">
+						  		当前是第n次发布询盘总额为 还是只要押金？
+						  	</div>
+						  	<div class="col-xs-1">
+						  		<a href="javascript:void(0);"  class="btn btn-primary radius">是</a>
+						  	</div>
+						  	<div class="col-xs-3">
+						  		<a href="javascript:void(0);"  class="btn btn-primary radius">否，提醒客户要交劳务费，500一个询盘</a>
+						  	</div><br/>
+						  	<!-- <div class="col-xs-2">当前状态：</div>
+						  	<div class="col-xs-2">打样状态，大火状态</div> -->
+						</div>
+						<div class="row cl mt-20">
+							<div class="col-xs-2 w88">当前状态：</div>
+						  	<div class="col-xs-2">打样状态，大火状态</div>
+						
+						</div>
+						<div class="row cl mt-20">
+							<div class="col-xs-2 w142">如已收打样款点击：</div>
+						  	<div class="col-xs-2">
+						  		<a href="javascript:void(0);"  class="btn btn-primary radius">进入打样状态</a>
+						  	</div>
+						</div>
+						<div class="row cl mt-20">
+							<div class="col-xs-2 w142">如已收大货款点击：</div>
+						  	<div class="col-xs-2">
+						  		<a href="javascript:void(0);" id="big_product" onclick="update_big_product(this,4)"  class="btn btn-primary radius">进入大货状态</a>
+						  	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript">
+		
+		checkSession()
+
+		function checkSession(){
+			$.ajax({
+				url : "/sysUser/checkSession.do",
+				type : "post",
+				success : function(data) {
+					
+					if(data.state==0){
+						
+						$('#loginName').text(data.data)
+						
+					}else{
+						
+						window.location = "/backstage/login.html";
+						
+					}
+					
+				}
+			})
+		}
+		
+		 var orderId;
+		 var factoryId;
+		   $(function(){
+			   	
+			   var str = window.location.search;
+				if(str != null && str != ''){
+					orderId = str.substr(1);
+					orderId = orderId.split("&")[0].split("=")[1];
+					 $('#order_id').val(orderId);
+				}
+			   
+			   $.post("/backstage/queryInquiryByOrderId.do",	
+					   {
+				        "orderId" : orderId 
+					   }, 
+						 function(result){
+						      if(result.state == 0){
+						    	  var quoteInfo = result.data.quoteInfo;
+						    	  var quoteBigProducts = result.data.quoteBigProducts;
+						    	  if(quoteBigProducts != null && quoteBigProducts != ''){
+						        	  factoryId = quoteBigProducts.factoryId;
+							    	  if(quoteBigProducts.isSupplierAccept == 4){
+							    		 $('#big_product').css({"background-color": "#ddd","border-color":"#ddd"}).removeAttr("onclick");
+							    	  } 
+						    	  }						
+						    	  $('#quote_title').html((quoteInfo.quoteTitle == null ? '' : quoteInfo.quoteTitle));
+						    	  $('#quote_date').html((quoteInfo.publishDate == null ? '' : quoteInfo.publishDate));
+						    	  $('#factory_name').html((quoteInfo.factoryName == null ? '' : quoteInfo.factoryName));
+						    	  if(quoteInfo.mainCategory == 0 && quoteInfo.orderStatus == 0){
+						    		  $('#aid_choice').show();
+						    	  }
+						    	  if(quoteInfo.orderStatus == 0){
+						    		  $('#check_div').show();
+						    	  }else{
+						    		  $('#check_div').hide();
+						    	  }
+						    	  
+						    	  $('#details').attr("href","/zh/purchase_detail.html?orderId="+quoteInfo.orderId+"");						    	  
+						      }else if(result.state == 2){
+						    		 //如果还未登录，跳转登录页
+						    		 window.location = "/backstage/login.html";
+						      }      
+			        })      			   
+		   })	
+		   
+		   
+		   //帮助选择工艺
+		   function select_main_process(){
+			   if (confirm("是否推荐此工艺？")) {
+				   var mainProcess = $('.select').find("option:selected").text();
+				   $.post("/backstage/updateQuote.do",	
+						   {
+					      "mainProcess" : mainProcess,
+				          "orderId" : orderId 
+					      }, 
+						 function(result){
+						      if(result.state == 0){
+						    	  $('.select').find("option[text="+mainProcess+"]").attr("selected",true); 
+						    	  alert("设置成功");
+						      }
+					     })	 
+			   }	     
+		   }
+		   
+		   
+		   //打回询盘
+		   function back_edit(orderStatus){
+			   if (confirm("是否打回此询盘？")) {
+				   var noPassReasons = $('#reasons').val();
+				   if(noPassReasons == null || noPassReasons == '' || noPassReasons == undefined){
+					   alert("请输入打回理由？");
+					   return false;
+				   }
+				   $.post("/backstage/updateQuote.do",	
+						   {
+					      "noPassReasons" : noPassReasons,
+				          "orderId" : orderId,
+				          "orderStatus" : orderStatus
+					      }, 
+						 function(result){
+						      if(result.state == 0){
+						    	  alert("设置成功");
+						    	  window.location = '/backstage/inquiry-release.html?orderId='+orderId;
+						      }
+					     })	 
+			   }	     		   
+		   }
+		   
+		   
+		   
+		   //审核询盘通过
+		   function confirm_edit(orderStatus){
+			   if (confirm("是否发布该询盘？")) {
+				   $.post("/backstage/updateQuote.do",	
+						   {
+				          "orderId" : orderId,
+				          "orderStatus" : orderStatus
+					      }, 
+						 function(result){
+						      if(result.state == 0){						    	
+						    	  alert("设置成功");
+						    	  window.location = '/backstage/inquiry-release.html?orderId='+orderId;
+						      }
+					     })	 
+			   }	     		   
+		   }
+		   
+		   
+		   
+		   //更新大货生产状态
+		   function update_big_product(obj,status){
+		   	
+				if (confirm("是否确认收到大货预付款？")) {
+			   	$(obj).css({"background-color": "#ddd","border-color":"#ddd"}).attr("disabled",true);
+			   	$.post("/factoryInquiry/updateBigProduct.do",	
+			   			{
+			   		     "status" : status,  
+			   		     "orderId" : orderId,
+			   		     "factoryId" : factoryId
+			   			},
+			   			 function(result){
+			   						   		
+			   				if(result.state == 0){			   		 
+			   					 alert("已通知供应商进行大货生产");  			   					 
+			   				}
+			   		  }
+			   	 )		   	 
+			}
+		   }
+		   
+		</script>
+	</body>
+</html>

@@ -1,0 +1,12 @@
+ .w-weui_dialog {
+    z-index: 5000;
+    top:45%;
+    left:50%;
+    position: fixed;
+    margin: 30px auto;
+    width: 400px;
+    height: 400px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}

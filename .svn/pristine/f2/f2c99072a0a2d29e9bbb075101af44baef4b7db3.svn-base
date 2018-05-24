@@ -1,0 +1,29 @@
+#Test
+#server_path = http://192.168.1.129:8083
+#server_path = http://192.168.1.151:8080
+#Online
+#server_path = http://182.254.133.194
+#server_path_zh = https://www.kuaizhizao.cn
+#server_path_en = https://www.quickpart.cn
+
+#test
+server_path_zh = http://192.168.1.151:8080	
+server_path_en = http://192.168.1.151:8080
+
+
+#Online Nbmail
+nbmail_path = http://112.64.174.34:43887
+#Test
+#nbmail_path = http://192.168.1.91:8080
+
+#Test
+#inner_quotaion_server = http://192.168.1.91:8080
+#inner_quotaion_server = http://192.168.1.29:8198
+
+#Online
+inner_quotaion_server = http://112.64.174.34:43888
+#inner_quotaion_server = http://192.168.1.151:8099
+
+
+
+

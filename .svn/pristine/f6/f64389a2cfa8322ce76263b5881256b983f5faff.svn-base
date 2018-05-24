@@ -1,0 +1,39 @@
+.control-label {
+    padding-top: 15px;
+    /* width: 180px; */
+    float: left;
+    text-align: right;
+}
+.controls2 {
+    margin-left: 120px;
+    margin-top: 5px;
+    padding: 10px 0;
+}
+.control-group {
+    margin-bottom: 0px;
+}
+.controls {
+    margin-left: 95px;
+}
+.controls {
+    margin-left: 120px;
+    padding: 10px 0;
+}
+.w-con{padding-top: 10px;}
+.w-fluid .w-h1 h1{
+    color: #555555;
+    font-size: 28px;
+    font-weight: normal;
+    float: none;
+    text-shadow: 0 1px 0 #ffffff;
+    margin-left: 20px;
+    position: relative;
+    margin-top: 20px;
+}
+.w-fluid{margin-bottom: 10px;}
+.w-btn{margin-top: 20px;}
+.w-btn-mini{
+    position: absolute;
+    right: 20px;
+    top: 7px;
+}

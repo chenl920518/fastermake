@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.dao.FactoryInfoMapper">
+  <resultMap id="BaseResultMap" type="com.cbt.entity.FactoryInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="factory_id" jdbcType="VARCHAR" property="factoryId" />
+    <result column="factory_name" jdbcType="VARCHAR" property="factoryName" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="details_address" jdbcType="VARCHAR" property="detailsAddress" />
+    <result column="postcode" jdbcType="VARCHAR" property="postcode" />
+    <result column="staff_number" jdbcType="VARCHAR" property="staffNumber" />
+    <result column="website" jdbcType="VARCHAR" property="website" />
+    <result column="establishment_year" jdbcType="VARCHAR" property="establishmentYear" />
+    <result column="industry_type" jdbcType="VARCHAR" property="industryType" />
+    <result column="main_process" jdbcType="VARCHAR" property="mainProcess" />
+    <result column="factory_license" jdbcType="VARCHAR" property="factoryLicense" />
+    <result column="factory_logo" jdbcType="VARCHAR" property="factoryLogo" />
+    <result column="factory_gate" jdbcType="VARCHAR" property="factoryGate" />
+    <result column="production_environment" jdbcType="VARCHAR" property="productionEnvironment" />
+    <result column="confirm_email" jdbcType="INTEGER" property="confirmEmail" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="factory_remark" jdbcType="LONGVARCHAR" property="factoryRemark" />
+    <result column="is_vip" jdbcType="INTEGER" property="isVip" />
+    <result column="vip_create_time" jdbcType="TIMESTAMP" property="vipCreateTime" />
+    <result column="vip_expires_time" jdbcType="TIMESTAMP" property="vipExpiresTime" />
+    <result column="close_time" jdbcType="TIMESTAMP" property="closeTime" />
+    <!-- 2017-11-21 -->
+    <result column="factory_type" jdbcType="INTEGER" property="factoryType" />
+    <!-- 2017-11-27 -->
+    <result column="factory_status" jdbcType="INTEGER" property="factoryStatus" />
+    <result column="system_remark" jdbcType="VARCHAR" property="systemRemark" />
+    <result column="inspection_note" jdbcType="VARCHAR" property="inspectionNote" />
+    <result column="inspection_document_path" jdbcType="VARCHAR" property="inspectionDocumentPath" />
+     
+    <!-- 新添加字段 -->
+    <result column="factory_acreage" jdbcType="VARCHAR" property="factoryAcreage" />
+    <result column="factory_value" jdbcType="VARCHAR" property="factoryValue" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="factory_equipment_document" jdbcType="VARCHAR" property="factoryEquipmentDocument" />
+    <!-- 2017-10-25 -->
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="country_code" jdbcType="VARCHAR" property="countryCode"/>
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="fax" jdbcType="VARCHAR" property="fax"/>
+    <result column="head_image" jdbcType="VARCHAR" property="headImage"/>
+    <result column="cooperative_enterprise" jdbcType="VARCHAR" property="cooperativeEnterprise"/>
+    
+    <result column="technological_advantage" jdbcType="VARCHAR" property="technologicalAdvantage"/>
+    <result column="dominant_material_model" jdbcType="VARCHAR" property="dominantMaterialModel"/>
+    <result column="dominant_material_size" jdbcType="VARCHAR" property="dominantMaterialSize"/>
+    <result column="accept_condition" jdbcType="VARCHAR" property="acceptCondition"/>
+    <result column="accept_money" jdbcType="VARCHAR" property="acceptMoney"/>
+    <result column="district" jdbcType="VARCHAR" property="district"/>
+    <result column="ali_website" jdbcType="VARCHAR" property="aliWebsite"/>
+    <result column="production_video" jdbcType="VARCHAR" property="productionVideo"/>
+    <result column="factory_info" jdbcType="VARCHAR" property="factoryInfo"/>
+    <result column="site_size" jdbcType="VARCHAR" property="siteSize"/>
+    <result column="special_label" jdbcType="VARCHAR" property="specialLabel"/>
+    
+    <result column="click_counts" jdbcType="INTEGER" property="clickCounts"/>
+    <result column="openid" jdbcType="VARCHAR" property="openid"/>
+    
+  </resultMap>
+  <resultMap id="detailResultMap" extends="BaseResultMap" type="com.cbt.entity.FactoryInfo">
+	 <collection property="equipmentList"    ofType="com.cbt.entity.Equipment" >
+	    <id column="equipment_id" property="id" jdbcType="INTEGER"/>
+		<result column="equipment_factory_id" property="factoryId" jdbcType="VARCHAR"/>
+		<result column="equipment_name" property="equipmentName" jdbcType="VARCHAR"/>
+		<result column="equipment_model" property="equipmentModel" jdbcType="VARCHAR"/>
+		<result column="number" property="number" jdbcType="INTEGER" />
+		<result column="parameter" property="parameter" jdbcType="VARCHAR"/>
+		<result column="equipment_type" property="type" jdbcType="VARCHAR"/>
+		<result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+	</collection>
+  </resultMap>
+  
+  <resultMap id="alldetailResultMap" extends="BaseResultMap"
+		type="com.cbt.entity.FactoryInfo">
+		
+		<association property="factoryEchart" javaType="com.cbt.entity.FactoryEchart">
+		    <id column="echart_id" property="id" jdbcType="INTEGER" />
+		    
+			<result property="quality" column="quality"  jdbcType="INTEGER" />
+			<result property="price" column="price"  jdbcType="INTEGER" />
+			<result property="connect" column="connect"  jdbcType="INTEGER" />
+			<result property="delivery" column="delivery"  jdbcType="INTEGER" />
+			
+		</association>
+		
+		<collection property="prList" ofType="com.cbt.entity.ProductLibrary">
+			<id column="product_id" property="id" jdbcType="INTEGER" />
+		</collection>
+		<collection property="qualificationList" ofType="com.cbt.entity.Qualification">
+			 <id column="qualification_name" property="qualificationName" jdbcType="VARCHAR" />
+		</collection>
+	</resultMap>
+  
+  
+  
+  <sql id="Base_Column_List">
+    id, factory_id, factory_name, username, pwd, email, tel, country, state, city, details_address, 
+    postcode, staff_number, website, establishment_year, industry_type, main_process,ali_website,site_size,
+    factory_license, factory_logo, factory_gate, production_environment, is_vip,accept_money,district,production_video,
+    confirm_email, update_time, create_time,factory_remark,factory_acreage,factory_value,type,position,cooperative_enterprise,
+    country_code,mobile,fax,head_image,technological_advantage,dominant_material_model,dominant_material_size,accept_condition,
+    factory_type,factory_info,vip_create_time,vip_expires_time,factory_status,system_remark,inspection_note,close_time,
+    inspection_document_path,special_label,factory_equipment_document,click_counts,openid    
+  </sql>
+    
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from factory_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 根据工厂名查询 -->
+  <select id="selectFactoryInfo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+     <include refid="Base_Column_List" />
+    from factory_info
+    where factory_id = #{factoryId,jdbcType=VARCHAR}
+  </select>
+  
+  	<!-- 根据工厂名查询（包含设备列表） -->
+	<select id="selectFactoryInfoAndEquipment" parameterType="java.lang.String"
+		resultMap="detailResultMap">
+		select
+
+		a.id, a.factory_id, a.factory_name, a.username, a.pwd, a.email, a.tel,
+		a.country, a.state, a.city, a.details_address,
+		a.postcode, a.staff_number, a.website, a.establishment_year, a.industry_type,
+		a.main_process,
+		a.factory_license, a.factory_logo, a.factory_gate, a.production_environment, a.is_vip,
+		a.confirm_email, a.update_time,a.factory_equipment_document,
+		a.create_time,a.factory_remark,a.factory_acreage,a.factory_value,a.type,
+		b.id equipment_id ,b.factory_id
+		equipment_factory_id,b.equipment_name,b.equipment_model,b.number,b.parameter,b.type
+		equipment_type,b.create_date
+
+		from factory_info a LEFT JOIN equipment b
+		on b.factory_id = #{factoryId,jdbcType=VARCHAR} where 
+		a.factory_id = #{factoryId,jdbcType=VARCHAR} 
+	</select>
+  
+  <!-- 查询用户的总数 -->
+  <select id="selectMaxId" resultType="int">
+    select count(id) from factory_info where create_time = to_days(now())
+  </select>
+  
+  <!-- 根据邮箱查询 -->
+  <select id="selectByLoginEmail" resultMap="BaseResultMap">
+    select   
+    <include refid="Base_Column_List" />  
+    from factory_info where email = #{email,jdbcType=VARCHAR}
+  </select>
+  
+  
+  
+  <!-- 查询有意向报价的客户（发送过消息） -->
+  <select id="queryByOrderIdAndQuoteMessage" resultMap="BaseResultMap">
+     select f.* from factory_info f inner JOIN quote_message q 
+     on f.factory_id = q.factory_id and order_id = #{orderId,jdbcType=INTEGER}   
+     and f.factory_id not in (select factory_id from supplier_quote_info where  
+     order_id = #{orderId,jdbcType=INTEGER}) and 
+     f.factory_id != #{factoryId,jdbcType=VARCHAR}
+     GROUP BY f.factory_id
+  </select>
+  
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from factory_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.cbt.entity.FactoryInfo" useGeneratedKeys="true" keyProperty="id">
+    insert into factory_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="factoryId != null">
+        factory_id,
+      </if>
+      <if test="factoryName != null">
+        factory_name,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="detailsAddress != null">
+        details_address,
+      </if>
+      <if test="postcode != null">
+        postcode,
+      </if>
+      <if test="staffNumber != null">
+        staff_number,
+      </if>
+      <if test="website != null">
+        website,
+      </if>
+      <if test="establishmentYear != null">
+        establishment_year,
+      </if>
+      <if test="industryType != null">
+        industry_type,
+      </if>
+      <if test="mainProcess != null">
+        main_process,
+      </if>
+      <if test="factoryLicense != null">
+        factory_license,
+      </if>
+      <if test="factoryLogo != null">
+        factory_logo,
+      </if>
+      <if test="factoryGate != null">
+        factory_gate,
+      </if>
+      <if test="productionEnvironment != null">
+        production_environment,
+      </if>
+      <if test="confirmEmail != null">
+        confirm_email,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="factoryRemark != null">
+        factory_remark,
+      </if>
+      <if test="factoryAcreage != null">
+        factory_acreage,
+      </if>
+      <if test="factoryValue != null">
+        factory_value,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="countryCode != null">
+        country_code,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="fax != null">
+        fax,
+      </if>
+      <if test="headImage != null">
+        head_image,
+      </if>
+      <if test="cooperativeEnterprise!=null">
+        cooperative_enterprise,
+      </if>
+      <if test="factoryType != null">
+        factory_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null">
+        #{factoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryName != null">
+        #{factoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsAddress != null">
+        #{detailsAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null">
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="staffNumber != null">
+        #{staffNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="establishmentYear != null">
+        #{establishmentYear,jdbcType=VARCHAR},
+      </if>
+      <if test="industryType != null">
+        #{industryType,jdbcType=VARCHAR},
+      </if>
+      <if test="mainProcess != null">
+        #{mainProcess,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryLicense != null">
+        #{factoryLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryLogo != null">
+        #{factoryLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryGate != null">
+        #{factoryGate,jdbcType=VARCHAR},
+      </if>
+      <if test="productionEnvironment != null">
+        #{productionEnvironment,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmEmail != null">
+        #{confirmEmail,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="factoryRemark != null">
+        #{factoryRemark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="factoryAcreage != null">
+        #{factoryAcreage,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryValue != null">
+        #{factoryValue,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="headImage != null">
+        #{headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="cooperativeEnterprise !=null">
+        #{cooperativeEnterprise,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryType != null">
+         #{factoryType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cbt.entity.FactoryInfo">
+    update factory_info
+    <set>
+      <if test="factoryId != null">
+        factory_id = #{factoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryName != null">
+        factory_name = #{factoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsAddress != null">
+        details_address = #{detailsAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null">
+        postcode = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="staffNumber != null">
+        staff_number = #{staffNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="establishmentYear != null">
+        establishment_year = #{establishmentYear,jdbcType=VARCHAR},
+      </if>
+      <if test="industryType != null">
+        industry_type = #{industryType,jdbcType=VARCHAR},
+      </if>
+      <if test="mainProcess != null">
+        main_process = #{mainProcess,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryLicense != null">
+        factory_license = #{factoryLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryLogo != null and factoryLogo!=''">
+        factory_logo = #{factoryLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryGate != null">
+        factory_gate = #{factoryGate,jdbcType=VARCHAR},
+      </if>
+      <if test="productionEnvironment != null">
+        production_environment = #{productionEnvironment,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmEmail != null">
+        confirm_email = #{confirmEmail,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="factoryRemark != null">
+        factory_remark = #{factoryRemark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="factoryAcreage != null">
+        factory_acreage = #{factoryAcreage,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryValue != null">
+        factory_value = #{factoryValue,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="isVip != null">
+        is_vip = #{isVip,jdbcType=INTEGER},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null">
+        country_code = #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="headImage != null">
+        head_image = #{headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="cooperativeEnterprise != null">
+        cooperative_enterprise = #{cooperativeEnterprise,jdbcType=VARCHAR},
+      </if>
+      <if test="technologicalAdvantage != null">
+        technological_advantage = #{technologicalAdvantage,jdbcType=VARCHAR},
+      </if>
+      <if test="dominantMaterialModel != null">
+        dominant_material_model = #{dominantMaterialModel,jdbcType=VARCHAR},
+      </if>
+      <if test="dominantMaterialSize != null">
+        dominant_material_size = #{dominantMaterialSize,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptCondition != null">
+        accept_condition = #{acceptCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="aliWebsite != null">
+        ali_website = #{aliWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptMoney != null">
+        accept_money = #{acceptMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="productionVideo !=null">
+        production_video = #{productionVideo,jdbcType=VARCHAR},
+      </if>
+       <if test="factoryType != null">
+        factory_type = #{factoryType,jdbcType=INTEGER},
+      </if>
+       <if test="isVip != null">
+        is_vip = #{isVip,jdbcType=INTEGER},
+      </if>
+       <if test="vipCreateTime != null">
+        vip_create_time = #{vipCreateTime,jdbcType=TIMESTAMP},
+      </if>
+       <if test="vipExpiresTime != null">
+        vip_expires_time = #{vipExpiresTime,jdbcType=TIMESTAMP},
+      </if>
+       <if test="factoryStatus != null">
+        factory_status = #{factoryStatus,jdbcType=INTEGER},
+      </if>
+       <if test="systemRemark != null">
+        system_remark = #{systemRemark,jdbcType=VARCHAR},
+      </if>
+       <if test="inspectionNote != null">
+        inspection_note = #{inspectionNote,jdbcType=VARCHAR},
+      </if>
+       <if test="closeTime != null">
+        close_time = #{closeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inspectionDocumentPath != null">
+        inspection_document_path = #{inspectionDocumentPath,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryInfo != null">
+        factory_info = #{factoryInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="siteSize != null">
+        site_size = #{siteSize,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryEquipmentDocument != null">
+        factory_equipment_document = #{factoryEquipmentDocument,jdbcType=VARCHAR},
+      </if>
+      <if test="clickCounts != null">
+        click_counts = #{clickCounts,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where  1=1
+    <if test="id !=null">
+      AND id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="factoryId!=null">
+      AND factory_id = #{factoryId,jdbcType=VARCHAR}
+    </if>
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cbt.entity.FactoryInfo">
+    update factory_info
+    set factory_id = #{factoryId,jdbcType=VARCHAR},
+      factory_name = #{factoryName,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      details_address = #{detailsAddress,jdbcType=VARCHAR},
+      postcode = #{postcode,jdbcType=VARCHAR},
+      staff_number = #{staffNumber,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      establishment_year = #{establishmentYear,jdbcType=VARCHAR},
+      industry_type = #{industryType,jdbcType=VARCHAR},
+      main_process = #{mainProcess,jdbcType=VARCHAR},
+      factory_license = #{factoryLicense,jdbcType=VARCHAR},
+      factory_logo = #{factoryLogo,jdbcType=VARCHAR},
+      factory_gate = #{factoryGate,jdbcType=VARCHAR},
+      production_environment = #{productionEnvironment,jdbcType=VARCHAR},
+      confirm_email = #{confirmEmail,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      factory_remark = #{factoryRemark,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  	<!-- add by sang -->
+	<select id="selectByCondition" resultMap="alldetailResultMap"
+		parameterType="java.util.Map">
+     select aa.* ,d.id product_id,e.qualification_name,f.quality,f.price,f.connect,f.delivery,f.id echart_id
+     
+      from (
+		select
+
+		a.*
+		from factory_info a
+		
+		<if test="materialsGroup!=null">
+			,product_library b
+		</if>
+		<if test="qualificationGroup!=null">
+			,qualification c
+		</if>
+		where 1=1
+		
+		<if test="processGroup!=null">
+			<foreach item="processGroup" index="index" collection="processGroup" open="and (" separator="or" close=")">
+				 a.main_process like '%${processGroup}%'
+			</foreach>
+		</if>
+
+		<if test="stateGroup!=null">
+			<!--  <foreach item="stateGroup" index="index" collection="stateGroup"
+				open="and a.state in (" separator="," close=")">
+				#{stateGroup}
+			</foreach>-->
+			
+			<foreach item="stateGroup" index="index" collection="stateGroup" open="and (" separator="or" close=")">
+				 a.state like '%${stateGroup}%'
+			</foreach>
+			
+			
+		</if>
+		<!-- 雇员人数 -->
+		<if test="staffNumberGroup!=null">
+			<foreach item="staffNumberGroup" index="index" collection="staffNumberGroup"
+				open="and a.staff_number in (" separator="," close=")">
+				#{staffNumberGroup}
+			</foreach>
+		</if>
+		<!-- 工厂面积 -->
+		<if test="factoryAcreageGroup!=null">
+			<foreach item="factoryAcreageGroup" index="index" collection="factoryAcreageGroup"
+				open="and a.factory_acreage in (" separator="," close=")">
+				#{factoryAcreageGroup}
+			</foreach>
+		</if>
+		
+	
+		
+		<if test="materialsGroup!=null">
+		   and b.factory_id = a.factory_id
+		   <foreach item="materialsGroup" index="index" collection="materialsGroup"
+				open="and b.materials in (" separator="," close=")">
+				#{materialsGroup}
+			</foreach>
+		</if>
+		
+		<if test="qualificationGroup!=null">
+		   and c.factory_id = a.factory_id
+		   and c.validity_time  &gt;= SYSDATE() 
+		   
+		   <foreach item="qualificationGroup" index="index" collection="qualificationGroup"
+				open="and c.qualification_name in (" separator="," close=")">
+				#{qualificationGroup}
+			</foreach>
+		</if>
+		
+		order by a.create_time desc limit #{start}, #{pageSize}
+		)
+		aa left join product_library d on 
+		  d.factory_id=aa.factory_id
+		  left join  qualification e on 
+		   e.factory_id=aa.factory_id
+		    left join  factory_echart f on 
+		   f.factory_id=aa.factory_id
+	</select>
+
+
+	<select id="totalOrder" resultType="int" parameterType="java.util.Map">
+	
+		
+	    select
+		count(a.id)
+		
+		from factory_info a
+		
+		<if test="materialsGroup!=null">
+			,product_library b
+		</if>
+		<if test="qualificationGroup!=null">
+			,qualification c
+		</if>
+		where 1=1
+		
+		<if test="processGroup!=null">
+			<foreach item="processGroup" index="index" collection="processGroup" open="and (" separator="or" close=")">
+				 a.main_process like '%${processGroup}%'
+			</foreach>
+		</if>
+
+		<if test="stateGroup!=null">
+			<foreach item="stateGroup" index="index" collection="stateGroup"
+				open="and a.state in (" separator="," close=")">
+				#{stateGroup}
+			</foreach>
+		</if>
+		<!-- 雇员人数 -->
+		<if test="staffNumberGroup!=null">
+			<foreach item="staffNumberGroup" index="index" collection="staffNumberGroup"
+				open="and a.staff_number in (" separator="," close=")">
+				#{staffNumberGroup}
+			</foreach>
+		</if>
+		<!-- 工厂面积 -->
+		<if test="factoryAcreageGroup!=null">
+			<foreach item="factoryAcreageGroup" index="index" collection="factoryAcreageGroup"
+				open="and a.factory_acreage in (" separator="," close=")">
+				#{factoryAcreageGroup}
+			</foreach>
+		</if>
+		
+
+		
+		<if test="materialsGroup!=null">
+		   and b.factory_id = a.factory_id
+		   <foreach item="materialsGroup" index="index" collection="materialsGroup"
+				open="and b.materials in (" separator="," close=")">
+				#{materialsGroup}
+			</foreach>
+		</if>
+		
+		<if test="qualificationGroup!=null">
+		   and c.factory_id = a.factory_id
+		   <foreach item="qualificationGroup" index="index" collection="qualificationGroup"
+				open="and c.qualification_name in (" separator="," close=")">
+				#{qualificationGroup}
+			</foreach>
+		</if>
+
+	</select>
+	<!-- add by sang -->
+     
+     
+     <select id="selectFactoryPreference" resultType="int">
+        select count(1) from factory_preference_set where factory_id =  #{factoryId,jdbcType=VARCHAR} 
+        and buyer_id=#{buyerId,jdbcType=VARCHAR}
+
+    </select>
+    
+
+   <insert id="insertFactoryPreference">
+		insert into
+		factory_preference_set
+		(factory_id,buyer_id,factory_name,create_date)
+		values ( #{factoryId,jdbcType=VARCHAR},#{buyerId,jdbcType=VARCHAR},#{factoryName,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP})
+	</insert>
+
+
+   <delete id="deleteFactoryPreference">
+       delete from factory_preference_set where factory_id =  #{factoryId,jdbcType=VARCHAR} and buyer_id = #{buyerId,jdbcType=VARCHAR} 
+   </delete>
+    
+       <select id="selectFactoryListByBuyerId" resultType="java.util.Map">
+   
+   select factory_id,factory_name from factory_preference_set where 
+        buyer_id=#{buyerId,jdbcType=VARCHAR}
+      </select>
+    
+    
+    <!-- 查询所有工厂信息 并且查看是否有未审核询盘-->
+    <select id="queryFactoryList" resultMap="BaseResultMap">
+       select    
+        id, factory_id, factory_name, username, email, tel, state, city, details_address, 	   
+	    create_time, factory_type, is_vip, vip_create_time, vip_expires_time          
+        from factory_info order by create_time desc   
+    </select>
+    
+    
+    <!-- 删除工厂运行视频 -->
+    <update id="delProductionVideo" parameterType="com.cbt.entity.FactoryInfo">
+    update factory_info
+    set production_video = #{productionVideo,jdbcType=VARCHAR}
+    where factory_id = #{factoryId,jdbcType=INTEGER}
+    </update>   
+    
+    
+    <!--根据工艺查询符合的工厂 -->
+    <select id="queryByMainProcess" resultType="map">
+     select 
+     factory_id,factory_name from  
+     factory_info  
+     where 
+     main_process like '%${process}%'
+    </select>
+ 
+</mapper>

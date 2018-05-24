@@ -1,0 +1,22 @@
+.file-download{
+	float: right;
+    margin-right: 21px;
+    margin-top: -12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;	
+}
+
+
+.file-download a{
+    cursor:pointer;
+}
+
+
+
+.file-download a:hover { 
+text-overflow:inherit; 
+overflow: visible; 
+white-space: pre-line; 
+}

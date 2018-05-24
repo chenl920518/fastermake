@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cbt.dao.SupplierQuoteInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cbt.entity.SupplierQuoteInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="factory_id" property="factoryId" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="payment_term" property="paymentTerm" jdbcType="VARCHAR" />
+    <result column="payment_remark" property="paymentRemark" jdbcType="VARCHAR" />
+    <result column="quote_remark" property="quoteRemark" jdbcType="VARCHAR" />
+    <result column="attachment_path" property="attachmentPath" jdbcType="VARCHAR" />
+    <result column="quote_reasons" property="quoteReasons" jdbcType="VARCHAR" />
+    <result column="quote_date" property="quoteDate" jdbcType="DATE" />
+    <result column="quote_status" property="quoteStatus" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="validity_days" property="validityDays" jdbcType="INTEGER" />
+    <result column="is_inspected_factory" property="isInspectedFactory" jdbcType="INTEGER" />
+    <result column="is_inspected_product" property="isInspectedProduct" jdbcType="INTEGER" />
+    <result column="is_process" property="isProcess" jdbcType="INTEGER" />  
+    <result column="is_active" property="isActive" jdbcType="INTEGER" />
+    <result column="refuse_reasons" property="refuseReasons" jdbcType="INTEGER" />
+    <result column="total_amount" property="totalAmount" jdbcType="DOUBLE" />    
+    <result column="operation_time" jdbcType="TIMESTAMP" property="operationTime"/>
+    <result column="attachment_name" jdbcType="VARCHAR" property="attachmentName"/>
+    <result column="price_type" jdbcType="INTEGER" property="priceType"/>
+    
+    <!-- 虚拟字段 -->
+    <result column="csg_order_id" jdbcType="VARCHAR" property="csgOrderId"/>
+    <result column="factory_name" jdbcType="VARCHAR" property="factoryName"/>
+    <result column="state" jdbcType="VARCHAR" property="state"/>
+    <result column="staff_number" jdbcType="VARCHAR" property="staffNumber"/>
+    <result column="establishment_year" jdbcType="VARCHAR" property="establishmentYear"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, factory_id, order_id, payment_term, quote_remark, attachment_path, quote_reasons, 
+    quote_date, quote_status, create_time, validity_days,payment_remark,is_inspected_factory,
+    is_inspected_product,is_process,is_active,refuse_reasons,total_amount,operation_time,attachment_name,price_type    
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select   
+    ss.id, ss.factory_id, ss.order_id, ss.payment_term, ss.quote_remark, ss.attachment_path, ss.quote_reasons, 
+    ss.quote_date, ss.quote_status, ss.create_time, ss.validity_days, ss.payment_remark, ss.attachment_name,
+    ss.factory_name,ss.price_type,
+    ss.state,q.csg_order_id    
+    from   
+	    (
+	    select 
+	    s.id, s.factory_id, s.order_id, s.payment_term, s.quote_remark, s.attachment_path, s.quote_reasons, 
+	    s.quote_date, s.quote_status, s.create_time, s.validity_days, s.payment_remark,s.attachment_name,s.price_type,
+	    f.factory_name,f.state      
+	    from supplier_quote_info s 
+	    left join factory_info f on s.factory_id = f.factory_id   
+	    )ss
+    left join 
+    quote_info q 
+    on 
+    ss.order_id = q.order_id  
+    where ss.id = #{id,jdbcType=INTEGER}  
+  </select>
+  <select id="queryByOrderIdAndFactoryId" resultMap="BaseResultMap" >
+     select   
+      s.id, s.factory_id, s.order_id, s.payment_term, s.quote_remark, s.attachment_path, s.quote_reasons, 
+      s.quote_date, s.quote_status, s.create_time, s.validity_days,s.payment_remark,s.is_inspected_factory,s.refuse_reasons,
+      s.is_inspected_product,s.is_process,s.is_active,s.total_amount,s.attachment_name,s.price_type,f.factory_name,f.state,
+      f.staff_number,f.establishment_year         
+      from supplier_quote_info s left join factory_info f on s.factory_id = f.factory_id     
+      where  
+    s.factory_id = #{factoryId,jdbcType=VARCHAR}   
+    and s.order_id = #{orderId,jdbcType=INTEGER} order by s.create_time desc limit 0,1
+  </select>
+  
+  <!-- 查询订单报价数 -->
+  <select id="totalQuoteFactory" parameterType="int" resultType="int">
+     select count(id) 
+     from   
+     (select id from supplier_quote_info where order_id = #{orderId,jdbcType=INTEGER}  group by factory_id )s   
+  </select>
+  
+  <!-- 根据询盘号查询报价工厂(有效的) -->
+  <select id="queryByOrderId" resultMap="BaseResultMap">
+      select   
+      s.id, s.factory_id, s.order_id, s.payment_term, s.quote_remark, s.attachment_path, s.quote_reasons, 
+      s.quote_date, s.quote_status, s.create_time, s.validity_days,s.payment_remark,s.is_inspected_factory,s.refuse_reasons,
+      s.is_inspected_product,s.is_process,s.is_active,s.total_amount,s.attachment_name,s.price_type,f.factory_name,f.state,
+      f.staff_number,f.establishment_year         
+      from supplier_quote_info s left join factory_info f on s.factory_id = f.factory_id     
+      where
+      s.order_id = #{orderId,jdbcType=INTEGER}   
+      and is_active = 1 order by create_time desc
+  </select>
+  
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from supplier_quote_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cbt.entity.SupplierQuoteInfo" useGeneratedKeys="true" keyProperty="id">
+    insert into supplier_quote_info (id, factory_id, order_id, payment_term, quote_remark, attachment_path, 
+      quote_reasons, quote_date, quote_status,create_time,validity_days,payment_remark,is_active,total_amount,attachment_name,price_type)
+    values  
+      (#{id,jdbcType=INTEGER}, #{factoryId,jdbcType=VARCHAR}, #{orderId,jdbcType=INTEGER},#{paymentTerm,jdbcType=VARCHAR}, 
+       #{quoteRemark,jdbcType=VARCHAR}, #{attachmentPath,jdbcType=VARCHAR}, 
+       #{quoteReasons,jdbcType=VARCHAR}, #{quoteDate,jdbcType=DATE}, #{quoteStatus,jdbcType=INTEGER}, 
+       #{createTime,jdbcType=TIMESTAMP}, #{validityDays,jdbcType=INTEGER},#{paymentRemark,jdbcType=VARCHAR},
+       #{isActive,jdbcType=INTEGER},#{totalAmount,jdbcType=DOUBLE},#{attachmentName,jdbcType=VARCHAR},#{priceType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cbt.entity.SupplierQuoteInfo" >
+    insert into supplier_quote_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="factoryId != null" >
+        factory_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="paymentTerm != null" >
+        payment_term,
+      </if>
+      <if test="quoteRemark != null" >
+        quote_remark,
+      </if>
+      <if test="attachmentPath != null" >
+        attachment_path,
+      </if>
+      <if test="quoteReasons != null" >
+        quote_reasons,
+      </if>
+      <if test="quoteDate != null" >
+        quote_date,
+      </if>
+      <if test="quoteStatus != null" >
+        quote_status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="attachmentName != null" >
+        attachment_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null" >
+        #{factoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="paymentTerm != null" >
+        #{paymentTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteRemark != null" >
+        #{quoteRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentPath != null" >
+        #{attachmentPath,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteReasons != null" >
+        #{quoteReasons,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteDate != null" >
+        #{quoteDate,jdbcType=DATE},
+      </if>
+      <if test="quoteStatus != null" >
+        #{quoteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+       <if test="attachmentName != null" >
+        #{attachmentName,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cbt.entity.SupplierQuoteInfo" >
+    update supplier_quote_info
+    <set >
+      <if test="factoryId != null" >
+        factory_id = #{factoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="paymentTerm != null" >
+        payment_term = #{paymentTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteRemark != null" >
+        quote_remark = #{quoteRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentPath != null" >
+        attachment_path = #{attachmentPath,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteReasons != null" >
+        quote_reasons = #{quoteReasons,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteDate != null" >
+        quote_date = #{quoteDate,jdbcType=DATE},
+      </if>
+      <if test="quoteStatus != null" >
+        quote_status = #{quoteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validityDays != null" >
+        validity_days = #{validityDays,jdbcType=INTEGER},
+      </if>
+      <if test="isInspectedFactory != null" >
+        is_inspected_factory = #{isInspectedFactory,jdbcType=INTEGER},
+      </if>
+      <if test="isInspectedProduct != null" >
+        is_inspected_product  = #{isInspectedProduct,jdbcType=INTEGER},
+      </if>
+      <if test="isProcess != null" >
+        is_process  = #{isProcess,jdbcType=INTEGER},
+      </if>
+      <if test="isActive != null" >
+        is_active  = #{isActive,jdbcType=INTEGER},
+      </if>
+      <if test="totalAmount != null" >
+        total_amount  = #{totalAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="operationTime != null" >
+        operation_time  = #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="refuseReasons != null" >
+        refuse_reasons  = #{refuseReasons,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentName != null" >
+        attachment_name  = #{attachmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="priceType != null" >
+        price_type  = #{priceType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cbt.entity.SupplierQuoteInfo" >
+    update supplier_quote_info
+    set factory_id = #{factoryId,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=INTEGER},
+      payment_term = #{paymentTerm,jdbcType=VARCHAR},
+      quote_remark = #{quoteRemark,jdbcType=VARCHAR},
+      attachment_path = #{attachmentPath,jdbcType=VARCHAR},
+      quote_reasons = #{quoteReasons,jdbcType=VARCHAR},
+      quote_date = #{quoteDate,jdbcType=DATE},
+      quote_status = #{quoteStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 用于更新报价is_active字段 -->
+  <update id="updateByFactoryIdAndOrderId">  
+    update supplier_quote_info set is_active = 0 
+    where  
+    factory_id = #{factoryId,jdbcType=VARCHAR}   
+    and order_id = #{orderId,jdbcType=INTEGER} 
+  </update>
+  
+ 	
+	 <!-- 批量更新报价状态 -->	
+	<update id="updateOrderStatus" parameterType="java.util.List">    
+	     <foreach collection="list" item="item" index="index"  open="" close="" separator=";">   
+	     	    update supplier_quote_info  
+	     	    <set>     
+				quote_status = #{item.quoteStatus},refuse_reasons = #{item.refuseReasons},
+				operation_time = #{item.operationTime}  
+				</set> 
+	            where id = #{item.id}            
+	     </foreach>     
+    </update> 
+    
+    
+    <!-- 根据采购商ID、供应商ID、询盘号查询报价 -->
+    <select id="queryQuoteDetailByFactoryId" resultMap="BaseResultMap">
+     select  
+     ss.id, ss.factory_id, ss.order_id, ss.payment_term, ss.quote_remark, ss.attachment_path, ss.quote_reasons, 
+     ss.quote_date, ss.quote_status, ss.create_time, ss.validity_days,ss.payment_remark,ss.is_inspected_factory,
+     ss.is_inspected_product,ss.is_process,ss.is_active,ss.refuse_reasons,ss.total_amount,ss.operation_time,ss.attachment_name,
+     ss.price_type,ss.factory_name        
+     from quote_info q    
+     left join 
+     (  
+     select   
+     s.id, s.factory_id, s.order_id, s.payment_term, s.quote_remark, s.attachment_path, s.quote_reasons, 
+     s.quote_date, s.quote_status, s.create_time, s.validity_days,s.payment_remark,s.is_inspected_factory,
+     s.is_inspected_product,s.is_process,s.is_active,s.refuse_reasons,s.total_amount,s.operation_time,s.attachment_name,
+     s.price_type,f.factory_name      
+     from   
+     supplier_quote_info s left join factory_info f on s.factory_id = f.factory_id  
+     )ss
+     on q.order_id = ss.order_id  
+     where ss.is_active = 1   
+     and q.customer_id = #{customerId,jdbcType=VARCHAR}      
+     and ss.factory_id = #{factoryId,jdbcType=VARCHAR}     
+     and ss.order_id = #{orderId,jdbcType=INTEGER}   
+    
+    </select>
+    
+    
+  
+</mapper>

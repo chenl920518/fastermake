@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cbt.dao.QuoteBigProductsTabMapper" >
+  <resultMap id="BaseResultMap" type="com.cbt.entity.QuoteBigProductsTab" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="big_product_id" property="bigProductId" jdbcType="INTEGER" />
+    <result column="product_id" property="productId" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="unit_price" property="unitPrice" jdbcType="DOUBLE" />
+    <result column="mold_price" property="moldPrice" jdbcType="DOUBLE" />
+    <result column="product_remark" property="productRemark" jdbcType="VARCHAR" />
+    
+    
+    <!-- 虚拟字段 -->
+     <result column="product_name" property="productName" jdbcType="VARCHAR" />
+     <result column="materials" property="materials" jdbcType="VARCHAR" />
+     <result column="process" property="process" jdbcType="VARCHAR" />
+     <result column="drawing_path_compress" property="drawingPathCompress" jdbcType="VARCHAR" />
+     <result column="weight" property="weight" jdbcType="DOUBLE" />
+     <result column="original_remark" property="originalRemark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, product_id, order_id, quantity, unit_price, mold_price, product_remark,big_product_id  
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from quote_big_products_tab
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  
+  <!-- 根据大货id查询产品包含零件信息 -->
+  <select id="selectByProductId" resultMap="BaseResultMap">
+     select  
+     t.product_id, t.order_id, t.quantity, t.unit_price, t.mold_price, t.product_remark,t.big_product_id,
+     p.product_name,p.materials,p.process,p.drawing_path_compress,p.weight,p.product_remark as original_remark  
+     from quote_big_products_tab t 
+     left join 
+     quote_product p  
+     on t.product_id = p.id  
+     where big_product_id = #{bigProductId,jdbcType=INTEGER}
+  </select>
+  
+  
+  <select id="productId" resultMap="BaseResultMap">
+     select  
+     <include refid="Base_Column_List" />
+     from quote_big_products_tab    
+     where product_id = #{productId,jdbcType=INTEGER}   
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from quote_big_products_tab
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cbt.entity.QuoteBigProductsTab" >
+    insert into quote_big_products_tab (id, product_id, order_id, 
+      quantity, unit_price, mold_price, 
+      product_remark)
+    values (#{id,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, 
+      #{quantity,jdbcType=INTEGER}, #{unitPrice,jdbcType=DOUBLE}, #{moldPrice,jdbcType=DOUBLE}, 
+      #{productRemark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cbt.entity.QuoteBigProductsTab" >
+    insert into quote_big_products_tab
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="bigProductId != null" >
+        big_product_id,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="unitPrice != null" >
+        unit_price,
+      </if>
+      <if test="moldPrice != null" >
+        mold_price,
+      </if>
+      <if test="productRemark != null" >
+        product_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bigProductId != null" >
+        #{bigProductId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="unitPrice != null" >
+        #{unitPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="moldPrice != null" >
+        #{moldPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="productRemark != null" >
+        #{productRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cbt.entity.QuoteBigProductsTab" >
+    update quote_big_products_tab
+    <set >
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="unitPrice != null" >
+        unit_price = #{unitPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="moldPrice != null" >
+        mold_price = #{moldPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="productRemark != null" >
+        product_remark = #{productRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cbt.entity.QuoteBigProductsTab" >
+    update quote_big_products_tab
+    set product_id = #{productId,jdbcType=INTEGER},
+      order_id = #{orderId,jdbcType=INTEGER},
+      quantity = #{quantity,jdbcType=INTEGER},
+      unit_price = #{unitPrice,jdbcType=DOUBLE},
+      mold_price = #{moldPrice,jdbcType=DOUBLE},
+      product_remark = #{productRemark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

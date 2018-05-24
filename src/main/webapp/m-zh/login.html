@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<meta http-equiv="pragram" content="no-cache">  
+		<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+		<meta http-equiv="expires" content="0">
+		<title>微信快制造-登录页面</title>
+		<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/m-css.css" />
+		<link rel="stylesheet" href="/css/easydialog.css" />
+		
+	</head>
+	<body>
+		<div class="login container-fluid">
+			<div class="row row1">
+				<a href="###"><img src="../images/head_146-39.png"></a>
+			</div>
+			<div class="row row2">
+				<input type="text" class="form-control" id="loginEmail" placeholder="用户名"/>
+			</div>
+			<div class="row">
+				<input type="password" class="form-control" id="u_pwd" placeholder="密码"/>
+			</div>
+            <div class="row btn_row">
+				<a href="#" id="login" onclick="login()">登录</a>
+			</div> 
+            <div class="row">
+            	<div class="last_row_in">
+					<a href="register.html" class="pull-left">立即注册</a>
+					<a href="forget.html" class="pull-right">忘记密码？</a>
+				</div>
+			</div>    
+			<div class ="foot clearfix">
+				<a href="/m-zh/login.html" id="login" class="col-xs-8 a_border">登录/注册				
+					<!-- <ul class="col-xs-6 ul1">
+						<li class="li1"><a href="">会员注册</a></li>
+						<li><a href="">登录</a></li>
+					</ul> -->
+				
+				</a>
+				<div class="col-xs-4 a_border inquiry">询盘列表				
+					<ul class="col-xs-6 ul1">	
+					    <li><a href="/m-zh/quote_list.html" class="col-xs-4">最新询盘</a></li>					
+						<li><a href="/m-zh/quote_list.html?quoteStatus=1" class="col-xs-4">已报价</a></li>						
+					</ul> 				
+				</div>
+			</div>                   
+		</div>
+	</body>
+</html>
+<script src="../lib/jquery/jquery.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="/js/cookie_util.js"></script> 
+<script type="text/javascript" src="/js/base64.js"></script> 
+<script type="text/javascript" src="/js/easydialog.min.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="js/login.js"></script>
+<script>
+
+
+        window.onload = window.onresize = function(){
+
+            var clientWidth =document.documentElement.clientWidth;
+
+            document.getElementsByTagName("html")[0].style.fontSize =
+
+                    clientWidth / 1200 * 40 + "px";
+        }
+
+</script>
+<script>
+
+$('.foot .inquiry').click(function(){
+	$(this).find('ul').toggle();
+})
+
+</script>

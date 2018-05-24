@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+  content="width=device-width,initial-scale=1,user-scalable=0">
+<meta name="Keywords"
+  content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<meta name="Description"
+  content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">  
+<title>快制造-产品库</title>
+ <link rel="shortcut icon" href="/img/favicon.ico"/>
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/css.css" />
+
+<!--<link rel="stylesheet" href="/css/jason.css" />-->
+<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script src="/lib/respond/respond.js"></script>
+<style>
+@media ( min-width : 1200px) {
+	.container {
+		width: 1200px;
+	}
+}
+
+.pro{
+padding-top: 0px;
+}
+
+.he-c{
+     height: 325px;
+}
+
+</style>
+</head>
+
+<body>
+	<div class="products pro">
+	     <div id="header"></div> 
+		<div class="container beforeFoot section" >
+			<div class="row">
+				<div class="imgs banner_imgs">
+					<img src="/images/products/top.jpg" alt="" class="img-responsive" />
+				</div>
+				<div class="products-nav">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<ol class="breadcrumb">
+								<li><a href="#">首页</a></li>
+								<li><a href="#">产品库</a></li>
+							</ol>
+						</div>
+
+						<div class="panel-body">
+							<div class="sel clearfix">
+								<p class="pull-left">工艺:</p>
+								<div class="sel-detail pull-left" id="processGroup">
+									<em><i class="iactive"></i>不限</em>
+									<div class="spans">
+										<span><i class="i0"></i>注塑</span> 
+                                        <span><i class="i0"></i>吸塑</span> 
+                                        <span><i class="i0"></i>滚塑</span> 
+                                        <span><i class="i0"></i>吹塑</span> 
+                                        <span><i class="i0"></i>挤塑</span> 
+                                        <span><i class="i0"></i>其他塑料工艺</span> 
+                                        <span><i class="i0"></i>不锈钢铸造(硅溶胶、水玻璃）</span> 
+                                        <span><i class="i0"></i>压铸（铝、锌、镁、铜等）</span> 
+                                        <span><i class="i0"></i>砂铸(钢、铁、铜、铝等)</span> 
+                                        <span><i class="i0"></i>重力铸造（铝、铜等）</span> 
+                                        <span><i class="i0"></i>其他铸造</span> 
+                                        <span><i class="i0"></i>锻造</span> 
+                                        <span><i class="i0"></i>原料采购粗加工</span> 
+                                        <span><i class="i0"></i>钣金加工（切割，折弯，焊接，组装）</span>
+                                        <span><i class="i0"></i>冲压拉伸</span>
+                                        <span><i class="i0"></i>旋压</span>
+                                        <span><i class="i0"></i>铝挤压</span>
+                                        <span><i class="i0"></i>机加工</span>
+                                        <span><i class="i0"></i>现成商品采购</span>
+                                        <span><i class="i0"></i>其他采购</span>
+									</div>
+									<i class="glyphicon glyphicon-menu-down icon"></i>
+								</div>
+							</div>
+							<div class="sel clearfix">
+								<p class="pull-left">材料:</p>
+								<div class="sel-detail pull-left" id="materialsGroup">
+									<em><i class="iactive"></i>不限</em>
+									<div class="spans">
+                                        <span><i class="i0"></i>合金钢</span>
+                                        <span><i class="i0"></i>铝</span>
+                                        <span><i class="i0"></i>黄铜</span>
+                                        <span><i class="i0"></i>青铜</span>
+                                        <span><i class="i0"></i>碳类复合材料</span>
+                                        <span><i class="i0"></i>碳钢</span>
+                                        <span><i class="i0"></i>铸钢</span>
+                                        <span><i class="i0"></i>陶瓷类</span>
+                                        <span><i class="i0"></i>钴</span>
+                                        <span><i class="i0"></i>复合材料</span>
+                                        <span><i class="i0"></i>紫铜</span>
+                                        <span><i class="i0"></i>弹性体</span>
+                                        <span><i class="i0"></i>黑色金属</span>
+                                        <span><i class="i0"></i>泡沫塑料</span>
+                                        <span><i class="i0"></i>玻璃类</span>
+                                        <span><i class="i0"></i>金</span>
+                                        <span><i class="i0"></i>哈氏合金</span>
+                                        <span><i class="i0"></i>铁</span>
+                                        <span><i class="i0"></i>铅合金</span>
+                                        <span><i class="i0"></i>镁合金</span>
+                                        <span><i class="i0"></i>磁性材料</span>
+                                        <span><i class="i0"></i>镍合金</span>
+                                        <span><i class="i0"></i>贵金属</span>
+                                        <span><i class="i0"></i>其他（有色）金属</span>
+                                        <span><i class="i0"></i>其它</span>
+                                        <span><i class="i0"></i>塑料与橡胶</span>
+                                        <span><i class="i0"></i>白金</span>
+                                        <span><i class="i0"></i>银</span>
+                                        <span><i class="i0"></i>不锈钢</span>
+                                        <span><i class="i0"></i>热塑性塑料</span>
+                                        <span><i class="i0"></i>热固性塑料</span>
+                                        <span><i class="i0"></i>锡合金</span>
+                                        <span><i class="i0"></i>钛合金</span>
+                                        <span><i class="i0"></i>工具钢</span>
+                                        <span><i class="i0"></i>钨合金</span>
+                                        <span><i class="i0"></i>锌合金</span>										                                       
+									</div>
+									<i class="glyphicon glyphicon-menu-down icon"></i>
+								</div>
+							</div>
+							<div class="sel clearfix">
+								<p class="pull-left">地区:</p>
+								<div class="sel-detail pull-left" id="regionGroup">
+									<em><i class="iactive"></i>不限</em>
+									<div class="spans">
+								
+                                        <span><i class="i0"></i>江苏</span>
+                                        <span><i class="i0"></i>广东</span>
+                                        <span><i class="i0"></i>上海市</span>
+                                        <span><i class="i0"></i>山东</span>
+                                        <span><i class="i0"></i>河南</span>
+                                        <span><i class="i0"></i>河北</span>
+                                        <span><i class="i0"></i>安徽</span>
+                                        <span><i class="i0"></i>福建</span>
+                                        <span><i class="i0"></i>北京</span>
+                                        <span><i class="i0"></i>天津</span>
+                                        <span><i class="i0"></i>重庆</span>
+                                        <span><i class="i0"></i>山西</span>
+                                        <span><i class="i0"></i>内蒙古</span>
+                                        <span><i class="i0"></i>辽宁</span>
+                                        <span><i class="i0"></i>四川</span>
+                                        <span><i class="i0"></i>贵州</span>
+                                        <span><i class="i0"></i>云南</span>
+                                        <span><i class="i0"></i>陕西</span>
+                                        <span><i class="i0"></i>吉林</span>
+                                        <span><i class="i0"></i>黑龙江</span>
+                                        <span><i class="i0"></i>江西</span>
+                                        <span><i class="i0"></i>湖北</span>
+                                        <span><i class="i0"></i>湖南</span>
+                                        <span><i class="i0"></i>广西</span>
+                                        <span><i class="i0"></i>海南</span>
+                                        <span><i class="i0"></i>甘肃</span>
+                                        <span><i class="i0"></i>宁夏</span>
+                                        <span><i class="i0"></i>青海</span>
+                                        <span><i class="i0"></i>西藏</span>
+                                        <span><i class="i0"></i>香港</span>
+                                        <span><i class="i0"></i>澳门</span>
+                                        <span><i class="i0"></i>台湾</span>
+                                        <span><i class="i0"></i>浙江</span>
+                                        <span><i class="i0"></i>新疆</span>
+									</div>
+									<i class="glyphicon glyphicon-menu-down icon"></i>
+								</div>
+							</div>
+							<div class="sel clearfix sx">
+								<p class="pull-left plast">筛选条件：</p>
+								<div class="sel-detail pull-left" id="reset">
+									<span class="sclear"><i
+										class="glyphicon glyphicon-repeat  iclear"></i> 清空条件</span>
+
+								</div>
+								<button class="btn btn-default pull-right" id="selectButton">确认</button>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="row row2">
+				<div id="productList" class="colxs">
+				
+				</div>
+
+			</div>
+			
+			<input id="totalPage" style="display:none">
+			<div id="biuuu_link" style="text-align: center;padding-bottom: 50px;"></div>
+			
+		</div>
+		 <div id="footer"></div> 
+	</div>
+		
+		
+	<script src="/lib/jquery/jquery.min.js"></script>
+	<script src="/lib/bootstrap/js/bootstrap.js"></script>
+	<script src="/lib/laypage/laypage.js"></script>
+	<script src="/zh/icn/products.js"></script>
+	<script src="/js/cookie_util.js"></script>
+    <script type="text/javascript" src="/js/base64.js"></script> 
+    
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+
+<script>
+    $('#header').load('header.html');
+    $('#footer').load('footer.html');
+    /*产品不限控制*/
+    $('.sel-detail em i').css({'display':'block'});
+    /*产品筛选点击选中*/
+    $('.sel-detail span:not(".sclear")').hover(function(){
+        $(this).find('.i0').show();
+        $(this).css({'color':'#006dcc'});
+    },function(){
+        $(this).find('.i0').hide();
+		if(!$(this).find('i').hasClass('iactive')){
+			$(this).css({'color':'#333'});
+		}
+    })
+    
+     $('.sel-detail em').click(function(){
+    	 
+    	    if($(this).find('i').is(':visible')){
+    	    	$(this).children().find('i').hide()
+    	    }else{
+    	    	$(this).next().find('span:not(".sclear")').css('color','').find('i').removeClass('iactive');
+    	    	
+    	    	$(this).find('i').css({'display':'block'})
+    	    }   	 
+     })
+   
+    $('.sel-detail span:not(".sclear")').click(function(){
+		if($(this).find('i').hasClass('i0')){
+			$(this).find('i').removeClass('i0').addClass('iactive');
+			/*控制字体颜色*/
+			$(this).css({'color':'#006dcc'});
+		}else{
+			$(this).find('i').removeClass('iactive').addClass('i0');
+		}
+        /*控制换行高度*/
+        var len = $('.sel-detail span .iactive').length;
+        if(len > 0){
+			$(this).parent().parent().parent().find('em').find('i').css({'display':'none'});
+        }
+    })
+    /*超过一行隐藏*/
+    var h1_1 = $('.sel-detail .spans').height();
+    if(h1_1 > 35 ){
+        $('.sel-detail .spans').css({'overflow':'hidden','height':'35px'});
+    }
+    /*筛选箭头点击*/
+    $('.sel-detail .icon').click(function(){
+        if($(this).hasClass('glyphicon-menu-down')){
+            $(this).removeClass('glyphicon-menu-down').addClass(' glyphicon-menu-up');
+            $(this).parent('.sel-detail').find('.spans').css({'height': h1_1 + 'px'});
+        }else{
+            $(this).removeClass('glyphicon-menu-up').addClass('glyphicon-menu-down');
+            $(this).parent('.sel-detail').find('.spans').css({'overflow':'hidden','height':'35px'});
+        }
+    })
+    /*点击清空条件*/
+    $('.sel-detail .sclear').click(function(){
+        $('.sel-detail span:not(".sclear")').css('color','').find('i').removeClass('iactive');
+        $('.sel-detail em i').css({'display':'block'});
+        
+    })
+    
+     /* body 高度控制底部位置 */
+    /*var h1 = $(document.body).height() +230 ;
+    var h2 = window.screen.availHeight  ;
+    if(h1 < h2){
+        $('#footer').addClass('footer1')
+    }else{
+        $('#footer').removeClass('footer1');
+    };
+	 */
+    
+    
+    
+    
+    /*点击分页*/
+  //  $('.pagination li:first-child').nextUntil('.pagination li:last-child').click(function(){
+  //      $(this).addClass('active').siblings().removeClass('i0').removeClass('active');
+  //  })
+</script>

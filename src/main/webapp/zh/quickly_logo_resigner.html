@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>快制造-产品-检查和发布</title>
+ <link rel="shortcut icon" href="/img/favicon.ico"/>
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/lib/datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+<link rel="stylesheet" href="/css/easydialog.css" />
+<link rel="stylesheet" href="/css/css.css" />
+<link rel="stylesheet" href="/css/matrix-style.css" />
+<link rel="stylesheet" href="/css/progressBar.css" />
+<link rel="stylesheet" href="/css/ui.css" />
+<link rel="stylesheet" href="/css/ui.progress-bar.css" />
+<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script src="/lib/respond/respond.js"></script>
+
+<style>
+@media ( min-width : 1200px) {
+	.container {
+		width: 1200px;
+		background-color: #fff;
+	}
+}
+.error{
+color: red;
+}
+
+</style>
+</head>                
+<body>
+	<div class="product_invitation quickly_logo_resigner">
+	    <div id="header"></div>
+		<div class="nav_head container">
+			<a href="###" class="a1">1.创建询盘获取报价</a> 
+			<a href="###" class="a2">2.完善询盘信息</a> 
+			<a href="###" class="a2">3.注册登录</a> 
+			<a href="###">4.确认询盘信息</a> 
+			<a href="###">5.快制造检查和发布</a>
+			<a href="###">6.收到报价</a>			
+		</div>
+		<div class="panel container">
+			<!--  <div class="panel-heading panel-heading_1">
+				<ol class="breadcrumb">
+					<li><a href="#">首页</a></li>
+					<li><a href="#">产品库</a></li>
+					<li><a href="###">产品详情</a></li>
+					<li><a href="###">邀请报价类似产品</a></li>
+					<li><a href="###">快制造检查和发布</a></li>
+ 				</ol>    
+			</div>-->
+			 <div class="panel-heading panel-heading_1">
+				<ol class="breadcrumb">
+					<li><a href="#">首页</a></li>
+					<li><a href="#">快速创建询盘</a></li>
+					<li><a href="###">完善询盘信息</a></li>
+					<li><a href="###">注册登录</a></li>
+ 				</ol>    
+			</div>
+			
+			<div class="panel-body">
+				<div class="panel_in ">
+					<div class="tab-pane fade tab2 active in" id="form2">
+                    	<div class="imgs_sm">
+                    		<div class="words">
+                    			<h3>真实询盘 可靠报价</h3>
+                    			<p>询盘报价，跟踪结果，获得反馈<br>建立产能档案，吸引采购商</p>
+                    		</div>
+                    		<img src="/images/logo_pic.png" alt="">
+                    	</div>
+                        <form class="form-horizontal">
+                        	<div class="form-group">
+                                <label for="comp.name" class="col-sm-2 control-label"></label>
+                                <div class="col-sm-4 ts">
+                                    <i class="iconfont"></i>
+                                     <a href="login.html">已有账号，请点此登录</a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comp.name" class="col-sm-2 control-label">公司名称<i class="error">*</i></label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="buyer_companyName" placeholder="企业全称">
+                                     <span class="error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="user.name" class="col-sm-2 control-label">联系人姓名<i class="error">*</i></label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="buyer_name" placeholder="请输入联系人姓名">
+                                     <span class="error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="user.email" class="col-sm-2 control-label">电子邮件<i class="error">*</i></label>
+                                <div class="col-sm-4">
+                                    <input type="email" class="form-control" id="buyer_email" placeholder="请输入电子邮箱">
+                                     <span class="error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="user.password" class="col-sm-2 control-label">密码(6-20字符)<i class="error">*</i></label>
+                                <div class="col-sm-4">
+                                    <input type="password" class="form-control" id="buyer_password" placeholder="请输入密码">
+                                     <span class="error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="rePassword" class="col-sm-2 control-label">确认密码<i class="error">*</i></label>
+                                <div class="col-sm-4">
+                                    <input type="password" class="form-control" id="rePassword" placeholder="请确认密码">
+                                     <span class="error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group gj_dq">
+                                <label for="rePassword" class="col-sm-2 control-label">地区和城市<i class="error"></i></label>
+                                <div class="col-sm-4">
+                                    <select name="" id="select_province" onchange="getCity()" class="form-control">
+                                        <option style="color:#999;">请选择地区</option>
+                                    <option value="0">北京市</option><option value="1">天津市</option><option value="2">上海市</option><option value="3">重庆市</option><option value="4">河北省</option><option value="5">河南省</option><option value="6">云南省</option><option value="7">辽宁省</option><option value="8">黑龙江省</option><option value="9">湖南省</option><option value="10">安徽省</option><option value="11">山东省</option><option value="12">新疆维吾尔自治区</option><option value="13">江苏省</option><option value="14">浙江省</option><option value="15">江西省</option><option value="16">湖北省</option><option value="17">广西壮族</option><option value="18">甘肃省</option><option value="19">山西省</option><option value="20">内蒙古自治区</option><option value="21">陕西省</option><option value="22">吉林省</option><option value="23">福建省</option><option value="24">贵州省</option><option value="25">广东省</option><option value="26">青海省</option><option value="27">西藏</option><option value="28">四川省</option><option value="29">宁夏回族</option><option value="30">海南省</option><option value="31">台湾省</option><option value="32">香港特别行政区</option><option value="33">澳门特别行政区</option></select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <select name="" id="select_city" class="sellast form-control">
+     									<option class="tr9">请选择城市</option>
+                                    </select>
+                                </div>
+                            </div>
+<!--                             <div class="form-group"> -->
+<!--                                 <label for="rePassword" class="col-sm-2 control-label">联系电话：</label> -->
+<!--                                 <div class="col-sm-4"> -->
+<!--                                     <input type="text" class="form-control" id="buyer_tel" placeholder=""> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+                            <div class="form-group">
+                                <label for="rePassword" class="col-sm-2 control-label">联系电话 <i class="error"></i></label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control"  id="buyer_tel" name="tel"  placeholder="请输入您的电话号码">
+                                </div>
+                            </div>
+                            <!-- <div class="form-group ps">
+                                <label class="col-xs-2 control-label"></label>
+                                <div class="col-xs-8">
+                                    <p> 您可以发表询盘并获得多家工厂的报价</p>
+                                    <p> 发布长期需求，建立供应商网络，并实地考察</p>
+                                    <p> * 真实有效的询盘，准确可靠的报价。</p>
+                                </div>
+                            </div> -->
+                            <div class="form-group colmargin">
+                                <div class="row">
+                                    <div class="col-xs-7" style="margin-bottom: 24px;">
+                                        <button type="button" id="sub_btn1" class="btn btnnext">
+                                            注册
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+				</div>
+			</div>
+		</div>
+        
+
+        <div id="footer"></div>
+	</div>
+
+
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/upload-base.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script type="text/javascript" src="/js/easydialog.min.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script> 
+<script src="/lib/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/lib/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="/js/city.js"></script>
+<script type="text/javascript" src="/zh/icn/quickly_resigner.js"></script>   
+
+<script>
+
+
+      $('#header').load('header.html');
+      $('#footer').load('footer.html');
+	/*头部样式切换*/
+	$('.nav_head a:not(".a1")').click(function() {
+		$('.nav_head a').css({
+			'text-decotation' : 'none'
+		});
+		/*$(this).css({
+			'background' : 'url(/images/products/t4.png)'
+		});*/
+	})
+	/*选者框样式切换*/
+	$('.checkbox label').click(function() {
+		if ($('label em').css('display') == 'block') {
+			$('label em').css({
+				'display' : 'none'
+			});
+		} else {
+			$('label em').css({
+				'display' : 'block'
+			});
+		}
+	})
+	
+	/* 资格认证多选切换*/
+	$('.product_invitation .zgrzinp').click(function(){
+		$(this).parent().find('.zgrzdx').toggle();
+		/*$('.product_invitation  .zgrzdx').toggle();*/
+	})
+	$('.product_invitation .selspan').click(function(){
+		$(this).parent().find('.zgrzdx').toggle();
+		/*$('.product_invitation  .zgrzdx').toggle();*/
+	})
+	
+	/*询盘类别扩大选中区域*/
+	$('.product_invitation .inps,.product_invitation .pics').click(function(){
+		$('.product_invitation .inps input').attr('checked', 'checked');
+	})
+	
+	
+	
+	  /* 日历插件*/
+    $('.form_date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 4,
+        forceParse: 0
+    });
+</script>
+
+
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>quickpart welcome</title>
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/lib/html5sshiv/html5shiv.min.js"></script>
+    <script src="/lib/respond/respond.js"></script>
+    <link rel="stylesheet" href="/css/css.css"/>
+    <style>
+    	
+    	#footer{
+    		position:fixed;
+    		left:0;
+    		bottom:0;            
+    		width: 100%;
+    	}     	
+    	 	
+    </style>
+    
+</head>
+<body>
+<div class="welcome welcome_en">
+    <div id="header"></div>
+    <div class="section">
+        <div class="container_in clearfix">
+            <div class="title" style="width:640px;">Congratulations on becoming a member</div>
+            <div class="next_step">
+                <!-- <p>You can：</p> -->
+                <div class="steps clearfix">
+                    <!-- <div class="step">
+                        <a href="/zh/edit_enterprise_archives.html"><i class="iconfont">&#xe647;</i></a>
+                        <span>Improve company information</span>
+                    </div> -->
+                    <div class="step step2">
+                        <a href="/en/quickly_release.html"><i class="iconfont">&#xe619;</i></a>
+                        <span>Sent Request for Quotation</span>
+                    </div>
+                   <!--  <div class="step">
+                        <a href="###"><i class="iconfont">&#xe780;</i></a>
+                        <span>One-click activation</span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script> 
+<script>
+	$('#header').load('header.html');
+	$('#footer').load('footer.html');
+    $('.inquiry_detail .section nav li a').hover(function(){
+        $(this).addClass('active')
+        .parent().siblings('li').children('a').removeClass('active');
+    })   
+    
+//    $('.welcome .next_step .steps .step a').not('.step:last-child a').append('<em></em>');
+   $('.welcome .next_step .steps .step a').hover(function(){
+   	$(this).find('em').animate({
+   			'width':'120px',
+   			'height':'120px',
+   			'top':'-10px',
+   			'left':'-10px'  		
+	},200)
+   },function(){
+   	$(this).find('em').animate({
+   			'width':'100px',
+   			'height':'100px',  		
+   			'top':'0px',
+   			'left':'0px'  		
+	},200)
+   })
+
+</script>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<meta name="Keywords"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<meta name="Description"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<title>快制造-供应商报价</title>
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script src="/lib/respond/respond.js"></script>
+<link rel="stylesheet" href="/css/css.css" />
+<style>
+@media ( min-width : 1200px) {
+	.container {
+		width: 1200px;
+		padding: 0;
+	}
+}
+
+.imgsize {
+	height: 180px;
+}
+</style>
+</head>
+<body>
+	<div class="enterprise_archives product_create totalpage">
+		<div id="header"></div>
+		<div class="section ">
+			<div class="section_in container clearfix">
+				<nav class="pull-left media-left ">
+					<ul>
+						<li><span></span> <a href="/zh/enterprise_archives.html"><em
+								class="iconfont">&#xe617;</em>企业档案 </a></li>
+						<li><span></span> <a href="/zh/edit_enterprise_archives.html"><em
+								class="iconfont">&#xe607;</em>修改档案</a></li>
+						<li class="li3"><span></span> <a
+							href="/zh/account_management.html"><em class="iconfont">&#xe607;</em>账户管理
+						</a></li>
+						<li><span></span> <a href="/zh/product_totalpage.html"><em
+								class="iconfont">&#xe65b;</em>产品库</a></li>
+					</ul>
+				</nav>
+				<div class="contain_right pull-right">
+					<h3 id="factoryName"></h3>
+					<div class="panels clearfix">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<button id="addButton" class="btn btn-default">添加产品</button>
+								<!-- <button class="btn btn-default">1688产品库一键上传</button>-->
+								<span class="pull-right" id="number">共0个</span>
+							</div>
+							<div class="panel-body ">
+								<div class="col-xs-12 proShow">
+
+
+									<div class="col-xs-3 colxs2 colxs2_1" id="addPro">
+										<div class="thumbnail imgadd">
+											<a href="###"> <img src="/images/products/add.png" alt=""
+												class="img-responsive"><br /> <span>上传产品</span>
+											</a>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+	<!-- SEO代码 开始-->
+	<div style="display: none">
+		快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘
+
+		Keywords: <a href="https://www.kuaizhizao.cn/" title="快制造"
+			target="_blank"><strong>快制造</strong></a> <a
+			href="https://www.kuaizhizao.cn/" title="外发加工" target="_blank"><strong>外发加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑模具" target="_blank"><strong>注塑模具</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机械加工" target="_blank"><strong>机械加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金加工" target="_blank"><strong>钣金加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具厂" target="_blank"><strong>塑料模具厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑加工" target="_blank"><strong>注塑加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具设计与制造" target="_blank"><strong>塑料模具设计与制造</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸厂" target="_blank"><strong>压铸厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="零件加工" target="_blank"><strong>零件加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸加工订单" target="_blank"><strong>外贸加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="非标定制" target="_blank"><strong>非标定制</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外发订单" target="_blank"><strong>外发订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外协加工" target="_blank"><strong>外协加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="加工订单" target="_blank"><strong>加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑订单" target="_blank"><strong>注塑订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸订单" target="_blank"><strong>压铸订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金订单" target="_blank"><strong>钣金订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机加工询盘" target="_blank"><strong>机加工询盘</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸询盘" target="_blank"><strong>外贸询盘</strong></a>
+	</div>
+	<!-- SEO代码 开始-->
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script src="/js/base64.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script src="/zh/icn/product_totalpage.js"></script>
+<script>
+
+$('#header').load('header.html');
+
+$('#footer').load('footer.html');
+
+
+    /*顶部鼠标经过子信息出现效果*/
+    $('.header_top_in .xxs').hover(function(){
+        $(this).children('.xx').css({
+            'border-color':'#dfdfdf',
+            'border-bottom-color':'transparent',
+            'background-color':'#fff'
+        })
+        $(this).children('.xxlist').show();
+    },function(){
+        $(this).children('.xx').css({
+            'border-color':'transparent',
+        })
+        $(this).children('.xxlist').hide();
+    })
+    /*更多消息里面鼠标经过效果*/
+    $('.xxlist a').hover(function(){
+        $(this). css({'color':'#006DCC'}).siblings().css({'color':'#666'})
+    })
+
+    /*顶部向下箭头点击变成向上箭头*/
+    $('.header_top_in .head_hover').hover(function(){
+        $(this).css({'background-color':'#fff'})
+                .find('.iconf').css({
+                    'background':'url(/images/xs.png)'
+                });
+    },function(){
+        $(this).find('.iconf').css({
+            'background':'url(/images/xx.png)'
+        });
+    })
+
+    /*产品库默认侧边栏效果*/
+    	$('.section_in nav li:nth-child(4)').children('span').show();
+         
+         $('.section_in nav li:nth-child(4)').children('a').css({'color':'#006dcc'});
+            
+            
+    /* 侧边栏效果 */
+    $('.section_in nav li').hover(function(){
+        $(this).children('span').show();
+        $(this).siblings().not('.section_in nav li:nth-child(4)').children('span').hide();
+        $(this).children('a').css({'color':'#006dcc'});
+        $(this).siblings().not('.section_in nav li:nth-child(4)').children('a').css({'color':'#333'});
+    });
+    $('.section_in nav li').mouseout(function(){
+        $('.section_in nav li').not('.section_in nav li:nth-child(4)').children('span').hide();
+        $('.section_in nav li').not('.section_in nav li:nth-child(4)').children('a').css({'color':'#333'});
+    });
+    
+
+</script>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- 邮件发送bean -->
+	<bean id="sendmail" class="com.cerong.schedule.SendMailTask"/>
+	<!-- 消息推送bean -->
+	<bean id="pushmessage" class="com.cerong.schedule.PushMessageTask"/>
+	<!-- 项目状态批处理bean -->
+	<bean id="projectStatusBatch" class="com.cerong.schedule.ProjectStatusBatchJob"/>
+	
+    <!-- 定时发邮件任务 -->
+    <bean name="sendEmailTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+         <!-- 指定执行任务的对象 -->
+        <property name="targetObject">
+            <ref bean="sendmail"/>
+        </property>
+        <!-- 指定对象执行的方法 -->
+        <property name="targetMethod">
+            <value>send</value>
+        </property>
+        <!-- 设置为非并发执行 -->
+        <property name="concurrent" value="false"/>
+    </bean>
+    
+    <bean name="pushMessageTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+         <!-- 指定执行任务的对象 -->
+        <property name="targetObject">
+            <ref bean="pushmessage"/>
+        </property>
+        <!-- 指定对象执行的方法 -->
+        <property name="targetMethod">
+            <value>push</value>
+        </property>
+        <!-- 设置为非并发执行 -->
+        <property name="concurrent" value="false"/>
+    </bean>
+    
+    <bean name="projectStatusBatchTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+         <!-- 指定执行任务的对象 -->
+        <property name="targetObject">
+            <ref bean="projectStatusBatch"/>
+        </property>
+        <!-- 指定对象执行的方法 -->
+        <property name="targetMethod">
+            <value>execute</value>
+        </property>
+    </bean>
+    
+    <!-- 邮件发送触发器 -->
+    <bean id="sendEmailTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+       <!--  指向我们的任务 -->
+        <property name="jobDetail" ref="sendEmailTask" />
+       <!--  每10秒去查询有没有需要发送的邮件  --> 
+        <property name="cronExpression" value="0/10 * * * * ?" />  
+    </bean>
+    
+    <!-- 消息推送触发器  -->
+    <bean id="messagePushTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="pushMessageTask" />
+        <property name="cronExpression" value="0 0/10 * * * ?" />  
+    </bean>
+    
+    <!-- 项目状态批处理触发器  -->
+    <bean id="projectStatusBatchTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="projectStatusBatchTask" />
+        <property name="cronExpression" value="0 0 0-23 * * ?" /><!-- 整点执行 -->  
+    </bean>
+    
+   <!--  调度器 -->
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <!-- 发送邮件触发器 -->
+                <!-- <ref bean="sendEmailTrigger" /> -->
+                <ref bean="messagePushTrigger" />
+                <ref bean="projectStatusBatchTrigger" />
+            </list>
+        </property>
+    </bean>
+</beans>

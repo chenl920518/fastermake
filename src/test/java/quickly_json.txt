@@ -1,0 +1,23 @@
+{
+    "fileName": "1.jpg",
+    "orderId": "",
+    "libraryFactoryId": "",
+    "quoteTitle": "dasdu",
+    "mainProcess": "",
+    "productKeywords": "产品用途",
+    "equipmentKeywords": "压铸机",
+    "confidentialityFileName": "",
+    "filePath": "",
+    "drawingName": "1.jpg",
+    "drawingPath": "D: \\tools\\apache-tomcat-7.0.70-windows-x86\\apache-tomcat-7.0.70\\wtpwebapps\\quote_product_file\\1&20171207112823.jpg",
+    "mainCategory": "0",
+    "quotePurpose": "0",
+    "confidentialityAgreement": "0",
+    "products": [
+        {
+            "productName": "jshs",
+            "quantityList": "34",
+            "quantityUnit": "件"
+        }
+    ]
+}

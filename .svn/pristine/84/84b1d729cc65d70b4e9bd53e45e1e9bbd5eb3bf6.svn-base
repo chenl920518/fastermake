@@ -1,0 +1,4 @@
+@media (max-width: 1366px) {
+	#DataTables_Table_0 thead tr .default-th{
+	width: 10%;
+}

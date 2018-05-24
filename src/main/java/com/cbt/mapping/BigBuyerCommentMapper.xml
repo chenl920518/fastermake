@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cbt.dao.BigBuyerCommentMapper">
+	<resultMap id="BaseResultMap" type="com.cbt.entity.BigBuyerComment">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="buyer_id" property="buyerId" jdbcType="VARCHAR" />
+		<result column="products" property="products" jdbcType="VARCHAR" />
+		<result column="requirement" property="requirement" jdbcType="VARCHAR" />
+		<result column="is_comment" property="isComment" jdbcType="INTEGER" />
+		<result column="release_date" property="releaseDate" jdbcType="TIMESTAMP" />
+		<result column="closing_date" property="closingDate" jdbcType="TIMESTAMP" />
+		<result column="buyer_info" property="buyerInfo" jdbcType="LONGVARCHAR" />
+		<result column="comment" property="comment" jdbcType="LONGVARCHAR" />
+		<result column="special" property="special" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	
+	<resultMap id="detailResultMap" extends="BaseResultMap"
+		type="com.cbt.entity.BigBuyerComment">
+		 <association property="factoryInfo" javaType="com.cbt.entity.FactoryInfo">   
+            <result property="factoryLogo" column="factory_logo"/>
+        </association>
+	</resultMap>
+	
+	
+	
+	
+	
+	
+	
+	
+
+	<sql id="Base_Column_List">
+		id, title, buyer_id, products, requirement, is_comment, release_date,
+		closing_date,
+		buyer_info, comment,special
+	</sql>
+
+
+
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from big_buyer_comment
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+
+
+	<select id="selectOrderByCondition" resultMap="detailResultMap">
+
+       select  aa.* ,b.* from (
+		select
+		<include refid="Base_Column_List" />
+		    from big_buyer_comment   
+		<if test="isComment==1">
+		    where is_comment=1
+		</if>
+		order by
+		<choose>
+			<when test="condition != null and condition!=''">
+				#{condition}
+			</when>
+			<otherwise>
+			     release_date
+			</otherwise>
+         </choose>
+		desc limit #{start}, #{pageSize}
+		)aa left join factory_info b on aa.buyer_id = b.factory_id
+
+   </select>
+
+  
+  <select id="totalOrder" resultType="int" >
+		select count(id)  
+		    from big_buyer_comment
+		<if test="isComment==1">
+		    where is_comment=1
+		</if>
+  </select>
+  
+
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from big_buyer_comment
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="com.cbt.entity.BigBuyerComment">
+		insert into big_buyer_comment (id, title, buyer_id,
+		products, requirement, is_comment,
+		release_date, closing_date, buyer_info,
+		comment,special)
+		values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
+		#{buyerId,jdbcType=VARCHAR},
+		#{products,jdbcType=VARCHAR}, #{requirement,jdbcType=VARCHAR}, #{isComment,jdbcType=INTEGER},
+		#{releaseDate,jdbcType=TIMESTAMP}, #{closingDate,jdbcType=TIMESTAMP},
+		#{buyerInfo,jdbcType=LONGVARCHAR},
+		#{comment,jdbcType=LONGVARCHAR},#{special,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.cbt.entity.BigBuyerComment">
+		insert into big_buyer_comment
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="buyerId != null">
+				buyer_id,
+			</if>
+			<if test="products != null">
+				products,
+			</if>
+			<if test="requirement != null">
+				requirement,
+			</if>
+			<if test="isComment != null">
+				is_comment,
+			</if>
+			<if test="releaseDate != null">
+				release_date,
+			</if>
+			<if test="closingDate != null">
+				closing_date,
+			</if>
+			<if test="buyerInfo != null">
+				buyer_info,
+			</if>
+			<if test="comment != null">
+				comment,
+			</if>
+			<if test="special != null">
+				special,
+			</if>
+			
+			
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="buyerId != null">
+				#{buyerId,jdbcType=VARCHAR},
+			</if>
+			<if test="products != null">
+				#{products,jdbcType=VARCHAR},
+			</if>
+			<if test="requirement != null">
+				#{requirement,jdbcType=VARCHAR},
+			</if>
+			<if test="isComment != null">
+				#{isComment,jdbcType=INTEGER},
+			</if>
+			<if test="releaseDate != null">
+				#{releaseDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="closingDate != null">
+				#{closingDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="buyerInfo != null">
+				#{buyerInfo,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="comment != null">
+				#{comment,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="special != null">
+				#{special,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.cbt.entity.BigBuyerComment">
+		update big_buyer_comment
+		<set>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="buyerId != null">
+				buyer_id = #{buyerId,jdbcType=VARCHAR},
+			</if>
+			<if test="products != null">
+				products = #{products,jdbcType=VARCHAR},
+			</if>
+			<if test="requirement != null">
+				requirement = #{requirement,jdbcType=VARCHAR},
+			</if>
+			<if test="isComment != null">
+				is_comment = #{isComment,jdbcType=INTEGER},
+			</if>
+			<if test="releaseDate != null">
+				release_date = #{releaseDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="closingDate != null">
+				closing_date = #{closingDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="buyerInfo != null">
+				buyer_info = #{buyerInfo,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="comment != null">
+				comment = #{comment,jdbcType=LONGVARCHAR},
+			</if>
+			
+			<if test="special != null">
+				special = #{special,jdbcType=VARCHAR},
+			</if>
+			
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.cbt.entity.BigBuyerComment">
+		update big_buyer_comment
+		set title = #{title,jdbcType=VARCHAR},
+		buyer_id = #{buyerId,jdbcType=VARCHAR},
+		products = #{products,jdbcType=VARCHAR},
+		requirement = #{requirement,jdbcType=VARCHAR},
+		is_comment = #{isComment,jdbcType=INTEGER},
+		release_date = #{releaseDate,jdbcType=TIMESTAMP},
+		closing_date = #{closingDate,jdbcType=TIMESTAMP},
+		buyer_info = #{buyerInfo,jdbcType=LONGVARCHAR},
+		comment = #{comment,jdbcType=LONGVARCHAR},
+		special = #{special,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>

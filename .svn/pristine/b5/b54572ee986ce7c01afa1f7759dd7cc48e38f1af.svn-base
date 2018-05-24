@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<meta http-equiv="pragram" content="no-cache">  
+		<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+		<meta http-equiv="expires" content="0">		
+		<title>微信快制造-询盘详情</title>
+		<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css" />
+<!-- 		<link rel="stylesheet" href="css/m-css.css/>  -->
+		<link rel="stylesheet" href="../css/easydialog.css" />
+		<link rel="stylesheet" href="../css/progressBar.css" />
+	    <link rel="stylesheet" href="../css/ui.css" />
+	    <link rel="stylesheet" href="../css/ui.progress-bar.css" />
+	</head>
+	<script>document.write('<link rel="stylesheet" href="css/m-css.css?time="'  + Date.now() + '"><\/script>');</script>  
+	<body>
+		<div class="new_list container-fluid detail">
+			<!-- <div class="row row1">
+				<div class="row_in">
+					<a href="quote_list.html" class="logo m_l10"><img src="../images/head.png" /></a>					
+				</div>
+			</div>	 -->
+			<div class="xpxx">
+				<div class="row row2">
+					<h4 class="pull-left">询盘信息#<span id="quoteId"></span></h4>
+					<!-- <button style="margin-top:7px;margin-left: 20px;" onclick="to_offer()" class="offer_ms">报价</button> -->
+					<img src="./image/flag/15cn_flag[1].gif" alt="" class="pull-left">
+					<span class="pull-right share">点击右上角分享报价<em class="glyphicon glyphicon-arrow-up"></em></span>
+				</div>
+				<div class="div_table m_l10 m_r10">
+					<table class="table1">
+						<tbody>
+							<tr>
+								<td>保密协议</td>
+								<td id="confidentiality_agreement"></td>
+								<td>创建时间</td>
+								<td id="publish_date"></td>
+							</tr>
+							<tr>
+								<td>已报价工厂数</td>
+								<td><i id="current_number"></i></td>
+								<td>采用工艺</td>
+								<td><span class="words" id="process"></span></td>
+							</tr>
+							<tr>
+								<td>报价截止日期</td>
+								<td id="end_date"></td>
+								<td>要求交货期</td>
+								<td id="delivery_date"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+			</div>
+			<div class="ljxx" id="product_list">
+				<h4>共计<span id="product_size"></span>种零件</h4>
+
+			</div>
+			<div class="history m_l10 m_r10">	
+
+			</div>
+			<div class="offer_bj">
+				<button onclick="to_offer()" class="offer">马上报价</button>
+			</div>
+			<div class="dialog" id="message">
+<!-- 				<div class="dialog_0 dialog_a clearfix"> -->
+<!-- 					<div class="pull-left wrap col-xs-10 clearfix"> -->
+<!-- 						<div class="top"><em class="pull-left">panda</em><em class="pull-right">2018-4-3 13:11:32</em></div> -->
+<!-- 						<p>这里是留言板对话框</p> -->
+<!-- 					</div> -->
+<!-- 					<div class="imgs pull-right"><img src="./image/flag/15cn_flag[1].gif" /></div> -->
+<!-- 				</div> -->
+<!-- 				<div class="dialog_0 dialog_b clearfix"> -->
+<!-- 					<div class="pull-right wrap col-xs-10 clearfix"> -->
+<!-- 						<div class="top"><em class="pull-left">panda</em><em class="pull-right">2018-4-3 13:11:32</em></div> -->
+<!-- 						<p>这里是留言板对话框</p> -->
+<!-- 					</div> -->
+<!-- 					<div class="imgs pull-left"><img src="./image/flag/15cn_flag[1].gif" /></div> -->
+<!-- 				</div> -->
+<!-- 				<div class="dialog_0 dialog_a clearfix"> -->
+<!-- 					<div class="pull-left wrap col-xs-10 clearfix"> -->
+<!-- 						<div class="top"><em class="pull-left">panda</em><em class="pull-right">2018-4-3 13:11:32</em></div> -->
+<!-- 						<p>这里是留言板对话框</p> -->
+<!-- 					</div> -->
+<!-- 					<div class="imgs pull-right"><img src="./image/flag/15cn_flag[1].gif" /></div> -->
+<!-- 				</div> -->
+<!-- 				<div class="dialog_0 dialog_b clearfix"> -->
+<!-- 					<div class="pull-right wrap col-xs-10 clearfix"> -->
+<!-- 						<div class="top"><em class="pull-left">panda</em><em class="pull-right">2018-4-3 13:11:32</em></div> -->
+<!-- 						<p>这里是留言板对话框</p> -->
+<!-- 					</div> -->
+<!-- 					<div class="imgs pull-left"><img src="./image/flag/15cn_flag[1].gif" /></div> -->
+<!-- 				</div> -->
+<!-- 				<div class="dialog_0 dialog_a clearfix"> -->
+<!-- 					<div class="pull-left wrap col-xs-10 clearfix"> -->
+<!-- 						<div class="top"><em class="pull-left">panda</em><em class="pull-right">2018-4-3 13:11:32</em></div> -->
+<!-- 						<p>这里是留言板对话框</p> -->
+<!-- 					</div> -->
+<!-- 					<div class="imgs pull-right"><img src="./image/flag/15cn_flag[1].gif" /></div> -->
+<!-- 				</div> -->
+<!-- 				<div class="dialog_0 dialog_b clearfix"> -->
+<!-- 					<div class="pull-right wrap col-xs-10 clearfix"> -->
+<!-- 						<div class="top"><em class="pull-left">panda</em><em class="pull-right">2018-4-3 13:11:32</em></div> -->
+<!-- 						<p>这里是留言板对话框</p> -->
+<!-- 					</div> -->
+<!-- 					<div class="imgs pull-left"><img src="./image/flag/15cn_flag[1].gif" /></div> -->
+<!-- 				</div>							 -->
+			</div>
+			
+			
+			
+			
+			
+			<form id="file_upload_id"  onsubmit="return false;" method="post" enctype="multipart/form-data">
+			<input type="hidden" id="filePath">                          
+            <input type="hidden" id="orderId" name="orderId">                
+			<div class="send_message panel">
+				<div class="panel-heading clearfix"><span class="iconfont">&#xe63a;</span>发送消息给采购商</div>
+				<div class="panel-body">
+					<textarea class="form-control" id="message_details"></textarea>
+					<div class="btn">	
+					<input type="text" style="width: 100px;margin-left: -130px;text-decoration: underline;" id="fileName" name="selectDrawingName"/>											
+						<button onclick="send_message(this)">发送</button>
+						<div class="s_c">
+							<input type="file" name="file_upload" onchange="show_drawingName(this)">
+							<span class="iconfont">&#xe66e;</span>
+							<a href="###">上传文件名显示</a>
+						</div>
+					</div>
+				</div>			
+			</div>		
+			</form>	
+			<div class="f_x"><img src="image/f_x.png"></div>
+			
+			
+		<div class="w-out-box" id="show_upload_dialog" style="display:none;">
+			<div class="weui_mask"></div>
+			<div class="w-weui_dialog">
+			  <div id="container">
+			
+				<div class="content">
+					<h1>上传进度</h1>
+				</div>
+				
+				<!-- Progress bar -->
+				<div id="progress_bar" class="ui-progress-bar ui-container">
+				<div class="ui-progress" style="width: 0%;" id="ui-progress-upload">
+				<span class="ui-label" style="display:none;">正在加载...<b class="value">0%</b></span>
+				</div>
+				</div>
+				<!-- /Progress bar -->
+			    <a class="close-reveal-modal" style="color: #fff; font-size: 30px;position: absolute;right: 10px;top: 10px;" href="javascript:void(0);" onclick="cancel_upload()">×</a>
+				<div class="content" id="main_content" style="display: none;">
+					<p>加载完成。</p>
+				</div>
+			   </div>
+			   </div>
+          </div>			
+			<div id="footer"><div>
+		</div>
+	</body>
+<script src="../lib/jquery/jquery.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script src="https://api.html5media.info/1.1.8/html5media.min.js"></script>
+<script type="text/javascript" src="/js/upload-base.js"></script>
+<script type="text/javascript" src="/js/cookie_util.js"></script> 
+<script src="/js/easydialog.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script src="js/getNationalFlag.js"></script>
+<!-- <script src="js/details.js"></script> -->
+	<script>document.write('<script src="js/details.js?time="'+ Date.now() + '"><\/script>');</script>  
+</html>
+
+<!-- <script src="js/share.js"></script> -->
+
+<script>
+
+$('#footer').load('/m-zh/footer.html');
+
+        window.onload = window.onresize = function(){
+
+            var clientWidth =document.documentElement.clientWidth;
+
+            document.getElementsByTagName("html")[0].style.fontSize =
+
+                    clientWidth / 768 * 40 + "px";
+        }
+        
+        
+
+
+</script>
+<script>
+
+	$('.foot div').click(function(){
+		$(this).find('ul').toggle();
+	})	
+
+</script>
+
+
+
+
+
+
+
+
+

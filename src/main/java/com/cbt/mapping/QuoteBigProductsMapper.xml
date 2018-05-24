@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.dao.QuoteBigProductsMapper">
+  <resultMap id="BaseResultMap" type="com.cbt.entity.QuoteBigProducts">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="payment_term" jdbcType="VARCHAR" property="paymentTerm" />
+    <result column="purchaser_requirement" jdbcType="VARCHAR" property="purchaserRequirement" />
+    <result column="purchaser_remark" jdbcType="VARCHAR" property="purchaserRemark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="is_supplier_accept" jdbcType="INTEGER" property="isSupplierAccept" />
+    <result column="factory_id" jdbcType="VARCHAR" property="factoryId" />
+    <result column="supplier_remark" jdbcType="VARCHAR" property="supplierRemark" />
+    <result column="supplier_reply_time" jdbcType="TIMESTAMP" property="supplierReplyTime" />
+    <result column="is_active" jdbcType="INTEGER" property="isActive" />
+    <result column="total_amount" jdbcType="DOUBLE" property="totalAmount" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="payment_not_confirm_time" jdbcType="TIMESTAMP" property="paymentNotConfirmTime" />
+    <result column="payment_confirm_time" jdbcType="TIMESTAMP" property="paymentConfirmTime" />
+    
+    
+     <result column="factory_name" jdbcType="VARCHAR" property="factoryName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, customer_id, order_id, payment_term, purchaser_requirement, purchaser_remark, 
+    create_time, is_supplier_accept, factory_id, supplier_remark, supplier_reply_time,
+    is_active,total_amount,update_time,payment_not_confirm_time ,payment_confirm_time  
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from quote_big_products   
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  
+  <!-- 根据采购商id和询盘号查询 -->
+  <select id="selectByOrderId" resultMap="BaseResultMap">
+      select  
+      q.id, q.customer_id, q.order_id, q.payment_term, q.purchaser_requirement, q.purchaser_remark, 
+      q.create_time, q.is_supplier_accept, q.factory_id, q.supplier_remark, q.supplier_reply_time,q.is_active,
+      q.total_amount,q.payment_not_confirm_time,q.payment_confirm_time,f.factory_name      
+      from quote_big_products q  
+      left join factory_info f 
+      on q.factory_id = f.factory_id   
+      where 
+      order_id = #{orderId,jdbcType=INTEGER}  
+      and customer_id = #{customerId,jdbcType=VARCHAR}  
+      and is_active = 1  
+  </select>
+  
+  
+  <!-- 供应商查询大货生产价格详情 -->
+  <select id="selectBySupplierId" resultMap="BaseResultMap">
+      select       
+      q.id, q.customer_id, q.order_id, q.payment_term, q.purchaser_requirement, q.purchaser_remark, 
+      q.create_time, q.is_supplier_accept, q.factory_id, q.supplier_remark, q.supplier_reply_time,q.is_active,
+      q.total_amount,q.payment_not_confirm_time,q.payment_confirm_time,f.factory_name        
+      from quote_big_products q   
+      left join factory_info f   
+      on q.factory_id = f.factory_id 
+      where    
+      order_id = #{orderId,jdbcType=INTEGER}   
+      and  
+      q.factory_id = #{factoryId,jdbcType=VARCHAR}   
+      and is_active = 1   
+  </select>
+  
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from quote_big_products
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cbt.entity.QuoteBigProducts">
+    insert into quote_big_products (id, customer_id, order_id, 
+      payment_term, purchaser_requirement, purchaser_remark, 
+      create_time, is_supplier_accept, factory_id, 
+      supplier_remark, supplier_reply_time, is_active,total_amount)
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=VARCHAR}, #{orderId,jdbcType=INTEGER}, 
+      #{paymentTerm,jdbcType=VARCHAR}, #{purchaserRequirement,jdbcType=VARCHAR}, #{purchaserRemark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{isSupplierAccept,jdbcType=INTEGER}, #{factoryId,jdbcType=VARCHAR}, 
+      #{supplierRemark,jdbcType=VARCHAR}, #{supplierReplyTime,jdbcType=TIMESTAMP}, #{isActive,jdbcType=INTEGER}, 
+      #{totalAmount,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cbt.entity.QuoteBigProducts" useGeneratedKeys="true"  keyProperty="id">
+    insert into quote_big_products
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="paymentTerm != null">
+        payment_term,
+      </if>
+      <if test="purchaserRequirement != null">
+        purchaser_requirement,
+      </if>
+      <if test="purchaserRemark != null">
+        purchaser_remark,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="isSupplierAccept != null">
+        is_supplier_accept,
+      </if>
+      <if test="factoryId != null">
+        factory_id,
+      </if>
+      <if test="supplierRemark != null">
+        supplier_remark,
+      </if>
+      <if test="supplierReplyTime != null">
+        supplier_reply_time,
+      </if>
+      <if test="isActive != null">
+        is_active,
+      </if>
+      <if test="totalAmount != null">
+        total_amount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="paymentTerm != null">
+        #{paymentTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaserRequirement != null">
+        #{purchaserRequirement,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaserRemark != null">
+        #{purchaserRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isSupplierAccept != null">
+        #{isSupplierAccept,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null">
+        #{factoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierRemark != null">
+        #{supplierRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierReplyTime != null">
+        #{supplierReplyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isActive != null">
+        #{isActive,jdbcType=INTEGER},
+      </if>
+      <if test="totalAmount != null">
+        #{totalAmount,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cbt.entity.QuoteBigProducts">
+    update quote_big_products
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="paymentTerm != null">
+        payment_term = #{paymentTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaserRequirement != null">
+        purchaser_requirement = #{purchaserRequirement,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaserRemark != null">
+        purchaser_remark = #{purchaserRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isSupplierAccept != null">
+        is_supplier_accept = #{isSupplierAccept,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null">
+        factory_id = #{factoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierRemark != null">
+        supplier_remark = #{supplierRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierReplyTime != null">
+        supplier_reply_time = #{supplierReplyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isActive != null">
+        is_active = #{isActive,jdbcType=INTEGER},
+      </if>
+      <if test="totalAmount != null">
+        total_amount = #{totalAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentNotConfirmTime != null">
+        payment_not_confirm_time = #{paymentNotConfirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentConfirmTime != null">
+        payment_confirm_time = #{paymentConfirmTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cbt.entity.QuoteBigProducts">
+    update quote_big_products
+    set customer_id = #{customerId,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=INTEGER},
+      payment_term = #{paymentTerm,jdbcType=VARCHAR},
+      purchaser_requirement = #{purchaserRequirement,jdbcType=VARCHAR},
+      purchaser_remark = #{purchaserRemark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      is_supplier_accept = #{isSupplierAccept,jdbcType=INTEGER},
+      factory_id = #{factoryId,jdbcType=VARCHAR},
+      supplier_remark = #{supplierRemark,jdbcType=VARCHAR},
+      supplier_reply_time = #{supplierReplyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!-- 根据询盘号将给供应商的大货is_active 字段更新为0 -->
+  <update id="updateIsActive" >
+      update quote_big_products   
+      set is_active = 0    
+      where factory_id = #{factoryId,jdbcType=VARCHAR}   
+      and order_id = #{orderId,jdbcType=INTEGER}  
+  </update>
+
+</mapper>

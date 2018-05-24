@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>微信快制造-忘记密码</title>
+		<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css" />
+		 <link rel="stylesheet" href="/css/easydialog.css" />
+		<link rel="stylesheet" href="css/m-css.css" />
+	</head>
+	<body>
+		<div class="forget container-fluid">
+			<div class="row row1">
+				<a href="###"><img src="../images/head_146-39.png"></a>
+			</div>
+			<h3>找回密码</h3>
+			<!-- <form class="form-horizontal">
+               <div class="form-group">
+                   <label class="col-xs-3 control-label">电子邮箱 <span>*</span></label>
+                   <div class="col-xs-9">
+                       <input type="text" class="form-control" placeholder="请输入邮箱">
+                   </div>
+               </div>
+               <div class="form-group">
+                   <label class="col-xs-3 control-label"></label>
+                   <div class="col-xs-9">                      
+                       <button class="btn btn-default">发送验证邮件</button>
+                   </div>
+               </div>
+           </form> -->
+           <form class="form-horizontal" onclick="return false;">
+               <div class="form-group">
+                  
+                       <input type="text" class="form-control" id="email" placeholder="电子邮箱">
+                                       
+                       <button class="btn btn-default" onclick="findPwd()">发送验证邮件</button>
+                  
+               </div>
+           </form>
+           <p class="sm">若通过上述方式仍无法找回账号密码，<br/>请您直接联系客服人员：021-63757325-816。</p>
+			
+           <div id="footer"></div>                        
+		</div>
+	</body>
+</html>
+<script src="../lib/jquery/jquery.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script src="/js/easydialog.min.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="js/quote_list.js"></script>
+<script>
+
+$('#footer').load('/m-zh/footer.html');
+
+        window.onload = window.onresize = function(){
+
+            var clientWidth =document.documentElement.clientWidth;
+
+            document.getElementsByTagName("html")[0].style.fontSize =
+
+                    clientWidth / 1200 * 40 + "px";
+        }
+
+        
+        
+        //忘记密码
+        function findPwd(){
+     	   
+     	   var email =  $('#email').val();
+     	     /**
+            *验证邮箱是否合法
+            */
+            $('#email').blur();
+            if(!(flag)){
+            	$('#email').next().css({'background-color':'#006dcc'});
+           		return false; 
+           	 }
+       
+     	   $.post("/account/recoverPwd.do",
+              	  { 
+     	         "email" : email 
+              	  },
+          	   function(result){
+              	$('#email').next().css({'background-color':'#006dcc'});
+          	     if(result.state == 0){    
+          	    	 easyDialog.open({
+    		    		  container : {
+    		    		    content : "发送成功，请查收邮件"
+    		    		  },
+    		    		  overlay : false,
+    		    		  autoClose : 2000   			    		  
+    		    		});
+          	    	setTimeout(show,2000); 
+          	     }else{
+          	        easyDialog.open({
+     		    		  container : {
+     		    		    content : result.message 
+     		    		  },
+     		    		  overlay : false,
+     		    		  autoClose : 1000   			    		  
+     		    		});
+          	     }
+           }); 
+     	   
+        }
+        
+        function show(){
+     	   window.location = "/m-zh/login.html";
+        }
+        
+        
+        $(function(){
+     	   $('#email').blur(function(){
+     	    	 var email = $('#email').val(); 
+     	    	 if(email == null || email == ''){
+     	    		 flag = false;
+     	    		 easyDialog.open({
+     		    		  container : {
+     		    		    content : '邮箱不能为空'
+     		    		  },
+     		    		  overlay : false,
+     		    		  autoClose : 1000   			    		  
+     		    		});
+     	    		 return false;
+     	    	 }
+     		       	   //验证邮箱是否合法
+     		    	   var szReg=/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+/;     	    	   
+     		    	   if(!(email == null || email.length==0)){
+     		    		   var bChk = szReg.test(email);
+     		   			
+     		   			if(!bChk){
+     		   				flag = false;
+     		   			    easyDialog.open({
+     			    		  container : {
+     			    		    content : '邮箱格式不正确'
+     			    		  },
+     			    		  overlay : false,
+     			    		  autoClose : 1000   			    		  
+     			    		});
+     		   				return false;
+     		   			}
+     		   		 }   
+     		    	   flag = true;
+     	      })     
+
+        })
+</script>
+<script>
+
+$('.foot div').click(function(){
+	$(this).find('ul').toggle();
+})
+
+</script>
+
+
+
+

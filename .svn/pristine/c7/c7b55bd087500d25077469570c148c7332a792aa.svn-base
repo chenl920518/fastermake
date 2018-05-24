@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cbt.dao.NoteMessageMapper">
+	<resultMap id="BaseResultMap" type="com.cbt.entity.NoteMessage">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="receiver_id" property="receiverId" jdbcType="VARCHAR" />
+		<result column="message_type" property="messageType" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="is_read" property="isRead" jdbcType="INTEGER" />
+		<result column="send_id" property="sendId" jdbcType="VARCHAR" />
+		<result column="message_title" property="messageTitle"
+			jdbcType="VARCHAR" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
+		<result column="send_name" property="sendName" jdbcType="VARCHAR" />
+		<result column="receiver_name" property="receiverName"
+			jdbcType="VARCHAR" />
+		<result column="dialogue_id" property="dialogueId" jdbcType="INTEGER" />
+		<result column="message_details" property="messageDetails"
+			jdbcType="LONGVARCHAR" />
+		<result column="file_name" property="fileName" jdbcType="VARCHAR" />
+		<result column="file_path" property="filePath" jdbcType="VARCHAR" />
+		
+		<result column="order_id" property="orderId" jdbcType="INTEGER" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, receiver_id, message_type, create_time, is_read,
+		send_id,
+		message_title,url,send_name,receiver_name,file_name,file_path,order_id  
+	</sql>
+	<sql id="Blob_Column_List">
+		message_details
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from note_message
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		note_message
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.cbt.entity.NoteMessage">
+		insert into note_message (id,
+		receiver_id, message_type,
+		create_time, is_read, send_id,
+		message_title, message_details,url)
+		values (#{id,jdbcType=INTEGER},
+		#{receiverId,jdbcType=VARCHAR},
+		#{messageType,jdbcType=INTEGER},
+		#{createTime,jdbcType=TIMESTAMP}, #{isRead,jdbcType=INTEGER},
+		#{sendId,jdbcType=VARCHAR},
+		#{messageTitle,jdbcType=VARCHAR},
+		#{messageDetails,jdbcType=LONGVARCHAR},#{url,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.cbt.entity.NoteMessage">
+		insert into note_message
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="receiverId != null">
+				receiver_id,
+			</if>
+			<if test="messageType != null">
+				message_type,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="isRead != null">
+				is_read,
+			</if>
+			<if test="sendId != null">
+				send_id,
+			</if>
+			<if test="messageTitle != null">
+				message_title,
+			</if>
+			<if test="messageDetails != null">
+				message_details,
+			</if>
+			<if test="url != null">
+				url,
+			</if>
+			<if test="sendName != null">
+				send_name,
+			</if>
+			<if test="receiverName != null">
+				receiver_name,
+			</if>
+			<if test="dialogueId != null">
+				dialogue_id,
+			</if>
+			<if test="fileName != null">
+				file_name,
+			</if>
+			<if test="filePath != null">
+				file_path,
+			</if>
+			<if test="orderId != null">
+				order_id,
+			</if>
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="receiverId != null">
+				#{receiverId,jdbcType=VARCHAR},
+			</if>
+			<if test="messageType != null">
+				#{messageType,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isRead != null">
+				#{isRead,jdbcType=INTEGER},
+			</if>
+			<if test="sendId != null">
+				#{sendId,jdbcType=VARCHAR},
+			</if>
+			<if test="messageTitle != null">
+				#{messageTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="messageDetails != null">
+				#{messageDetails,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="url != null">
+				#{url,jdbcType=VARCHAR},
+			</if>
+			<if test="sendName != null">
+				#{sendName,jdbcType=VARCHAR},
+			</if>
+			<if test="receiverName != null">
+				#{receiverName,jdbcType=VARCHAR},
+			</if>
+			<if test="dialogueId != null">
+				#{dialogueId,jdbcType=INTEGER},
+			</if>
+			<if test="fileName != null">
+				#{fileName,jdbcType=VARCHAR},
+			</if>
+			<if test="filePath != null">
+				#{filePath,jdbcType=VARCHAR},
+			</if>
+			<if test="orderId != null">
+				#{orderId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.cbt.entity.NoteMessage">
+		update note_message
+		<set>
+			<if test="receiverId != null">
+				receiver_id = #{receiverId,jdbcType=VARCHAR},
+			</if>
+			<if test="messageType != null">
+				message_type = #{messageType,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isRead != null">
+				is_read = #{isRead,jdbcType=INTEGER},
+			</if>
+			<if test="sendId != null">
+				send_id = #{sendId,jdbcType=VARCHAR},
+			</if>
+			<if test="messageTitle != null">
+				message_title = #{messageTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="messageDetails != null">
+				message_details = #{messageDetails,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where dialogue_id =#{dialogueId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cbt.entity.NoteMessage">
+		update
+		note_message
+		set receiver_id = #{receiverId,jdbcType=VARCHAR},
+		message_type = #{messageType,jdbcType=INTEGER},
+		create_time =
+		#{createTime,jdbcType=TIMESTAMP},
+		is_read = #{isRead,jdbcType=INTEGER},
+		send_id = #{sendId,jdbcType=VARCHAR},
+		message_title =
+		#{messageTitle,jdbcType=VARCHAR},
+		message_details =
+		#{messageDetails,jdbcType=LONGVARCHAR}
+		where dialogue_id =
+		#{dialogueId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.cbt.entity.NoteMessage">
+		update
+		note_message
+		set receiver_id = #{receiverId,jdbcType=VARCHAR},
+		message_type = #{messageType,jdbcType=INTEGER},
+		create_time =
+		#{createTime,jdbcType=TIMESTAMP},
+		is_read = #{isRead,jdbcType=INTEGER},
+		send_id = #{sendId,jdbcType=VARCHAR},
+		message_title =
+		#{messageTitle,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+	
+	<!-- 批量更新消息状态 -->
+	<update id="updateBatch" parameterType="list">      
+     	    update note_message  
+     	    <set>     
+			is_read = #{isRead,jdbcType=INTEGER}  
+			</set> 
+            where id in 
+            <foreach collection="list" index="index" item="list" separator="," open="(" close=")">
+	        #{list,jdbcType=INTEGER}
+           </foreach>                 
+    </update> 
+
+    <!-- 查询ids -->
+    <select id="queryIdsByFactoryId" resultType="int">
+		select n.id from
+			(
+				 select id,order_id from note_message  
+				 where receiver_id= #{factoryId,jdbcType=VARCHAR}	
+			)n inner join user_order u on n.order_id = u.order_id where u.factory_user_id = #{factoryUserId,jdbcType=INTEGER}    
+    </select>
+    <select id="queryIdsByFactoryIdAdmin" resultType="int">	
+				 select id from note_message  
+				 where receiver_id= #{factoryId,jdbcType=VARCHAR}  				
+    </select>
+   
+
+	<insert id="returnDialogueId" parameterType="com.cbt.entity.DialogueIds"
+		useGeneratedKeys="true" keyProperty="Id">
+		insert into dialogue_ids VALUES();
+	</insert>
+
+
+	<resultMap id="detailResultMap" extends="BaseResultMap"
+		type="com.cbt.entity.NoteMessage">
+		<association property="receiverInfo" javaType="com.cbt.entity.FactoryInfo">
+		   
+			<result property="factoryName" column="receiver_f_name" />
+			<result property="username" column="receiver_u_name" />
+		</association>
+		<association property="sendInfo" javaType="com.cbt.entity.FactoryInfo">
+
+			<result property="factoryName" column="send_f_name" />
+			<result property="username" column="send_u_name" />
+		</association>
+
+
+	</resultMap>
+
+
+	<select id="queryListAdmin" resultMap="detailResultMap">
+
+		select c.*,cc.factory_name as receiver_f_name,cc.username
+		receiver_u_name,ccc.factory_name send_f_name ,ccc.username send_u_name
+		from 
+		(
+		 select * from note_message a, (select MAX(g.id) as maxid from   
+		 note_message g 		
+		 LEFT JOIN factory_info bb on   
+		 bb.factory_id= receiver_id
+		 LEFT JOIN factory_info bbb on
+		 bbb.factory_id=send_id 
+		
+		where 1=1
+		
+		<if test="selectKey!=null and selectKey!=''">
+			and (  bbb.factory_name like '%${selectKey}%' or bb.factory_name like
+			'%${selectKey}%' or message_details like '%${selectKey}%')
+		</if>
+
+		GROUP BY dialogue_id) b where a.id = b.maxid and
+		 (
+		<if test="checkRead==false">
+			(send_id= #{factoryId}  and  (message_type != 3 and message_type != 4 and message_type != 5 and message_type != 6 or message_type is null)) or
+		</if>
+		1=2
+		<if test="checkSend==false">
+			or receiver_id= #{factoryId}
+		</if>
+		)
+
+		<if test="checkRead==true">
+			and is_read =0
+		</if>
+		
+		<if test="messageType!=null">
+			and message_type = #{messageType,jdbcType=INTEGER}
+			and send_id!=#{factoryId,jdbcType=VARCHAR}
+		</if>
+		
+		
+		
+		order by create_time desc
+		limit #{start}, #{pageSize} )c
+		LEFT JOIN factory_info cc on
+		cc.factory_id=c.receiver_id
+		LEFT JOIN factory_info ccc on  
+		ccc.factory_id=c.send_id order by c.create_time desc 
+
+	</select>
+	
+	
+	
+	
+		<select id="queryList" resultMap="detailResultMap">
+
+		select c.*,cc.factory_name as receiver_f_name,cc.username
+		receiver_u_name,ccc.factory_name send_f_name ,ccc.username send_u_name
+		from 
+		(
+		
+		select n.* from
+			(
+				 select * from note_message a, (select MAX(g.id) as maxid from   
+				 note_message g 		
+				 LEFT JOIN factory_info bb on   
+				 bb.factory_id= receiver_id
+				 LEFT JOIN factory_info bbb on
+				 bbb.factory_id=send_id 
+				
+				where 1=1
+				
+				<if test="selectKey!=null and selectKey!=''">
+					and (  bbb.factory_name like '%${selectKey}%' or bb.factory_name like
+					'%${selectKey}%' or message_details like '%${selectKey}%')
+				</if>
+		
+				GROUP BY dialogue_id) b where a.id = b.maxid and
+				 (
+				<if test="checkRead==false">
+					(send_id= #{factoryId}  and  (message_type != 3 and message_type != 4 and message_type != 5 and message_type != 6 or message_type is null)) or
+				</if>
+				1=2
+				<if test="checkSend==false">
+					or receiver_id= #{factoryId}
+				</if>
+				)
+		
+				<if test="checkRead==true">
+					and is_read =0
+				</if>
+				
+				<if test="messageType!=null">
+					and message_type = #{messageType,jdbcType=INTEGER}
+					and send_id!=#{factoryId,jdbcType=VARCHAR}
+				</if>		
+			)n inner join user_order u on n.order_id = u.order_id where u.factory_user_id = #{factoryUserId,jdbcType=INTEGER}    
+		order by create_time desc
+		limit #{start}, #{pageSize} 
+		)c
+		LEFT JOIN factory_info cc on
+		cc.factory_id=c.receiver_id
+		LEFT JOIN factory_info ccc on  
+		ccc.factory_id=c.send_id order by c.create_time desc 
+
+	</select>
+	
+	
+	
+	
+	
+	
+	<select id="selectByDialogueId" resultMap="detailResultMap"
+		parameterType="java.lang.Integer">
+		select c.*,cc.username receiver_u_name,ccc.username send_u_name
+		from note_message c
+		LEFT JOIN factory_info cc on
+		cc.factory_id=c.receiver_id
+		LEFT JOIN factory_info ccc on
+		ccc.factory_id=c.send_id
+		where c.dialogue_id = #{dialogueId,jdbcType=INTEGER} order by c.create_time desc
+	</select>
+	
+	
+	
+
+
+	<select id="totalOrderAdmin" resultType="int">
+		select count(a.id) from note_message a, (select MAX(g.id) as maxid from
+		note_message g
+		LEFT JOIN factory_info bb on
+		bb.factory_id= receiver_id
+		LEFT JOIN factory_info bbb on
+		bbb.factory_id=send_id
+		where 1=1
+		
+		<if test="selectKey!=null and selectKey!=''">
+			and ( bbb.factory_name like '%${selectKey}%' or bb.factory_name like
+			'%${selectKey}%' or message_details like '%${selectKey}%')
+		</if>
+
+		
+
+		GROUP BY dialogue_id) b where a.id = b.maxid and
+		
+		(
+		<if test="checkRead==false">
+			(send_id= #{factoryId} and (message_type != 3 and message_type != 4 and message_type != 5 and message_type != 6 or message_type is null)) or  
+		</if>
+		1=2
+		<if test="checkSend==false">
+			or receiver_id= #{factoryId}
+		</if>
+		)
+		<if test="checkRead==true">
+			and is_read =0
+		</if>
+		
+		<if test="messageType!=null">
+			and message_type = #{messageType,jdbcType=INTEGER}
+			and send_id!=#{factoryId,jdbcType=VARCHAR}
+		</if>
+		
+	</select>
+
+
+   <!-- 普通查询 -->
+	<select id="totalOrder" resultType="int">
+	        
+	        select count(1) from 
+	        (
+			select a.* from note_message a, (select MAX(g.id) as maxid from
+			note_message g
+			LEFT JOIN factory_info bb on
+			bb.factory_id= receiver_id
+			LEFT JOIN factory_info bbb on
+			bbb.factory_id=send_id
+			where 1=1
+			
+			<if test="selectKey!=null and selectKey!=''">
+				and ( bbb.factory_name like '%${selectKey}%' or bb.factory_name like
+				'%${selectKey}%' or message_details like '%${selectKey}%')
+			</if>
+	
+			
+	
+			GROUP BY dialogue_id) b where a.id = b.maxid and
+			
+			(
+			<if test="checkRead==false">
+				(send_id= #{factoryId} and (message_type != 3 and message_type != 4 and message_type != 5 and message_type != 6 or message_type is null)) or  
+			</if>
+			1=2
+			<if test="checkSend==false">
+				or receiver_id= #{factoryId}
+			</if>
+			)
+			<if test="checkRead==true">
+				and is_read =0
+			</if>
+			
+			<if test="messageType!=null">
+				and message_type = #{messageType,jdbcType=INTEGER}
+				and send_id!=#{factoryId,jdbcType=VARCHAR}
+			</if>
+			)n inner join user_order u on n.order_id = u.order_id where u.factory_user_id = #{factoryUserId,jdbcType=INTEGER}
+		</select>
+
+
+</mapper>

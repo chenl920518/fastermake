@@ -1,0 +1,229 @@
+.home {
+  background-color: #f2f2f2;
+}
+.home-in {
+  background-color: #f2f2f2;
+  padding: 20px 0 40px 0;
+}
+.home-in .home-top .banner {
+  width: 905px;
+  height: 250px;
+}
+.home-in .home-top .banner img {
+  width: 905px;
+  height: 250px;
+}
+.home-in .home-top .banner .active {
+  background-color: #006dcc;
+}
+.home-in .home-top .banner .carousel-indicators {
+  bottom: -5px;
+}
+.home-in .home-top .info {
+  width: 280px;
+  height: 250px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.home-in .home-top .info .info-top {
+  border-bottom: 1px solid #ddd;
+}
+.home-in .home-top .info .info-top span {
+  display: inline-block;
+  height: 60px;
+  line-height: 60px;
+  width: 136px;
+  text-align: center;
+  color: #666;
+  font-weight: 700;
+}
+.home-in .home-top .info img {
+  width: 96px;
+  height: 96px;
+  margin: 20px;
+}
+.home-in .home-top .info .info-bottom a {
+  display: inline-block;
+  width: 109px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  border: 1px solid #006dcc;
+  color: #006dcc;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 0 14px;
+}
+.home-in .home-top .info .info-bottom a:hover {
+  background-color: #006dcc;
+  color: #fff;
+}
+.home-in .home-top .info .info-bottom .active {
+  background-color: #006dcc;
+  color: #fff;
+}
+.home-in .l-title {
+  padding: 25px 0 25px 8px;
+}
+.home-in .l-title em {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: red;
+}
+.home-in .l-title span {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 35px;
+  height: 40px;
+  line-height: 40px;
+}
+.home-in .l-title a {
+  font-size: 14px;
+  color: #333;
+  display: inline-block;
+  border-left: 1px solid #808080;
+  padding-left: 15px;
+  margin-top: 12px;
+}
+.home-in .l-title a:hover {
+  color: #006dcc;
+}
+.home-in .products ul {
+  width: 1220px;
+}
+.home-in .products ul li {
+  width: 285px;
+  height: 324px;
+  background-color: #fff;
+  margin: 0 20px 20px 0;
+  padding: 15px 20px 20px 15px;
+  float: left;
+}
+.home-in .products ul li .top img {
+  width: 24px;
+  height: 20px;
+  margin-top: -5px;
+  display: inline-block;
+  float: left;
+}
+.home-in .products ul li .top a {
+  font-size: 16px;
+  font-weight: 700;
+  color: #006dcc;
+  margin: -6px 10px 0 10px;
+  display: inline-block;
+  float: left;
+}
+.home-in .products ul li .top span {
+  color: #666;
+  display: inline-block;
+  width: 100px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  float: left;
+  margin-top: -3px;
+}
+.home-in .products ul li .center {
+  text-align: center;
+  margin: 40px auto 20px;
+}
+.home-in .products ul li .center img {
+  width: auto;
+  max-width: 245px;
+  height: auto;
+  max-height: 166px;
+}
+.home-in .products ul li .bottom span {
+  display: block;
+  font-size: 16px;
+  color: #333;
+}
+.home-in .products ul li .bottom em {
+  font-size: 13px;
+  color: #666;
+  font-family: "Arial";
+}
+.home-in .products ul li .bottom a {
+  display: block;
+  width: 60px;
+  height: 30px;
+  border: 1px solid #006dcc;
+  color: #006dcc;
+  text-align: center;
+  line-height: 30px;
+  font-size: 14px;
+}
+.home-in .products ul li .bottom a:hover {
+  color: #fff;
+  background-color: #006dcc;
+}
+.home-in .buyer-purchase .products ul li {
+  position: relative;
+}
+.home-in .buyer-purchase .products ul li .top img {
+  width: 21px;
+  height: 22px;
+  margin-right: 10px;
+}
+.home-in .buyer-purchase .products ul li .center {
+  height: 170px;
+  line-height: 170px;
+  vertical-align: middle;
+  margin: 20px 0 0 0;
+}
+.home-in .buyer-purchase .products ul li .center img {
+  width: auto;
+  max-width: 234px;
+  height: auto;
+  max-height: 170px;
+}
+.home-in .buyer-purchase .products ul li .bottom h4 {
+  font-size: 16px;
+  color: #333;
+}
+.home-in .buyer-purchase .products ul li .bottom p {
+  font-size: 12px;
+  color: #666;
+}
+.home-in .buyer-purchase .products ul li .li-hover {
+  position: absolute;
+  width: 285px;
+  height: 324px;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  padding: 10px 30px 30px 10px;
+  display: none;
+}
+.home-in .buyer-purchase .products ul li .li-hover p,
+.home-in .buyer-purchase .products ul li .li-hover span {
+  color: #fff;
+}
+.home-in .buyer-purchase .products ul li .li-hover p {
+  font-size: 14px;
+}
+.home-in .buyer-purchase .products ul li .li-hover span {
+  line-height: 25px;
+}
+.home-in .buyer-purchase .products ul li .li-hover .words {
+  height: 260px;
+}
+.home-in .buyer-purchase .products ul li .li-hover a {
+  display: block;
+  width: 90px;
+  height: 30px;
+  border: 1px solid #fff;
+  text-align: center;
+  line-height: 30px;
+  margin: 0 auto;
+  font-size: 14px;
+  color: #fff;
+  font-family: "SimSun";
+}
+.home-in .buyer-purchase .products ul li .active {
+  display: block;
+}

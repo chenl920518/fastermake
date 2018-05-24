@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>Forget Password</title>
+     <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/easydialog.css" />
+    <link rel="stylesheet" href="/css/css.css"/>
+    <script src="/lib/html5sshiv/html5shiv.min.js"></script>
+    <script src="/lib/respond/respond.js"></script>
+    <script src="/js/easydialog.min.js"></script>
+    <style>
+        @media (min-width: 1200px) {
+            .container {
+                width: 1200px;
+                padding:0;
+            }
+        }
+        #easyDialogBox{
+        margin-top: -180px !important;
+        }
+    </style>
+</head>
+<body class="forget_password">
+<div class="sign forget_password">
+    <div class="head ">
+        <div class="head_in container w12">
+            <a href="/zh/index.html" class="logo"><img src="/images/head_146-39.png" alt=""/></a>
+            <span></span>
+        </div>
+    </div>
+    
+    
+    <div class="section">
+    
+       <div class="section_in">
+            <h3>Password Assistance</h3>
+           <form class="form-horizontal" onclick="return false;">
+               <div class="form-group">
+                   <label  class="col-sm-3 control-label">E-mail  Address <span class="da4">*</span></label>
+                   <div class="col-sm-4">
+                       <input type="text" class="form-control w336" id="email" placeholder="please enter the mailbox">
+                   </div>
+               </div>
+               <div class="form-group">
+                   <label  class="col-sm-3 control-label"></label>
+                   <div class="col-sm-4">
+                       <!--<input type="text" class="form-control w336 bgcc0" placeholder="">-->
+                       <button class="btn btn-default w336 bgcc0" id="login" onclick="findPwd()">Sent a E-mail Verification</button>
+                   </div>
+               </div>
+           </form>
+           <p>If you still can not find your password,please call +86-21-63757325-816</p>
+       </div>
+       
+       
+       <div class="section-in2 clearfix">
+	            <div class="imgs pull-left">
+	                <img src="/images/passowrd.png" alt=""/>
+	            </div>
+	           <div class="words pull-left">
+	                <p>If the e-mail address is the one you used to register,we will send you a message to reset your password.<br /></p>
+	               <p class="ptwo">An email has been sent <b id="your_email"></b>,Please follow the instructions in the email to reset the password within 24 hours. <br/>Will be effective in 48 hours<br /> <span class="da4">If you do not see the mail, check your junk mail box.</span></p>
+	               <p>This page will be redirected after <span class="cc0">5</span> seconds</p>
+	           </div>
+       </div>
+       
+       
+    </div>
+     
+     
+     
+	<!-- <div class="retrieve_password_in  retrieve_password"> 
+	    <div class="section retrieve_password_in" id="message_div" >
+	       <div class="section-in2 clearfix">
+	            <div class="imgs pull-left">
+	                <img src="/images/passowrd.png" alt=""/>
+	            </div>
+	           <div class="words pull-left">
+	                <p>如果电子邮件地址是你用来注册的那个，我们将发送给您一封邮件用来重置您的密码。<br />如果您不能在收件箱中找到这封邮件，请查看您的垃圾箱。</p>
+	               <p class="ptwo">一份邮件已经被送到 <b id="your_email"></b>，请根据邮件中的指示在24小<br/>时内重新设置密码。将会在48小时候生效。<br /> <span class="da4">如果你看不到邮件，请查看您的垃圾邮件箱</span></p>
+	               <p>本页面将会在 <span class="cc0">5</span>  秒钟后重新定向。</p>
+	           </div>
+	       </div>
+	    </div>
+	</div>  -->
+	
+</div>
+</body>
+
+<!-- <body class="retrieve_password" style="display:none;"> -->
+
+<!-- </body> -->
+
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/cookie_util.js"></script> 
+<script type="text/javascript">
+   //获取语言
+   var language = getCookie("language");
+   var flag = false;
+   var count = 5;
+   var countdown = null;
+   //忘记密码
+   function findPwd(){
+	   
+	   var email =  $('#email').val();
+	     /**
+       *验证邮箱是否合法
+       */
+       $('#email').blur();
+       if(!(flag)){
+      		return false; 
+      	 }
+  
+       
+	   $.post("/account/recoverPwd.do",
+         	  { 
+	         "email" : email
+         	  },
+     	   function(result){
+     	     if(result.state == 0){
+     	      $('#your_email').text(email); 	 
+     	      $('.section_in').hide();
+     	      $('.section-in2').show();
+     	      countdown = setInterval(timeOut,1000); 	     
+     	    	 
+     	     }else{
+     	        easyDialog.open({
+		    		  container : {
+		    		    content : 'Send failed' 
+		    		  },
+		    		  overlay : false,
+		    		  autoClose : 1000   			    		  
+		    		});
+     	     }
+      }); 
+	   
+   }
+   
+   function show(){
+	   if(language == 'en'){
+		   window.location = "/en/login.html"; 
+	   }else{
+		   window.location = "/zh/login.html"; 
+	   }
+   }
+   
+   
+   
+   
+   
+   
+   /**
+    * 弹框倒计时变化
+    */ 
+    function timeOut(){
+   	 count--;
+   	 $(".cc0").html(count + "s");
+        if(count<1){
+            clearInterval(countdown);
+            count = 5;
+            if(language == 'en'){
+     		   window.location = "/en/login.html"; 
+     	   }else{
+     		   window.location = "/zh/login.html"; 
+     	   }
+        }
+    };
+   
+   
+   
+   
+   
+   
+   
+   
+   $(function(){
+	   $('#email').blur(function(){
+	    	 var email = $('#email').val(); 
+	    	 if(email == null || email == ''){
+	    		 flag = false;
+	    		 easyDialog.open({
+		    		  container : {
+		    		    content : 'E-mail can not empty'
+		    		  },
+		    		  overlay : false,
+		    		  autoClose : 1000   			    		  
+		    		});
+	    		 return false;
+	    	 }
+		       	   //验证邮箱是否合法
+		    	   var szReg=/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+/;     	    	   
+		    	   if(!(email == null || email.length==0)){
+		    		   var bChk = szReg.test(email);
+		   			
+		   			if(!bChk){
+		   				flag = false;
+		   			    easyDialog.open({
+			    		  container : {
+			    		    content : 'E-mail format is incorrect'
+			    		  },
+			    		  overlay : false,
+			    		  autoClose : 1000   			    		  
+			    		});
+		   				return false;
+		   			}
+		   		 }   
+		    	   flag = true;
+	      })     
+
+   })
+  
+</script>
+

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.dao.FactoryEvaluateMapper">
+  <resultMap id="BaseResultMap" type="com.cbt.entity.FactoryEvaluate">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="factory_id" jdbcType="VARCHAR" property="factoryId" />
+    <result column="publish_id" jdbcType="VARCHAR" property="publishId" />
+  
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.cbt.entity.FactoryEvaluateWithBLOBs">
+    <result column="evaluate_info" jdbcType="LONGVARCHAR" property="evaluateInfo" />
+    <result column="pic_group" jdbcType="LONGVARCHAR" property="picGroup" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, factory_id, publish_id, fabulous_num, create_time
+  </sql>
+  <sql id="Blob_Column_List">
+    evaluate_info, pic_group
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from factory_evaluate
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from factory_evaluate
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.cbt.entity.FactoryEvaluateWithBLOBs"  >
+    insert into factory_evaluate (id, factory_id, publish_id, 
+      create_time, evaluate_info, 
+      pic_group)
+    values (#{id,jdbcType=INTEGER}, #{factoryId,jdbcType=VARCHAR}, #{publishId,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{evaluateInfo,jdbcType=LONGVARCHAR}, 
+      #{picGroup,jdbcType=LONGVARCHAR})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.cbt.entity.FactoryEvaluateWithBLOBs"  useGeneratedKeys="true"  keyProperty="id">
+    insert into factory_evaluate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="factoryId != null">
+        factory_id,
+      </if>
+      <if test="publishId != null">
+        publish_id,
+      </if>
+     
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="evaluateInfo != null">
+        evaluate_info,
+      </if>
+      <if test="picGroup != null">
+        pic_group,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null">
+        #{factoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="publishId != null">
+        #{publishId,jdbcType=VARCHAR},
+      </if>
+     
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateInfo != null">
+        #{evaluateInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="picGroup != null">
+        #{picGroup,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cbt.entity.FactoryEvaluateWithBLOBs">
+    update factory_evaluate
+    <set>
+      <if test="factoryId != null">
+        factory_id = #{factoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="publishId != null">
+        publish_id = #{publishId,jdbcType=VARCHAR},
+      </if>
+     
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateInfo != null">
+        evaluate_info = #{evaluateInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="picGroup != null">
+        pic_group = #{picGroup,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cbt.entity.FactoryEvaluateWithBLOBs">
+    update factory_evaluate
+    set factory_id = #{factoryId,jdbcType=VARCHAR},
+      publish_id = #{publishId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      evaluate_info = #{evaluateInfo,jdbcType=LONGVARCHAR},
+      pic_group = #{picGroup,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cbt.entity.FactoryEvaluate">
+    update factory_evaluate
+    set factory_id = #{factoryId,jdbcType=VARCHAR},
+      publish_id = #{publishId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+ 
+  
+  <select id="selectByFactoryId" resultMap="ResultMapWithBLOBs">
+		select  a.*,aa.*
+		<if test="viewId!=null and  viewId!=''" >
+		,c.id  as isPrefer
+		</if>
+		 from factory_evaluate a LEFT JOIN (select b.factory_evaluate_id,count(1) as count from factory_evaluate_prefer b group by b.factory_evaluate_id)aa  
+       on aa.factory_evaluate_id=a.id 
+       
+       <if test="viewId!=null and  viewId!=''" >
+       LEFT JOIN  factory_evaluate_prefer c on  c.view_id = #{viewId,jdbcType=VARCHAR} and c.factory_evaluate_id =  a.id
+       </if>
+       where a.factory_id = #{factoryId,jdbcType=VARCHAR}
+
+  </select>
+  
+  
+  
+  
+  
+  
+  
+  <select id="selectCountByFactoryId" resultType="int">
+		select
+		count(1)
+		from factory_evaluate
+		where 1=1
+
+		<!--<if test="#{process} != null">
+			and process like '${process}%'
+		</if>-->
+		and factory_id = #{factoryId,jdbcType=VARCHAR}
+
+	</select>
+	
+	
+	 <select id="selectEvaluatePreference" resultType="int">
+        select count(1) from factory_evaluate_prefer where factory_evaluate_id =  #{factoryEvaluateId,jdbcType=INTEGER} 
+        and view_id=#{viewId,jdbcType=VARCHAR}
+
+    </select>
+    
+
+    <insert id="insertEvaluatePreference">
+		insert into
+		factory_evaluate_prefer
+		(factory_evaluate_id,view_id)
+		values ( #{factoryEvaluateId,jdbcType=INTEGER},#{viewId,jdbcType=VARCHAR})
+	</insert>
+
+
+   <delete id="deleteEvaluatePreference">
+       delete from factory_evaluate_prefer where factory_evaluate_id =  #{factoryEvaluateId,jdbcType=INTEGER} and view_id = #{viewId,jdbcType=VARCHAR} 
+   </delete>
+  
+   <select id="selectCountEvaluateById" resultType="int">
+		select
+		count(1)
+		from factory_evaluate_prefer
+		where 1=1
+		and factory_evaluate_id = #{factoryEvaluateId,jdbcType=INTEGER}
+
+	</select>
+   
+  
+</mapper>

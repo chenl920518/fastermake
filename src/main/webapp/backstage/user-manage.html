@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<title>用户管理功能</title>
+		<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css">
+		<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css">
+		<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.7/iconfont.css" />
+
+		 <link rel="stylesheet" href="/css/progressBar.css" />
+		 <link rel="stylesheet" href="/css/ui.css" />
+		 <link rel="stylesheet" href="/css/ui.progress-bar.css" />
+		 <style>			
+			.page-container{
+				width:1122px;
+			}
+			.w140{
+				width:140px;
+			}
+			.col-xs-2{
+				width:150px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="page-container">
+			<div class="panel panel-default">
+			<div class="panel-header">用户状态</div>
+			<div class="panel-body">
+				<div class="responsive">
+					<div class="row cl">
+					  	<div class="col-xs-2 w140">厂商名：</div>
+					  	<div class="col-xs-3" id="factory_name"></div>
+					  	<div class="col-xs-2">注册日期：</div>
+					  	<div class="col-xs-2" id="create_time"></div>
+					</div>
+					<div class="row cl mt-20">
+					  	<div class="col-xs-2 w140">当前账号状态：</div>
+					  	<div class="col-xs-3" id="factory_type"></div>
+					  	<div class="col-xs-4">
+					  		<a href="javascript:void(0);"  onclick= "setType('105')" class="btn btn-danger radius">封号</a>
+							<a href="javascript:void(0);"   onclick= "setType('100')" class="btn btn-success radius">解封</a>
+					  	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default mt-20">
+			<div class="panel-header" id="supplier">供应商角色</div>
+			<div class="panel-body">
+				<div class="responsive">
+					<div class="row cl">
+						<div class="col-xs-2 ">当前账号：</div>
+					  	<div class="col-xs-2" id="is_vip">XXXXXXX</div>
+					  	<div class="col-xs-2">到期时间：</div>
+					  	<div class="col-xs-2" id="vip_expires_time">2017-11-15</div>
+					  	<div class="col-xs-4">
+					  		<a href="javascript:void(0);"  onclick="setVip('101')" class="btn btn-primary radius">设为VIP</a> 
+							<input type="number" class="input-text radius" placeholder="x" id="days" style="width:50px;margin:0 20px;"/>天
+							<a href="javascript:void(0);"   onclick="setVip('100')" class="btn btn-warning radius">取消VIP</a>
+					  	</div>
+					</div>
+					<div class="row cl mt-20">
+					  	<div class="col-xs-2">添加系统评价：</div>
+					  	<div class="col-xs-6">
+					  		<textarea class="textarea radius" id="system_remark" placeholder="说点什么..."></textarea>
+					  	</div>
+					  	<div class="col-xs-2" style="margin-top:70px;"><a href="javascript:void(0);"  class="btn btn-primary radius" onclick="set_system_remark()">修改上传</a></div>
+					</div>
+					<div class="row cl mt-20">
+					  	<div class="col-xs-2">给工厂添加材料：</div>
+					  	<div class="col-xs-6">
+					  		<input type="text" class="input-text radius" placeholder="说点什么...">
+					  	</div>
+					  	<div class="col-xs-2"><a href="javascript:void(0);"  class="btn btn-primary radius">添加</a></div>
+					</div>
+					<div class="row cl mt-20">
+					  	<div class="col-xs-2">工厂交易记录：</div>
+					  	<div class="col-xs-8">
+					  		<table class="table table-border table-bordered table-bg table-sort dataTable" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+										<th>询盘号</th>
+										<th>交易编号</th>
+										<th>交易日期</th>
+										<th>金额</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>xxxxx</td>
+										<td>xxxxx</td>
+										<td>xxxxx</td>
+										<td>xxxxx</td>
+									</tr>
+									<tr>
+										<td>xxxxx</td>
+										<td>xxxxx</td>
+										<td>xxxxx</td>
+										<td>xxxxx</td>
+									</tr>
+								</tbody>
+							</table>
+							<p class="mt-10">系统记录该客户的成功交易金额 (<span>25000</span>万人民币,<span>25</span>笔交易)</p>
+					  	</div>
+					</div>
+					<div class="row cl mt-20">
+					  	<div class="col-xs-2">当前状态：</div>
+					  	<div class="col-xs-2" id="inspection_status">实地考察通过</div>
+					  	<div class="col-xs-3">
+							<a href="javascript:void(0);" class="btn btn-success radius" onclick="inspection('1')">实地考察通过</a>
+							<a href="javascript:void(0);" class="btn btn-danger radius" onclick="inspection('0')">实地考察不通过</a>
+					  	</div>
+					  	<div class="col-xs-4">
+					  		<textarea class="textarea radius" placeholder="请输入不通过原因"></textarea>
+					  	</div>
+					</div>
+           <form id="file_upload_id"  onsubmit="return false;" method="post" enctype="multipart/form-data">
+           		<input type="hidden" id="factory_id" name="factoryId">
+					<div class="row cl mt-20">
+					  	<div class="col-xs-2">验厂文档上传：</div>
+					  	<div class="col-xs-4">
+					  		<span class="btn-upload form-group">
+								<input class="input-text upload-url radius" type="text" name="uploadfile-2" id="uploadfile-2" readonly datatype="*" nullmsg="请添加附件！" style="width:200px">
+								<a href="javascript:void();" class="btn btn-primary upload-btn radius"><i class="Hui-iconfont">&#xe616;</i> 上传文件</a>
+								<input type="file"  name="selectName" class="input-file" onchange="show_drawingName(this)">
+								<input type="hidden" name="selectName">
+							</span>
+					  	</div>
+					</div>
+          </form>					
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default mt-20">
+			<div class="panel-header" id="buyer">采购商角色</div>
+			<div class="panel-body">
+				<div class="responsive">
+					<div class="row cl">
+						<div class="col-xs-2 ">当前账号状态：</div>
+					  	<div class="col-xs-2">XXXXXXX</div>
+					  	<div class="col-xs-2">到期时间：</div>
+					  	<div class="col-xs-2">2017-11-15</div>
+					  	<div class="col-xs-4">
+					  		<a href="javascript:void(0);"  class="btn btn-primary radius">设为VIP</a> 
+							<input type="text" class="input-text radius" placeholder="x" style="width:50px;margin:0 20px;"/>天
+							<a href="javascript:void(0);"  class="btn btn-warning radius">取消VIP</a>
+					  	</div>
+					</div>
+					<div class="row cl mt-20">
+					  	<div class="col-xs-2">询盘记录：</div>
+					  	<div class="col-xs-8">
+					  		询价次数 ,<span>n</span> 转化为实地验厂或打样的：x => 询盘有效率 x/n*100%
+					  	</div>
+					</div>
+				</div>
+			</div>
+		</div>			
+		</div>
+		  <div class="w-out-box" id="show_upload_dialog" style="display:none;">
+			<div class="weui_mask"></div>
+			<div class="w-weui_dialog" style="width:510px;">
+			  <div id="container">
+			
+				<div class="content">
+					<h1>上传进度</h1>
+				</div>
+				
+				<!-- Progress bar -->
+				<div id="progress_bar" class="ui-progress-bar ui-container">
+				<div class="ui-progress" style="width: 0%;" id="ui-progress-upload">
+				<span class="ui-label" style="display:none;">正在加载...<b class="value">0%</b></span>
+				</div>
+				</div>
+				<!-- /Progress bar -->
+			    <a class="close-reveal-modal" style="color:#eee;font-size:22px;" href="javascript:void(0);" onclick="cancel_upload()">×</a>
+				<div class="content" id="main_content" style="display: none;">
+					<p>加载完成。</p>
+				</div>
+			   </div>
+			   </div>
+          </div>
+	</body>
+	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
+	<script type="text/javascript" src="/js/upload-base.js"></script>
+	<script type="text/javascript" src="/js/jquery-form.js"></script>
+	<script type="text/javascript">
+	checkSession()
+
+	function checkSession(){
+		$.ajax({
+			url : "/sysUser/checkSession.do",
+			type : "post",
+			success : function(data) {
+				
+				if(data.state==0){
+					
+					$('#loginName').text(data.data)
+					
+				}else{
+					
+					window.location = "/backstage/login.html";
+					
+				}
+				
+			}
+		})
+	}
+	
+	
+	var factoryId;
+	
+	   $(function(){
+			var str = window.location.search;
+			if(str != null && str != ''){
+				factoryId = str.substr(1);
+				factoryId = factoryId.split("&")[0].split("=")[1];
+				 $('#factory_id').val(factoryId);
+			}
+		   
+			  
+			  $.post("/backstage/queryFactoryById.do",	
+					  {
+				     "factoryId" : factoryId
+					 }, 
+					 function(result){
+					      if(result.state == 0){
+	
+					    	  var factoryInfo = result.data.factoryInfo;
+
+					    	  $('#factory_name').html(factoryInfo.factoryName);
+					    	  $('#create_time').html(factoryInfo.createTime);
+					    	  $('#factory_type').html((factoryInfo.isVip == 105 ? '已封号' : '正常'));
+					    	  $('#is_vip').html((factoryInfo.isVip == 101 ? 'VIP' : '普通会员'));
+					    	  $('#vip_expires_time').html((factoryInfo.vipExpiresTime == null ? '' : factoryInfo.vipExpiresTime));
+					    	  $('#system_remark').val((factoryInfo.systemRemark == null ? '' : factoryInfo.systemRemark));
+					    	  if(factoryInfo.isVip == 105){
+					    		  $('#factory_type').next().find('a:first').css({'background-color':'#ddd','border-color':'#ddd'}).removeAttr('onclick'); 
+					    	  }else if(factoryInfo.isVip == 100){
+					    		  $('#factory_type').next().find('a:last').css({'background-color':'#ddd','border-color':'#ddd'}).removeAttr('onclick');  
+					    		  $('#days').next().css({'background-color':'#ddd','border-color':'#ddd'}).removeAttr('onclick');
+					    	  }else{
+					    		  $('#factory_type').next().find('a:last').css({'background-color':'#ddd','border-color':'#ddd'}).removeAttr('onclick'); 
+					    	  }
+					    	  
+					    	  if(factoryInfo.factoryStatus == 1){
+					    		  $('#inspection_status').html('实地考察通过');					    	
+					    		  $('#inspection_status').next().find('a:first').css({'background-color':'#ddd','border-color':'#ddd'}).removeAttr('onclick'); 
+					    	  }else{
+					    		  $('#inspection_status').html('实地考察未通过'); 
+					    		  $('#inspection_status').next().next().children().val(factoryInfo.inspectionNote);
+					    		  $('#inspection_status').next().find('a:last').css({'background-color':'#ddd','border-color':'#ddd'}).removeAttr('onclick'); 
+					    	  }
+					    	  
+					    	  if(factoryInfo.inspectionDocumentPath != null && factoryInfo.inspectionDocumentPath != ''){
+					    		  inspectionDocumentPath = factoryInfo.inspectionDocumentPath.split("\\");
+					    		  $('#uploadfile-2').val(inspectionDocumentPath[inspectionDocumentPath.length-1]);
+					    	  }
+					    	  
+					    	  if(factoryInfo.factoryType == 0){
+					    		  $('#supplier').text("供应商角色(已激活)");
+					    		  $('#buyer').text("采购商角色(已激活)");
+					    	  }else if(factoryInfo.factoryType == 1){
+					    		  $('#supplier').text("供应商角色(已激活)");
+					    		  $('#buyer').text("采购商角色(未激活)");
+					    	  }else if(factoryInfo.factoryType == 2){
+					    		  $('#supplier').text("供应商角色(未激活)");
+					    		  $('#buyer').text("采购商角色(已激活)");
+					    	  }
+					    	  
+					      }else if(result.state == 2){
+					    		 //如果还未登录，跳转登录页
+					    		 window.location = "/backstage/login.html";
+					      }    
+			        })      
+	   })
+	   
+	  
+	 /**
+	   *设置封号和解除封号
+	   */
+	 function setType(isVip){	
+		   var message;
+		   if(isVip == 105){
+			   message = "是否确认将该工厂封号？";
+		   }else{
+			   message = "是否确认将该工厂解封？"; 
+		   }
+		   
+		   if (confirm(message)) {
+			   $.post("/backstage/updateFactory.do",	
+					   {
+				     "isVip":isVip,
+				     "factoryId" :factoryId 
+					 }, 
+					 function(result){
+					      if(result.state == 0){
+					    	  if(isVip == 105){
+					    		  $('#factory_type').next().find('a:first').css({'background-color':'#ddd','border-color':'#ddd'}).removeAttr('onclick');
+					    		  $('#factory_type').next().find('a:last').css({'background-color':'#5eb95e','border-color':'#5eb95e'}).attr("onclick","setType(100)");
+					    	      $('#factory_type').html('已封号');
+					    	  }else{
+					    		  $('#factory_type').next().find('a:first').css({'background-color':'#c62b26','border-color':'#c62b26'}).attr("onclick","setType(105)"); 
+					    		  $('#factory_type').next().find('a:last').css({'background-color':'#ddd','border-color':'#ddd'}).removeAttr('onclick');
+					    		  $('#factory_type').html('正常');
+					    	  }
+					      }else if(result.state == 2){
+					    		 //如果还未登录，跳转登录页
+					    		 window.location = "/backstage/login.html";
+					      }    
+			   })	
+		   } 
+	 } 
+     /**
+	   *设置VIP
+	   */
+	 function setVip(isVip){	
+    	   if(isVip == 101){
+        	   if($('#days').val() == null || $('#days').val() == '' || $('#days').val() == undefined){
+        		   alert("请输入VIP时长");
+        		   return false;
+        	   }
+    		   if (confirm("是否设置为VIP？")) {   	 
+				   $.post("/backstage/updateFactory.do",	
+						   {
+					     "isVip":isVip,
+					     "factoryId" : factoryId,
+					     "days" : $('#days').val()
+						 }, 
+						 function(result){
+					        if(result.state == 0){
+					        	$('#days').val('');
+					        	$('#is_vip').html("VIP");
+					        	$('#vip_expires_time').html(result.data);
+					        	$('#days').next().css({'background-color':'#f37b1d','border-color':'#f37b1d'}).attr("onclick","setVip(100)"); 
+					        	alert("设置成功");
+					        }else if(result.state == 2){
+					    		 //如果还未登录，跳转登录页
+					    		 window.location = "/backstage/login.html";
+					        }    
+				   })
+    		   }
+    	   }else{
+    		   if (confirm("是否取消会员？")) { 	 
+    			   $.post("/backstage/updateFactory.do",	
+    					   {
+    				     "isVip":isVip,
+    				     "factoryId" : factoryId,
+    				     "days" : $('#days').val()
+    					 }, 
+    					 function(result){
+    					      if(result.state == 0){
+    					    	  $('#days').val('');
+   					    		  $('#is_vip').html("普通会员");
+   					        	  $('#vip_expires_time').html('');
+   					        	  $('#days').next().css({'background-color':'#ddd','border-color':'#ddd'}).removeAttr('onclick');  
+    					    	  alert("设置成功");
+    					      }else if(result.state == 2){
+						    		 //如果还未登录，跳转登录页
+						    		 window.location = "/backstage/login.html";
+						      }    
+    			   })	
+		   	   }
+    	   }  
+	   
+	 } 
+     
+     /**
+      *设置系统备注
+      */
+     function set_system_remark(){
+    	 if($('#system_remark').val() == null || $('#system_remark').val() == '' || $('#system_remark').val() == undefined){
+    		 alert('系统评价不能为空');
+    	 }else{
+    		   if (confirm("是否添加评价？")) { 	 
+    			   $.post("/backstage/updateFactory.do",	
+    					   {
+    				     "factoryId" : factoryId,
+    				     "systemRemark" :$('#system_remark').val()
+    					 }, 
+    					 function(result){
+    					      if(result.state == 0){
+    					    	  alert("评价成功"); 
+    					      }else if(result.state == 2){
+						    		 //如果还未登录，跳转登录页
+						    		 window.location = "/backstage/login.html";
+						      }    
+    					 })
+    		   }				 
+    	 }
+     }
+     
+     /**
+       *实地考察
+       */
+     function inspection(factoryStatus){
+    	 
+    	 if(factoryStatus == 1){
+    		 if (confirm("是否确认实地考察通过？")) { 
+	    		  $.post("/backstage/updateFactory.do",	
+						   {
+					     "factoryId" : factoryId,
+					     "factoryStatus" :factoryStatus
+						 }, 
+						 function(result){
+						      if(result.state == 0){
+						    	  $('#inspection_status').html('实地考察通过');
+						    	  $('#inspection_status').next().find('a:first').css({'background-color':'#ddd','border-color':'#ddd'}).removeAttr('onclick');
+						    	  $('#inspection_status').next().find('a:last').css({'background-color':'#dd514c','border-color':'#dd514c'}).attr('onclick','inspection(0)');
+						    	  $('#inspection_status').next().next().children().val('');
+						    	  alert("设置成功"); 
+						      }else if(result.state == 2){
+						    		 //如果还未登录，跳转登录页
+						    		 window.location = "/backstage/login.html";
+						      }    
+						 })
+    		 }				 
+    	 }else if(factoryStatus == 0){    		 
+    		 if (confirm("是否确认实地考察不通过？")) {     		 	 
+    		  var inspectionNote = $('#inspection_status').next().next().children().val();
+    		  if(inspectionNote == null || inspectionNote == '' || inspectionNote == undefined){
+    	    		 alert('考察不通过备注不能为空');
+    	    		 return false;
+    	       } 
+    		  $.post("/backstage/updateFactory.do",	
+					   {
+				     "factoryId" : factoryId,
+				     "factoryStatus" :factoryStatus,
+				     "inspectionNote" : inspectionNote
+					 }, 
+					 function(result){
+					      if(result.state == 0){
+					    	  $('#inspection_status').html('实地考察未通过');
+					    	  $('#inspection_status').next().find('a:first').css({'background-color':'#5eb95e','border-color':'#5eb95e'}).attr('onclick','inspection(1)');
+					    	  $('#inspection_status').next().find('a:last').css({'background-color':'#ddd','border-color':'#ddd'}).removeAttr('onclick'); 
+					    	  alert("设置成功"); 
+					      }else if(result.state == 2){
+					    		 //如果还未登录，跳转登录页
+					    		 window.location = "/backstage/login.html";
+					      }    
+					 })
+    		 }		 
+    	 }
+    	 
+     }
+     
+   //文件上传
+     function show_drawingName(obj){
+     	var path = $(obj).val();
+         sppath = path.split("\\");
+         var drawingName = sppath[sppath.length-1];	  	   
+         if(drawingName == null || drawingName == '' || drawingName == undefined){
+         	return false;
+         }else{
+           $(obj).next().val(drawingName);
+           $('#uploadfile-2').val(drawingName);
+     	   autTime(); 
+     	   $('#upload_title').children().text("上传进度");
+         }	 		    	
+      		
+     	  
+     	  //上传验厂文档
+     	 $("#file_upload_id").ajaxSubmit({    			
+     		type: "post",
+     		url: "/backstage/uploadInspectionDocument.do",
+          	dataType: "text",
+          	success: function(str){
+          	var result = eval('(' + str + ')');	
+          	if(result.state == 0){
+     	            
+          	}else if(result.state == 2){
+	    		 //如果还未登录，跳转登录页
+	    		 window.location = "/backstage/login.html";
+	        }    
+
+          	},
+     		error: function(){
+     			alert("上传失败");
+          		$('#show_upload_dialog').hide();
+     		}       	     	
+      	}); 	 		    
+     }    
+      
+     
+	   
+	</script>
+	
+</html>

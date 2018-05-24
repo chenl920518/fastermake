@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>REGISTER</title>
+     <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/css.css"/>
+    <link rel="stylesheet" href="/css/easydialog.css" />
+        
+    <script type="text/javascript" src="/lib/html5sshiv/html5shiv.min.js"></script>
+    <script type="text/javascript" src="/lib/respond/respond.js"></script> 
+   
+
+    
+<style type="text/css">
+ .error{
+   color:red;
+ }
+</style>    
+</head>
+<body>
+    <div class="register register_en">
+        <header class="header">
+            <div class="header_con header_con_e w12">
+                <a href="index.html" class="logo"><img src="/images/head_146-39.png" alt=""/></a>
+                <span>Purchaser Registration</span>
+            </div>
+        </header>
+        <div class="section">
+            <div class="section_con section_con_e w12">
+                <ul class="title_change nav nav-tabs" id="myTab">
+<!--                     <li class=""> -->
+<!--                         <a href="#form1" data-toggle="tab" class="text-center col-xs-6">Supplier registration</a> -->
+<!--                     </li> -->
+<!--                     <li> -->
+<!--                         <a href="#form2" data-toggle="tab" class="text-center active1 col-xs-6">Purchaser Registration</a> -->
+<!--                     </li> -->
+
+					<li>
+                       <a href="#form2" data-toggle="tab" class="text-center active1 col-xs-6">Buyer</a>
+                     </li> 
+
+                </ul>
+                <div class="inps tab-content" id="myTabContent">
+                    <div class="tab-pane fade posirela tab1" id="form1">
+                    	<div class="imgs_sm">
+                    		<div class="words">
+                    			<h3>真实询盘 可靠报价</h3>
+                    			<p>询盘报价，跟踪结果，获得反馈<br/>建立产能档案，吸引采购商</p>
+                    		</div>
+                    		<img src="/images/logo_pic.png" alt="" />
+                    	</div>
+                        <form class="form-horizontal form_e" id="reg_form" method="post">
+                            <input type="hidden" name="mainProcess" id="mainProcess">
+                            <div class="form-group">
+                                <label for="comp.name" class="col-sm-4 control-label"></label>
+                                <div class="col-sm-8 ts ts_e">
+                                    <i class="iconfont">&#xe6ff;</i>
+                                     <a href="login.html">If you have an account,click here</a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comp.name" class="col-sm-4 control-label">Company Name<i class="error">*</i></label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="company_name" placeholder="企业全称">
+                                     <span class="error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="user.name" class="col-sm-2 control-label">User Name<i class="error">*</i></label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="user_name" placeholder="请输入联系人姓名">
+                                     <span class="error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="user.email" class="col-sm-2 control-label">E-mail<i class="error">*</i></label>
+                                <div class="col-sm-4">
+                                    <input type="email" class="form-control" id="email" placeholder="请输入电子邮箱">
+                                     <span class="error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="user.password" class="col-sm-4 control-label">Password(6-20 characters)<i class="error">*</i></label>
+                                <div class="col-sm-4">
+                                    <input type="password" class="form-control" id="pwd" placeholder="请输入密码">
+                                     <span class="error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="rePassword" class="col-sm-2 control-label">Confirm Password<i class="error">*</i></label>
+                                <div class="col-sm-4">
+                                    <input type="password" class="form-control" id="pwd1"  placeholder="请确认密码">
+                                     <span class="error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Major Craft<i class="error">*</i></label>
+                                <div class="col-xs-8">
+                                    <!-- 工艺 begin -->
+                                    <!-- 提示信息 -->
+                                    <div class="row">
+                                        <!-- 左侧工艺 -->
+                                        <div class="left_g pull-left"><!--col-xs-4-->
+                                            <select style="height: 200px;" id="leftList"
+                                                    class="btn-block btn-default-outline" multiple>
+
+                                               <!-- 标题工艺 -->
+                                            <optgroup label="塑料 " >
+
+                                                <option value="11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注塑</option>
+
+                                                <option value="12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;吸塑</option>
+
+                                                <option value="13">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;滚塑</option>
+
+                                                <option value="14">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;吹塑</option>
+
+                                                <option value="15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挤塑</option>
+
+                                                <option value="16">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他塑料工艺</option>            
+
+                                            </optgroup>
+                                            <!-- 标题工艺 -->
+                                            <optgroup label="铸造 " >
+
+                                                <option value="17">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不锈钢铸造(硅溶胶、水玻璃)</option>
+
+                                                <option value="18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;压铸(铝、锌、镁、铜等)</option>
+
+                                                <option value="19">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;砂铸(钢、铁、铜、铝等)</option>
+
+                                                <option value="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重力铸造(铝、铜等)</option>
+
+                                                <option value="21">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他铸造</option>         
+
+                                            </optgroup>
+                                            <!-- 标题工艺 -->
+                                            <optgroup label="锻造 " >
+
+                                                <option value="22">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;热锻</option>
+
+                                                <option value="23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;冷锻</option>       
+
+                                            </optgroup>                                          
+                  
+                                            <!-- 标题工艺 -->
+                                            <optgroup label="加工 " >
+
+                                                <option value="24">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;钣金加工（切割、折弯、焊接、组装）</option>
+
+                                                <option value="25">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;冲压拉伸</option>       
+                                                <option value="26">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旋压</option>       
+                                                <option value="27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;铝挤压</option>       
+
+                                            </optgroup>                                              
+                                            <!-- 标题工艺 -->
+                                            <optgroup label="机加工 " >
+                                                <option value="28">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3轴以上精密加工</option>
+                                                <option value="29">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高速车床</option>
+                                                <option value="30">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高速铣床</option>
+                                                <option value="31">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;普通车铣钻磨</option>
+                                                <option value="32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他机加工</option>
+                                            </optgroup>
+                                            <optgroup label="其他 " >
+											    <option value="33">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;现成商品采购</option>
+												<option value="34">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他采购</option>
+											</optgroup>
+
+                                            </select>
+                                        </div>
+                                        <div class="btn_L_R pull-left">
+                                            <div class="btnL btnL1" onclick="addCategory()"><span></span></div>
+                                            <div class="btnL" onclick="delCategory()"><em></em></div>
+                                        </div>
+                                        <!-- 右侧排序的工艺 -->
+                                        <div class="left_g right_g pull-left"><!--col-xs-4-->
+                                            <select name="categoryList" style="height: 200px;" id="rightList" class="btn-block btn-default-outline" multiple="multiple">
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- 不能超过5个的提示信息 -->
+                                    <div id="categoryTip" style="color: red; text-align: left; padding-top: 10px; display:none ;">
+                                        最多只能选择5个工艺
+                                    </div>
+
+                                    <!-- 请至少选择一个工艺 -->
+                                    <div id="selectOne" style="color: red; text-align: left; padding-top: 10px;display:none;">
+                                        请至少保留一个工艺
+                                    </div>
+                                    <!-- 工艺 end -->
+                                </div>
+                            </div>
+                            <!-- <div class="form-group ps">
+                                <label class="col-xs-2 control-label"></label>
+                                <div class="col-xs-8">
+                                    <p>你可以对适合自己的询盘进行报价，并跟踪报价结果，获得及时反馈，</p>
+                                    <p>建立自己的产能档案，吸引采购商</p>
+                                    <p>* 真实有效的询盘，准确可靠的报价。</p>
+
+                                </div>
+                            </div> -->
+                            <div class="form-group colmargin">
+                                <div class="row">
+                                    <div class="col-xs-7 col-xs-offset-2"  style="margin-bottom: 24px;">
+                                        <button type="button" id="sub_btn" class="btn btnnext" >
+                                            注册
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade tab2 active in" id="form2">
+                    	<div class="imgs_sm">
+                    		<div class="words">
+                    			<h3 class="h3_e">Real enquiry<br/>Reliable quotation</h3>
+                    			<p class="p_e">Thousands Chinese <br/>Suppliers Reliable quotes</p>
+                    		</div>
+                    		<img src="/images/logo_pic.png" alt="" />
+                    	</div>
+                        <form class="form-horizontal">
+                        	<div class="form-group">
+                                <label for="comp.name" class="col-sm-2 control-label"></label>
+                                <div class="col-sm-8 ts ts_e">
+                                    <i class="iconfont">&#xe6ff;</i>
+                                     <a href="login.html">If you have an account,click here</a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comp.name" class="col-sm-2 control-label">phone<i class="error">*</i></label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="buyer_companyName" placeholder="Enterprise phone">
+                                     <span class="error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="user.name" class="col-sm-2 control-label">Mobile phone<i class="error">*</i></label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="buyer_name" placeholder="Please enter Mobile phone">
+                                     <span class="error"></span>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label for="user.email" class="col-sm-2 control-label">E-mail<i class="error">*</i></label>
+                                <div class="col-sm-4">
+                                    <input type="email" class="form-control" id="buyer_email" placeholder="Please enter a mailbox">
+                                     <span class="error"></span>
+                                </div>
+                            </div> -->
+                            <!-- <div class="form-group">
+                                <label for="user.password" class="col-sm-2 control-label">Password(6-20 characters)<i class="error">*</i></label>
+                                <div class="col-sm-4">
+                                    <input type="password" class="form-control" id="buyer_password" placeholder="Please enter a password">
+                                     <span class="error"></span>
+                                </div>
+                            </div> -->
+                            <!-- <div class="form-group">
+                                <label for="rePassword" class="col-sm-2 control-label">Confirm Password<i class="error">*</i></label>
+                                <div class="col-sm-4">
+                                    <input type="password" class="form-control" id="rePassword" placeholder="Please confirm the password">
+                                     <span class="error"></span>
+                                </div>
+                            </div> -->
+                           <!--  <div class="form-group">
+                                <label for="rePassword" class="col-sm-2 control-label">Country,State<i class="error"></i></label>
+                                <div class="col-sm-4">
+                                    <select name="" id="select_province"  onchange="getCity()" class="form-control">
+                                        <option style="color:#999;">Please select a country</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <select name=""  id="select_city" class="sellast form-control">
+     									<option class="tr9">Please select a state</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                            
+                            <div class="form-group">
+                                <label for="rePassword" class="col-sm-2 control-label">Company Address<i class="error"></i></label>
+                                <div class="col-sm-4">
+                                    <select name="form-control country" id="country">
+                                        <option style="color:#999;">Please select a country</option>
+                                        <option value="-1">-1</option>
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4 sellast">
+                                    <select name="state form-control " id="state">
+     									<option class="tr9">Please select a state</option>
+     									<option value="-1">-1</option>
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+                                    </select>
+                                </div>
+                                <input type="hidden" id="hidden_country"/>
+								<input type="hidden" id="hidden_state"/>
+								<!-- <input type="button" value="saveAddress" id="saveAddress"/> -->
+                            </div>
+<!--                             <div class="form-group"> -->
+<!--                                 <label for="rePassword" class="col-sm-2 control-label">联系电话：</label> -->
+<!--                                 <div class="col-sm-4"> -->
+<!--                                     <input type="text" class="form-control" id="buyer_tel" placeholder=""> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+                            <!-- <div class="form-group">
+                                <label for="rePassword" class="col-sm-2 control-label">Phone <i class="error"></i></label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="buyer_phone" placeholder="Please enter your phone number">
+                                </div>
+                            </div> -->
+                            <div class="form-group">
+                                <label for="rePassword" class="col-sm-2 control-label">Total Employees<i class="error"></i></label>
+                                <div class="col-sm-4">                                    
+                                    <select class="form-control select_num">
+                                    	<option>100-200</option>
+                                    	<option>100-200</option>
+                                    	<option>100-200</option>
+                                    	<option>100-200</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="rePassword" class="col-sm-2 control-label">Site<i class="error"></i></label>
+                                <!-- <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="buyer_phone" placeholder="Please enter your phone number">
+                                 </div> -->
+                                
+                                <div class="input-group col-sm-4">
+								  <span class="input-group-addon" id="basic-addon3">https://</span>
+								  <input type="text" class="form-control site_input" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="rePassword" class="col-sm-2 control-label">Company introduction<i class="error"></i></label>
+                                <div class="col-sm-4">                                   
+                                 	<textarea class="form-control"></textarea>
+                                 </div> 
+                                
+                                
+                            </div>
+                            <!-- <div class="form-group ps">
+                                <label class="col-xs-2 control-label"></label>
+                                <div class="col-xs-8">
+                                    <p> 您可以发表询盘并获得多家工厂的报价</p>
+                                    <p> 发布长期需求，建立供应商网络，并实地考察</p>
+                                    <p> * 真实有效的询盘，准确可靠的报价。</p>
+                                </div>
+                            </div> -->
+                            <div class="form-group colmargin">
+                                <div class="row">
+                                    <div class="col-xs-7 col-xs-offset-2"  style="margin-bottom: 24px;">
+                                        <button type="button" id="sub_btn1" class="btn btnnext">Register</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer w12">
+            <div class="language">
+                <a href="###" class="a1">English</a>
+                <a href="###">中文</a>
+            </div>
+            <p>Copyright © 2017 · China Synergy Manufacturing Group · All righ</p>
+        </footer>
+    </div>
+</body>
+
+<script type="text/javascript"src="/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/city.js"></script>
+<script type="text/javascript" src="/js/easydialog.min.js"></script>    
+<script type="text/javascript" src="/js/cookie_util.js"></script>   
+<script type="text/javascript" src="/js/base64.js"></script> 
+<script type="text/javascript" src="/js/login_en.js"></script>  
+ <script type="text/javascript" src="/lib/city_state/city_state.js"></script>  
+<script>
+	
+	$(function(){
+		getProvince();
+// 		populateCountries("select_country","select_province");
+	})
+	
+	
+	/* tab切换*/
+        $('.title_change a').click(function(){
+            $(this).addClass('active1').parent().siblings().children('a').removeClass('active1');
+
+        })
+ 
+    //刷新验证码
+    function reloadImage(url) {
+        document.getElementById('validateCodeForRegSupp').src = url + "?id="+ Math.random();
+    }
+
+   
+
+
+    //工艺2.0 升序一个工艺 -peter
+    function rightListUp(){
+        $("#categoryTip,#selectOne").hide();
+        var rightList=$("#rightList :selected"); //右侧选择的工艺
+        if(rightList.length > 1 || rightList.length == 0){
+            return "";
+        }
+        $(rightList).prev().before(rightList);
+    }
+
+
+    //工艺2.0 降序一个工艺 -peter
+    function rightListDown(){
+        $("#categoryTip,#selectOne").hide();
+        var rightList=$("#rightList :selected"); //右侧选择的工艺
+
+        if(rightList.length > 1 || rightList.length == 0){
+            console.log("请选择单个工艺进行排序！");
+            return "";
+        }
+        $(rightList).next().after(rightList);
+    }
+
+
+    //工艺2.0 添加选中的工艺 -peter
+    function addCategory(){
+        var addList=[];
+        var htmlStr="";
+        var leftList=$("#leftList :selected"); //左侧选择的工艺
+        var rightList=$("#rightList option"); //右侧的工艺
+
+        if(leftList.length+rightList.length > 5){
+            $("#categoryTip").show();
+            return "";
+        }else{
+            $("#categoryTip,#selectOne").hide();
+        }
+
+        for(var y = 0 ; y < leftList.length; y++){
+            var addObj={};
+            addObj['key']=leftList[y].value; //工艺id
+            addObj['value']=leftList[y].text; //工艺名字
+            leftList[y].style.backgroundColor='#bcbcbc'; //背景颜色
+            leftList[y].style.color='#666666';	//字体颜色
+            $(leftList[y]).attr("disabled","disabled");
+            $(leftList[y]).removeAttr("selected");
+            addList.push(addObj);  //添加到数组
+        }
+
+        for(var x = 0 ; x < addList.length ; x++){
+            htmlStr+="<option value="+addList[x].key+" >"+addList[x].value.trim()+"</option>";
+        }
+
+        $("#rightList").append(htmlStr);
+    }
+
+    //工艺2.0 删除选中的工艺 -peter
+    function delCategory(){
+        $("#categoryTip,#selectOne").hide();
+        var delList=[];
+        var rightList=$("#rightList :selected"); //右侧选中的工艺
+        var rightOptionList=$("#rightList option"); //右侧所有的工艺
+        var leftList=$("#leftList :disabled"); //左侧被禁用的工艺
+
+        if(rightOptionList.length==rightList.length){
+            $("#selectOne").show();
+        }else{
+            $("#selectOne").hide();
+        }
+
+        for(var y = 0 ; y < rightList.length; y++){
+            delList.push(rightList[y].value);  //工艺id
+        }
+        rightList.remove();
+
+        for(var i = 0 ; i < leftList.length ; i++){
+            for(var x = 0 ; x < delList.length; x++){
+                if(leftList[i].value==delList[x]){
+                    $(leftList[i]).removeAttr("disabled");
+                    leftList[i].style.backgroundColor=''; //背景颜色
+                    leftList[i].style.color='';	//字体颜色
+                }
+            }
+        }
+    }
+</script>
+
+
+<script>
+	    populateCountries("country", "state");
+
+</script>
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

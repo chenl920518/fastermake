@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	    <meta http-equiv="pragram" content="no-cache">  
+		<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+		<meta http-equiv="expires" content="0">
+		<title>微信快制造-最新注册</title>
+		<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/easydialog.css" />
+		<link rel="stylesheet" href="css/m-css.css" />
+	</head>
+	<body>
+		<div class="new_list container-fluid register">
+			<!-- <div class="row row1">
+				<div class="row_in">
+				<a href="###" class="logo m_l10"><img src="../images/head.png" /></a>				
+				<div class="nav-center">
+					<p class="p1">快制造</p>
+			    	<p class="p2">www.kuaizhizhao.com</p></div>
+				<a href="###" class="nav-footer"><i class="iconfont">&#xe6c9;</i></a>
+				</div>
+			</div> -->
+			<div class="row exit">
+				<div class="col-xs-12 m_l10">
+	              <i class="iconfont">&#xe6ff;</i>
+	              <a href="login.html">已有账号，请点此登录</a>
+                </div>
+			</div>
+			<form class="form-horizontal" method="post">
+                 <input type="hidden" name="mainProcess" id="mainProcess">                            
+                 <div class="form-group">
+                     <label for="comp.name" class="col-xs-4 control-label">公司名称(中文) <i class="error">*</i></label>
+                     <div class="col-xs-8">
+                         <input type="text" class="form-control company_name" id="company_name" placeholder="企业全称">
+                          <span class="error"></span>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="user.name" class="col-xs-4 control-label">联系人姓名<i class="error">*</i></label>
+                     <div class="col-xs-8">
+                         <input type="text" class="form-control" id="user_name" placeholder="请输入联系人姓名">
+                          <span class="error"></span>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="user.email" class="col-xs-4 control-label">电子邮件<i class="error">*</i></label>
+                     <div class="col-xs-8">
+                          <input type="email" class="form-control" id="email" placeholder="请输入电子邮箱">
+                          <span class="error"></span>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="user.password" class="col-xs-4 control-label">密码(6-15字符)<i class="error">*</i></label>
+                     <div class="col-xs-8">
+                         <input type="password" class="form-control" id="pwd" placeholder="请输入密码">
+                          <span class="error"></span>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="rePassword" class="col-xs-4 control-label">确认密码<i class="error">*</i></label>
+                     <div class="col-xs-8">
+                         <input type="password" class="form-control" id="pwd1" placeholder="请确认密码">
+                          <span class="error"></span>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="rePassword" class="col-xs-4 control-label">主要工艺<i class="error">*</i></label>
+                     <div class="col-xs-8">                        
+                         <select class="form-control"  multiple="true" id="select_process">
+
+                                               <!-- 标题工艺 -->
+                                            <optgroup label="塑料 ">												
+                                                <option value="11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注塑</option>
+
+                                                <option value="12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;吸塑</option>
+
+                                                <option value="13">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;滚塑</option>
+
+                                                <option value="14">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;吹塑</option>
+
+                                                <option value="15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挤塑</option>
+
+                                                <option value="16">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他塑料工艺</option>            
+
+                                            </optgroup>
+                                            <!-- 标题工艺 -->
+                                            <optgroup label="铸造 ">
+
+                                                <option value="17">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不锈钢铸造(硅溶胶、水玻璃)</option>
+
+                                                <option value="18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;压铸(铝、锌、镁、铜等)</option>
+
+                                                <option value="19">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;砂铸(钢、铁、铜、铝等)</option>
+
+                                                <option value="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重力铸造(铝、铜等)</option>
+
+                                                <option value="21">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他铸造</option>         
+
+                                            </optgroup>
+                                            <!-- 标题工艺 -->
+                                            <optgroup label="锻造 ">
+
+                                                <option value="22">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;热锻</option>
+
+                                                <option value="23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;冷锻</option>       
+
+                                            </optgroup>                                          
+                  
+                                            <!-- 标题工艺 -->
+                                            <optgroup label="加工 ">
+
+                                                <option value="24">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;钣金加工(切割、折弯、焊接、组装)</option>
+
+                                                <option value="25">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;冲压拉伸</option>       
+                                                <option value="26">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旋压</option>       
+                                                <option value="27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;铝挤压</option>       
+
+                                            </optgroup>                                              
+                                            <!-- 标题工艺 -->
+                                            <optgroup label="机加工 ">
+                                                <option value="28">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3轴以上精密加工</option>
+                                                <option value="29">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高速车床</option>
+                                                <option value="30">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高速铣床</option>
+                                                <option value="31">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;普通车铣钻磨</option>
+                                                <option value="32">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他</option>
+                                            </optgroup>
+                                            <optgroup label="其他 ">
+											    <option value="33">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;现成商品采购</option>
+												<option value="34">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他采购</option>
+											</optgroup>
+
+                                            </select>
+                                             <span class="error"></span>
+                     </div>
+                 </div>                  
+                 <div class="form-group colmargin">
+                     <div class="row">
+                         <div class="col-xs-12">
+                             <button type="button" id="sub_btn" class="btn btnnext">
+                                 注册
+                             </button>
+                         </div>
+                     </div>
+                 </div>
+             </form>  
+             <div id="footer"></div>
+                                  
+		</div>
+	</body>
+</html>
+<script src="../lib/jquery/jquery.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="/js/cookie_util.js"></script> 
+<script type="text/javascript" src="/js/base64.js"></script> 
+<script type="text/javascript" src="/js/easydialog.min.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="js/login.js"></script>
+<script>
+
+$('#footer').load('/m-zh/footer.html');
+        window.onload = window.onresize = function(){
+
+            var clientWidth =document.documentElement.clientWidth;
+
+            document.getElementsByTagName("html")[0].style.fontSize =
+
+                    clientWidth / 1200 * 40 + "px";
+        }
+
+</script>
+<script>
+
+$('.foot div').click(function(){
+	$(this).find('ul').toggle();
+})
+
+</script>
+
+
+
+

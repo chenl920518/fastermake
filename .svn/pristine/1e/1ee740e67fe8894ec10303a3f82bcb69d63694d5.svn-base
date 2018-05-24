@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>快制造-供应商大货生产页面四种情况</title>
+     <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/lib/datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <script src="/lib/html5sshiv/html5shiv.min.js"></script>
+    <script src="/lib/respond/respond.js"></script>
+    <link rel="stylesheet" href="/css/easydialog.css" />
+    <link rel="stylesheet" href="/css/progressBar.css" />
+	<link rel="stylesheet" href="/css/ui.css" />
+	<link rel="stylesheet" href="/css/ui.progress-bar.css" />
+    <link rel="stylesheet" href="/css/css.css"/>
+    <style>
+        @media (min-width: 1200px) {
+            .container {
+                width: 1200px;
+            }
+        }
+        
+        .posirela p:hover{
+           cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="purchase_detail supplier_big_goods_four purchase_big_report"><!--self_support-->
+    <div class="tc">
+        <div class="panel">
+            <div class="panel-heading">原因 <span class="iconfont pull-right">&#xe643;</span></div>
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="radio">
+                                <label for="">
+                                    <input type="radio" name="dx"/> 客户现有的供应商价格更便宜
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-6">
+                            <div class="radio radio2">
+                                <label for="">
+                                    <input type="radio" name="dx" checked="checked"/>其他
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10 posirela">
+                            <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+                            <em><i>0</i>/300</em>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="header"></div>
+    <div class="section">
+        <div class="container container1">
+            <h3><span style="font-size:30px;"></span><span id="quote_title" style="font-size:26px;padding-right: 64px;"></span>
+                                                  询盘编号 #<span id="quoteId" style="font-size:26px;"></span>-<small></small></h3>
+            <div class="panel panel_four_1" id="panel1" style="display:none;">
+                <div class="panel-heading">项目情况：<h4> 已通知采购商作相应修改</h4></div>
+            </div>
+            <div class="panel panel_four_1" id="panel2" style="display:none;">
+                <div class="panel-heading">项目情况：<h4> 待采购商付款</h4></div>
+            </div>
+            <div class="panel panel_four_1" id="panel3" style="display:none;">
+                <div class="panel-heading">项目情况：<h4> 采购商已付款，快制造确认收款中</h4></div>
+            </div>
+            <div class="panel panel_four_1" id="panel4" style="display:none;">
+                <div class="panel-heading">项目情况：<h4>项目款已收到，项目进行中</h4></div>
+            </div>
+            <div class="panel panel2 panel_four_2" style="display:none;">
+                <div class="panel-heading">每周报告</div>
+                <div class="panel-body">
+                 <form id="file_upload_id1_edit"  onsubmit="return false;" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="reportId">
+                    <input type="hidden" name="originalName">
+                    <input type="hidden" name="newName">
+                     <input type="hidden" name="orderId">
+                    <div class="panel tc_bj tcbj">
+                        <div class="panel-heading">编辑图片及描述 <i class="iconfont">&#xe643;</i></div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-2">上传图片：</div>
+                                <div class="col-xs-4 ">
+                                    <div class="imgs2 posirela">
+                                        <img src="/images/four_2.jpg" alt=""/>
+                                        <input type="file" name="file2_edit" onchange="upload_photo_edit(this)"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-2">描述：</div>
+                                <div class="col-xs-4 posirela">
+                                    <textarea class="form-control" id="remark_edit" oninput="get_char(this)"></textarea>
+                                    <span><i>0</i>/300</span>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <button class="btn" onclick="update_photo(this)">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                    <form id="file_upload_id1"  onsubmit="return false;" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="orderId">
+                    <div class="panel tc_bj tctj">
+                        <div class="panel-heading">上传图片及描述 <i class="iconfont">&#xe643;</i></div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-2">上传图片：</div>
+                                <div class="col-xs-4 ">
+                                    <div class="sctp">
+                                        <input type="file" name="file2" onchange="upload_photos(this)" multiple/>
+                                       <i class="iconfont">&#xe66e;</i>
+                                                上传图片
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-2">描述：</div>
+                                <div class="col-xs-4 posirela">
+                                    <textarea class="form-control" id="remark" oninput="getCharacterLength()"></textarea>
+                                    <span><i>0</i>/300</span>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <button class="btn" onclick="save_photos(this)">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                    <div class="fj">
+                        <div class="col-xs-2">进度报告：</div>
+                        <div class="col-xs-10">
+                            <form id="file_upload_id"  onsubmit="return false;" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="orderId">
+                            <input type="hidden" id="fileName" name="fileName">
+                            <input type="hidden" value="1" name="fileType">
+                            <p>
+                            <i class="iconfont">&#xe66e;</i>上传附件 
+                            <input type="file" name="file1" onchange="upload_progress_report(this)"/> </p>
+                            </form>
+                            <div class="inps clearfix">
+
+                                <div class="ss"> <span class="glyphicon glyphicon-triangle-bottom"></span> <em>更多进度报告</em> </div>
+                                <div class="posirelas clearfix" id="progress_div">
+                                   
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imgs col-xs-12">
+                        <ul id="photos_ul">                
+                            <li>
+                                <i class="iconfont">&#xe62e;</i>
+                                <span>添加图片/描述</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel4_2  panel_four_3" style="display:none;">
+                <div class="panel-body ">
+                    <div class="proves clearfix">
+                        <div class="prove_l">
+                            <p>材料质量报告 / 材质证明</p>
+                             <form id="file_upload_id2"  onsubmit="return false;" method="post" enctype="multipart/form-data">
+                             <input type="hidden" name="orderId">
+                             <input type="hidden" name="fileName">
+                             <input type="hidden" value="2" name="fileType">
+                            <div class="fj"><i class="iconfont">&#xe66e;</i>上传附件 <input type="file" name="file3" onchange="upload_material_report(this)"/> </div>
+                             </form>
+                            <div class="imgs"><img src="/images/prov1.png" alt=""></div>
+                            <div class="inpts clearfix"  id="material_div">
+                             
+                            </div>
+                        </div>
+                        <div class="prove_r">
+                            <p>出货质量报告</p>
+                            <form id="file_upload_id3"  onsubmit="return false;" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="orderId">
+                            <input type="hidden" name="fileName">
+                            <input type="hidden" value="3" name="fileType">
+                            <div class="fj"><i class="iconfont">&#xe66e;</i>上传附件 <input type="file" name="file4" onchange="upload_quanlity_report(this)"/></div>
+                            </form>
+                            <div class="imgs"><img src="/images/prov2.png" alt=""></div>
+                            <div class="inpts clearfix" id="quanlity_div">
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="panel panel2 panel_four_4">
+                <div class="panel-heading">我的回复</div>
+                <div class="panel-body"><p id="supplier_remark"></p></div>
+            </div>
+            <div class="panel panel2 panel3">
+                <div class="panel-heading posirela">工厂报价 <!--<span>0</span><button class="pull-right ljbj">编辑</button>--></div>
+                <div class="panel-body">
+                    <table class="table tabs3 ">
+                        <thead >
+                        <tr>
+                            <th class="w210">缩略图</th>
+                            <th>零件名称</th>
+                            <th>基本工艺</th>
+                            <th>材料</th>
+                            <th>重量（KG）</th>
+                            <th class="th6 th61">数量</th>
+                            <th class="th6 th62">单价(元)</th>
+                            <th class="th6 th63">模具费(元)</th>
+                        </tr>
+                        </thead>
+                        <tbody id="product_tbody">
+                        
+                        </tbody>
+                    </table>
+                    <div class="confirm">
+                        <div class="pay clearfix">
+                            <em>付款条件：</em>
+                            <div class="confirm_span">
+                                <span id="payment_term"></span>
+                            </div>
+                        </div>
+                        <div class="pay clearfix">
+                            <em>要求确认：</em>
+                            <div class="confirm_span" id="requirement">
+        
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+
+
+
+            
+           
+        </div>
+    </div>
+    <div id="footer" ></div>
+    
+        <div class="w-out-box" id="show_upload_dialog" style="display:none;">
+			<div class="weui_mask"></div>
+			<div class="w-weui_dialog" style="width:510px;">
+			  <div id="container">
+			
+				<div class="content">
+					<h1>上传进度</h1>
+				</div>
+				
+				<!-- Progress bar -->
+				<div id="progress_bar" class="ui-progress-bar ui-container">
+				<div class="ui-progress" style="width: 0%;" id="ui-progress-upload">
+				<span class="ui-label" style="display:none;">正在加载...<b class="value">0%</b></span>
+				</div>
+				</div>
+				<!-- /Progress bar -->
+			    <a class="close-reveal-modal" style="color:#eee;font-size:22px;" href="javascript:void(0);" onclick="cancel_upload()">×</a>
+				<div class="content" id="main_content" style="display: none;">
+					<p>加载完成。</p>
+				</div>
+			   </div>
+			   </div>
+          </div>
+</div>
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/lib/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script src="/js/inquiry/supplier_big_goods_four.js"></script>
+<script>
+    $('#header').load('header.html');
+    $('#footer').load('footer.html');
+    /* panel1切换效果*/
+    $('.panel1 a').click(function(){
+        $(this).addClass('activea').siblings().removeClass('activea');
+    })
+    
+    /*工厂报价显示隐藏切换*/
+    $('.panel3 tbody tr:first-child em').css({
+        'background':'url(/images/red.png) no-repeat'
+    })
+    $('.panel3 tbody em').click(function(){
+        var $this = $(this).parent().parent().next('.trcol');
+        if($this.hasClass('currdis')){
+            $this.removeClass('currdis');
+            $this.show();
+            $(this).css({
+                'background':'url(/images/red.png) no-repeat'
+            })
+        }else{
+            $this.addClass('currdis');
+            $this.hide();
+            $(this).css({
+                'background':'url(/images/green.png) no-repeat'
+            })
+        }
+    });
+    /* panel3隔行换色*/
+    $(".panel3 tbody tr:not('.trcol'):even").css({
+        'background-color':'#f9f9f9'
+    });
+    /* panel3 th  宽度控制*/
+    $('.panel3 th:first-child').nextUntil('.panel3 th:last-child').css({
+        'width':'136px'
+    })
+    
+    /*body 内容高度控制 底部位置 */
+    /* var h1 = $(document.body).height() + 230 ;
+    var h2 = window.screen.availHeight  ;
+    if(h1 < h2){
+        $('#footer').addClass('footer1');
+    }else{
+        $('#footer').removeClass('footer1');
+    } */
+
+    /* 每周报告，更多进度报告高度控制 */
+   $('.inps .ss').click(function(){
+       if($(this).find('span').hasClass('glyphicon-triangle-bottom')){
+           $('.inps .posirelas').css({
+               "height":"auto"
+           })
+           $(this).find('span').removeClass('glyphicon-triangle-bottom').addClass('glyphicon-triangle-top');
+           $(this).find('em').html('收起更多');
+       }else{
+           $('.inps  .posirelas').css({
+               "height":"84px",
+               "overflow":"hidden"
+           })
+           /*箭头和内容变化*/
+           $(this).find('span').removeClass('glyphicon-triangle-top').addClass('glyphicon-triangle-bottom');
+           $(this).find('em').html('更多进度报告');
+       }
+   })
+
+    /* 每周报告鼠标经过 删除和编辑*/
+
+//     $('.supplier_big_goods_four .dele i:first-child').click(function(){
+    	
+//     	var id = $(this).parents('li').find('input:first').val();
+//     	$.post("/inquiry/deleteReport.do",	
+//     			{"id": id},
+//     			 function(result){
+//     			      if(result.state == 0){
+//     			          $(this).parent().parent().remove();  
+//     			      }
+//     		     })
+//     })
+    $('.supplier_big_goods_four .dele i:last-child').click(function(){
+        $(' .panel_four_2 .tcbj').show();
+    })
+    $('.tcbj .panel-heading i').click(function(){
+        $(' .panel_four_2 .tcbj').hide();
+    })
+
+    /* 每周报告点击增加 和 删除*/
+    $('.supplier_big_goods_four .imgs li:last-child').click(function(){
+        $(' .panel_four_2 .tctj').show();
+    })
+    $('.tctj .panel-heading i').click(function(){
+        $(' .panel_four_2 .tctj').hide();
+    })
+
+
+    /* 删除附件部分*/
+    $('.panel_four_3 .inpts i').click(function(){
+        $(this).parent().remove();
+    })
+
+    $('.panel_four_2  .inps i').click(function(){
+        $(this).parent().remove();
+    })
+
+    
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

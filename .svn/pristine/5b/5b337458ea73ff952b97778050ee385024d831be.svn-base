@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta name="Keywords"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<meta name="Description"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<title>快制造-产品-确认询盘细信息</title>
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="/lib/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" href="/css/easydialog.css" />
+<link rel="stylesheet" href="/css/css.css" />
+<link rel="stylesheet" href="/css/matrix-style.css" />
+<link rel="stylesheet" href="/css/progressBar.css" />
+<link rel="stylesheet" href="/css/ui.css" />
+<link rel="stylesheet" href="/css/ui.progress-bar.css" />
+<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script src="/lib/respond/respond.js"></script>
+
+<style>
+@media ( min-width : 1200px) {
+	.container {
+		width: 1200px;
+		background-color: #fff;
+	}
+}
+
+h3 span {
+	color: #333;
+	font-size: 16px;
+}
+
+.form-horizontal .control-label {
+	padding-top: 7px;
+}
+
+.ffhh {
+	color: #ff4a4a;
+}
+</style>
+</head>
+<body>
+	<div class="product_invitation confirm_info">
+		<div id="header"></div>
+		<div class="section">
+			<div class="nav_head container">
+				<a href="###" class="a1">1.创建询盘获取报价</a> <a href="###" class="a2">2.完善询盘信息</a>
+				<a href="###" class="a2">3.注册登录</a> <a href="###" class="a2">4.确认询盘信息</a>
+				<a href="###">5.快制造检查和发布</a> <a href="###">6.收到报价</a>
+				<h4 id="orderId"></h4>
+			</div>
+			<div class="panel panel-default container contain1">
+				<div class="panel-heading panel-heading_1">
+					<ol class="breadcrumb">
+						<li><a href="#">首页</a></li>
+						<li><a href="#">快速发布询盘</a></li>
+						<li><a href="###">确认询盘信息</a></li>
+					</ol>
+				</div>
+				<div class="panel-body">
+					<p class="p1 posirela">
+						<i class="iconfont i1">&#xe654;</i>注册信息<span class="p_line"></span>
+						<!-- <a href="###" class="e_modify pull-right">修改</a> -->
+					</p>
+					<table class="table tab1 factoryInfo">
+						<tbody>
+							<tr>
+								<td>公司名称</td>
+								<td><span class="w249" id="factoryName">-</span></td>
+								<td>联系人姓名</td>
+								<td id="username">-</td>
+								<td>电子邮件</td>
+								<td id="email">-</td>
+							</tr>
+							<tr>
+								<td>联系电话</td>
+								<td id="tel">-</td>
+								<td>手机电话</td>
+								<td id="mobile">-</td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="panel panel-default container contain2 quoteProductInfo">
+				<div class="panel-body">
+					<p class="p1 posirela">
+						<i class="iconfont i1">&#xe698;</i>询盘信息<span class="p_line"></span>
+					</p>
+					<table class="table tab1 quoteInfo">
+						<tbody>
+							<tr>
+								<td>供应商所在区域限定</td>
+								<td id="quoteLocationInfo"></td>
+								<td>送货地</td>
+								<td id="city">-</td>
+								<td>交货日期</td>
+								<td id="deliveryDate">-</td>
+							</tr>
+							<tr>
+								<td>询盘主工艺</td>
+								<td id="mainProcess"></td>
+								<td>询盘目的</td>
+								<td><span class="w249" id="quotePurposeInfo"></span></td>
+								<td>报价截止日期</td>
+								<td id="quoteEndDate"></td>
+							</tr>
+							<tr>
+								<td>询盘类别</td>
+								<td><span class="w249" id="quoteWayInfo"></span></td>
+								<td>邀请报价</td>
+								<td id="inviteFactoryNameInfo">-</td>
+								<td>资格认证</td>
+								<td id="qualification">-</td>
+							</tr>
+							<tr>
+								<td>保密协议</td>
+								<td id="confidentialityAgreementInfo"></td>
+								<td>雇员数量</td>
+								<td id="staffNumber">-</td>
+								<td>货运条款</td>
+								<td><span class="w249" id="quoteFreightTerm"></span></td>
+							</tr>
+							<tr>
+								<td>图纸附件</td>
+								<td colspan="5"><em class="iconfont posirela">&#xe66e;</em><a
+									href="javaScript:void(0);" onclick="download_file(this)"><span
+										id="drawingName" class="ms"></span></a></td>
+
+							</tr>
+							<tr>
+								<td>询盘备注</td>
+								<td colspan="5" id="quoteRemark"></td>
+								
+							</tr>
+						</tbody>
+					</table>
+					<p class="p1 posirela">
+						<i class="iconfont">&#xe60c;</i>零件信息<em class="bcsm">这里还有一些信息可以补充，完善信息您会获得更精确的供应商报价</em><span
+							class="p_line"></span>
+					</p>
+					<div class="btns">
+						<button id="editQuoteButton">修改询盘</button>
+						<button id="saveButton" class="tt">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+	<div style="display: none" id="tempAdd">
+		<div class="infos">
+			<input type="hidden" name="id" value="">
+
+
+			<div class="remarks form-inline">
+				<div class="form-group">
+					<label for="remarks">零件备注:</label>
+					<textarea class="form-control w490" name="productRemark"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="price">目标采购单价:</label>
+					<div class="input-group">
+						<input type="text" class="form-control w200" name="targetPrice"
+							placeholder="" requireNum>
+						<div class="input-group-addon">人民币</div>
+					</div>
+					<span></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- SEO代码 开始-->
+	<div style="display: none">
+		快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘
+
+		Keywords: <a href="https://www.kuaizhizao.cn/" title="快制造"
+			target="_blank"><strong>快制造</strong></a> <a
+			href="https://www.kuaizhizao.cn/" title="外发加工" target="_blank"><strong>外发加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑模具" target="_blank"><strong>注塑模具</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机械加工" target="_blank"><strong>机械加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金加工" target="_blank"><strong>钣金加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具厂" target="_blank"><strong>塑料模具厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑加工" target="_blank"><strong>注塑加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具设计与制造" target="_blank"><strong>塑料模具设计与制造</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸厂" target="_blank"><strong>压铸厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="零件加工" target="_blank"><strong>零件加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸加工订单" target="_blank"><strong>外贸加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="非标定制" target="_blank"><strong>非标定制</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外发订单" target="_blank"><strong>外发订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外协加工" target="_blank"><strong>外协加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="加工订单" target="_blank"><strong>加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑订单" target="_blank"><strong>注塑订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸订单" target="_blank"><strong>压铸订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金订单" target="_blank"><strong>钣金订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机加工询盘" target="_blank"><strong>机加工询盘</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸询盘" target="_blank"><strong>外贸询盘</strong></a>
+	</div>
+	<!-- SEO代码 开始-->
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script src="/zh/icn/confirm_info.js"></script>
+<script type="text/javascript" src="/js/upload-base.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script type="text/javascript" src="/js/easydialog.min.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script>
+<script src="/lib/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/lib/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+      $('#header').load('header.html');
+      $('#footer').load('footer.html');
+	/*头部样式切换*/
+	$('.nav_head a:not(".a1")').click(function() {
+		$('.nav_head a').css({
+			'text-decotation' : 'none'
+		});
+		/*$(this).css({
+			'background' : 'url(../images/products/t4.png)'
+		});*/
+	})
+	/*选者框样式切换*/
+	$('.checkbox label').click(function() {
+		if ($('label em').css('display') == 'block') {
+			$('label em').css({
+				'display' : 'none'
+			});
+		} else {
+			$('label em').css({
+				'display' : 'block'
+			});
+		}
+	})
+	
+	/* 资格认证多选切换*/
+	$('.product_invitation .zgrzinp').click(function(){
+		$('.product_invitation  .zgrzdx').toggle();
+	})
+	$('.product_invitation .selspan').click(function(){
+		$('.product_invitation  .zgrzdx').toggle();
+	})
+	
+	/*询盘类别扩大选中区域*/
+	$('.product_invitation .inps,.product_invitation .pics').click(function(){
+		$('.product_invitation .inps input').attr('checked', 'checked');
+	})
+	
+	
+	
+	  /* 日历插件*/
+    $('.form_date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 4,
+        forceParse: 0
+    });
+    
+    /* 询盘信息操作*/
+   $('.tab1 tbody td:even').css({
+   	'padding-left':'0',
+   	'background-color':'#f0f0f0',
+   	'color':'#666',
+   	'text-align':'center',
+   	'width':'140px'
+   	
+   })
+    /*控制零件备注*/
+   $('.remarks textarea').focus(function(){
+   		$(this).css({
+   			'height':'auto',  			
+   		})
+   })
+  $('.remarks textarea').blur(function(){
+		 $(this).css({
+		 	'height':'36px',
+		 	'overflow-y':'scroll'
+		 	
+		 })
+   })
+   
+    
+    /* 控制目标采购单价样式 */
+   $('.remarks input').focus(function(){
+	   	$('.remarks .input-group-addon').css({
+	   		'color':'#006dcc',
+	   		'border-color':'#0871cd',
+	   		'box-shadow':'inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6)'
+	   	})
+   })
+   $('.remarks input').blur(function(){
+   		$('.remarks .input-group-addon').css({
+   			'color':'#999',
+	   		'border-color':'#b1b1b1',
+	   		'box-shadow':'none'
+   		})  		
+   })
+   
+</script>
+
+
+

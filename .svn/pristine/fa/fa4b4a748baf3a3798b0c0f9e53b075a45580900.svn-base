@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<meta name="Keywords"
+  content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<meta name="Description"
+  content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+
+<title>快制造-账户管理</title>
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/css.css" />
+<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script src="/lib/respond/respond.js"></script>
+<link rel="stylesheet" href="/css/easydialog.css" />
+<script type="text/javascript" src="/js/jquery-1.10.2.js"></script>
+<style>
+@media ( min-width : 1200px) {
+	.container {
+		width: 1200px;
+		padding: 0;
+	}
+}
+</style>
+
+<style type="text/css">
+.error {
+	color: red;
+}
+</style>
+</head>
+<body>
+	<div class="enterprise_archives modify_files account">
+		<div id="header"></div>
+		<div class="section ">
+			<div class="section_in container clearfix">
+				<nav class="pull-left media-left ">
+					<ul>
+						<li><span></span> <a href="/zh/enterprise_archives.html"><em
+								class="iconfont">&#xe617;</em>企业档案 </a></li>
+						<li><span></span> <a href="/zh/edit_enterprise_archives.html"><em
+								class="iconfont">&#xe607;</em>修改档案</a></li>
+						<li class="li3"><span></span> <a
+							href="/zh/account_management.html"><em class="iconfont">&#xe607;</em>账户管理
+						</a></li>
+						<li><span></span> <a href="/zh/product_totalpage.html"><em
+								class="iconfont">&#xe65b;</em>产品库</a></li>
+					</ul>
+				</nav>
+				<div class="contain_right pull-left">
+					<h3 id="factoryName"></h3>
+					<div class="panel">
+						<div class="panel-heading">修改密码</div>
+						<div class="panel-body">
+							<div class="form-horizontal">
+								<div class="form-group">
+									<label for="name" class="col-sm-2 control-label w200">账户：</label>
+									<div class="col-sm-8">
+										<p class="form-control-static" id="loginEmail"
+											name="loginEmail"></p>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label w200">当前密码：</label>
+									<div class="col-sm-8">
+										<div class="input-group w350">
+											<input type="password" class="form-control" id="curPass"
+												name="curPass"> <span class="error"></span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label w200">新密码：</label>
+									<div class="col-sm-8">
+										<div class="input-group w350">
+											<input type="password" class="form-control" id="newPass"
+												name="newPass"> <span class="error"></span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label w200">确认密码：</label>
+									<div class="col-sm-8">
+										<div class="input-group w350">
+											<input type="password" class="form-control" id="conPass"
+												name="conPass"> <span class="error"></span>
+										</div>
+									</div>
+								</div>
+								<div class="btns">
+									<button class="btn btn-default" id="submitUpdate"
+										onclick="updateUserPassword()">修改密码</button>
+									<!--                                 <span class="error"></span> -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel">
+						<div class="panel-heading">联系方式</div>
+						<div class="panel-body">
+							<div class="form-horizontal">
+								<div class="form-group">
+									<label for="name" class="col-sm-2 control-label w200">联系人：</label>
+									<div class="col-sm-8">
+										<div class="input-group w350">
+											<input type="text" class="form-control" id="userName"
+												placeholder="nina">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label w200">职位：</label>
+									<div class="col-sm-8">
+										<div class="input-group w350">
+											<input type="text" class="form-control" id="position">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label w200">电话：</label>
+									<div class="col-sm-8">
+										<div class="input-group w350">
+											<input type="tel" class="form-control" id="tel">
+										</div>
+									</div>
+								</div>
+								<!--<div class="form-group">
+                                <label  class="col-sm-2 control-label w200">传真：</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group w350">
+                                        <input type="tel" class="form-control" id="fax">
+                                    </div>
+                                </div>
+                            </div>-->
+								<div class="form-group">
+									<label class="col-sm-2 control-label w200">手机：</label>
+									<div class="col-sm-8">
+										<div class="input-group w350">
+											<input type="tel" class="form-control" id="mobile">
+										</div>
+									</div>
+								</div>
+								<div class="btns btns2">
+									<button class="btn btn-default" onclick="updateFactoryInfo()">保存修改</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="footer"></div>
+	</div>
+	<!-- SEO代码 开始-->
+	<div style="display: none">
+		快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘
+
+		Keywords: <a href="https://www.kuaizhizao.cn/" title="快制造"
+			target="_blank"><strong>快制造</strong></a> <a
+			href="https://www.kuaizhizao.cn/" title="外发加工" target="_blank"><strong>外发加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑模具" target="_blank"><strong>注塑模具</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机械加工" target="_blank"><strong>机械加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金加工" target="_blank"><strong>钣金加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具厂" target="_blank"><strong>塑料模具厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑加工" target="_blank"><strong>注塑加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具设计与制造" target="_blank"><strong>塑料模具设计与制造</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸厂" target="_blank"><strong>压铸厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="零件加工" target="_blank"><strong>零件加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸加工订单" target="_blank"><strong>外贸加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="非标定制" target="_blank"><strong>非标定制</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外发订单" target="_blank"><strong>外发订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外协加工" target="_blank"><strong>外协加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="加工订单" target="_blank"><strong>加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑订单" target="_blank"><strong>注塑订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸订单" target="_blank"><strong>压铸订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金订单" target="_blank"><strong>钣金订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机加工询盘" target="_blank"><strong>机加工询盘</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸询盘" target="_blank"><strong>外贸询盘</strong></a>
+	</div>
+	<!-- SEO代码 开始-->
+	
+	<!-- 51la统计代码 -->
+<script type="text/javascript" src="//js.users.51.la/19493791.js"></script>
+</body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script src="/js/dateFormat.js"></script>
+<script src="/js/easydialog.min.js"></script>
+<script src="/js/upload-base.js"></script>
+<script src="/js/jquery-form.js"></script>
+<script src="/zh/icn/account_management.js"></script>
+<script>
+	
+$('#header').load('header.html');
+$('#footer').load('footer.html');
+
+  
+
+    /*账户管理默认侧边栏效果*/
+    $('.section_in nav li:nth-child(3)')
+            .children('span').show()
+    /* 侧边栏效果 */
+    $('.section_in nav li').hover(function(){
+        $(this).children('span').show();
+        $(this).siblings().not('.section_in nav li:nth-child(3)').children('span').hide();
+        $(this).children('a').css({'color':'#006dcc'});
+        $(this).siblings().not('.section_in nav li:nth-child(3)').children('a').css({'color':'#333'});
+    });
+    $('.section_in nav li').mouseout(function(){
+        $('.section_in nav li').not('.section_in nav li:nth-child(3)').children('span').hide();
+        $('.section_in nav li').not('.section_in nav li:nth-child(3)').children('a').css({'color':'#333'});
+    });
+    /* body 高度控制底部位置 */
+    var h1 = $(document.body).height()  +230 ;
+    var h2 = window.screen.availHeight   ;
+    if(h1 < h2){
+        $('#footer').addClass('footer1')
+    }else{
+        $('#footer').removeClass('footer1');
+    };
+    
+
+    /*地区选择效果*/
+    $('.modify_files .select1').click(function(){
+        $('.modify_files .dxtc').toggle();
+    })
+    $('.dxtc span').click(function(){
+        $('.modify_files .dxtc').hide();
+    })
+    $('.category_list li').hover(function(){
+        $(this).css({
+            "background-color": "#006dcc",
+            "color": "#fff"
+        }).siblings().css({
+            "background-color": "#fff",
+            "color": "#333"
+        })
+        $(this).children('span').css({
+            "background":"url(/images/products/arr3.png)"
+        }).siblings().children('span').css({
+            "background":"url(/images/products/arr2.png)"
+        })
+    })
+    $('.category_list li').click(function(){
+        $(this).css({
+            "background-color": "#006dcc",
+            "color": "#fff"
+        }).siblings().css({
+            "background-color": "#fff",
+            "color": "#333"
+        })
+        $(this).children('span').css({
+            "background":"url(/images/products/arr3.png)"
+        }).siblings().children('span').css({
+            "background":"url(/images/products/arr2.png)"
+        })
+    })
+
+    /*  工艺强项多选 */
+    $('.modify_files .select2').click(function(){
+        $('.modify_files .dx').toggle();
+    })
+
+</script>

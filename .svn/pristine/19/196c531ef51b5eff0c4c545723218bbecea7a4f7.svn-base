@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>快制造-供应商被拒绝大货生产生</title>
+     <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/lib/datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <script src="/lib/html5sshiv/html5shiv.min.js"></script>
+    <script src="/lib/respond/respond.js"></script>
+    <link rel="stylesheet" href="/css/css.css"/>
+    <style>
+        @media (min-width: 1200px) {
+            .container {
+                width: 1200px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="refuse_supplier">
+    <div id="header"></div>
+    <div class="section">
+        <div class="container">
+            <h3>询盘编号 #105903 - <small>已拒绝</small></h3>
+            <div class="panel panel1">
+                <div class="panel-heading">项目情况：<b>该报价已被XXXXX公司拒绝</b></div>
+            </div>
+            <div class="panel panel2">
+                <div class="panel-heading">未通过理由</div>
+                <div class="panel-body">
+                    <div class="reason">
+                        <em>原因</em>
+                        <span>价格偏贵</span>
+                    </div>
+                    <div class="supplement">
+                        <em>补充说明</em>
+                        <span>伊顿公司于1993 年进入中国市场并设立首家合资企业，此后通过并购、合资和独资的形式迅速发展在中国的业务。</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div id="footer" ></div>
+</div>
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<!--<script src="/js/dateFormat.js"></script>
+<script src="/js/inquiry/getCount.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script>
+<script src="/js/inquiry/factory_quote_list.js"></script>-->
+<script src="/lib/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/lib/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+    $('#header').load('/header.html');
+    $('#footer').load('/footer.html');
+    /* panel1切换效果*/
+    $('.panel1 a').click(function(){
+        $(this).addClass('activea').siblings().removeClass('activea');
+    })
+    /* 询盘信息操作*/
+   /* $('.tab1 tbody td:even').css({
+        'padding-left':'0',
+        'background-color':'#f0f0f0',
+        'font-size':'14px',
+        'text-align':'center',
+        'width':'140px'
+    })
+    $('.tab1 tbody td:odd').css({
+        'width':'249px'
+    })*/
+    /*工厂报价显示隐藏切换*/
+    $('.panel3 tbody tr:first-child em').css({
+        'background':'url(/images/red.png) no-repeat'
+    })
+    $('.panel3 tbody em').click(function(){
+        var $this = $(this).parent().parent().next('.trcol');
+        if($this.hasClass('currdis')){
+            $this.removeClass('currdis');
+            $this.show();
+            $(this).css({
+                'background':'url(/images/red.png) no-repeat'
+            })
+        }else{
+            $this.addClass('currdis');
+            $this.hide();
+            $(this).css({
+                'background':'url(/images/green.png) no-repeat'
+            })
+        }
+    });
+    /* panel3隔行换色*/
+    $(".panel3 tbody tr:not('.trcol'):even").css({
+        'background-color':'#f9f9f9'
+    });
+    /* panel3 th  宽度控制*/
+    $('.panel3 th:first-child').nextUntil('.panel3 th:last-child').css({
+        'width':'136px'
+    })
+
+
+    /* panel4 里面的 li 隔行换色*/
+    $('.supplier_big_goods_generation .panel4 li:even').css({
+        'background-color':'#f9f9f9'
+    })
+    /* b不符合理由多选切换*/
+    $('.supplier_big_goods_generation .no_confirm').click(function(){
+        $(this).parent().find('.zgrzdx').toggle();
+        /*$('.product_invitation  .zgrzdx').toggle();*/
+    })
+    $('.supplier_big_goods_generation .selspan').click(function(){
+        $(this).parent().find('.zgrzdx').toggle();
+        /*$('.product_invitation  .zgrzdx').toggle();*/
+    })
+    /* panel4隔行换色*/
+   /* $('.panel4 tbody tr:even').css({
+        'background-color':'#f9f9f9'
+    })*/
+    /*弹窗显示隐藏*/
+   /* $('.panel4 .btns button').click(function(){
+        $('.purchase_detail .tc').show();
+    })
+    $('.tc .iconfont').click(function(){
+        $('.purchase_detail .tc').hide();
+    })*/
+    /*body 内容高度控制 底部位置 */
+    var h1 = $(document.body).height() + 230 ;
+    var h2 = window.screen.availHeight  ;
+    if(h1 < h2){
+        $('#footer').addClass('footer1');
+    }else{
+        $('#footer').removeClass('footer1');
+    }
+
+    /* 日历插件*/
+   /* $('.form_date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 4,
+        forceParse: 0
+    });
+*/
+    /* 资格认证多选切换*/
+   /* $('.purchase_detail .zgrzinp').click(function(){
+        $(this).parent().find('.zgrzdx').toggle();
+        /!*$('.product_invitation  .zgrzdx').toggle();*!/
+    })
+    $('.purchase_detail .selspan').click(function(){
+        $(this).parent().find('.zgrzdx').toggle();
+        /!*$('.product_invitation  .zgrzdx').toggle();*!/
+    })*/
+
+    /*询盘目的*/
+    /*$('.md textarea').focus(function(){
+        $(this).css({
+            'height':'auto',
+            'line-height':'18px',
+            'overflow-y':'scroll'
+        })
+    })
+    $('.md textarea').blur(function(){
+        $(this).css({
+            'height':'28px',
+            'overflow-y':'hidden',
+            'line-height':'28px',
+        })
+    })*/
+
+    /* 询盘信息编辑切换*/
+   /* $('.purchase_detail .xpbj').click(function(){
+        $('.purchase_detail .tabs1').addClass('disnone');
+        $('.purchase_detail .tabs2').removeClass('disnone');
+        $('.purchase_detail .xpbj').hide();
+    })*/
+    /*询盘信息保存和取消*/
+   /* $('.purchase_detail .save , .purchase_detail .dele').click(function(){
+        $('.purchase_detail .tabs1').removeClass('disnone');
+        $('.purchase_detail .tabs2').addClass('disnone');
+        $('.purchase_detail .xpbj').show();
+    })*/
+
+
+    /*零件信息*/
+   /* $('.tab2_bj .w120').focus(function(){
+        $(this).css({
+            'height':'auto',
+            'line-height':'14px',
+            'overflow-y':'scroll'
+        })
+    })
+    $('.tab2_bj .w120').blur(function(){
+        $(this).css({
+            'height':'30px',
+            'overflow-y':'hidden',
+            'line-height':'18px'
+        })
+    })*/
+    /* 零件信息控制行高*/
+   /* $('.tab2_bj tbody tr td:not(:first-child)').css({
+        'vertical-align':'middle'
+    })*/
+    /* 零件信息，零件描述控制高度*/
+    /*$('.tab2_bj .w920').focus(function(){
+        $(this).css({
+            'height':'136px',
+            'line-height':'18px',
+            'overflow-y':'scroll'
+        })
+    })
+    $('.tab2_bj .w920').blur(function(){
+        $(this).css({
+            'height':'136px',
+            /!* 'overflow-y':'auto'*!/
+
+        })
+    })*/
+    /* 零件信息编辑切换*/
+   /* $('.purchase_detail .ljbj').click(function(){
+        $('.purchase_detail .tabs3').addClass('disnone');
+        $('.purchase_detail .tab2_bj').removeClass('disnone');
+        $('.purchase_detail .ljbj').hide();
+    })*/
+    /*零件信息保存和取消*/
+    /*$('.purchase_detail .save , .purchase_detail .dele').click(function(){
+        $('.purchase_detail .tabs3').removeClass('disnone');
+        $('.purchase_detail .tab2_bj').addClass('disnone');
+        $('.purchase_detail .ljbj').show();
+    })*/
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

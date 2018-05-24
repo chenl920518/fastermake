@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<meta name="Keywords"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<meta name="Description"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<title>快制造-报价页面</title>
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script src="/lib/respond/respond.js"></script>
+<!--     <link rel="stylesheet" href="/css/css.css"/> -->
+<script>document.write('<link rel="stylesheet" href="/css/css.css?time="'  + Date.now() + '"><\/script>');</script>
+</head>
+<body>
+	<div
+		class="supplier_detail purchase_supplier supplier_detail_7 offer_detail_7">
+		<input type="hidden" id="filePath">
+		<div id="header"></div>
+		<div class="section">
+			<div class="container w12">
+				<div class="row">
+					<h2>
+						<span style="font-size: 30px;"></span><span id="quote_title"
+							style="font-size: 26px; padding-right: 64px;"></span> 询盘编号 #<span
+							id="quoteId" style="font-size: 26px;"></span> - <small>可报价</small>
+					</h2>
+					<nav>
+						<ul class="clearfix" id="title_ul">
+							<li><a href="###">询盘明细</a></li>
+							<li><a href="#" class="active">报价</a></li>
+							<!--<li>
+                                <a href="###">消息</a>
+                            </li>
+                            <li>
+                                <a href="###">保密协议</a>
+                            </li>
+                            <li>
+                                <a href="###">打样</a>
+                            </li>-->
+							<!--                             <li> -->
+							<!--                                 <a href="###">大货</a> -->
+							<!--                             </li> -->
+						</ul>
+					</nav>
+					<div class="t1 t1_7 clearfix">
+						<div class="sc sc01 sc_g pull-left"
+							onclick="submit_quote('1',this)">
+							<span>提交报价</span>
+						</div>
+						<div class="sc bj pull-left">
+							<a href="/zh/quote_list.html?quoteStatus=1" class="to-quote">返回询盘详情页面</a>
+						</div>
+
+					</div>
+					<div class="row panel">
+						<div class="lj_bj panel-body" id="product_div">
+							<h4>零件信息和报价</h4>
+							
+						</div>
+					</div>
+					<div class="row">
+						<div class="panel" id="last_panel">
+							<div class="panel-body bj_bz clearfix">
+								<form class="form-horizontal" id="file_upload_id"
+									onsubmit="return false;" method="post"
+									enctype="multipart/form-data">
+									<div class="fj_sc">
+										<span class="e51">如您有自己的详情报价单请务必上传(支持图片和表格形式):</span>
+										<div class="btn">
+											上传 <input type="hidden" name="orderId" id="orderId" /> <input
+												type="hidden" class="pull-left" id="fileName"
+												name="selectDrawingName" /> <input type="file"
+												name="file_upload" onchange="show_drawingName(this)" />
+										</div>
+										<a href="###" class="fj_name"></a>
+									</div>
+								</form>
+								<div class="panel_L pull-left">
+									<div class="form-inline clearfix">
+										<div class="col-sm-2 col-sm-2_1">报价有效期</div>
+										<div class="col-sm-10">
+											<label for="" class="radio-inline"> <input
+												type="radio" name="dx" value="7" />7天
+											</label> <label for="" class="radio-inline"> <input
+												type="radio" name="dx" checked="checked" value="30" />30天
+											</label> <label for="" class="radio-inline"> <input
+												type="radio" name="dx" value="60" />60天
+											</label>
+										</div>
+									</div>
+									<!-- <div class="bz">
+                   						<p>报价备注</p>
+                   						<textarea class="form-control" id="quote_remark"></textarea>
+                   					</div> -->
+									<div class="reason">
+										<div class="title">
+											<!-- <i class="da9">*</i> -->
+											除了价格因素外，你觉得贵司为何适合做这个订单。（产品经验，技术，设备...）
+										</div>
+										<textarea class="form-control" id="quote_remark"></textarea>
+									</div>
+									
+								</div>
+								<div class="panel_R pull-left">
+									<div class="form-inline">
+										<div class="col-sm-2 col-sm-2_1">支付条款</div>
+
+
+										<div class="col-sm-10 colsm1 posirela">
+											<span class="selectarror selspan"></span> <input
+												class="form-control sel220 select2 zgrzinp z-payment"
+												type="text" id="payment" value="30%预付，其余出货后付清"
+												readonly="readonly" style="display: none;">
+											<div class="dx w300 zgrzdx">
+												<select class="form-control" id="payment_select"
+													onchange="select_payment(this)">
+													<option value="30%预付，其余出货后付清">30%预付，其余出货后付清</option>
+													<option value="50%预付，其余出货后付清">50%预付，其余出货后付清</option>
+													<option value="（）%预付，其余出货后付清">（）%预付，其余出货后付清</option>
+													<option value="出货后30天付款">出货后30天付款</option>
+												</select>
+											</div>
+
+										</div>
+										<div class="form-inline form2">
+											<div class="col-sm-2 col-sm-2_1">价格类型</div>
+											<div class="col-sm-10 colsm1 posirela">
+												<div class="dx w300 zgrzdx">
+													<div class="radio">
+														<label> <input type="radio" name="optionsRadios"
+															value="1" checked>含增值税到最近港口价格
+														</label>
+													</div>
+													<br>
+													<div class="radio">
+														<label> <input type="radio" name="optionsRadios"
+															value="2">含增值税出厂价格
+														</label>
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<div class="btns text-right">
+								<button onclick="submit_quote('1',this)">提交报价</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"></div>
+		</div>
+	</div>
+	<!-- SEO代码 开始-->
+	<div style="display: none">
+		快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘
+
+		Keywords: <a href="https://www.kuaizhizao.cn/" title="快制造"
+			target="_blank"><strong>快制造</strong></a> <a
+			href="https://www.kuaizhizao.cn/" title="外发加工" target="_blank"><strong>外发加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑模具" target="_blank"><strong>注塑模具</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机械加工" target="_blank"><strong>机械加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金加工" target="_blank"><strong>钣金加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具厂" target="_blank"><strong>塑料模具厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑加工" target="_blank"><strong>注塑加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具设计与制造" target="_blank"><strong>塑料模具设计与制造</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸厂" target="_blank"><strong>压铸厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="零件加工" target="_blank"><strong>零件加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸加工订单" target="_blank"><strong>外贸加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="非标定制" target="_blank"><strong>非标定制</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外发订单" target="_blank"><strong>外发订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外协加工" target="_blank"><strong>外协加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="加工订单" target="_blank"><strong>加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑订单" target="_blank"><strong>注塑订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸订单" target="_blank"><strong>压铸订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金订单" target="_blank"><strong>钣金订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机加工询盘" target="_blank"><strong>机加工询盘</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸询盘" target="_blank"><strong>外贸询盘</strong></a>
+	</div>
+	<!-- SEO代码 开始-->
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<!-- <script src="/js/inquiry/offer7.js"></script> -->
+<script>document.write('<script src="/js/inquiry/offer7.js?time="'+ Date.now() +'"><\/script>');</script>
+<script>
+	$('#header').load('header.html');
+	$('#footer').load('footer.html');
+	
+	
+	/*点击收藏，弹窗出现*/
+	
+	$('.t1 .sc01').click(function(){
+	    $('.supplier_detail .tc').show();
+	})
+	$(' .tc_con-title em').click(function(){
+	    $('.supplier_detail .tc').hide();
+	})
+	
+	
+	$('.inquiry_detail .section nav li a').hover(function(){
+	    $(this).addClass('active')
+	            .parent().siblings('li').children('a').removeClass('active');
+	})
+
+
+</script>
+</html>
+
+

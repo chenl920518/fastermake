@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+ <meta name="format-detection" content="telephone=no" />
+<title>分享成功</title>
+
+<link rel='stylesheet' href='../css/example.css'>
+<link rel='stylesheet' href='../css/weui.css'>
+<!-- <link rel='stylesheet' href='../css/home.css'> -->
+</head>
+
+<script type="text/javascript" src="js/config.js"></script>
+<script src="../lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/hideOptionMenu.js"></script>
+<script type="text/javascript">
+	
+	$(function(){
+		var second = 3;
+		setInterval(setTime, 1000);
+		
+		function setTime(){
+			second--;
+			$('#time').html(second + '秒后自动返回...');
+			if(0 == second){
+				setTimeout(function(){
+					window.location.href = history.go(-1);
+				}, 0);
+			}
+		}
+		
+		$('#back').click(function(){
+			setTimeout(function(){
+				window.location.href = history.go(-1);
+			}, 0);
+		})
+	})
+	
+	
+</script>
+
+<body>
+	<div class="container" id="container">
+		<div class="msg">
+			<div class="weui_msg">
+				<div class="weui_icon_area">
+					<i class="weui_icon_success weui_icon_msg"></i>
+				</div>
+				<div class="weui_text_area">
+					<h2 class="weui_msg_title">分享成功</h2>
+					<p class="weui_msg_desc" id="time">3秒后自动返回...</p>
+				</div>
+				<div class="weui_opr_area" id="back">
+					<p class="weui_btn_area">
+						<a href="javascript:;" class="weui_btn weui_btn_primary">点击返回</a>
+
+					</p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- <div class="div-home" id="home_div">
+			<a href="#" class="a-home">
+				<img src="../images/home.png" class="home-btn"/>
+			</a>
+	</div> -->
+	<!-- <div style="text-align: center;">
+<img alt="" src="../images/gou.png"><br>
+分享成功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#" id="back">点击返回</a><br>
+<p id="time">5秒后自动返回...</p>
+</div> -->
+</body>
+</html>

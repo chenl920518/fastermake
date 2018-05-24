@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<title></title>
+		 <link rel="shortcut icon" href="/img/favicon.ico"/>
+		<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		 <link rel="stylesheet" href="/css/easydialog.css" />
+		<link rel="stylesheet" type="text/css" href="/lib/video/video-js.css"/>
+		<link rel="stylesheet" href="/css/css.css"/>
+		<link rel="stylesheet" href="/css/profile.css" />
+		<script src="/lib/jquery/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+		<script src="/lib/respond/respond.js"></script>
+	</head>
+
+	<body>
+	    <input id="factoryId" type="hidden">
+	    <div id="header"></div> 
+	    <div class="view_factory_info_section">
+		<div class="container box-top box-top1">
+			<div class="row">
+				<div class="cont_01">
+					<h3 class="profilelogo">
+						<div class="imgs">	
+							<img id="factory_logo" src="/images/web_log.png" alt=""/>
+						</div>
+					</h3>
+					<div class="logo_tit">
+						<p class="cont_01_tit">
+							<span  class="cont_01_span factoryName"></span><i class="iconfont icon1">&#xe60e;</i>
+						</p>
+						<p class="cont_02_tit">
+							<span id="isCollect"  class="hide_01" onclick="addOrCancelCollect(this)">+ 加收藏</span>
+							<!--<span class="hide_02" style="display:none">已收藏</span>  -->
+							<span class="hide_03">收藏后可邀请报价</span>
+						</p>
+						<p class="cont_03_tit">
+							<i class="iconfont cont_03_time1">&#xe612;</i>
+							<span id="create_time"  class="cont_03_time2"></span>
+						</p>
+					</div>
+					<div class="watch_fact" style="display:none"></div>
+				</div>
+			</div>
+		</div>
+		<div class="container box-top box-top2">
+			<div class="row">
+				<div class="cont_01">
+					<div class="active1">
+						<div class="list-group1">
+							<span class="list-group-item1 list-active"><i class="iconfont">&#xe644;</i>公司档案</span>
+							<span class="list-group-item1"><i class="iconfont" style="font-size:20px;">&#xe61e;</i>产品列表</span>
+							<span class="list-group-item1"><i class="iconfont">&#xe798;</i>设备清单</span>
+							<span class="list-group-item1"><i class="iconfont">&#xe63c;</i>实景拍摄</span>
+							<span class="list-group-item1"><i class="iconfont" style="font-size:26px;">&#xe618;</i>工厂口碑</span>
+						</div>
+					</div>
+					<div class="actives clearfix">
+					<div class="active2">
+						<div class="box_01" style="display: block;">
+							<p class="text-center com-tit">公司介绍</p>
+							<div class="com-box">
+								<p id="fatoryInfo" class="com-txt"></p>
+								<div class="com-info">
+									<p class="text-center com-tit">公司信息</p>
+									<div class="com-table">
+										<table class="table table-bordered">
+											<tr>
+												<td><span class="span-01">地区</span><span id="region"  class="span-02"></span></td>
+												<td><span class="span-01">雇员数量</span><span id="staffNumber" class="span-02"><em></em></span></td>
+											</tr>
+											<tr>
+												<td><span class="span-01">公司地址</span><span  class="span-02"><em id="detailsAddress"></em></span></td>
+												<td><span class="span-01">年产值</span><span id="factoryValue" class="span-02"></span></td>
+											</tr>
+											<tr>
+												<td><span class="span-01">成立年份</span><span class="span-02"><em id="establishmentYear"></em></span></td>
+												<td><span class="span-01">进出口权</span><span id="type" class="span-02">No<i class="iconfont icon-01">&#xe854;</i></span></td>
+											</tr>
+											<tr>
+												<td><span class="span-01">工厂面积</span><span class="span-02"><em id="factoryAcreage"></em></span></td>
+												<td><span class="span-01">网站</span><span class="span-02"><a href="" id="website"></a></span></td>
+											</tr>
+											<tr>
+												<td colspan="2" id="mainProcess">
+													
+												
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">
+													<span class="span-01">常用材料</span><span class="span_03" id="dominantMaterialModel"></span>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">
+													<span class="span-01">擅长工件大小</span><span id="dominantMaterialSize" class="span_03"></span>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">
+													<span class="span-01">特产工艺</span><span class="span_03"></span>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<div class="com-info">
+									<p class="text-center com-tit">工厂审核报告</p>
+									<p class="com-txt">杭州萧山八达汽车零部件有限公司创建于1997年。公司以校办企业形式对外进行小五金的制造和加工，年产值200万。公司于2002年涉及汽车零部件制造，2003年公司为满足生产发展需要筹建新厂房并于2005年投入使用。2006年通过IS09001:2000质量管理体系，同时和浙江苏泊尔家电制造股份有限公司合作，生产小家电产品。目前公司注册资金500万，拥有三个生产车间，四条五金生产流水线，各种设备100余台。2014年成立注塑工厂（杭州都拓科技），拥有海天机41台。2015年成立喷涂和搪瓷工厂（杭州赢耐博得科技），并成立组装车间，拥有组装线20余条。目前三个工厂年产值1.5-2亿人民币左右</p>
+								</div>
+								<div class="com-info">
+									<p class="text-center com-tit">资格认证</p>
+									<div class="com-table com-bottom">
+										<table class="table table-bordered table-bg">
+											<thead>
+												<tr>
+													<th>名称</th>
+													<th>有效期</th>
+													<th>附件</th>
+												</tr>
+											</thead>
+											<tbody id="qualification">
+							
+												
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box_01">
+							<p class="text-center com-tit">产品列表</p>
+							<div class="div_list">
+								<div id ="productList" class="cont_list">
+						
+								</div>
+							</div>
+							<div class="page_part">
+								<div class="row">
+									<ul id="page_list"></ul>
+
+									<div id="page_link"></div>
+								</div>
+							</div>
+						</div>
+						<div class="box_01">
+							<p class="text-center com-tit">设备清单</p>
+							<div class="com-table com-bottom box-padding">
+								<table class="table table-bordered table-bg">
+									<thead>
+										<tr>
+											<th>设备名称</th>
+											<th>型号</th>
+											<th>台数</th>
+											<th>备注</th>
+										</tr>
+									</thead>
+									<tbody id="equipmentList">
+									</tbody>
+								</table>
+							</div>
+						</div>
+							<div class="box_01">
+							<p class="text-center com-tit">实景拍摄</p>
+							<div class="box-banner">
+								<div id="picSlideWrap" class="clearfix">
+									<div class="imgnav" id="imgnav">
+										<div id="img">
+											
+                                            <div id="div_video" class="div_video">
+												<video id="video_3" class="video-js video vjs-big-play-centered" controls preload="auto" poster="/lib/video/poster-big.png" data-setup="{}">
+													<source id="source_video"  type="video/mp4">
+												</video>
+											</div>
+											
+											<a href="javaScript:void(0)" class="pngFix" id="prev"></a>
+
+											<a href="javaScript:void(0)" class="pngFix" id="next"></a>
+
+										</div>
+										<div id="cbtn">
+											<i class="picSildeLeft"><img src="/images/video_left.png"></i>
+											<i class="picSildeRight"><img src="/images/video_right.png"></i>
+											<div id="cSlideUl">
+												<ul id="environmentPic">
+													
+												</ul>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+						
+						<div class="box_01">
+							<p class="text-center com-tit">工厂口碑</p>
+							<div class="item_box">
+								<span class="item_all">共获得 <em class="num_color" id="evaluateCount"></em>条口碑</span>
+								<a href="javascript:void(0)" class="go_evaluate">去评价</a>
+							</div>
+							<div class="area_box" id="factoryEvaluateList">
+								<!--  <div class="area_common"><div class="readonly_area">你好</div><span class="area_time">2017-12-14 14:27:10</span><span dataid="17" onclick="thumbUp(this)" class="area_zan area_zan_alreadly">
+								<i class="iconfont icon-zan">&#xe618;</i>&nbsp;&nbsp;已赞 ( <em class="zan_num">3</em> )</span></div>
+								<div class="area_common"><div class="readonly_area">你好啊</div><span class="area_time">2017-12-18 13:32:46</span><span dataid="18" onclick="thumbUp(this)" class="area_zan area_zan_alreadly">
+									<i class="iconfont icon-zan">&#xe618;</i>&nbsp;&nbsp;已赞 ( <em class="zan_num">2</em> )</span></div>
+								<div class="area_common"><div class="readonly_area">水电费</div><span class="area_time">2017-12-22 13:57:32</span><span dataid="22" onclick="thumbUp(this)" class="area_zan">
+									<i class="iconfont icon-zan">&#xe618;</i>&nbsp;&nbsp;赞 ( <em class="zan_num">0</em> )</span></div>-->
+							</div>
+						</div>
+					</div>
+					<div class="active3">
+						<div class="right-box">
+							<p class="contact_tit">联系供应商</p>
+						</div>
+						<div class="right-box2">
+							<p class="contact_tit2">发送消息</p>
+							<p><input id="messageTitle"  type="text" placeholder="标题长度不能大于50个字符" class="contact-input" /></p>
+							<p class="p-area"><textarea id="messageInfo" class="contact-area" placeholder="请输入你想要采购的产品名称，所需工艺，对应材料等(最好加上自我介绍以及特殊要求等信息)"></textarea><span class="span-area">( <em class="em_enter">0</em>/<em class="em_surplus">1000</em> )</span></p>
+							<span></span>
+							<p class="p">
+								<a href="javascript:void(0);" id="sendMessageToFactory" class="contact-btn">发送采购需求</a>
+							</p>
+							
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="evaluate_box">
+			<div class="evaluate_container">
+				<div class="evaluate_row">
+					<div class="evaluate_tit">
+						<span class="evaluate_left">供应商名称</span>
+						<span class="evaluate_right factoryName" ></span>
+					</div>
+				</div>
+				<div class="evaluate_cont">
+					<div class="evaluate_tit">
+						<span class="evaluate_left evaluate_lineheight"><em class="star-color">*</em>评论内容</span>
+						<textarea id="evaluateInfo" class="evaluate_txtarea"></textarea>
+					</div>
+					<div>
+						<span id="ffdiv"></span>
+					</div>
+				</div>
+				<!--<div class="evaluate_row">
+					<div class="evaluate_tit">
+						<span class="evaluate_left evaluate_pic">图片附件</span>
+						<div class="evaluate_right">
+							<span class="btn-upload form-group">
+							  <a href="javascript:void(0);" class="a_file"><i class="iconfont">&#xe66e;</i> 上传附件</a>
+							  <input class="input-text upload-url radius-txt" type="text" name="uploadfile" id="uploadfile" readonly>
+							  <input type="file" multiple name="file-1" class="input-file">
+							</span>
+						</div>
+					</div>
+				</div>  -->
+				<div class="evaluate_btn">
+					<a href="javascript:void(0);" class="evaluate_ok">提交</a>
+					<a href="javascript:void(0);" class="evaluate_cancel">取消</a>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div id="footer"></div>
+		<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+	<script src="/lib/laypage/laypage.js"></script>
+	<script type="text/javascript" src="/zh/icn/view_factory_info.js"></script>
+	<script type="text/javascript" src="/js/easydialog.min.js"></script>
+		<script type="text/javascript">
+		    $('#header').load('header.html');
+		    $('#footer').load('footer.html');
+		    
+			tabChange('.active1 .list-group-item1', '.active2 .box_01', 'list-active', 'click', 0)
+			/*输入文字就显示蓝色按钮*/
+			$('.active3 input,.active3 textarea').bind("input propertychange",function(){
+				if($(this).val()){
+					$('#sendMessageToFactory').css({
+						'background-color':'#0069da'
+					})
+				}else{
+					$('#sendMessageToFactory').css({
+						'background-color':'#999'
+					})
+				}
+			
+			})
+			
+		</script>
+		<script type="text/javascript">
+			rightRequire();//右侧联系供应商部分
+			function rightRequire(){
+				var number_size = 1000;
+				$('.contact-area').bind('input propertychange', function() {
+					var value = $.trim($(this).val());
+					var len = value.length;
+					if(len > number_size) {
+						var char_val = value.substr(0, number_size);
+						$(this).val(char_val);
+						len = number_size;
+						alert('最多可以输入1000个字符');
+					}
+					$(this).parents('.p-area').find('.em_enter').text(len);
+				})
+			}
+			
+		</script>
+		
+		
+		
+		
+</html>
+

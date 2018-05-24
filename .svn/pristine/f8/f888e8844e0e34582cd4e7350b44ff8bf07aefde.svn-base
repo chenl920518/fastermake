@@ -1,0 +1,76 @@
+.account .w350 {
+  width: 350px;
+}
+.account .imgs {
+  width: 140px;
+  height: 140px;
+  border: 1px solid #ddd;
+  text-align: center;
+  line-height: 140px;
+  vertical-align: middle;
+  margin-bottom: 15px;
+}
+.account .imgs img {
+  max-width: 100%;
+  height: auto;
+}
+.account .imgs .tm {
+  width: 140px;
+  height: 35px;
+  background-color: #4c4c4c;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 13px;
+  color: #fff;
+  line-height: 35px;
+  cursor: pointer;
+}
+.account .btns button {
+  width: 110px;
+}
+.account .section .section_in nav ul li .i1 {
+  background-position: -7px -5px;
+}
+.account .section .section_in nav ul li .i2 {
+  background-position: -40px -5px;
+}
+.account .section .section_in nav ul li .i3 {
+  background-position: -74px -29px;
+}
+.account .section .section_in .contain_right h3 {
+  padding-left: 7px;
+  margin-bottom: 20px;
+}
+.account .w130 {
+  width: 130px;
+}
+.account .w220 {
+  width: 220px;
+}
+.account .input1,
+.account .select2 {
+  float: left;
+}
+.account .select2 {
+  background-color: #eee;
+}
+.account .line {
+  border-top: 1px solid #eee;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 20px;
+}
+.account .line label {
+  padding-left: 0;
+  color: #333;
+}
+.account .line .div2 {
+  padding-left: 0;
+}
+.account .sm2 span {
+  color: #b1b1b1;
+}
+.account .btns2 {
+  margin-bottom: 20px;
+}

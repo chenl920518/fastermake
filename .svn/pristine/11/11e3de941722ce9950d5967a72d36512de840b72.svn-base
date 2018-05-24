@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<meta http-equiv="pragram" content="no-cache">  
+		<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+		<meta http-equiv="expires" content="0">
+		<title>微信快制造-最新询盘</title>
+		<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/m-zh/css/m-css.css" />
+	</head>
+	<body>
+		<div class="new_list container-fluid">
+			<div class="row row1">				
+			<div class="form-inline row row2">
+				<div class="row_in">
+				<div class="form-group col-xs-5 mar_l_10 p_l0 p_r0">
+					<select name="" id="select_process" class="form-control" onchange="queryByProcess(this)">
+						 <option value="-1" class="first_option">工艺</option>
+                                    
+                              <option value="11">注塑</option>
+
+                               <option value="12">吸塑</option>
+
+                               <option value="13">滚塑</option>
+
+                               <option value="14">吹塑</option>
+
+                               <option value="15">挤塑</option>
+
+                               <option value="16">其他塑料工艺</option>            
+
+                               <option value="17">不锈钢铸造(硅溶胶、水玻璃)</option>
+
+                               <option value="18">压铸(铝、锌、镁、铜等)</option>
+
+                               <option value="19">砂铸(钢、铁、铜、铝等)</option>
+                               <option value="20">重力铸造(铝、铜等)</option>
+                               <option value="21">其他铸造</option>         
+                               <option value="22">热锻</option>
+                               <option value="23">冷锻</option>       
+                               <option value="24">钣金加工(切割、折弯、焊接、组装)</option>
+                               <option value="25">冲压拉伸</option>       
+                               <option value="26">旋压</option>       
+                               <option value="27">铝挤压</option>       
+                               <option value="28">3轴以上精密加工</option>
+                               <option value="29">高速车床</option>
+                               <option value="30">高速铣床</option>
+                               <option value="31">普通车铣钻磨</option>
+                               <option value="32">其他</option>       
+					           <option value="33">现成商品采购</option>
+					           <option value="34">其他采购</option>	
+					</select>					
+				</div>
+				<div class="form-group col-xs-6 f_right mar_r_10 p_l0 p_r0">
+					<input type="search" id="product_name" oninput="queryByKey(this)" placeholder="询盘编号/询盘标题" class="form-control"/><i class="glyphicon glyphicon-search"></i>
+				</div>
+				</div>
+			</div>
+			<div class="new_list_tab">
+				<table class="table ">
+				<!-- <thead>
+					<tr>
+						<th class="th1"></th>
+						<th class="th2">询盘信息</th>						
+					</tr>
+				</thead> -->
+				<tbody id="tbody">
+					
+				</tbody>
+			</table>
+			
+			</div>
+
+			
+			<div id="footer"></div>
+		</div>
+	 </div>	
+	</body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/m-zh/js/config.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="/m-zh/js/quote_list.js"></script>
+<script src="/m-zh/js/getNationalFlag.js"></script>
+<script>
+        $('#footer').load('/m-zh/footer.html');
+
+
+        window.onload = window.onresize = function(){
+
+            var clientWidth =document.documentElement.clientWidth;
+
+            document.getElementsByTagName("html")[0].style.fontSize =
+
+                    clientWidth / 1200 * 40 + "px";
+        }
+
+        
+        
+//         $('#product_name').bind('input propertychange', function() {
+//         	queryByKey($(this));
+//         });
+        
+
+        
+</script>
+<script>
+
+$('.foot div').click(function(){
+	$(this).find('ul').toggle();
+})
+
+</script>
+
+

@@ -1,0 +1,13 @@
+{
+    "inviteFactoryName": "",
+    "inviteFactory": "",
+    "quoteEndDate": "2017-12-22",
+    "deliveryDate": "2018-01-06",
+    "quoteFreightTerm": "运送到目的地价",
+    "city": "河北",
+    "quoteRemark": "询盘备注",
+    "staffNumber": "50-99",
+    "qualification": "ISO 9004,VDA 6.1",
+    "quoteWay": "0",
+    "quoteLocation": "1"
+}

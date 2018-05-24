@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>快制造-注册</title>
+     <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/css.css"/>
+    <script src="/lib/html5shiv/html5shiv.min.js"></script>
+    <script src="/lib/respond/respond.js"></script>
+</head>
+<body>
+    <div class="register">
+        <header class="header">
+            <div class="header_con w12">
+                <em>logo</em>
+                <span>欢迎注册</span>
+            </div>
+        </header>
+        <div class="section">
+            <div class="section_con w12">
+                <div class="title_change">
+                    <a href="#" class="text-center active col-xs-6">工厂注册</a>
+                    <a href="#" class="text-center col-xs-6">商户注册</a>
+                </div>
+                <div class="inps">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="comp.name" class="col-sm-2 control-label">公司名称(中文)：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="comp.name" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user.name" class="col-sm-2 control-label">联系人姓名：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="user.name" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user.email" class="col-sm-2 control-label">电子邮件：</label>
+                            <div class="col-sm-4">
+                                <input type="email" class="form-control" id="user.email" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user.password" class="col-sm-2 control-label">密码：</label>
+                            <div class="col-sm-4">
+                                <input type="password" class="form-control" id="user.password" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="rePassword" class="col-sm-2 control-label">确认密码：</label>
+                            <div class="col-sm-4">
+                                <input type="password" class="form-control" id="rePassword" placeholder="">
+                            </div>
+                        </div>
+<!--                         <div class="form-group"> -->
+<!--                             <label for="inputPassword3" class="col-sm-2 control-label">国家和地区：</label> -->
+<!--                             <div class="col-xs-4 static"> -->
+<!--                                 <div class="row"> -->
+<!--                                     <div >class="col-xs-12" -->
+<!--                                         <input type='hidden' id='countyid_H' value='0' /> -->
+<!--                                         <select id="stateId" name="comp.stateId" style="width:50%;float:left;" class="form-control selectpicker" onchange="pubZoneObj.countyChange()"> -->
+<!--                                             <option value="-1">请选择</option> -->
+
+<!--                                             <option value="247">中国</option> -->
+
+<!--                                             <option value="383">阿富汗</option><option value="50">阿尔巴尼亚</option><option value="209">阿尔及利亚</option><option value="384">安道尔共和国</option><option value="385">安哥拉</option><option value="386">安圭拉岛</option><option value="387">安提瓜岛/巴布达岛</option><option value="379">阿根廷</option><option value="225">澳大利亚</option><option value="52">奥地利</option><option value="226">阿塞拜疆</option><option value="388">巴哈马群岛</option><option value="389">巴林群岛</option><option value="390">孟加拉国</option><option value="391">巴巴多斯岛</option><option value="53">比利时</option><option value="392">伯利兹城</option><option value="54">白俄罗斯</option><option value="393">贝宁湾</option><option value="394">百慕大群岛</option><option value="395">不丹</option><option value="235">玻利维亚</option><option value="55">波斯尼亚和黑塞哥维那</option><option value="396">博茨瓦纳</option><option value="237">巴西</option><option value="397">英属印度洋地区</option><option value="398">英属维尔京群岛</option><option value="399">文莱</option><option value="56">保加利亚</option><option value="400">布基纳法索</option><option value="401">缅甸</option><option value="402">布隆迪</option><option value="403">柬埔寨</option><option value="404">喀麦隆</option><option value="57">加拿大</option><option value="405">佛得角</option><option value="406">开曼群岛</option><option value="407">中非共和国</option><option value="408">乍得</option><option value="246">智利</option><option value="247">中国</option><option value="378">哥伦比亚</option><option value="409">科摩罗</option><option value="381">哥斯达黎加</option><option value="58">克罗地亚</option><option value="59">塞浦路斯</option><option value="60">捷克共和国</option><option value="61">丹麦</option><option value="265">厄瓜多尔</option><option value="375">埃及</option><option value="263">萨尔瓦多</option><option value="62">爱沙尼亚</option><option value="63">芬兰</option><option value="64">法国</option><option value="65">德国</option><option value="66">直布罗陀</option><option value="67">希腊</option><option value="286">中国香港</option><option value="68">匈牙利</option><option value="70">冰岛</option><option value="287">印度</option><option value="288">印尼</option><option value="122">伊朗</option><option value="69">爱尔兰</option><option value="291">以色列</option><option value="71">意大利</option><option value="293">日本</option><option value="294">约旦</option><option value="295">哈萨克</option><option value="296">肯尼亚</option><option value="74">拉脱维亚</option><option value="302">黎巴嫩</option><option value="72">列支敦士登</option><option value="73">立陶宛</option><option value="75">卢森堡</option><option value="76">马其顿</option><option value="308">马来西亚</option><option value="77">马耳他</option><option value="377">墨西哥</option><option value="78">摩尔多瓦</option><option value="317">摩纳哥</option><option value="210">摩洛哥</option><option value="79">荷兰</option><option value="374">新西兰</option><option value="252">朝鲜</option><option value="80">挪威</option><option value="335">巴基斯坦</option><option value="340">巴拉圭</option><option value="341">秘鲁</option><option value="342">菲律宾</option><option value="81">波兰</option><option value="82">葡萄牙</option><option value="343">波多黎各</option><option value="382">塞族共和国</option><option value="83">罗马尼亚</option><option value="208">俄罗斯</option><option value="380">塞尔维亚和黑山</option><option value="348">新加坡</option><option value="84">斯洛伐克</option><option value="85">斯洛维尼亚</option><option value="214">南非</option><option value="253">韩国</option><option value="86">西班牙</option><option value="351">斯里兰卡</option><option value="87">瑞典</option><option value="88">瑞士</option><option value="354">叙利亚共和国</option><option value="356">中国台湾</option><option value="358">泰国</option><option value="211">突尼斯</option><option value="89">土耳其</option><option value="90">乌克兰</option><option value="376">阿拉伯联合酋长国</option><option value="91">英国</option><option value="92">美国</option><option value="365">乌拉圭</option><option value="368">委内瑞拉</option><option value="369">越南</option><option value="370">也门</option><option value="371">南斯拉夫</option> -->
+<!--                                         </select> -->
+<!--                                         <select id="provinceId" name="comp.provinceId" style="width:50%;float:left;" class="form-control" onchange="pubZoneObj.provinceChange()"> -->
+<!--                                             <option value="-1">请选择</option> -->
+<!--                                         </select> -->
+
+
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                         <div class="form-group"> -->
+<!--                             <label for="inputPassword3" class="col-sm-2 control-label">联系电话：</label> -->
+<!--                             <div class="col-sm-4"> -->
+<!--                                 <input type="tel" class="form-control" id="inputPassword3" placeholder=""> -->
+<!--                             </div> -->
+<!--                         </div> -->
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">主要工艺：</label>
+                            <div class="col-xs-8">
+                                <!-- 工艺 begin -->
+                                <!-- 提示信息 -->
+                                <div class="row">
+                                    <!-- 左侧工艺 -->
+                                    <div class="left_g pull-left"><!--col-xs-4-->
+                                        <select style="height: 200px;" id="leftList"
+                                                class="btn-block btn-default-outline" multiple>
+
+                                            <!-- 标题工艺 -->
+                                            <optgroup label="制造与工业品 " >
+
+                                                <option value="11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机加工</option>
+
+                                                <option value="12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;铸造</option>
+
+                                                <option value="13">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;钣金</option>
+
+                                                <option value="14">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;冲压</option>
+
+                                                <option value="15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;塑胶成型</option>
+
+                                                <option value="16">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;锻造</option>
+
+                                                <option value="17">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;装配</option>
+
+                                                <option value="18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快速原型</option>
+
+                                                <option value="19">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;弹簧与线成型</option>
+
+                                                <option value="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;粉末冶金</option>
+
+                                                <option value="21">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;模具制造</option>
+
+                                                <option value="22">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挤出</option>
+
+                                                <option value="23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;热处理</option>
+
+                                                <option value="24">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表面处理</option>
+
+                                                <option value="25">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;轴承</option>
+
+                                                <option value="26">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;紧固件&五金件</option>
+
+                                                <option value="29">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;泵 阀 接头</option>
+
+                                                <option value="30">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他</option>
+
+                                            </optgroup>
+
+                                            <!-- 标题工艺 -->
+                                            <optgroup label="电子与电气产品 " >
+
+                                                <option value="27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电气产品</option>
+
+                                                <option value="28">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电子元器件与装置</option>
+
+                                                <option value="31">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他</option>
+
+                                            </optgroup>
+
+                                        </select>
+                                    </div>
+                                    <div class="btn_L_R pull-left">
+                                        <div class="btnL btnL1" onclick="addCategory()"><span></span></div>
+                                        <div class="btnL" onclick="delCategory()"><em></em></div>
+                                    </div>
+                                    <!-- 右侧排序的工艺 -->
+                                    <div class="left_g right_g pull-left"><!--col-xs-4-->
+                                        <select name="categoryList" style="height: 200px;" id="rightList" class="btn-block btn-default-outline" multiple="multiple">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- 不能超过5个的提示信息 -->
+                                <div id="categoryTip" style="color: red; text-align: left; padding-top: 10px; display:none ;">
+                                    最多只能选择5个工艺
+                                </div>
+
+                                <!-- 请至少选择一个工艺 -->
+                                <div id="selectOne" style="color: red; text-align: left; padding-top: 10px;display:none;">
+                                    请至少保留一个工艺
+                                </div>
+                                <!-- 工艺 end -->
+                            </div>
+                        </div>
+                        <div class="form-group ps">
+                            <label class="col-xs-2 control-label"></label>
+                            <div class="col-xs-8">
+                            <p>你可以对适合自己的询盘进行报价，并跟踪报价结果，获得及时反馈，</p>
+                            <p>建立自己的产能档案，吸引采购商</p>
+                            <p>* 真实有效的询盘，准确可靠的报价。</p>
+
+                            </div>
+                        </div>
+                        <div class="form-group colmargin">
+                            <div class="row">
+                                <div class="col-xs-7 col-xs-offset-2"  style="margin-bottom: 24px;">
+                                    <button type="button" onclick="submitForm(reForm)" class="btn btnnext" >
+                                        注册
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer class="footer w12">
+            <div class="language">
+                <a href="###" class="a1">English</a>
+                <a href="###">中文</a>
+            </div>
+            <p>Copyright © 2017 · China Synergy Manufacturing Group · All righ</p>
+        </footer>
+    </div>
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script>
+    //刷新验证码
+    function reloadImage(url) {
+        document.getElementById('validateCodeForRegSupp').src = url + "?id="+ Math.random();
+    }
+
+    //提交按钮
+    function submitForm(reForm){
+        var rightList=$("#rightList option");
+        if(rightList.length==0){
+            $("#rightList").focus();
+            $("#selectOne").show();
+            return "";
+        }
+        for(var y = 0 ; y < rightList.length; y++){
+            $(rightList[y]).prop("selected","selected");
+        }
+        reForm.submit();
+    }
+
+
+    //工艺2.0 升序一个工艺 -peter
+    function rightListUp(){
+        $("#categoryTip,#selectOne").hide();
+        var rightList=$("#rightList :selected"); //右侧选择的工艺
+        if(rightList.length > 1 || rightList.length == 0){
+            return "";
+        }
+        $(rightList).prev().before(rightList);
+    }
+
+
+    //工艺2.0 降序一个工艺 -peter
+    function rightListDown(){
+        $("#categoryTip,#selectOne").hide();
+        var rightList=$("#rightList :selected"); //右侧选择的工艺
+
+        if(rightList.length > 1 || rightList.length == 0){
+            console.log("请选择单个工艺进行排序！");
+            return "";
+        }
+        $(rightList).next().after(rightList);
+    }
+
+
+    //工艺2.0 添加选中的工艺 -peter
+    function addCategory(){
+        var addList=[];
+        var htmlStr="";
+        var leftList=$("#leftList :selected"); //左侧选择的工艺
+        var rightList=$("#rightList option"); //右侧的工艺
+
+        if(leftList.length+rightList.length > 5){
+            $("#categoryTip").show();
+            return "";
+        }else{
+            $("#categoryTip,#selectOne").hide();
+        }
+
+        for(var y = 0 ; y < leftList.length; y++){
+            var addObj={};
+            addObj['key']=leftList[y].value; //工艺id
+            addObj['value']=leftList[y].text; //工艺名字
+            leftList[y].style.backgroundColor='#bcbcbc'; //背景颜色
+            leftList[y].style.color='#666666';	//字体颜色
+            $(leftList[y]).attr("disabled","disabled");
+            $(leftList[y]).removeAttr("selected");
+            addList.push(addObj);  //添加到数组
+        }
+
+        for(var x = 0 ; x < addList.length ; x++){
+            htmlStr+="<option value="+addList[x].key+" >"+addList[x].value.trim()+"</option>";
+        }
+
+        $("#rightList").append(htmlStr);
+    }
+
+    //工艺2.0 删除选中的工艺 -peter
+    function delCategory(){
+        $("#categoryTip,#selectOne").hide();
+        var delList=[];
+        var rightList=$("#rightList :selected"); //右侧选中的工艺
+        var rightOptionList=$("#rightList option"); //右侧所有的工艺
+        var leftList=$("#leftList :disabled"); //左侧被禁用的工艺
+
+        if(rightOptionList.length==rightList.length){
+            $("#selectOne").show();
+        }else{
+            $("#selectOne").hide();
+        }
+
+        for(var y = 0 ; y < rightList.length; y++){
+            delList.push(rightList[y].value);  //工艺id
+        }
+        rightList.remove();
+
+        for(var i = 0 ; i < leftList.length ; i++){
+            for(var x = 0 ; x < delList.length; x++){
+                if(leftList[i].value==delList[x]){
+                    $(leftList[i]).removeAttr("disabled");
+                    leftList[i].style.backgroundColor=''; //背景颜色
+                    leftList[i].style.color='';	//字体颜色
+                }
+            }
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

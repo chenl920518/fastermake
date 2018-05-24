@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:task="http://www.springframework.org/schema/task"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+<!-- 	<context:component-scan base-package="com.cbt.*" >       -->
+<!--     <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />     -->
+<!--     </context:component-scan>  -->
+<context:component-scan base-package="com.cbt.controller" />
+	<!-- <mvc:annotation-driven /> -->
+	<mvc:annotation-driven>
+	    <mvc:message-converters register-defaults="true">
+	        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	            <property name="objectMapper">
+	                <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+	                    <property name="serializationInclusion">
+	                        <value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
+	                    </property>
+	                </bean>
+	            </property>
+	        </bean>
+	    </mvc:message-converters>
+	</mvc:annotation-driven>
+    <task:annotation-driven/>
+
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- <property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" /> -->
+	</bean>
+	
+	<!-- 资源映射 -->
+	<!-- 
+	<mvc:resources location="/WEB-INF/css/" mapping="/css/**" />
+	<mvc:resources location="/WEB-INF/js/" mapping="/js/**" />
+	 -->
+	<!-- 
+	<mvc:resources location="/apa/" mapping="/apa/**" />
+	<mvc:resources location="/ckeditor/" mapping="/ckeditor/**" />
+	<mvc:resources location="/ckfinder/" mapping="/ckfinder/**" />
+	<mvc:resources location="/css/" mapping="/css/**" />
+	<mvc:resources location="/img/" mapping="/img/**" />
+	<mvc:resources location="/js/" mapping="/js/**" />
+	<mvc:resources location="/mapa/" mapping="/mapa/**" />
+	<mvc:resources location="/mcss/" mapping="/mcss/**" />
+	<mvc:resources location="/mimg/" mapping="/mimg/**" />
+	<mvc:resources location="/mjs/" mapping="/mjs/**" />
+	 -->
+	
+	
+	<!-- 定义文件上传解析器 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<!-- 30*1024*1024 -->
+		<property name="maxUploadSize" value="31457280"></property>
+	</bean>
+	
+	<!-- jackson congfig -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="mappingJacksonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	<aop:aspectj-autoproxy/>
+	<bean class="com.cbt.interceptor.ControlInterceptor" />
+</beans>

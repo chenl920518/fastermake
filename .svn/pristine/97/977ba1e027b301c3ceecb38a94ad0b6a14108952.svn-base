@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.dao.QuoteInfoMapper">
+  <resultMap id="BaseResultMap" type="com.cbt.entity.QuoteInfo">
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="customer_type" jdbcType="INTEGER" property="customerType" />
+    <result column="confidentiality_agreement" jdbcType="INTEGER" property="confidentialityAgreement" />
+    <result column="quote_end_date" jdbcType="DATE" property="quoteEndDate" />
+    <result column="main_process" jdbcType="VARCHAR" property="mainProcess" />
+    <result column="quote_way" jdbcType="INTEGER" property="quoteWay" />
+    <result column="quote_freight_term" jdbcType="VARCHAR" property="quoteFreightTerm" />
+    <result column="shipping_address1" jdbcType="VARCHAR" property="shippingAddress1" />
+    <result column="shipping_address2" jdbcType="VARCHAR" property="shippingAddress2" />
+    <result column="shipping_address3" jdbcType="VARCHAR" property="shippingAddress3" />
+    <result column="invite_factory" jdbcType="VARCHAR" property="inviteFactory" />
+     <result column="invite_factory_name" jdbcType="VARCHAR" property="inviteFactoryName" />
+    <result column="invite_status" jdbcType="INTEGER" property="inviteStatus" />
+    <result column="payment_term" jdbcType="VARCHAR" property="paymentTerm" />
+    <result column="quote_location" jdbcType="INTEGER" property="quoteLocation" />
+    <result column="staff_number" jdbcType="VARCHAR" property="staffNumber" />
+    <result column="qualification" jdbcType="VARCHAR" property="qualification" />
+    <result column="order_status" jdbcType="INTEGER" property="orderStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="publish_date" jdbcType="DATE" property="publishDate" />
+    <result column="quote_remark" jdbcType="LONGVARCHAR" property="quoteRemark" />
+    <result column="current_number" jdbcType="INTEGER" property="currentNumber" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="quote_purpose" jdbcType="INTEGER" property="quotePurpose"/>   
+    <result column="quote_title" jdbcType="VARCHAR" property="quoteTitle"/>
+    <result column="city" jdbcType="VARCHAR" property="city"/>
+    <result column="confidentiality_file_path" jdbcType="VARCHAR" property="filePath"/>
+    <result column="main_category" jdbcType="INTEGER" property="mainCategory"/>
+    <result column="csg_order_id" jdbcType="VARCHAR" property="csgOrderId"/>
+    <result column="equipment_keywords" jdbcType="VARCHAR" property="equipmentKeywords"/>
+     <result column="is_equipment_list" jdbcType="INTEGER" property="isequipmentList"/>
+    <result column="product_keywords" jdbcType="VARCHAR" property="productKeywords"/>
+    <result column="confirm_factory_id" jdbcType="VARCHAR" property="confirmFactoryId"/>
+    <result column="no_pass_reasons" jdbcType="VARCHAR" property="noPassReasons"/>
+    <result column="follow_status" jdbcType="INTEGER" property="followStatus"/>    
+    <result column="inquiry_status" jdbcType="INTEGER" property="inquiryStatus"/>
+    <result column="inspection_status" jdbcType="INTEGER" property="inspectionStatus"/>
+    <result column="inspection_path" jdbcType="VARCHAR" property="inspectionPath"/>
+    <result column="inspection_upload_time" jdbcType="TIMESTAMP" property="inspectionUploadTime"/>
+    <result column="quote_detail" jdbcType="VARCHAR" property="quoteDetail"/>
+    
+    <!-- 自营添加销售、报价员   2018/1/22 -->
+    <result column="quoter" jdbcType="VARCHAR" property="quoter"/>
+    <result column="initial_sales" jdbcType="VARCHAR" property="initialSales"/>
+    <result column="follow_sales" jdbcType="VARCHAR" property="followSales"/>
+    <result column="contact_tel" jdbcType="VARCHAR" property="contactTel"/>
+    <result column="price_assistant" jdbcType="VARCHAR" property="priceAssistant"/>
+    
+    <!-- 添加 2018/4/26 -->
+    <result column="order_end_date" jdbcType="DATE" property="orderEndDate"/>
+    <result column="order_factory_name" jdbcType="VARCHAR" property="orderFactoryName"/>
+    <result column="total_amount" jdbcType="DOUBLE" property="totalAmount"/>
+    <result column="follow_status_quotation" jdbcType="INTEGER" property="followStatusQuotation"/>
+    <result column="follow_detail" jdbcType="VARCHAR" property="followDetail"/>
+    <result column="follow_time" jdbcType="TIMESTAMP" property="followTime"/>
+    
+    
+    
+    <result column="drawing_path" jdbcType="VARCHAR" property="drawingPath" />
+    <result column="drawing_name" jdbcType="VARCHAR" property="drawingName"/>
+    <result column="confidentiality_file_name" jdbcType="VARCHAR" property="confidentialityFileName"/>
+    <result column="delivery_date" jdbcType="DATE" property="deliveryDate" />
+    <result column="library_factory_id" jdbcType="VARCHAR" property="libraryFactoryId" />
+    <!-- 虚拟字段 -->
+    <result column="factory_name" jdbcType="VARCHAR" property="factoryName" />
+    <result column="quoter_photo" jdbcType="VARCHAR" property="quoterPhoto" />
+    <result column="sales_photo" jdbcType="VARCHAR" property="salesPhoto" />
+    <result column="sales_short_name" jdbcType="VARCHAR" property="salesShortName" />
+    <result column="quoter_short_name" jdbcType="VARCHAR" property="quoterShortName" />
+    <result column="assistant_short_name" jdbcType="VARCHAR" property="assistantShortName"/>
+    <result column="assistant_photo" jdbcType="VARCHAR" property="assistantPhoto" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_id,customer_id,  customer_type, confidentiality_agreement, quote_end_date, 
+    main_process, quote_way, quote_freight_term, shipping_address1, shipping_address2, 
+    shipping_address3, invite_factory,invite_factory_name, invite_status, payment_term, quote_location, staff_number, 
+    qualification, order_status, create_time, update_time, publish_date,quote_remark,current_number,
+    country,quote_purpose,quote_title,city,confidentiality_file_path,csg_order_id,equipment_keywords,
+    product_keywords, drawing_path ,delivery_date,confirm_factory_id,no_pass_reasons,drawing_name,confidentiality_file_name,
+    library_factory_id ,follow_status, inquiry_status,inspection_status,inspection_path,inspection_upload_time,quoter,
+    initial_sales,follow_sales,contact_tel,price_assistant,quote_detail,total_amount,order_factory_name,order_end_date, 
+    follow_status_quotation, follow_detail,follow_time     
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" /> 
+    from quote_info
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+   <resultMap id="alldetailResultMap" extends="BaseResultMap"
+		type="com.cbt.entity.QuoteInfo">
+		<collection property="products" ofType="com.cbt.entity.QuoteProduct">
+			<id column="product_id" property="id" jdbcType="INTEGER" />
+			<result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+			<result column="order_id" jdbcType="INTEGER" property="orderId" />
+			<result column="product_name" jdbcType="VARCHAR" property="productName" />
+			<result column="materials" jdbcType="VARCHAR" property="materials" />
+			<result column="process" jdbcType="VARCHAR" property="process" />
+			<result column="quantity_list" jdbcType="VARCHAR" property="quantityList" />
+			<result column="quantity_unit" jdbcType="VARCHAR" property="quantityUnit" />
+			<result column="delivery_date" jdbcType="DATE" property="deliveryDate" />
+			<result column="drawing_path" jdbcType="VARCHAR" property="drawingPath" />
+			<result column="drawing_path_compress" jdbcType="VARCHAR" property="drawingPathCompress" />
+			<result column="annual_quantity" jdbcType="VARCHAR" property="annualQuantity" />
+			<result column="target_price" jdbcType="DOUBLE" property="targetPrice" />
+			<result column="target_price_status" jdbcType="INTEGER" property="targetPriceStatus" />
+			<result column="delivery_type" jdbcType="INTEGER" property="deliveryType" />
+			<result column="product_remark" jdbcType="LONGVARCHAR" property="productRemark" />			
+			<result column="weight" jdbcType="DOUBLE" property="weight" />			
+			<result column="file_parh" jdbcType="VARCHAR" property="fileParh"/>
+			<result column="country" jdbcType="VARCHAR" property="country"/>
+			<result column="quote_location" jdbcType="INTEGER" property="state"/>
+			<result column="publish_date" jdbcType="DATE" property="publishDate"/>
+			<result column="cgs_quotation_id" jdbcType="INTEGER" property="cgsQuotationId"/>   
+			<result column="quote_title" jdbcType="VARCHAR" property="quoteTitle"/>
+			<result column="collect_state" jdbcType="INTEGER" property="collectState"/>   
+			<result column="quote_state" jdbcType="INTEGER" property="quoteState"/>   
+			<result column="order_status" jdbcType="INTEGER" property="orderStatus"/>   
+		</collection>
+		
+	</resultMap>
+	
+	
+  <sql id="Base_info_Column_List">
+    a.order_id,
+    a.customer_id,
+    a.customer_type,
+    a.confidentiality_agreement,
+    a.quote_end_date,
+    a.main_process,
+    a.quote_way,
+    a.quote_freight_term,
+    a.shipping_address1,
+    a.shipping_address2,
+    a.shipping_address3,
+    a.invite_factory,
+    a.invite_factory_name,
+    a.invite_status,
+    a.payment_term,
+    a.quote_location,
+    a.staff_number,
+    a.qualification,
+    a.order_status,
+    a.create_time,
+    a.update_time,
+    a.publish_date,
+    a.quote_remark,
+    a.current_number,
+    a.country,
+    a.quote_purpose,
+    a.quote_title,
+    a.city,
+    a.confidentiality_file_path,
+    a.main_category,
+    a.csg_order_id,
+    a.equipment_keywords,
+    a.product_keywords,
+    a.confirm_factory_id,
+    a.drawing_path,
+    a.drawing_name,
+    a.confidentiality_file_name,
+    a.delivery_date,
+	a.no_pass_reasons,
+	a.is_equipment_list,
+	a.library_factory_id
+  </sql>
+	
+	 <sql id="Base_product_Column_List">
+     c.id as product_id , c.customer_id, c.order_id, c.product_name, c.materials, c.process, c.quantity_list, c.quantity_unit, 
+     c.annual_quantity, c.target_price, 
+    c.target_price_status, c.delivery_type,c.product_remark,c.weight,c.cgs_quotation_id  
+    </sql>
+	
+  
+   <select id="selectDetailByPrimaryKey"  resultMap="alldetailResultMap">
+    select 
+    <include refid="Base_info_Column_List" />,
+    <include refid="Base_product_Column_List" />
+    from quote_info a left join quote_product c on c.order_id = a.order_id
+    where a.order_id = #{orderId,jdbcType=INTEGER}
+ 
+       <if test="buyerId!=null">
+          and a.customer_id = #{buyerId,jdbcType=VARCHAR}
+      </if>
+     
+  </select>
+  
+  
+   <select id="selectDetailListByFactoryId"  resultMap="alldetailResultMap">
+    select 
+    <include refid="Base_info_Column_List" />,
+    <include refid="Base_product_Column_List" />
+    from quote_info a left join quote_product c on c.order_id = a.order_id
+    where 
+ 
+        a.customer_id = #{customerId,jdbcType=VARCHAR}
+        
+        and a.order_status = #{orderStatus,jdbcType=INTEGER}
+
+  </select>
+  
+  <!-- 根据项目查询状态不为已取消的询盘 -->
+  <select id="queryByCgsOrderId" resultMap="BaseResultMap">
+    select  *  from quote_info  where csg_order_id = #{csgOrderId,jdbcType=VARCHAR} and order_status != 3
+  </select>
+  
+  
+  
+  <select id="queryByOrderId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+     select q.*,f.factory_name,s1.photo as sales_photo,s2.photo as quoter_photo,s1.short_name as sales_short_name,
+     s2.short_name as quoter_short_name,s3.photo as assistant_photo,s3.short_name as assistant_short_name from quote_info q 
+     left join factory_info f  
+     on 
+     q.customer_id = f.factory_id   
+     left join sys_user s1   
+     on q.initial_sales = s1.login_name   
+     left join sys_user s2    
+     on q.quoter = s2.login_name    
+     left join sys_user s3    
+     on q.price_assistant = s3.login_name    
+     where q.order_id = #{orderId,jdbcType=INTEGER} 
+     
+  </select>
+  <select id="queryByOrderIdAndFactoryId" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" /> 
+    from quote_info
+    where order_id = #{orderId,jdbcType=INTEGER}  
+    and  customer_id = #{customerId,jdbcType=VARCHAR}  
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from quote_info
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  
+  <!-- 根据多种状态查询询盘 -->
+  <select id="queryOrderFactoryList" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"/>   
+      from quote_info 
+      where order_status in 
+            <foreach collection="item" index="index" item="item" separator="," open="(" close=")"> 
+	        #{item,jdbcType=INTEGER}
+           </foreach>                  
+  </select>
+  
+  
+  <insert id="insert" parameterType="com.cbt.entity.QuoteInfo" useGeneratedKeys="true"  keyProperty="orderId">
+    insert into quote_info (customer_id,
+      customer_type, confidentiality_agreement, 
+      quote_end_date, main_process, quote_way, 
+      quote_freight_term, shipping_address1, shipping_address2, 
+      shipping_address3, invite_factory,invite_factory_name, invite_status, 
+      payment_term, quote_location, staff_number,city, 
+      qualification, order_status, create_time, inquiry_status,follow_status,
+      update_time, publish_date, quote_remark,country,
+      csg_order_id,equipment_keywords,product_keywords,quote_title,delivery_date,drawing_path,
+      drawing_name,confidentiality_file_name,quoter, initial_sales,follow_sales,contact_tel,price_assistant,quote_detail           
+      )
+    values ( #{customerId,jdbcType=VARCHAR},
+      #{customerType,jdbcType=INTEGER}, #{confidentialityAgreement,jdbcType=INTEGER}, 
+      #{quoteEndDate,jdbcType=DATE}, #{mainProcess,jdbcType=VARCHAR}, #{quoteWay,jdbcType=INTEGER}, 
+      #{quoteFreightTerm,jdbcType=VARCHAR}, #{shippingAddress1,jdbcType=VARCHAR}, #{shippingAddress2,jdbcType=VARCHAR}, 
+      #{shippingAddress3,jdbcType=VARCHAR}, #{inviteFactory,jdbcType=VARCHAR}, #{inviteFactoryName,jdbcType=VARCHAR},#{inviteStatus,jdbcType=INTEGER}, 
+      #{paymentTerm,jdbcType=VARCHAR}, #{quoteLocation,jdbcType=INTEGER}, #{staffNumber,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR},
+      #{qualification,jdbcType=VARCHAR}, #{orderStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},#{inquiryStatus,jdbcType=INTEGER},#{followStatus,jdbcType=INTEGER},
+      #{updateTime,jdbcType=TIMESTAMP}, #{publishDate,jdbcType=DATE}, #{quoteRemark,jdbcType=LONGVARCHAR},
+      #{country,jdbcType=VARCHAR} ,#{csgOrderId,jdbcType=VARCHAR},#{equipmentKeywords,jdbcType=VARCHAR},  
+      #{productKeywords,jdbcType=VARCHAR}, #{quoteTitle,jdbcType=VARCHAR},#{deliveryDate,jdbcType=DATE},
+      #{drawingPath,jdbcType=VARCHAR},#{drawingName,jdbcType=VARCHAR}, #{confidentialityFileName,jdbcType=VARCHAR},
+      #{quoter,jdbcType=VARCHAR},#{initialSales,jdbcType=VARCHAR},#{followSales,jdbcType=VARCHAR},#{contactTel,jdbcType=VARCHAR},#{priceAssistant,jdbcType=VARCHAR},#{quoteDetail,jdbcType=VARCHAR}  
+      )
+  </insert>
+  
+ 
+  
+    <insert id="insertBackOrderId" parameterType="com.cbt.entity.QuoteInfo"  useGeneratedKeys="true"  keyProperty="orderId">
+    insert into quote_info ( customer_id,  
+      customer_type, confidentiality_agreement, 
+      quote_end_date, main_process, quote_way, 
+      quote_freight_term, shipping_address1, shipping_address2, 
+      shipping_address3, invite_factory, invite_factory_name,invite_status, 
+      payment_term, quote_location, staff_number, 
+      qualification, order_status, create_time, 
+      update_time, publish_date, quote_remark,country,quote_purpose,quote_title,city,confidentiality_file_path,main_category,drawing_path ,delivery_date,
+      drawing_name,confidentiality_file_name,current_number,csg_order_id,equipment_keywords,product_keywords,confirm_factory_id,no_pass_reasons,is_equipment_list,
+      library_factory_id
+      )
+    values ( #{customerId,jdbcType=VARCHAR},  
+      #{customerType,jdbcType=INTEGER}, #{confidentialityAgreement,jdbcType=INTEGER}, 
+      #{quoteEndDate,jdbcType=DATE}, #{mainProcess,jdbcType=VARCHAR}, #{quoteWay,jdbcType=INTEGER}, 
+      #{quoteFreightTerm,jdbcType=VARCHAR}, #{shippingAddress1,jdbcType=VARCHAR}, #{shippingAddress2,jdbcType=VARCHAR}, 
+      #{shippingAddress3,jdbcType=VARCHAR}, #{inviteFactory,jdbcType=VARCHAR}, #{inviteFactoryName,jdbcType=VARCHAR},#{inviteStatus,jdbcType=INTEGER}, 
+      #{paymentTerm,jdbcType=VARCHAR}, #{quoteLocation,jdbcType=INTEGER}, #{staffNumber,jdbcType=VARCHAR}, 
+      #{qualification,jdbcType=VARCHAR}, #{orderStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{publishDate,jdbcType=DATE}, #{quoteRemark,jdbcType=LONGVARCHAR},
+      #{country,jdbcType=VARCHAR},
+      #{quotePurpose,jdbcType=INTEGER},#{quoteTitle,jdbcType=VARCHAR},#{city,jdbcType=VARCHAR},#{filePath,jdbcType=VARCHAR}, #{mainCategory,jdbcType=INTEGER},
+      #{drawingPath,jdbcType=VARCHAR}, #{deliveryDate,jdbcType=DATE},#{drawingName,jdbcType=VARCHAR}, #{confidentialityFileName,jdbcType=VARCHAR},
+	  #{currentNumber,jdbcType=INTEGER}, #{csgOrderId,jdbcType=VARCHAR},#{equipmentKeywords,jdbcType=VARCHAR},#{productKeywords,jdbcType=VARCHAR},#{confirmFactoryId,jdbcType=VARCHAR},
+	  #{noPassReasons,jdbcType=VARCHAR},#{isequipmentList,jdbcType=INTEGER}, #{libraryFactoryId,jdbcType=VARCHAR})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.cbt.entity.QuoteInfo">
+    insert into quote_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="customerType != null">
+        customer_type,
+      </if>
+      <if test="confidentialityAgreement != null">
+        confidentiality_agreement,
+      </if>
+      <if test="quoteEndDate != null">
+        quote_end_date,
+      </if>
+      <if test="mainProcess != null">
+        main_process,
+      </if>
+      <if test="quoteWay != null">
+        quote_way,
+      </if>
+      <if test="quoteFreightTerm != null">
+        quote_freight_term,
+      </if>
+      <if test="shippingAddress1 != null">
+        shipping_address1,
+      </if>
+      <if test="shippingAddress2 != null">
+        shipping_address2,
+      </if>
+      <if test="shippingAddress3 != null">
+        shipping_address3,
+      </if>
+      <if test="inviteFactory != null">
+        invite_factory,
+      </if>
+      <if test="inviteStatus != null">
+        invite_status,
+      </if>
+      <if test="paymentTerm != null">
+        payment_term,
+      </if>
+      <if test="quoteLocation != null">
+        quote_location,
+      </if>
+      <if test="staffNumber != null">
+        staff_number,
+      </if>
+      <if test="qualification != null">
+        qualification,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="publishDate != null">
+        publish_date,
+      </if>
+      <if test="quoteRemark != null">
+        quote_remark,
+      </if>
+      <if test="drawingPath != null">
+        drawing_path,
+      </if>
+      <if test="deliveryDate != null">
+        delivery_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerType != null">
+        #{customerType,jdbcType=INTEGER},
+      </if>
+      <if test="confidentialityAgreement != null">
+        #{confidentialityAgreement,jdbcType=INTEGER},
+      </if>
+      <if test="quoteEndDate != null">
+        #{quoteEndDate,jdbcType=DATE},
+      </if>
+      <if test="mainProcess != null">
+        #{mainProcess,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteWay != null">
+        #{quoteWay,jdbcType=INTEGER},
+      </if>
+      <if test="quoteFreightTerm != null">
+        #{quoteFreightTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingAddress1 != null">
+        #{shippingAddress1,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingAddress2 != null">
+        #{shippingAddress2,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingAddress3 != null">
+        #{shippingAddress3,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteFactory != null">
+        #{inviteFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteStatus != null">
+        #{inviteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="paymentTerm != null">
+        #{paymentTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteLocation != null">
+        #{quoteLocation,jdbcType=INTEGER},
+      </if>
+      <if test="staffNumber != null">
+        #{staffNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="qualification != null">
+        #{qualification,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishDate != null">
+        #{publishDate,jdbcType=DATE},
+      </if>
+      <if test="quoteRemark != null">
+        #{quoteRemark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="drawingPath != null">
+         #{drawingPath,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryDate != null">
+         #{deliveryDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cbt.entity.QuoteInfo">
+    update quote_info
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerType != null">
+        customer_type = #{customerType,jdbcType=INTEGER},
+      </if>
+      <if test="confidentialityAgreement != null">
+        confidentiality_agreement = #{confidentialityAgreement,jdbcType=INTEGER},
+      </if>
+      <if test="quoteEndDate != null">
+        quote_end_date = #{quoteEndDate,jdbcType=DATE},
+      </if>
+      <if test="mainProcess != null">
+        main_process = #{mainProcess,jdbcType=VARCHAR},
+      </if>
+      <if test="qualification != null">
+        qualification = #{qualification,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteWay != null">
+        quote_way = #{quoteWay,jdbcType=INTEGER},
+      </if>
+      <if test="quoteFreightTerm != null">
+        quote_freight_term = #{quoteFreightTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingAddress1 != null">
+        shipping_address1 = #{shippingAddress1,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingAddress2 != null">
+        shipping_address2 = #{shippingAddress2,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingAddress3 != null">
+        shipping_address3 = #{shippingAddress3,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteFactory != null">
+        invite_factory = #{inviteFactory,jdbcType=VARCHAR},
+      </if>
+       <if test="inviteFactoryName != null">
+        invite_factory_name = #{inviteFactoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteStatus != null">
+        invite_status = #{inviteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="paymentTerm != null">
+        payment_term = #{paymentTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteLocation != null">
+        quote_location = #{quoteLocation,jdbcType=INTEGER},
+      </if>
+      <if test="staffNumber != null">
+        staff_number = #{staffNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="qualification != null">
+        qualification = #{qualification,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishDate != null">
+        publish_date = #{publishDate,jdbcType=DATE},
+      </if>
+      <if test="quoteRemark != null">
+        quote_remark = #{quoteRemark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="currentNumber != null">
+        current_number = #{currentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="drawingPath != null">
+        drawing_path = #{drawingPath,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryDate != null">
+         delivery_date = #{deliveryDate,jdbcType=DATE},
+      </if>
+      <if test="confirmFactoryId != null">
+        confirm_factory_id = #{confirmFactoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="noPassReasons != null">
+        no_pass_reasons = #{noPassReasons,jdbcType=VARCHAR},
+      </if>
+      <if test="quotePurpose != null">
+         quote_purpose = #{quotePurpose,jdbcType=INTEGER},
+      </if>
+      <if test="quoteTitle != null">
+        quote_title = #{quoteTitle,jdbcType=VARCHAR},
+      </if>
+	  <if test="filePath != null">
+         confidentiality_file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="mainCategory != null">
+        main_category = #{mainCategory,jdbcType=INTEGER}, 
+      </if>
+      <if test="csgOrderId != null">
+         csg_order_id = #{csgOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentKeywords != null">
+        equipment_keywords = #{equipmentKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="productKeywords != null">
+         product_keywords = #{productKeywords,jdbcType=VARCHAR}, 
+      </if>
+      <if test="drawingName != null">
+        drawing_name = #{drawingName,jdbcType=VARCHAR},
+      </if>
+       <if test="confidentialityFileName != null">
+	       confidentiality_file_name = #{confidentialityFileName,jdbcType=VARCHAR},
+	   </if>	  
+       <if test="isequipmentList != null">
+	       is_equipment_list = #{isequipmentList,jdbcType=INTEGER},
+       </if>
+        <if test="libraryFactoryId != null">
+	       library_factory_id = #{libraryFactoryId,jdbcType=VARCHAR},
+       </if>
+        <if test="followStatus != null">
+	       follow_status = #{followStatus,jdbcType=INTEGER},
+       </if>
+        <if test="inquiryStatus != null">
+	       inquiry_status = #{inquiryStatus,jdbcType=INTEGER},
+       </if>
+        <if test="inspectionStatus != null">
+	       inspection_status = #{inspectionStatus,jdbcType=INTEGER},
+       </if>
+        <if test="inspectionPath != null">
+	       inspection_path = #{inspectionPath,jdbcType=VARCHAR},
+       </if>
+        <if test="inspectionUploadTime != null">
+	       inspection_upload_time = #{inspectionUploadTime,jdbcType=TIMESTAMP},
+       </if>
+        <if test="priceAssistant != null">
+	       price_assistant = #{priceAssistant,jdbcType=VARCHAR},
+       </if>
+        <if test="totalAmount != null">
+	       total_amount = #{totalAmount,jdbcType=DOUBLE},
+       </if>
+        <if test="orderEndDate != null">
+	       order_end_date = #{orderEndDate,jdbcType=DATE},
+       </if>
+        <if test="orderFactoryName != null">
+	       order_factory_name = #{orderFactoryName,jdbcType=VARCHAR},
+       </if>
+        <if test="followStatusQuotation != null">
+	       follow_status_quotation = #{followStatusQuotation,jdbcType=INTEGER},
+       </if>
+        <if test="followDetail != null">
+	       follow_detail = #{followDetail,jdbcType=VARCHAR},
+       </if>
+        <if test="followTime != null">
+	       follow_time = #{followTime,jdbcType=TIMESTAMP},
+       </if>
+       
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cbt.entity.QuoteInfo">
+    update quote_info
+    set customer_id = #{customerId,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      customer_type = #{customerType,jdbcType=INTEGER},
+      confidentiality_agreement = #{confidentialityAgreement,jdbcType=INTEGER},
+      quote_end_date = #{quoteEndDate,jdbcType=DATE},
+      main_process = #{mainProcess,jdbcType=VARCHAR},
+      quote_way = #{quoteWay,jdbcType=INTEGER},
+      quote_freight_term = #{quoteFreightTerm,jdbcType=VARCHAR},
+      shipping_address1 = #{shippingAddress1,jdbcType=VARCHAR},
+      shipping_address2 = #{shippingAddress2,jdbcType=VARCHAR},
+      shipping_address3 = #{shippingAddress3,jdbcType=VARCHAR},
+      invite_factory = #{inviteFactory,jdbcType=VARCHAR},
+      invite_status = #{inviteStatus,jdbcType=INTEGER},
+      payment_term = #{paymentTerm,jdbcType=VARCHAR},
+      quote_location = #{quoteLocation,jdbcType=INTEGER},
+      staff_number = #{staffNumber,jdbcType=VARCHAR},
+      qualification = #{qualification,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      publish_date = #{publishDate,jdbcType=DATE},
+      quote_remark = #{quoteRemark,jdbcType=LONGVARCHAR}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cbt.entity.QuoteInfo">
+    update quote_info
+    set customer_id = #{customerId,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      customer_type = #{customerType,jdbcType=INTEGER},
+      confidentiality_agreement = #{confidentialityAgreement,jdbcType=INTEGER},
+      quote_end_date = #{quoteEndDate,jdbcType=DATE},
+      city = #{city,jdbcType=VARCHAR},
+      main_process = #{mainProcess,jdbcType=VARCHAR},
+      quote_way = #{quoteWay,jdbcType=INTEGER},
+      quote_freight_term = #{quoteFreightTerm,jdbcType=VARCHAR},
+      shipping_address1 = #{shippingAddress1,jdbcType=VARCHAR},
+      shipping_address2 = #{shippingAddress2,jdbcType=VARCHAR},
+      shipping_address3 = #{shippingAddress3,jdbcType=VARCHAR},
+      invite_factory = #{inviteFactory,jdbcType=VARCHAR},
+      invite_factory_name = #{inviteFactoryName,jdbcType=VARCHAR},
+      invite_status = #{inviteStatus,jdbcType=INTEGER},
+      payment_term = #{paymentTerm,jdbcType=VARCHAR},
+      quote_location = #{quoteLocation,jdbcType=INTEGER},
+      staff_number = #{staffNumber,jdbcType=VARCHAR},
+      qualification = #{qualification,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      publish_date = #{publishDate,jdbcType=DATE}
+      where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 根据询盘状态查询 -->
+  <select id="queryAllInquiryOrder" resultMap="BaseResultMap">
+     select  
+     <include refid="Base_Column_List"/>
+     from quote_info   
+     where  1=1  
+     <if test="orderStatus != null"> 
+        and order_status = #{orderStatus,jdbcType=INTEGER}
+     </if>
+      order by create_time desc limit #{start}, #{pageSize}  
+  </select>
+  <!-- 根据询盘状态查询 -->
+  <select id="queryAll" resultMap="BaseResultMap">
+     select  
+     <include refid="Base_Column_List"/>
+     from quote_info   
+     where  1=1  
+     <if test="orderStatus != null"> 
+        and order_status = #{orderStatus,jdbcType=INTEGER}
+     </if>
+      order by create_time desc   
+  </select>
+  
+  <!-- 根据询盘状态查询询盘数 -->
+  <select id="totalNormalOrder" resultType="int"> 
+    select count(order_id) from quote_info  where  1=1     
+   <if test="orderStatus != null">
+        and order_status = #{orderStatus,jdbcType=INTEGER}
+   </if>
+  </select>
+  
+  
+  <!-- 根据项目号和状态查询询盘数量 -->
+  <select id="queryCountByCgsOrderId" resultType="int"> 
+    select count(1) from quote_info  where    
+    csg_order_id = #{csgOrderId,jdbcType=VARCHAR}  
+   <if test="orderStatus != null">
+     and order_status = #{orderStatus,jdbcType=INTEGER}
+   </if>
+  </select>
+  
+  
+ 
+</mapper>

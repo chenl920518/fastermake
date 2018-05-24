@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<meta name="Keywords"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<meta name="Description"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<title>快制造-产品库</title>
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/css.css" />
+<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script src="/lib/respond/respond.js"></script>
+<style>
+@media ( min-width : 1200px) {
+	.container {
+		width: 1200px;
+		background-color: #fff;
+		margin-top: 20px;
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+.compressimg {
+	width: 64px;
+	height: 84px;
+}
+
+.img-size {
+	height: 300px;
+	width: 300px;
+	text-align: center;
+}
+
+.img-size1 {
+	height: 220px;
+	width: 220px;
+	text-align: center;
+}
+
+.media-object-product {
+	height: 300px;
+	line-height: 300px;
+	vertical-align: middle;
+}
+
+.sup-prod-bg-photo {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	display: none;
+	line-height: 466px;
+	overflow: hidden;
+	position: absolute;
+	top: 30px;
+	width: 649px;
+	text-align: center;
+	z-index: 999;
+}
+
+.sup-prod-bg-photo img {
+	max-width: 649px;
+	max-height: 466px;
+}
+
+.factoryLogo {
+	border-radius: 50%;
+	height: 85px;
+	width: 85px;
+}
+
+.s20 {
+	padding-top: 10px;
+}
+
+.notPic {
+	background: url(/images/products/xin.png) no-repeat;
+}
+
+.likePic {
+	background: url(/images/products/redxin.png) no-repeat;
+}
+
+.imgPic {
+	display: inline-block;
+	margin-top: 10px;
+	max-width: 220px;
+	max-heigth: 220px;
+	width: auto;
+	heigth: auto;
+}
+</style>
+</head>
+<body>
+	<div class="product_details">
+		<div class="tc beforeFoot">
+			<div class="nr">
+				<div class="close1 iconfont">&#xe643;</div>
+				<p>邀请报价类似产品</p>
+				<div class="btns">
+					<a href="###"><button class="btn btn-default btn1">现有询盘</button></a>
+					<a href="###"><button id="createNewQuote"
+							class="btn btn-default">创建新询盘</button></a>
+				</div>
+			</div>
+		</div>
+		<div id="header"></div>
+		<div class="product_detail section page1 beforeFoot">
+
+
+			<div class="panel panel-default container">
+				<div class="panel-heading">
+					<ol class="breadcrumb">
+						<li><a href="#">首页</a></li>
+						<li><a href="/zh/products.html">产品库</a></li>
+						<li class="active">产品详情</li>
+					</ol>
+				</div>
+				<div class="panel-body ">
+					<div class="media">
+						<div class="media-left">
+							<a href="#">
+								<div class="media-object media-object-js ">
+									<div class="img-size">
+										<img class="f3"
+											style="display: inline-block; margin-top: 30px;" src=""
+											alt="..." />
+
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading productName"></h4>
+							<input type="hidden" id="productId"> <input type="hidden"
+								id="factoryId"> <input type="hidden" id="buyerId">
+
+							<p>
+								<span>公司名称</span> <a href="###" class="cc0 factoryName">1111</a>
+								<a id="producta" href="javascript:void(0);" target="_blank"><button
+										class="btn btn-default btn1">查看更多产品</button></a>
+							</p>
+							<p>
+								<span>产品名称</span> <em class="productName"></em>
+							</p>
+							<p>
+								<span>工艺</span> <em id="mainProcess"></em>
+							</p>
+							<p>
+								<span>材料</span> <em id="materials"></em>
+							</p>
+							<p>
+								<span>报价范围</span> <em class="ff4" id="quote"></em>
+							</p>
+							<!-- <p>
+							<span>产能情况</span> <em>-</em>
+						</p> -->
+							<p>
+								<span>最低采购量</span> <em id="minAqmountPurchased"></em>
+							</p>
+							<p class="last_p">
+								<i id="preferencePic" class="notPic"></i>
+								<!--<i class="glyphicon glyphicon-heart"></i>-->
+								<span class="sc">收藏</span>
+								<button id="connectFactory" class="btn btn-default  btnheight">联系供应商对此进行报价</button>
+								<button class="btn btn-default btnheight btnh2"
+									style="margin-left: 20px;">邀请报价类似产品</button>
+							</p>
+							<div class="sup-prod-bg-photo" style="display: none;">
+								<img src="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="productInfo" class="container contain2">
+				<h3>
+					<i class="border_i"></i>产品介绍
+				</h3>
+
+			</div>
+			<div class="container contain2">
+				<h3>
+					<i class="border_i"></i>供应商信息
+				</h3>
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th class="eb">公司名称</th>
+								<th colspan="3" class="th2"><a id="viewFactory"
+									href="javascript:void(0);" class="factoryName" target="_blank"></a></th>
+								<!--<th ></th>-->
+								<!--<th></th>-->
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="eb">主要工艺</td>
+								<td id="factoryMainProcess">机加工 电气产品</td>
+								<td class="eb">工厂面积</td>
+								<td id="factoryAcreage"></td>
+							</tr>
+							<tr>
+								<td class="eb">成立年份</td>
+								<td id="establishmentYear"></td>
+								<td class="eb">公司地址</td>
+								<td id="detailsAddress">中国 , 广东 , 深圳 松岗街道</td>
+							</tr>
+							<tr>
+								<td class="eb">雇员数量</td>
+								<td id="staffNumber">50-99</td>
+								<td class="eb">行业类型</td>
+								<td id="industryType"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="container contain2">
+				<h3>
+					<i class="border_i"></i>关键设备清单
+				</h3>
+				<div class="table-responsive">
+					<table class="table table3">
+						<thead>
+							<tr>
+								<th class="th1"><span class="eb">设备名称</span></th>
+								<th class="th2"><span class="eb">型号</span></th>
+								<th class="th3"><span class="eb pull-left">台数</span></th>
+								<th class="thlast"><span class="eb eb_1 pull-right">备注</span></th>
+								<!--<th class="th2"><span class="eb">参数</span></th>
+							<th class="th1"><span class="eb">设备类型</span></th>-->
+							</tr>
+						</thead>
+						<tbody>
+							
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="contact_supplier page2 beforeFoot" style="display: none">
+			<div class="panel panel-default container">
+				<div class="panel-heading">
+					<ol class="breadcrumb">
+						<li><a href="#">首页</a></li>
+						<li><a href="/zh/products.html">产品库</a></li>
+						<li><a id="prodetail_href" href="">产品详情</a></li>
+						<li>联系供应商</li>
+					</ol>
+				</div>
+				<div class="panel-body">
+					<div class="media">
+						<div class="media-left">
+							<a href="#"> <img class="media-object factoryLogo"
+								src="/images/products/fang.png" alt="...">
+							</a>
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading factoryName">深圳市协创五金制品有限公司</h4>
+							<p id="userName">联系人：张三</p>
+						</div>
+					</div>
+					<div class="media media2">
+						<div class="media-left" style="">
+							<a href="#" class="">
+								<div class="media-object">
+									<div class="img-size1">
+										<img id="productPic" class="media-object imgPic"
+											src="/images/products/fang.png" alt="...">
+
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading productName"></h4>
+							<p id="productInfo2"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container contain2">
+				<form id="sendToFactory" class="form-horizontal" method="post">
+					<div class="form-group">
+
+						<input type="hidden" name="factoryId" id="formFacoryId"> <input
+							type="hidden" name="proId" id="proId"> <input
+							type="hidden" name="proName" id="proName"> <input
+							type="hidden" name="planBuyCountUnit" id="planBuyCountUnit">
+
+
+						<label for="planBuyCount" class="col-sm-2 control-label">计划采购量（选填）</label>
+						<div class="col-sm-5 posrel">
+							<input type="text" class="form-control" id="planBuyCount"
+								name="planBuyCount" placeholder="">
+						</div>
+						<div class="s20">
+							<span>123</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="planBuyPrice" class="col-sm-2 control-label">计划采购价格（选填）</label>
+						<div class="col-sm-5 posrel">
+							<input type="text" class="form-control" id="planBuyPrice"
+								name="planBuyPrice" placeholder="">
+						</div>
+						<div class="s20">
+							<span></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="planInfo" class="col-sm-2 control-label">咨询内容</label>
+						<div class="col-sm-5">
+							<textarea id="planInfo" name="planInfo" class="form-control"
+								rows="6"></textarea>
+							<span></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button id="saveButton" class="btn btn-default">发送</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+
+		</div>
+
+		<div id="footer"></div>
+	</div>
+	<!-- SEO代码 开始-->
+	<div style="display: none">
+		快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘
+
+		Keywords: <a href="https://www.kuaizhizao.cn/" title="快制造"
+			target="_blank"><strong>快制造</strong></a> <a
+			href="https://www.kuaizhizao.cn/" title="外发加工" target="_blank"><strong>外发加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑模具" target="_blank"><strong>注塑模具</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机械加工" target="_blank"><strong>机械加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金加工" target="_blank"><strong>钣金加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具厂" target="_blank"><strong>塑料模具厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑加工" target="_blank"><strong>注塑加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具设计与制造" target="_blank"><strong>塑料模具设计与制造</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸厂" target="_blank"><strong>压铸厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="零件加工" target="_blank"><strong>零件加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸加工订单" target="_blank"><strong>外贸加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="非标定制" target="_blank"><strong>非标定制</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外发订单" target="_blank"><strong>外发订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外协加工" target="_blank"><strong>外协加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="加工订单" target="_blank"><strong>加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑订单" target="_blank"><strong>注塑订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸订单" target="_blank"><strong>压铸订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金订单" target="_blank"><strong>钣金订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机加工询盘" target="_blank"><strong>机加工询盘</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸询盘" target="_blank"><strong>外贸询盘</strong></a>
+	</div>
+	<!-- SEO代码 开始-->
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="/zh/icn/product_detail.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script>
+<script>
+	$('#header').load('header.html');
+	$('#header1').load('header.html');
+	$('#footer').load('footer.html');
+
+	/* 点击，弹窗出现*/
+	$('.product_detail .btnh2').click(function() {
+		$('.product_details .tc').show();
+	})
+	/* 点击关闭按钮，弹窗消失*/
+	$('.tc .close1').click(function() {
+		$('.product_details .tc').hide();
+	})
+
+	/*
+	var productName = $('.productName').text();
+	  $('.product_detail .media-heading').html(productName);
+	 */
+</script>
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="pragram" content="no-cache">  
+	<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+	<meta http-equiv="expires" content="0">
+</head>
+	<body>		
+			<div class ="foot clearfix">
+				<a href="/m-zh/login.html" id="login" class="col-xs-8 a_border" style="display:none">登录/注册				
+					<!-- <ul class="col-xs-6 ul1">
+						<li class="li1"><a href="">会员注册</a></li>
+						<li><a href="">登录</a></li>
+					</ul> -->
+				
+				</a>
+				<div class="col-xs-8 a_border login">欢迎，<span id="username"></span>&nbsp;&nbsp;您已登录				
+					<ul class="col-xs-6 ul1">
+						<li><a href="#" onclick="exit()">退出登录</a></li>						
+					</ul> 				
+				</div>
+				<div class="col-xs-4 a_border inquiry">询盘列表				
+					<ul class="col-xs-6 ul1">		
+					    <li><a href="/m-zh/quote_list.html" class="col-xs-4">最新询盘</a></li>		
+						<li><a href="/m-zh/quote_list.html?quoteStatus=1" class="col-xs-4">已报价</a></li>						    							
+					</ul> 				
+				</div>
+<!-- 				<a href="/m-zh/quote_list.html" class="col-xs-4">最新询盘</a> -->
+			</div>
+	</body>
+</html>
+<!-- <script src="/lib/jquery/jquery.min.js"></script> -->
+<script src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script> 
+<script>
+        window.onload = window.onresize = function(){
+
+            var clientWidth =document.documentElement.clientWidth;
+
+            document.getElementsByTagName("html")[0].style.fontSize =  
+
+                    clientWidth / 1200 * 40 + "px";
+        }
+
+        
+        
+        $('#product_name').bind('input propertychange', function() {
+        	queryByKey($(this));
+        });
+        
+        
+        //根据cookie判断用户是否登录
+        var factoryInfo = getCookie("factoryInfo");
+        if(factoryInfo == null || factoryInfo == ''){       
+        	$('#login').next().hide();
+         	$('#login').show();
+        }else{
+        	var userName = getCookie("userName");
+        	if (userName != null && userName != '' && userName != undefined) {
+        		var base = new Base64();
+        		userName = base.decode(userName);
+        		$('#username').text(userName);
+        	}
+        }
+        
+        
+        //退出登录
+    	function exit(){
+            
+    		$.post("/account/clearCookie.do",
+    			function(result){
+    			if(result.state == 0){
+    				window.location = "/m-zh/login.html";
+    			}			
+    		})		
+        }
+        
+</script>
+<script>
+
+$('.foot .login').click(function(){
+	$(this).find('ul').eq(0).toggle();
+})
+$('.foot .inquiry').click(function(){
+	$(this).find('ul').toggle();
+})
+
+</script>
+
+

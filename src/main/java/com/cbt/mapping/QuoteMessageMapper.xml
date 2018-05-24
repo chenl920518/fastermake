@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cbt.dao.QuoteMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.cbt.entity.QuoteMessage" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="factory_id" property="factoryId" jdbcType="VARCHAR" />
+    <result column="file_path" property="filePath" jdbcType="VARCHAR" />
+    <result column="send_time" property="sendTime" jdbcType="TIMESTAMP" />
+    <result column="reply_status" property="replyStatus" jdbcType="INTEGER" />
+    <result column="message_details" property="messageDetails" jdbcType="VARCHAR" />
+    <result column="reply_factory_id" property="replyFactoryId" jdbcType="VARCHAR" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="factory_user_id" property="factoryUserId" jdbcType="INTEGER" />
+    
+    
+    <result column="username" property="userName" jdbcType="VARCHAR" />
+    <result column="factory_logo" property="factoryLogo" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="photo" property="photo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id,factory_id, file_path, send_time, reply_status,message_details,reply_factory_id,file_name,factory_user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from quote_message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 根据供应商ID查询消息 -->
+  <select id="queryMessageByFactoryId"  resultMap="BaseResultMap">
+      select 
+      q.id, q.order_id, q.factory_id,q.reply_factory_id, q.file_path, q.send_time, q.reply_status, q.message_details,
+      q.file_name, f.username ,f.factory_logo, u.real_name, s.photo  
+      from quote_message q left join factory_info f on q.factory_id = f.factory_id 
+      left join factory_user u on q.factory_user_id = u.id 
+      left join sys_user s on s.login_name = u.real_name         
+      where    
+       q.order_id = #{orderId,jdbcType=INTEGER}   
+       and 
+       (
+       q.factory_id = #{factoryId,jdbcType=VARCHAR}
+       or
+       q.reply_factory_id = #{factoryId,jdbcType=VARCHAR} 
+       )
+       order by q.send_time
+  </select>
+  
+  
+  <!-- 根据供应商ID查询消息 -->
+<!--   <select id="queryMessageByFactoryId"  resultMap="BaseResultMap"> -->
+<!--       select  -->
+<!--       q.id, q.order_id, q.factory_id,q.reply_factory_id, q.file_path, q.send_time, q.reply_status, q.message_details, -->
+<!--       q.file_name, f.username ,f.factory_logo , u.real_name, s.photo  -->
+<!--       from quote_message q  -->
+<!--       left join factory_info f on q.factory_id = f.factory_id  -->
+<!--       left join factory_user u on q.factory_user_id = u.id  -->
+<!--       LEFT JOIN sys_user s on s.login_name = u.real_name  -->
+<!--       order by q.send_time -->
+<!--   </select> -->
+  
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from quote_message
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cbt.entity.QuoteMessage" >
+    insert into quote_message (id, order_id, factory_id, 
+      file_path, send_time, reply_status,message_details,reply_factory_id,file_name,factory_user_id 
+      )
+    values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{factoryId,jdbcType=VARCHAR}, 
+         #{filePath,jdbcType=VARCHAR}, #{sendTime,jdbcType=TIMESTAMP}, #{replyStatus,jdbcType=INTEGER},
+         #{messageDetails,jdbcType=VARCHAR},#{replyFactoryId,jdbcType=VARCHAR},#{fileName,jdbcType=VARCHAR},  
+         #{factoryUserId,jdbcType=INTEGER}  
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cbt.entity.QuoteMessage" >
+    insert into quote_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="factoryId != null" >
+        factory_id,
+      </if>
+      <if test="filePath != null" >
+        file_path,
+      </if>
+      <if test="sendTime != null" >
+        send_time,
+      </if>
+      <if test="replyStatus != null" >
+        reply_status,
+      </if>
+      <if test="replyStatus != null" >
+        file_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null" >
+        #{factoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyStatus != null" >
+        #{replyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cbt.entity.QuoteMessage" >
+    update quote_message
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null" >
+        factory_id = #{factoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime != null" >
+        send_time = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyStatus != null" >
+        reply_status = #{replyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null" >
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cbt.entity.QuoteMessage" >
+    update quote_message
+    set order_id = #{orderId,jdbcType=INTEGER},
+      factory_id = #{factoryId,jdbcType=VARCHAR},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      send_time = #{sendTime,jdbcType=TIMESTAMP},
+      reply_status = #{replyStatus,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

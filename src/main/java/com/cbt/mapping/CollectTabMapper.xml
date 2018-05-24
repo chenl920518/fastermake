@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.dao.CollectTabMapper">
+  <resultMap id="BaseResultMap" type="com.cbt.entity.CollectTab">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="factory_id" jdbcType="VARCHAR" property="factoryId" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="collect_date" jdbcType="DATE" property="collectDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, factory_id, order_id, collect_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from collect_tab
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from collect_tab
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cbt.entity.CollectTab">
+    insert into collect_tab (id, factory_id, order_id, 
+      collect_date)
+    values (#{id,jdbcType=INTEGER}, #{factoryId,jdbcType=VARCHAR}, #{orderId,jdbcType=INTEGER}, 
+      #{collectDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cbt.entity.CollectTab">
+    insert into collect_tab
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="factoryId != null">
+        factory_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="collectDate != null">
+        collect_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null">
+        #{factoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="collectDate != null">
+        #{collectDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cbt.entity.CollectTab">
+    update collect_tab
+    <set>
+      <if test="factoryId != null">
+        factory_id = #{factoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="collectDate != null">
+        collect_date = #{collectDate,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cbt.entity.CollectTab">
+    update collect_tab
+    set factory_id = #{factoryId,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=INTEGER},
+      collect_date = #{collectDate,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  
+  
+    <!-- 	   批量收藏 -->
+	<insert id="insertBatch" parameterType="java.util.List">
+	    insert into collect_tab 
+		    (
+		    factory_id, order_id, collect_date
+            )
+	    values
+	    <foreach collection="list" item="item" index="index" separator=",">
+	      (           
+		    #{item.factoryId},#{item.orderId},#{item.collectDate}
+	      )
+	    </foreach>
+	</insert>
+	
+	
+	<!-- 查看收藏 -->
+	<select id="queryCollects" parameterType="string" resultMap="BaseResultMap">
+	    select <include refid="Base_Column_List"/> from collect_tab  
+	    where factory_id = #{factoryId,jdbcType=VARCHAR} 
+	</select>
+	
+    <!-- 查看收藏 -->
+	<select id="queryByOrderIdAndFactoryId" resultType="int">
+	    select count(id) from collect_tab  
+	    where factory_id = #{factoryId,jdbcType=VARCHAR}  
+	    and   
+	    order_id = #{orderId,jdbcType=INTEGER} 
+	</select>
+	
+	
+	<!-- 删除收藏 -->
+	  <delete id="deleteByOrderIdAndFactoryId">
+	    delete from collect_tab 
+	    where factory_id = #{factoryId,jdbcType=VARCHAR}  
+	    and   
+	    order_id = #{orderId,jdbcType=INTEGER} 
+	  </delete>
+</mapper>

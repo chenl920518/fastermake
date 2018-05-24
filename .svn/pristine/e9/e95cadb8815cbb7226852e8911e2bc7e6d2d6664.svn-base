@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cbt.dao.SupplierQuoteProductMapper" >
+  <resultMap id="BaseResultMap" type="com.cbt.entity.SupplierQuoteProduct" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="supplier_quote_id" property="supplierQuoteId" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="quote_unit_price1" property="quoteUnitPrice1" jdbcType="DOUBLE" />
+    <result column="quote_unit_price2" property="quoteUnitPrice2" jdbcType="DOUBLE" />
+    <result column="quote_unit_price3" property="quoteUnitPrice3" jdbcType="DOUBLE" />
+    <result column="quote_mold_price1" property="quoteMoldPrice1" jdbcType="DOUBLE" />
+    <result column="quote_mold_price2" property="quoteMoldPrice2" jdbcType="DOUBLE" />
+    <result column="quote_mold_price3" property="quoteMoldPrice3" jdbcType="DOUBLE" />
+    <result column="quote_product_id" property="quoteProductId" jdbcType="INTEGER" />
+    <result column="product_remark" property="productRemark" jdbcType="VARCHAR" />
+    
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="materials" property="materials" jdbcType="VARCHAR" />
+    <result column="quantity_list" property="quantityList" jdbcType="VARCHAR" />
+    <result column="attachment_path" property="attachmentPath" jdbcType="VARCHAR" />
+    <result column="price_type" property="priceType" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, supplier_quote_id, order_id, quote_unit_price1, quote_unit_price2, quote_unit_price3, 
+    quote_mold_price1, quote_mold_price2, quote_mold_price3,quote_product_id,product_remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier_quote_product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="queryBySupplierQuoteId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select 
+	    s.supplier_quote_id, s.order_id, s.quote_unit_price1, s.quote_unit_price2, s.quote_unit_price3, 
+        s.quote_mold_price1, s.quote_mold_price2, s.quote_mold_price3,s.quote_product_id,s.product_remark,
+        q.product_name,q.materials,q.quantity_list    
+	    from supplier_quote_product s left join quote_product q on s.quote_product_id = q.id 
+	    where supplier_quote_id = #{supplierQuoteId,jdbcType=INTEGER}  
+  </select>
+  
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from supplier_quote_product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cbt.entity.SupplierQuoteProduct" >
+    insert into supplier_quote_product (id, supplier_quote_id, order_id, 
+      quote_unit_price1, quote_unit_price2, quote_unit_price3, 
+      quote_mold_price1, quote_mold_price2, quote_mold_price3,quote_product_id,product_remark 
+      )
+    values (#{id,jdbcType=INTEGER}, #{supplierQuoteId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, 
+      #{quoteUnitPrice1,jdbcType=DOUBLE}, #{quoteUnitPrice2,jdbcType=DOUBLE}, #{quoteUnitPrice3,jdbcType=DOUBLE}, 
+      #{quoteMoldPrice1,jdbcType=DOUBLE}, #{quoteMoldPrice2,jdbcType=DOUBLE}, #{quoteMoldPrice3,jdbcType=DOUBLE},
+      #{quoteProductId,jdbcType=INTEGER}, #{productRemark,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  
+   <insert id="insertList" useGeneratedKeys="true" parameterType="java.util.List">  
+      
+       insert into supplier_quote_product ( 
+        supplier_quote_id, order_id, quote_unit_price1, quote_unit_price2, quote_unit_price3, 
+        quote_mold_price1, quote_mold_price2, quote_mold_price3,quote_product_id,product_remark) values
+        <foreach collection="list" item="item" index="index" separator="," >  
+            ( 
+              #{item.supplierQuoteId,jdbcType=INTEGER}, 
+              #{item.orderId,jdbcType=INTEGER}, 
+		      #{item.quoteUnitPrice1,jdbcType=DOUBLE}, 
+		      #{item.quoteUnitPrice2,jdbcType=DOUBLE}, 
+		      #{item.quoteUnitPrice3,jdbcType=DOUBLE}, 
+		      #{item.quoteMoldPrice1,jdbcType=DOUBLE},
+		      #{item.quoteMoldPrice2,jdbcType=DOUBLE}, 
+		      #{item.quoteMoldPrice3,jdbcType=DOUBLE},
+		      #{item.quoteProductId,jdbcType=INTEGER},
+		      #{item.productRemark,jdbcType=VARCHAR}
+		      ) 
+        </foreach>  
+    </insert>  
+  
+  
+  <insert id="insertSelective" parameterType="com.cbt.entity.SupplierQuoteProduct" >
+    insert into supplier_quote_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="supplierQuoteId != null" >
+        supplier_quote_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="quoteUnitPrice1 != null" >
+        quote_unit_price1,
+      </if>
+      <if test="quoteUnitPrice2 != null" >
+        quote_unit_price2,
+      </if>
+      <if test="quoteUnitPrice3 != null" >
+        quote_unit_price3,
+      </if>
+      <if test="quoteMoldPrice1 != null" >
+        quote_mold_price1,
+      </if>
+      <if test="quoteMoldPrice2 != null" >
+        quote_mold_price2,
+      </if>
+      <if test="quoteMoldPrice3 != null" >
+        quote_mold_price3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="supplierQuoteId != null" >
+        #{supplierQuoteId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="quoteUnitPrice1 != null" >
+        #{quoteUnitPrice1,jdbcType=DOUBLE},
+      </if>
+      <if test="quoteUnitPrice2 != null" >
+        #{quoteUnitPrice2,jdbcType=DOUBLE},
+      </if>
+      <if test="quoteUnitPrice3 != null" >
+        #{quoteUnitPrice3,jdbcType=DOUBLE},
+      </if>
+      <if test="quoteMoldPrice1 != null" >
+        #{quoteMoldPrice1,jdbcType=DOUBLE},
+      </if>
+      <if test="quoteMoldPrice2 != null" >
+        #{quoteMoldPrice2,jdbcType=DOUBLE},
+      </if>
+      <if test="quoteMoldPrice3 != null" >
+        #{quoteMoldPrice3,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cbt.entity.SupplierQuoteProduct" >
+    update supplier_quote_product
+    <set >
+      <if test="supplierQuoteId != null" >
+        supplier_quote_id = #{supplierQuoteId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="quoteUnitPrice1 != null" >
+        quote_unit_price1 = #{quoteUnitPrice1,jdbcType=DOUBLE},
+      </if>
+      <if test="quoteUnitPrice2 != null" >
+        quote_unit_price2 = #{quoteUnitPrice2,jdbcType=DOUBLE},
+      </if>
+      <if test="quoteUnitPrice3 != null" >
+        quote_unit_price3 = #{quoteUnitPrice3,jdbcType=DOUBLE},
+      </if>
+      <if test="quoteMoldPrice1 != null" >
+        quote_mold_price1 = #{quoteMoldPrice1,jdbcType=DOUBLE},
+      </if>
+      <if test="quoteMoldPrice2 != null" >
+        quote_mold_price2 = #{quoteMoldPrice2,jdbcType=DOUBLE},
+      </if>
+      <if test="quoteMoldPrice3 != null" >
+        quote_mold_price3 = #{quoteMoldPrice3,jdbcType=DOUBLE},
+      </if>
+      <if test="productRemark != null" >
+        product_remark = #{productRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cbt.entity.SupplierQuoteProduct" >
+    update supplier_quote_product
+    set supplier_quote_id = #{supplierQuoteId,jdbcType=INTEGER},
+      order_id = #{orderId,jdbcType=INTEGER},
+      quote_unit_price1 = #{quoteUnitPrice1,jdbcType=DOUBLE},
+      quote_unit_price2 = #{quoteUnitPrice2,jdbcType=DOUBLE},
+      quote_unit_price3 = #{quoteUnitPrice3,jdbcType=DOUBLE},
+      quote_mold_price1 = #{quoteMoldPrice1,jdbcType=DOUBLE},
+      quote_mold_price2 = #{quoteMoldPrice2,jdbcType=DOUBLE},
+      quote_mold_price3 = #{quoteMoldPrice3,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- 查询报价列表 -->
+  <select id="selectQuoteList" resultMap="BaseResultMap">
+  select
+      sp.supplier_quote_id, sp.order_id, sp.quote_unit_price1, sp.quote_unit_price2, sp.quote_unit_price3, 
+      sp.quote_mold_price1, sp.quote_mold_price2, sp.quote_mold_price3,sp.quote_product_id,sp.product_remark,
+      sp.create_time,sp.attachment_path ,product.quantity_list  
+   from   
+     (
+      select
+      p.supplier_quote_id, p.order_id, p.quote_unit_price1, p.quote_unit_price2, p.quote_unit_price3, 
+      p.quote_mold_price1, p.quote_mold_price2, p.quote_mold_price3,p.quote_product_id,p.product_remark,
+      q.create_time,q.attachment_path       
+      from supplier_quote_info q left join 
+      supplier_quote_product p on q.id = p.supplier_quote_id 
+      where 
+      supplier_quote_id = #{supplierQuoteId,jdbcType=INTEGER}
+      and
+      factory_id = #{factoryId,jdbcType=VARCHAR}   
+      and  
+      p.order_id = #{orderId,jdbcType=INTEGER}
+     )sp  
+    left join 
+   quote_product product on  product.id = sp.quote_product_id  
+      
+  </select>
+  
+  <!-- 查询报价 -->
+  <select id="selectQuoteGroupByQuoteId" resultMap="BaseResultMap">
+      select   
+      ps.supplier_quote_id, ps.order_id, ps.quote_unit_price1, ps.quote_unit_price2, ps.quote_unit_price3, 
+      ps.quote_mold_price1, ps.quote_mold_price2, ps.quote_mold_price3,ps.quote_product_id,ps.product_remark,ps.create_time,
+      ps.attachment_path,qs.quantity_list,ps.price_type      
+      from 
+	      (
+	      select
+	      p.supplier_quote_id, q.order_id, p.quote_unit_price1, p.quote_unit_price2, p.quote_unit_price3, 
+	      p.quote_mold_price1, p.quote_mold_price2, p.quote_mold_price3,p.quote_product_id,p.product_remark,
+	      q.create_time,q.attachment_path,q.price_type       
+	      from supplier_quote_info q left join     
+	      supplier_quote_product p on q.id = p.supplier_quote_id 
+	      where  
+	      factory_id = #{factoryId,jdbcType=VARCHAR}   
+	      and  
+	      p.order_id = #{orderId,jdbcType=INTEGER}    
+	      group by p.supplier_quote_id order by q.create_time desc  
+	      )ps   
+      left join quote_product qs on qs.id = ps.quote_product_id 
+      
+  </select>
+  
+</mapper>

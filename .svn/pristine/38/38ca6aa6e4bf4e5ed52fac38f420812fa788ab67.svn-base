@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+	
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<title>quickpart</title>
+<!--  <link rel="shortcut icon" href="/img/favicon.ico"/> -->
+<!--  <link rel="stylesheet" href="/css/easydialog.css" />  -->
+<!--  <link rel="stylesheet" href="/css/progressBar.css" /> -->
+<!--  <link rel="stylesheet" href="/css/ui.css" /> -->
+<!--  <link rel="stylesheet" href="/css/ui.progress-bar.css" /> -->
+</head>
+
+<body>
+	<header class="header header_en" id="header">
+		<div class="header_top">
+			<div class="header_bottom">
+				<div class="header_bottom_in w12 clearfix">
+					<!--<div class="logo pull-left"></div>-->
+				        <a href="/en/index.html" class="logo pull-left"><img src="/images/head_en.png" alt=""/></a>
+				        <div class="header_top_in dl_zc w12 clearfix">
+				
+				<div class="head_R pull-right">
+					<div class="head_l pull-left">						
+<!-- 						<div class="change_language"><a href="#" class="lange_a" onclick="change_lan()">中 / EN</a></div> -->
+						<a href="/en/login.html" class="bk dl_zc head_hover ml20 beforLogin">Sign</a> 
+						<!-- <a href="/fastermake/en/register_en.html" class="bk dl_zc head_hover ml20 beforLogin">REGISTER</a> -->
+	
+						<div class="xxs head_hover">
+							<div class="xx yhm afterLogin">
+								<span class="iconfont">&#xe6c9;</span><span id="username"></span> 
+							</div>
+							<div class="xxlist">
+								 <a href="#" onclick="exit()"><span class="iconfont">&#xe60a;</span>Exit
+								</a>
+							</div>
+	
+						</div>
+						
+					</div>
+			
+					
+					<div class="xxs kzz head_hover">
+						<div class="xx xp beforLogin mlr5">
+							Buyer Access<!--<span class="iconf s2 "></span>-->
+						</div>
+						<div class="xxlist xplist clearfix">
+							<div class="N l_sm">
+								<ul>
+									<li>if you have continuous needs to find new suppliers and get quites,you can post your profile or RFQ here and build a selected supply network.</li>
+									<li><span></span>Interested suppliers will contact you,and you can choose the ones that fits your criteria</li>
+									<li><span></span>when you post a new RFQ,it will only reach the suppliers pre-selected by you.</li>
+									<li><span></span>After follow-up collaborations(audits,productions),you can keep the goods ones gradually build a supply network.</li>
+									<li class="home_head_dl"><a
+										href="/en/login.html" class="active">Sign</a> <a
+										href="/en/register_en.html">Register</a></li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+					<!-- <a class="xxs kzz head_hover afterLogin" href="/fastermake/en/account_management.html">Account</a> -->
+					<div class="xxs kzz head_hover">
+						<div class="xx xp xp_new afterLogin">
+							<span class="iconfont">&#xe63f;</span>My RFQs<!-- <span class="iconf s2"></span> -->
+						</div>											
+					</div>
+					<a class="xx xp head_hover afterLogin" href="/en/account_management.html">
+						Business Panel						
+					</a>
+					<a class="xx xp head_hover afterLogin" href="###">
+						Messages						
+					</a>
+					<a class="xx xp head_hover" href="/en/account_management.html">
+						My Account 				
+					</a>
+					<a href="/en/purchase_list.html" class="ml20 beforLogin">My RFQs</a>
+					<a href="/en/account_management.html" class="ml20 beforLogin">Account</a>							
+					<a href="/en/quickly_release.html" ><button class="btn btn-default pull-right">Sent RFQ</button></a>
+				</div>
+			</div>					
+				</div>
+			</div>
+		</div>
+	</header>
+</body>
+</html>
+<script src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/upload-base.js"></script>
+<script src="/js/easydialog.min.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script> 
+<script src="/js/getServerName.js"></script>
+<script>
+	/*导航栏鼠标经过效果*/
+	$('.inquiry_detail .section nav li a').hover(
+			function() {
+				$(this).addClass('active').parent().siblings('li')
+						.children('a').removeClass('active');
+			})
+
+	//*顶部鼠标经过子信息出现效果*/
+	$('.header_top_in .xxs').hover(function() {
+		$(this).children('.xx').css({
+			'border-color' : 'transparent',
+			'border-bottom-color' : 'transparent',
+			'background-color' : '#0046cd'
+		})
+		$(this).children('.xxlist').show();
+	}, function() {
+		$(this).children('.xx').css({
+			'border-color' : 'transparent',
+			'background-color' : 'transparent'
+		})
+		$(this).children('.xxlist').hide();
+	})
+	/*更多消息里面鼠标经过效果*/
+	$('.xxlist a').hover(function() {
+		$(this).css({
+			'color' : '#006DCC'
+		}).siblings().css({
+			'color' : '#666'
+		})
+	})
+	
+	$('.xxlist .home_head_dl a').hover(function() {
+		$(this).css({
+			'background-color':'#006DCC',
+			'color' : '#fff'
+		})
+	},function(){
+		$('.xxlist .home_head_dl a').css({
+			'background-color':'#fff',
+			'border':'1px solid #006DCC',
+			'color' : '#006DCC'
+		})
+		
+	})
+	
+	
+			    /*语言改变设置*/        
+   		function change_lan(){
+        	
+			  var lan = getCookie("language");
+				if(lan == 'en'){
+					lan = 'zh'
+				}else{
+					lan = 'en'
+				}
+		
+              $.post("/account/changeLanguage.do",
+        			{"language": lan},    	
+        			function(result){
+      	        	var url = window.location.search;        	
+      	        	if(lan == 'en'){
+      	        		url = url.replace('zh','en');
+    		            window.location = url;      	        		 
+      	        	}else{
+      	        		url = url.replace('en','zh');
+  	        			window.location = url;
+  	        		}
+        	});   			
+
+   		}
+	
+	
+
+	/*顶部向下箭头点击变成向上箭头
+	$('.header_top_in .head_hover').hover(function() {
+		$(this).css({
+			'background-color' : '#fff'
+		}).find('.iconf').css({
+			'background' : 'url(/fastermake/images/xs.png) no-repeat'
+		});
+	}, function() {
+		$(this).css('background-color', 'transparent');
+		$(this).find('.iconf').css({
+			'background' : 'url(/fastermake/images/xx.png) no-repeat'
+		});
+	})*/
+
+	$('.beforLogin').show()
+	$('.afterLogin').hide()
+	var userName = getCookie("userName");
+	var factoryInfo = getCookie("F_INFO");
+	var factoryType;
+	if (userName != null && userName != '' && userName != undefined) {
+		var base = new Base64();
+		userName = base.decode(userName);
+		$('#username').text(userName);
+		$('.beforLogin').hide()
+		$('.afterLogin').show()
+	}
+	if (userName != null && userName != '' && userName != undefined) {
+		var base = new Base64();
+		factoryInfo = base.decode(factoryInfo);
+		var strs = factoryInfo.split('&');
+		factoryType = strs[strs.length-1];
+		if(factoryType == 2){
+			$('#supplier_list').find('a').attr('href',"#").css({"background-color":"#ddd"});			
+		}else if(factoryType == 1){
+			$('#supplier_list').next().find('a').attr('href',"#").css({"background-color":"#ddd"});
+		}
+	}
+
+	function exit(){
+        
+		$.post("/account/clearCookie.do",
+			function(result){
+			if(result.state == 0){
+				
+				//根据cookie判断不同语言退出页面
+				var	serverName = getServerName(lan);	
+				var lan = getCookie("language");
+				if(lan == 'en'){
+					window.location = serverName+"/en/login.html";
+				}else{
+					window.location = serverName+"/zh/login.html";
+				}
+				
+			}			
+		})
+
+		
+	}
+
+	//计算新消息数量  add by jason  请不要删除，我先注释了
+// 	var newMessage_interval = setInterval(function() {
+// 		$.ajax({
+// 					url : "/noteMessage/newMessageCount.do",
+// 					cache : false,
+// 					success : function(data) {
+					
+// 						if(data.state==0){
+							
+// 							var summap = data.data
+							
+// 							if(summap){
+								
+// 								var count = summap.unRead
+// 								var award = summap.award
+// 								var updateProcess = summap.updateProcess
+// 								$('#unRead').text(count?count:"")
+// 								$('#newMessageCount').text(count?count:"")
+// 								$('#inodeNewMessageCount').text(count?count:"")
+// 								$('#award').text(award?award:"")
+// 								$('#inodeNewAwardCount').text(award?award:"")
+// 								$('#updateProcess').text(updateProcess?updateProcess:"")
+// 								$('#inodeNewUpdateProcessCount').text(updateProcess?updateProcess:"")								
+// 							}
+// 						}	
+						
+// 					}
+// 				});
+// 	}, 12000);		
+</script>

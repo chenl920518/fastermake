@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>快制造-采购商询盘详情页</title>
+     <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/lib/html5sshiv/html5shiv.min.js"></script>
+    <script src="/lib/respond/respond.js"></script>
+    <link rel="stylesheet" href="/css/easydialog.css" />
+    <link rel="stylesheet" href="/css/css.css"/>
+	 <link rel="stylesheet" href="/css/progressBar.css" />
+	 <link rel="stylesheet" href="/css/ui.css" />
+	 <link rel="stylesheet" href="/css/ui.progress-bar.css" />
+    <style>
+        @media (min-width: 1200px) {
+            .container {
+                width: 1200px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="purchase_detail">
+	 <div class="tc">
+        <div class="panel">
+            <div class="panel-heading">原因 <span class="iconfont pull-right">&#xe643;</span></div>
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10 z-dx">
+                            <div class="radio">
+                                <label for="">
+                                    <input type="radio" name="dx"/><span>客户现有的供应商价格更便宜</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-6 z-dx">
+                            <div class="radio radio2">
+                                <label for="">
+                                    <input type="radio" name="dx"/><span>其他</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="display:none;">
+                        <div class="col-sm-offset-2 col-sm-10 posirela">
+                            <textarea name="" id="reason"  oninput="getCharacterLength()" cols="30" rows="10" class="form-control"></textarea>
+                            <em><i>0</i>/300</em>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn" id="refuse_btn" onclick="refuse(7)">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="header"></div>
+    <div class="section">
+        <div class="container container1">
+            <h3><span style="font-size:30px;"></span>
+<!--             <span id="quote_title" style="font-size:26px;padding-right: 64px;"></span> -->
+                                                  询盘编号 #<span id="quoteId" style="font-size:26px;"></span> - <small></small></h3>
+            <div class="panel panel1">
+                <div class="panel-heading clearfix" id="title_div">
+                    <a href="###" class="activea">询盘明细</a>
+<!--                     <a href="###">验厂</a> -->
+<!--                     <a href="###">打样</a> -->
+<!--                     <a href="###">大货</a> -->
+<!--                     <a href="###">图纸管理</a> -->
+                </div>
+            </div>
+            <div class="panel panel2">
+                <div class="panel-heading">询盘信息 
+               <span style="color: red;font-size: 16px;margin-left: 72px;">专用分享链接:  
+                <input type="text" id="foo" style="width: 48%;" value="" />             
+               </span> 
+                <button style="background-color: #006dcc;color: #fff;" id="btn">点击复制</button>
+                <button class="pull-right xpbj">编辑</button>
+                </div>
+                <div class="panel-body">
+                    <table class="table tab1 tabs1" id="table1">
+                        <tbody>
+                        <tr>
+                            <td>保密协议</td>
+                            <td>无保密协议</td>
+                            <td>采用工艺</td>
+                            <td>其他</td>
+                            <td>创建时间</td>
+                            <td> <del></del>  <span></span></td>
+                        </tr>
+                        <tr>
+                            <td>询盘类别</td>
+                            <td><span class="w249"></span></td>
+                            <td>邀请报价</td>
+                            <td><span class="w249">已选择一个供应商</span></td>                           
+                            <td>报名截止日期</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>货运条款</td>
+                            <td ><span class="w249"></span></td>
+                            <td>送货城市</td>
+                            <td></td>
+                            <td>供应商所在区域限定</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>雇员数量</td>
+                            <td></td>
+                            <td>资格认证</td>
+                            <td></td>
+                            <td>询盘目的</td>
+                            <td ><span class="w249"></span></td>
+                        </tr>
+                        <tr>
+                            <td>询盘标题</td>
+                            <td colspan="5"></td>
+                        </tr>
+                        <tr>
+                            <td>图纸附件</td>
+                            <td colspan="5"><em class="iconfont posirela">&#xe66e;</em><a class="ms"></a></td>
+                            <!--<td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>	-->
+                        </tr>
+                        <tr>
+                            <td>询盘备注</td>
+                            <td colspan="5"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="tab_bj tabs2 disnone">
+                        <table class="table tab1" id="table2">
+                            <tbody>
+                            <tr>
+                                <td>保密协议</td>
+                                <td>无保密协议</td>
+                                <td>采用工艺</td>
+                                <td>
+                                    <select name="" id="main_process" class="form-control sel220">
+                                                <option value="注塑">注塑</option>
+
+                                                <option value="吸塑">吸塑</option>
+
+                                                <option value="滚塑">滚塑</option>
+
+                                                <option value="吹塑">吹塑</option>
+
+                                                <option value="挤塑">挤塑</option>
+
+                                                <option value="其他塑料工艺">其他塑料工艺</option>            
+
+                                                <option value="不锈钢铸造(硅溶胶、水玻璃)">不锈钢铸造(硅溶胶、水玻璃)</option>
+
+                                                <option value="压铸(铝、锌、镁、铜等)">压铸(铝、锌、镁、铜等)</option>
+
+                                                <option value="砂铸(钢、铁、铜、铝等)">砂铸(钢、铁、铜、铝等)</option>
+
+                                                <option value="重力铸造(铝、铜等)">重力铸造(铝、铜等)</option>
+
+                                                <option value="其他铸造">其他铸造</option>         
+
+
+                                                <option value="热锻">热锻</option>
+
+                                                <option value="冷锻">冷锻</option>       
+
+                                                <option value="钣金加工(切割、折弯、焊接、组装)">钣金加工(切割、折弯、焊接、组装)</option>
+
+                                                <option value="冲压拉伸">冲压拉伸</option>       
+                                                <option value="旋压">旋压</option>       
+                                                <option value="铝挤压">铝挤压</option>       
+
+                                                <option value="3轴以上精密加工">3轴以上精密加工</option>
+                                                <option value="高速车床">高速车床</option>
+                                                <option value="高速铣床">高速铣床</option>
+                                                <option value="普通车铣钻磨">普通车铣钻磨</option>
+                                                <option value="其他">其他机加工</option>
+             
+											    <option value="现成商品采购">现成商品采购</option>
+												<option value="其他采购">其他采购</option>	
+                                    </select>
+
+                                </td>
+                                <td>创建时间</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>询盘类别</td>
+                                <td>
+                                    <select name="" id="invite_status" class="form-control sel220">
+                                        <option value="1">只给定向供应商报价</option>
+                                        <option value="0">公开招标</option>
+                                    </select>
+                                </td>
+                                <td>邀请报价</td>
+                                <td>
+<!--                                     <select name="" id="" class="form-control sel220"> -->
+<!--                                         <option value=""></option> -->
+<!--                                     </select> -->
+                                    
+                                     <div class="col-sm-10 colsm1 posirela">
+                                        <input type="hidden" id="inviteFactory">
+                                        <span class="selectarror selspan1"></span>
+                                        <input class="form-control sel220 select2 zgrzinp1" type="text" id="factoryNames"  name="factoryNames" value="" readonly="readonly">
+                                        <div class="dx w300 zgrzdx1" id="invite_factorys" >
+                                         
+                                        </div>    
+                                      </div>  
+                                </td>
+                                <td>报名截止日期</td>
+                                <td>
+                                    <div class="col-sm-4 ml-70">
+                                        <div class="input-group date form_date col-sm-6 sel220" data-date="" data-date-format="yyyy-mm-dd"    >
+                                            <input id="quoteEndDate" name="quoteEndDate" class="form-control brt" size="16" type="text" value=""  place="选择日期"  field="报价截止日期"  placeholder="2017-10-16" readonly  requiredate>
+                                            <span class="input-group-addon blt posirela"><i class="line1 posiabso"></i></span>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
+                                        <span></span>
+
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>货运条款</td>
+                                <td >
+                                    <select name="" id="quote_freight_term" class="form-control sel220">
+                                      	<option  value="出厂价">出厂价</option>
+									    <option  value="运送到目的地价">运送到目的地价</option>	
+                                    </select>
+                                </td>
+                                <td>送货城市</td>
+                                <td>
+                                    <select name="" id="city" class="form-control sel220">
+                                        	 <option value=""></option>
+                                        	 <option value="上海">上海</option>
+											 <option value="北京">北京</option>
+											  <option value="江苏">江苏</option>
+		                                      <option value="广东">广东</option>
+		                                      <option value="山东">山东</option>
+		                                      <option value="河南">河南</option>
+		                                      <option value="河北">河北</option>
+		                                      <option value="安徽">安徽</option>
+		                                      <option value="福建">福建</option>
+		                                      <option value="天津">天津</option>
+		                                      <option value="重庆">重庆</option>
+		                                      <option value="山西">山西</option>
+		                                      <option value="内蒙古">内蒙古</option>
+		                                      <option value="辽宁">辽宁</option>
+		                                      <option value="四川">四川</option>
+		                                      <option value="贵州">贵州</option>
+		                                      <option value="云南">云南</option>
+		                                      <option value="陕西">陕西</option>
+		                                      <option value="吉林">吉林</option>
+		                                      <option value="黑龙江">黑龙江</option>
+		                                       <option value="江西">江西</option>
+		                                       <option value="湖北">湖北</option>
+		                                       <option value="湖南">湖南</option>
+		                                       <option value="广西">广西</option>
+		                                       <option value="海南">海南</option>
+		                                       <option value="甘肃">甘肃</option>
+		                                       <option value="宁夏">宁夏</option>
+		                                       <option value="青海">青海</option>
+		                                       <option value="西藏">西藏</option>
+		                                       <option value="香港">香港</option>
+		                                       <option value="澳门">澳门</option>
+		                                       <option value="台湾">台湾</option>
+		                                       <option value="浙江">浙江</option>
+		                                       <option value="新疆">新疆</option>
+                                    </select>
+                                </td>
+                                <td>供应商所在区域限定</td>
+                                <td>
+                                    <select name="" id="quote_location" class="form-control sel220">
+                                        <option value="0">不限</option>
+                                        <option value="1">江浙沪</option>
+                                        <option value="2">深圳、广东、福建</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>雇员数量</td>
+                                <td>
+                                    <select name="" id="staff_number" class="form-control sel220">
+                                        <option value="不限">不限</option>
+                                        <option value="0-49">0-49</option>
+                                        <option value="50-99">50-99</option>
+                                        <option value="100-200">100-200</option>
+                                        <option value="201-500">201-500</option>
+                                        <option value="500+">500+</option>
+                                    </select>
+                                </td>
+                                <td>资格认证</td>
+                                <td>
+                                    <div class="col-sm-10 colsm1 posirela">
+                                        <span class="selectarror selspan"></span>
+                                        <input class="form-control sel220 select2 zgrzinp" type="text" id="qualificationName"  name="qualification" value="" readonly="readonly">
+
+                                        <div class="dx w300 zgrzdx" id="qualificationForeach" >
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"   name="qualificationck" value="ISO 9001">ISO 9001
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"   name="qualificationck" value="ISO 9004">ISO 9004
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="VDA 6.1">VDA 6.1
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="QS9000">QS9000
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="QUALIFAS">QUALIFAS
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="CCC">CCC
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="AS9100">AS9100
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="AS9000">AS9000
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="ANSI/ESD S20.20">ANSI/ESD S20.20
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"   name="qualificationck" value="AS 9003">AS 9003
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"   name="qualificationck" value="AS 9102">AS 9102
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="ASME">ASME
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="ASME Nuclear">ASME Nuclear
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="ASQ">ASQ
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="CE Mark (Europe)">CE Mark (Europe)
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="FAA">FAA
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="FDA - U.S. Food and Drug Administration">FDA - U.S. Food and Drug Administration
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="Federal Firearms License (FFL)">Federal Firearms License (FFL)
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"   name="qualificationck" value="ISO 14000">ISO 14000
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="ISO 14001">ISO 14001
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"   name="qualificationck" value="ISO 1725">ISO 1725
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"   name="qualificationck" value="ISO 9000">ISO 9000
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="ISO 9002">ISO 9002
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"   name="qualificationck" value="ISO 9003">ISO 9003
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="ISO Compliant">ISO Compliant
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="TS 16949">TS 16949
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="ISO13485:2003(E)">ISO13485:2003(E)
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"   name="qualificationck" value="OHSAS 18001">OHSAS 18001
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"   name="qualificationck" value="QS 9000 TE Supplement">QS 9000 TE Supplement
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="RC14001">RC14001
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="SA8000">SA8000
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="TL9000">TL9000
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="UL">UL
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="HACCP - Hazard Analysis and Critical Control Point">HACCP - Hazard Analysis and Critical Control Point
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="QC08000">QC08000
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"   name="qualificationck" value="IRIS">IRIS
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="ISO 3834">ISO 3834
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"   name="qualificationck" value="DIN 18800">DIN 18800
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"   name="qualificationck" value="DIN 6700">DIN 6700
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"  name="qualificationck" value="API">API
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </td>
+                                <td>询盘目的</td>
+                                <td class="md">
+                                    <select name="" id="quote_purpose" class="form-control sel220">
+                                        <option value="0">实际订单</option>
+                                        <option value="1">暂时不急的询盘</option>             
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>询盘标题</td>
+                                <td colspan="5">
+                                    <textarea id="quote_title" class="form-control " placeholder=""></textarea> 
+                                </td>   
+                            </tr>
+                            <tr>
+                                <td>图纸附件</td>
+                                <td colspan="5">
+                               <form id="file_upload_id" action="/upload/drawingAndChangeName.do" onsubmit="return false;" method="post" enctype="multipart/form-data">
+                                 <em class="iconfont posirela">&#xe66e;<input type="file" onchange="show_drawingName(this)" name="file1"/></em>
+                                 <span class="ms">上传附件</span>
+                                 <input type="hidden" id="fileName" name="selectDrawingName">
+                                 <input type="hidden" id="new_drawing">
+                                 <input type="hidden" name="orderId" id="order_id">
+                               </form>
+                                </td>
+                                <!--<td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>	-->
+                            </tr>
+                            <tr>
+                                <td>询盘备注</td>
+                                <td colspan="5">
+                                    <textarea id="quote_remark" class="form-control " placeholder=""></textarea>
+                                </td>
+                                <!--<td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>	-->
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="btns">
+                            <button class="btn save" onclick="edit_inquiry(this)">保存</button>
+                            <button class="btn dele" onclick="location.reload()">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel2 panel3">
+                <div class="panel-heading posirela">零件信息 <button class="pull-right ljbj">编辑</button></div>
+                <div class="panel-body">
+                    
+                    <table class="table tabs3">
+                        <thead id="product_thead">
+                        <tr>
+                            <th class="th1"></th>
+                            <th class="th2">零件名称</th>
+                            <th class="th2">基本工艺</th>
+                            <th class="th2">材料</th>
+                            <th>单位重量（KG）</th>
+                            <th class="th6 th61">订量一</th>
+                            <th class="th6 th62">订量二</th>
+                            <th class="th6 th63">订量三</th>
+                            <th>年订量</th>
+                        </tr>
+                        </thead>
+                        <tbody id="product_tbody">
+
+
+                        </tbody>
+                    </table>
+                    <div class="tab2_bj disnone" >
+                        <table class="table">
+                            <thead id="product_thead2">
+                            <tr>
+                                <th class="w210">缩略图</th>
+                                <th>零件名称</th>
+                                <th>基本工艺</th>
+                                <th>材料</th>
+                                <th>单位重量（KG）</th>
+                                <th class="th6 th61">订量一</th>
+                                <th class="th6 th62">订量二</th>
+                                <th class="th6 th63">订量三</th>
+                                <th>年订量</th>
+                            </tr>
+                            </thead>
+                            <tbody id="product_tbody2">
+                                
+
+
+                            </tbody>
+                        </table>
+                        <div class="btns">
+                            <button class="btn save" onclick="edit_product(this)">保存</button>
+                            <button class="btn dele" onclick="location.reload()">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel2 panel4">
+                <div class="panel-heading">工厂提供的报价列表</div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="w140">供应商</th>
+                                <th class="w80">报价金额</th>
+                                <th class="w95">报价有效期</th>
+                                <th class="w135">支付方式</th>
+                                <th class="w55">地域</th>
+                                <th class="w100">认证</th>
+                                <th class="w80">工厂人数</th>
+                                <th class="w175">报价备注</th>
+                                <th class="w150">价格类型</th>
+                                <th colspan="2">当前状态</th>
+                            </tr>
+                        </thead>
+                        <tbody id="factory_quote_tbody">
+                           
+                        </tbody>
+                    </table>
+                    <div class="price_compare">
+                    	<h4><span>详细各工厂价格对比</span> <i class="glyphicon glyphicon-triangle-top"></i></h4>
+                    	
+                    
+                    </div>
+                    <div class="btns">
+                        <button class="pull-right">拒绝所有报价</button>
+                    </div>
+                </div>
+            </div>
+
+
+	         <div class="panel panel2" id="mind_factory_list">
+	                <div class="panel-heading">有意向工厂列表</div>
+	                <div class="panel-body">
+	                    <table class="table">
+	                        <thead>
+	                            <tr>
+	                                <th class="w140">供应商</th>
+	                                <th class="w55">地域</th>
+	                                <th class="w100">认证</th>
+	                                <th class="w80">工厂人数</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody id="factory_tbody">
+	
+	                        </tbody>
+	                    </table>
+	                </div>
+	          </div>
+
+
+        </div>
+    </div>
+    <div id="footer" ></div>
+</div>
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/js/dateFormat.js"></script>
+<script src="/lib/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/lib/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script src="/js/inquiry/purchaseDetail.js"></script>
+<script>
+    $('#header').load('header.html');
+	$('#footer').load('footer.html');
+    /* panel1切换效果*/
+    $('.panel1 a').click(function(){
+        $(this).addClass('activea').siblings().removeClass('activea');
+    })
+    /* 询盘信息操作*/
+    $('.tab1 tbody td:even').css({
+        'padding-left':'0',
+        'background-color':'#f0f0f0',
+        'font-size':'14px',
+        'text-align':'center',
+        'width':'140px'
+    })
+    $('.tab1 tbody td:odd').css({
+        'width':'249px'
+    })
+    /*零件信息显示隐藏切换*/
+    $('.panel3 tbody tr:first-child em').css({
+        'background':'url(/images/red.png) no-repeat'
+    })
+    $('.panel3 tbody em').click(function(){
+        var $this = $(this).parent().parent().next('.trcol');
+        if($this.hasClass('currdis')){
+            $this.removeClass('currdis');
+            $this.show();
+            $(this).css({
+                'background':'url(/images/red.png) no-repeat'
+            })
+        }else{
+            $this.addClass('currdis');
+            $this.hide();
+            $(this).css({
+                'background':'url(/images/green.png) no-repeat'
+            })
+        }
+    })
+    /* panel3隔行换色*/
+    $(".panel3 tbody tr:not('.trcol'):even").css({
+        'background-color':'#f9f9f9'
+    })
+    
+    /* panel4隔行换色*/
+    $('.panel4 tbody tr:even').css({
+        'background-color':'#f9f9f9'
+    })
+    
+    /*弹窗显示隐藏*/
+    $('.panel4 .btns button').click(function(){
+        $('.purchase_detail .tc').show();
+    })
+    $('.tc .iconfont').click(function(){
+        $('.purchase_detail .tc').hide();
+    })
+    
+    /*侧边栏长度控制效果*/
+    /*var h1 = $(document.body).height() ;*/
+//    var h1 = $(document.body).height(); 
+//    /* var h2 = window.screen.availHeight;*/
+//   var h2 = $(document).height();
+//     if(h1 < h2){
+//         $('#footer').addClass('footer1');
+//     }else{
+//         $('#footer').removeClass('footer1');
+//     }
+
+     /* 日历插件*/
+    $('.form_date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 4,
+        forceParse: 0
+    });
+
+    /* 资格认证多选切换*/
+    $('.purchase_detail .zgrzinp').click(function(){
+        $(this).parent().find('.zgrzdx').toggle();
+        /*$('.product_invitation  .zgrzdx').toggle();*/
+    })
+    $('.purchase_detail .selspan').click(function(){
+        $(this).parent().find('.zgrzdx').toggle();
+        /*$('.product_invitation  .zgrzdx').toggle();*/
+    })
+    /* 邀请工厂多选切换*/
+    $('.purchase_detail .zgrzinp1').click(function(){
+        $(this).parent().find('.zgrzdx1').toggle();
+        /*$('.product_invitation  .zgrzdx').toggle();*/
+    })
+    $('.purchase_detail .selspan1').click(function(){
+        $(this).parent().find('.zgrzdx1').toggle();
+        /*$('.product_invitation  .zgrzdx').toggle();*/
+    })
+
+    /*询盘目的*/
+    $('.md textarea').focus(function(){
+        $(this).css({
+            'height':'auto',
+            'line-height':'18px',
+            'overflow-y':'scroll'
+        })
+    })
+    $('.md textarea').blur(function(){
+        $(this).css({
+            'height':'28px',
+            'overflow-y':'hidden',
+            'line-height':'28px',
+        })
+    })
+
+    /* 询盘信息编辑切换*/
+    $('.purchase_detail .xpbj').click(function(){
+        $('.purchase_detail .tabs1').addClass('disnone');
+        $('.purchase_detail .tabs2').removeClass('disnone');
+        $('.purchase_detail .xpbj').hide();
+    })
+    /*询盘信息保存和取消*/
+//     $('.purchase_detail .save , .purchase_detail .dele').click(function(){
+//         $('.purchase_detail .tabs1').removeClass('disnone');
+//         $('.purchase_detail .tabs2').addClass('disnone');
+//         $('.purchase_detail .xpbj').show();
+//     })
+
+
+   
+    /* 零件信息编辑切换*/
+    $('.purchase_detail .ljbj').click(function(){
+        $('.purchase_detail .tabs3').addClass('disnone');
+        $('.purchase_detail .tab2_bj').removeClass('disnone');
+        $('.purchase_detail .ljbj').hide();
+    })
+    /*零件信息保存和取消*/
+//     $('.purchase_detail .save , .purchase_detail .dele').click(function(){
+//         $('.purchase_detail .tabs3').removeClass('disnone');
+//         $('.purchase_detail .tab2_bj').addClass('disnone');
+//         $('.purchase_detail .ljbj').show();
+//     })
+    
+    
+    //拒绝报价选择事件   
+	$('input:radio[name="dx"]').click(function(){
+		if($(this).next().text() == "其他"){
+			$('#reason').parent().parent().show();
+		}else{
+			$('#reason').parent().parent().hide();
+		}		
+	})
+	
+	
+	
+	/*工厂价格对比展开缩回*/
+	$('.price_compare i').click(function(){
+		// $(this).removeClass('glyphicon-triangle-bottom').addClass('glyphicon-triangle-top');
+		if($(this).hasClass('glyphicon-triangle-top')){
+			$(this).removeClass('glyphicon-triangle-top').addClass('glyphicon-triangle-bottom');
+			$('.price_compare .compare').hide();
+		}else{
+			$(this).removeClass('glyphicon-triangle-bottom').addClass('glyphicon-triangle-top');
+			$('.price_compare .compare').show();
+		}
+	})
+	
+
+	/*视频播放控制*/
+		$('.purchase_detail .bf_botton').click(function(){
+		  $(this).siblings('.div_video').show();
+		})
+		$('.purchase_detail .close_button').click(function(){
+		  $(this).parent().hide();
+		})
+	
+
+		 window.onload=function(event){
+        var button=document.getElementById("btn");
+        button.onclick=function(event){
+            document.getElementById("foo").select();
+            document.execCommand("copy",false,null);
+            easyDialog.open({
+       		   container : {
+           		     content : '复制成功'
+       		   },
+ 					  overlay : false,
+ 					  autoClose : 1000
+       		 });   
+        };
+    };	
+		
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

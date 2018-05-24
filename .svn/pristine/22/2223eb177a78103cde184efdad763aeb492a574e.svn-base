@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>快制造-采购商询盘列表</title>
+     <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/lib/html5sshiv/html5shiv.min.js"></script>
+    <script src="/lib/respond/respond.js"></script>
+    <link rel="stylesheet" href="/css/css.css"/>
+</head>
+<body>
+<div class="supplier_management purchase_list">
+    <div id="header"></div>
+    <div class="section">
+        <div class="section_in w12 clearfix">
+            <!--<div class="title"><span></span>询盘管理</div>-->
+            <nav class="pull-left media-left ">
+                <a href="quickly_release.html" class="newa text-center">创建询盘</a>
+                <ul id="quote_ul">
+                    <li>
+                        <span></span>
+                        <a href="/zh/purchase_list.html">所有询盘 </a>
+                    </li>
+                    <li>
+                        <span></span>
+                        <a href="/zh/purchase_list.html?orderStatus=0">未发布 <em></em></a>
+                    </li>
+                    <li>
+                        <span></span>
+                        <a href="/zh/purchase_list.html?orderStatus=1">可报价 <em></em></a>
+                    </li>
+                    <li>
+                        <span></span>
+                        <a href="/zh/purchase_list.html?orderStatus=5">授盘中  <em></em></a>
+                    </li>
+                    <li>
+                        <span></span>
+                        <a href="/zh/purchase_list.html?orderStatus=6">生产中  <em></em></a>
+                    </li>
+                    <li>
+                        <span></span>
+                        <a href="/zh/purchase_list.html?orderStatus=2">已完成   <em></em></a>
+                    </li>
+                    <li>
+                        <span></span>
+                        <a href="/zh/purchase_list.html?orderStatus=4">已过期  <em></em></a>
+                    </li>
+                    <li>
+                        <span></span>
+                        <a href="/zh/purchase_list.html?orderStatus=3">已撤销   <em></em></a>
+                    </li>
+                    <li>
+                        <span></span>
+                        <a href="/zh/purchase_list.html?orderStatus=7">未通过 <em></em></a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="contain_right pull-left">
+                <div class="contain_right_bg clearfix">
+                    <div class="con_right_top clearfix">
+                        <!--<div class="sc pull-left">
+                            <em class="pull-left"></em><span class="pull-left">收藏</span>
+                        </div>-->
+                        <div class="ss pull-right">
+                            <div class="sel pull-left">
+                                <span></span>
+                                <select onchange="queryByProcess(this)" style="color:#c2c2c2;" id="select_process" class="form-control">
+
+                                    <option value="-1" >工艺</option>
+
+                                    <option value="11">注塑</option>
+
+                                    <option value="12">吸塑</option>
+
+                                    <option value="13">滚塑</option>
+
+                                    <option value="14">吹塑</option>
+
+                                    <option value="15">挤塑</option>
+
+                                    <option value="16">其他塑料工艺</option>
+
+                                    <option value="17">不锈钢铸造(硅溶胶、水玻璃)</option>
+
+                                    <option value="18">压铸(铝、锌、镁、铜等)</option>
+
+                                    <option value="19">砂铸(钢、铁、铜、铝等)</option>
+
+                                    <option value="20">重力铸造(铝、铜等)</option>
+
+                                    <option value="21">其他铸造</option>
+
+
+                                    <option value="22">热锻</option>
+
+                                    <option value="23">冷锻</option>
+
+                                    <option value="24">钣金加工（切割、折弯、焊接、组装）</option>
+
+                                    <option value="25">冲压拉伸</option>
+                                    <option value="26">旋压</option>
+                                    <option value="27">铝挤压</option>
+
+                                    <option value="28">3轴以上精密加工</option>
+                                    <option value="29">高速车床</option>
+                                    <option value="30">高速铣床</option>
+                                    <option value="31">普通车铣钻磨</option>
+                                    <option value="32">其他机加工</option>
+
+                                    <option value="33">现成商品采购</option>
+                                    <option value="34">其他采购</option>
+                                </select>
+                            </div>
+                            <div class="inp pull-left">
+                                <span></span>
+                                <input type="text" id="product_name" oninput="queryByKey()" placeholder="询盘编号/询盘标题" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="con_right_bottom clearfix">
+                        <table >
+                            <thead>
+                                <tr>
+                                    <th class="w160">缩略图</th>
+                                    <th class="w140">询盘编号</th>
+                                    <th class="120">询盘标题</th>
+                                    <th class="w140">工艺</th>
+                                    <th class="w170">发布日期</th>
+                                    <th>已报价工厂</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                                
+                              
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer" ></div>
+</div>
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/js/dateFormat.js"></script>
+<script src="/js/inquiry/purchase_list.js"></script>
+<script>
+    $('#header').load('/zh/header.html');
+	$('#footer').load('/zh/footer.html');
+
+
+    /* 地域选择效果*/
+    $('.contain_right_btop button').click(function(){
+        if($(this).children('.s1').text() == '更多'){
+            $(this).children('.s1').text('隐藏');
+
+        }else{
+            $(this).children('.s1').text('更多');
+        }
+        if( $(this).children('.s2').text() == '&#xe603;'){
+            $(this).find('.s2').html('<em class="iconf s2">&#xe504;</em>');
+        }else{
+            $(this).children('.s2').html('<em class="iconf s2">&#xe603;</em>');
+        }
+
+        $('.wrap .more').slideToggle();
+
+    })
+    
+  
+
+    /*body长度控制底部效果*/
+    var h1 = $(document.body).height() +230 ;
+    var h2 = window.screen.availHeight -240 ;
+    if(h1 < h2){
+        $('#footer').addClass('footer1');
+    }else{
+        $('#footer').removeClass('footer1');
+    }
+
+
+    
+     
+    
+    //获取个类别数量
+    $.post("/factoryInquiry/queryCountByFactoryId.do",	
+			 function(result){
+			      if(result.state == 0){
+			    	  $('#quote_ul').find('em').eq(0).text((result.data.buyerDraftOrder == 0 ? '' : result.data.buyerDraftOrder));
+			    	  $('#quote_ul').find('em').eq(1).text((result.data.buyerNormalOrder == 0 ? '' : result.data.buyerNormalOrder));
+			    	  $('#quote_ul').find('em').eq(2).text((result.data.buyerDecisionOrder == 0 ? '' : result.data.buyerDecisionOrder));
+			    	  $('#quote_ul').find('em').eq(3).text((result.data.buyerProcessOrder == 0 ? '' : result.data.buyerProcessOrder));
+			    	  $('#quote_ul').find('em').eq(4).text((result.data.buyerFinishOrder == 0 ? '' : result.data.buyerFinishOrder));
+			    	  $('#quote_ul').find('em').eq(5).text((result.data.buyerExpireOrder == 0 ? '' : result.data.buyerExpireOrder));
+			    	  $('#quote_ul').find('em').eq(6).text((result.data.buyerCancelOrder == 0 ? '' : result.data.buyerCancelOrder));
+			    	  $('#quote_ul').find('em').eq(7).text((result.data.buyerNoPassOrder == 0 ? '' : result.data.buyerNoPassOrder));
+			       }else if(result.state == 2){
+			    		 //如果还未登录，跳转登录页
+			    		 window.location = "/zh/login.html";
+			      }     
+          })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

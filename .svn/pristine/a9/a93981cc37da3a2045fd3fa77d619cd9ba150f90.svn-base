@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<meta name="Keywords"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<meta name="Description"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<title>快制造-修改企业档案</title>
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="/lib/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script src="https://api.html5media.info/1.1.8/html5media.min.js"></script>
+<script src="/lib/respond/respond.js"></script>
+<link rel="stylesheet" href="/css/css.css" />
+<link rel="stylesheet" href="/css/easydialog.css" />
+<style>
+@media ( min-width : 1200px) {
+	.container {
+		width: 1200px;
+		padding: 0;
+	}
+}
+</style>
+</head>
+<body>
+	<div class="enterprise_archives modify_files">
+		<div id="header"></div>
+		<div class="section ">
+			<div class="section_in container clearfix">
+				<nav class="pull-left media-left ">
+					<ul>
+						<li><span></span> <a href="/zh/enterprise_archives.html"><em
+								class="iconfont">&#xe617;</em>企业档案 </a></li>
+						<li class="li2"><span></span> <a
+							href="/zh/edit_enterprise_archives.html" class="cc0"><em
+								class="iconfont">&#xe607;</em>修改档案</a></li>
+						<li><span></span> <a href="/zh/account_management.html"><em
+								class="iconfont">&#xe607;</em>账户管理 </a></li>
+						<li><span></span> <a href="/zh/product_totalpage.html"><em
+								class="iconfont">&#xe65b;</em>产品库</a></li>
+					</ul>
+				</nav>
+				<div class="contain_right pull-left">
+					<h3 id="factoryNameHtml"></h3>
+					<div class="panel">
+						<div class="panel-heading">公司信息</div>
+						<form class="form-horizontal" id="upload_factory_file"
+							method="post" enctype="multipart/form-data" autocomplete="off"
+							onsubmit="return false">
+							<div class="panel-body panel-body1">
+								<input type="hidden" name="factoryLicenseFileS"
+									id="factoryLicenseFileS" value=""> <input type="hidden"
+									name="factoryGateFileS" id="factoryGateFileS" value="">
+								<input type="hidden" name="productionEnvironmentS"
+									id="productionEnvironmentS" value=""> <input
+									type="hidden" name="productionVideoS" id="productionVideoS"
+									value=""> <input type="hidden" id="factoryLogoFileS"
+									name="factoryLogoFileS" value="" /> <input type="hidden"
+									name="factoryLogoFileName" value="" /> <input type="hidden"
+									name="factoryLicenseFileName" value="" /> <input type="hidden"
+									name="factoryGateFileName" value="" />
+								<div class="form-group">
+									<label for="name" class="col-sm-2 control-label w200">公司名称：</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control w420" id="factoryName"
+											placeholder="上海凯融信息科技有限公司">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-sm-2 control-label w200">上传公司logo：</label>
+									<div class="col-sm-8">
+										<div class="sclogo posirela">
+											<img src="/images/enterprise/sclogo3.png" alt=""
+												id="factoryLogoHtml" /> <span class="tmd">修改logo</span> <input
+												id="updateFactoryLogoFile" name="file" type="file"
+												onchange="updateFactoryLogo(this)" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group" id="aliWebsiteHide">
+									<label class="col-sm-2 control-label w200">1688网址：</label>
+									<div class="col-sm-8">
+										<div class="input-group w300">
+											<span class="input-group-addon">http://</span> <input
+												type="text" class="form-control"
+												aria-describedby="inputGroupSuccess2Status" id="aliWebsite">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="num" class="col-sm-2 control-label w200">联系电话：</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control w300" id="tel"
+											placeholder="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="num" class="col-sm-2 control-label w200">手机电话：</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control w300" id="mobile"
+											placeholder="">
+									</div>
+								</div>
+								<div class="form-group" id="factoryLicenseHide">
+									<label class="col-sm-2 control-label w200">上传营业执照：</label>
+									<div class="col-sm-8 w440 posirela padlr ml mb52">
+										<div id="factoryLicense" class="factoryLicense"></div>
+										<div class="sm posiabso">
+											文件上传最大 5M<br />允许上传的文件类型包括 (.png, .jpg, .jpeg,.gif, .bmp)
+										</div>
+									</div>
+
+								</div>
+								<div class="form-group gsdz">
+									<label class="col-sm-2 control-label w200">公司地址：</label>
+									<div class="col-sm-8 posirela">
+										<div class="form-control w420 form-control2">
+											<select id="province" onChange="getChinaProv(this.value);"
+												class="w136">
+												<option value="000000" style="color: #999;"
+													disabled="disabled">-请选择省-</option>
+											</select> <select id="city" onChange="getChinaCity(this.value);"
+												class="w136">
+												<option value="000000" style="color: #999;"
+													disabled="disabled">-请选择市-</option>
+											</select> <select id="district" class="w136">
+												<option value="000000" style="color: #999;"
+													disabled="disabled">-请选区-</option>
+											</select>
+										</div>
+										<textarea class="form-control w420" id="detailsAddress"
+											placeholder="建议您如实填写详细收货地址，例如街道名称，门牌号码，楼层和房间号等信息"></textarea>
+									</div>
+								</div>
+
+								<div class="form-group" id="factoryGateHide">
+									<label class="col-sm-2 control-label w200">上传工厂厂门照片：</label>
+									<div class="col-sm-8 w440 posirela padlr ml mb52">
+										<div id="factoryGate"></div>
+										<div class="sm posiabso">
+											文件上传最大 5M<br />允许上传的文件类型包括 (.png, .jpg, .jpeg,.gif, .bmp)
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label w200">成立年份：</label>
+									<div class="col-sm-8">
+										<div
+											class="input-group date form_datetime col-md-6 w300 posirela"
+											data-date="2000" data-date-format="yyyy"
+											data-link-field="dtp_input1">
+											<input class="form-control brt" size="16" type="text"
+												readonly id="establishmentYear">
+											<!--<span class="input-group-addon blt"></span>-->
+											<span class="input-group-addon"><span
+												class="glyphicon glyphicon-th"></span></span> <em class="line"></em>
+										</div>
+										<input type="hidden" id="dtp_input1" value="" /><br />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label w200">雇员数量：</label>
+									<div class="col-sm-8">
+										<select class="form-control w300" id="staffNumber">
+											<option value="0-49">0-49</option>
+											<option value="50-99">50-99</option>
+											<option value="100-200">100-200</option>
+											<option value="201-500">201-500</option>
+											<option value="500+">500+</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group" id="factoryAcreageHide">
+									<label class="col-sm-2 control-label w200">工厂面积：</label>
+									<div class="col-sm-8">
+										<select class="form-control w300" id="factoryAcreage">
+											<option value="0-1,000㎡">0-1,000㎡</option>
+											<option value="1,000-3,000㎡">1,000-3,000㎡</option>
+											<option value="3,000-5,000㎡">3,000-5,000㎡</option>
+											<option value="5,000-10,000㎡">5,000-10,000㎡</option>
+											<option value="10,000-30,000㎡">10,000-30,000㎡</option>
+											<option value="30,000+㎡">30,000+㎡</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group" id="factoryValueHide">
+									<label class="col-sm-2 control-label w200">年产值：</label>
+									<div class="col-sm-8">
+										<select class="form-control w300" id="factoryValue">
+											<option value="0-500万元">0-500万元</option>
+											<option value="500-1000万元">500-1000万元</option>
+											<option value="1000-2000万元">1000-2000万元</option>
+											<option value="2000-3000万元">2000-3000万元</option>
+											<option value="3000-4000万元">3000-4000万元</option>
+											<option value="4000万元+">4000万元+</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group" id="typeHide">
+									<label class="col-sm-2 control-label w200">进出口权：</label>
+									<div class="col-sm-8">
+										<select class="form-control w300" id="type">
+											<option value="yes">有</option>
+											<option value="no">无</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label w200">网站：</label>
+									<div class="col-sm-8">
+										<div class="input-group w300">
+											<span class="input-group-addon">http://</span> <input
+												type="text" class="form-control" id="website" value=""
+												aria-describedby="inputGroupSuccess2Status">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label w200">公司简介：</label>
+									<div class="col-sm-8">
+										<textarea class="form-control textjj" id="factoryInfoHtml"></textarea>
+									</div>
+
+								</div>
+								<div class="btns">
+									<button class="btn btn-default" onclick="editFactoryInfo()">保存</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<form id="upload_qualification_file" method="post"
+						enctype="multipart/form-data" autocomplete="off"
+						onsubmit="return false">
+						<input type="hidden" name="qualificationFile"
+							id="qualificationFile" value=""> <input type="hidden"
+							name="modifyQualificationFile" id="modifyQualificationFile"
+							value="">
+						<div class="panel" id="qualificationHtmlHide">
+							<div class="panel-heading">资格认证</div>
+							<div class="panel-body">
+								<div class="add2 clearfix">
+									<div class="form-group">
+										<label for="name">名称</label> <select class="form-control w300"
+											id="selectQualificationName">
+											<option value="ISO 9001">ISO 9001</option>
+											<option value="ISO 9004">ISO 9004</option>
+											<option value="VDA 6.1">VDA 6.1</option>
+											<option value="QS9000">QS9000</option>
+											<option value="QUALIFAS">QUALIFAS</option>
+											<option value="CCC">CCC</option>
+											<option value="AS9100">AS9100</option>
+											<option value="AS9000">AS9000</option>
+											<option value="AS 9003">AS 9003</option>
+											<option value="AS 9102">AS 9102</option>
+											<option value="ANSI/ESD S20.20">ANSI/ESD S20.20</option>
+											<option value="ASME">ASME</option>
+											<option value="ASME Nuclear">ASME Nuclear</option>
+											<option value="ASQ">ASQ</option>
+											<option value="CE Mark(Europe)">CE Mark(Europe)</option>
+											<option value="FAA">FAA</option>
+											<option value="FDA - U.S.Food and Drug Administration">FDA
+												- U.S.Food and Drug Administration</option>
+											<option value="Federal Firearms License (FFL)">Federal
+												Firearms License (FFL)</option>
+											<option value="ISO 14000">ISO 14000</option>
+											<option value="ISO 14001">ISO 14001</option>
+											<option value="ISO 1725">ISO 1725</option>
+											<option value="ISO 9000">ISO 9000</option>
+											<option value="ISO 9002">ISO 9002</option>
+											<option value="ISO 9003">ISO 9003</option>
+											<option value="ISO Compliant">ISO Compliant</option>
+											<option value="ISO13485:2003(E)">ISO13485:2003(E)</option>
+											<option value="OHSAS 18001">OHSAS 18001</option>
+											<option value="QS 9000 TE Supplement">QS 9000 TE
+												Supplement</option>
+											<option value="RC14001">RC14001</option>
+											<option value="SA8000">SA8000</option>
+											<option value="TL9000">TL9000</option>
+											<option value="UL">UL</option>
+											<option
+												value="HACCP - Hazard Analysis and Critical Control Point">HACCP
+												- Hazard Analysis and Critical Control Point</option>
+											<option value="QC08000">QC08000</option>
+											<option value="IRIS">IRIS</option>
+											<option value="ISO 3834">ISO 3834</option>
+											<option value="DIN 18800">DIN 18800</option>
+											<option value="DIN 6700">DIN 6700</option>
+											<option value="API">API</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="name">有效期</label>
+										<div class="input-group date form_date col-md-6 w300"
+											data-date="" data-date-format="yyyy-mm-dd"
+											data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+											<input class="form-control brt" size="16" type="text"
+												value="" id="validityTime" readonly>
+											<!--<span class="input-group-addon blt"></span></span>-->
+											<span class="input-group-addon date_1"><span
+												class="glyphicon glyphicon-calendar"></span></span>
+										</div>
+										<input type="hidden" id="dtp_input2" value="" /><br />
+									</div>
+									<div class="add">
+										<button class="btn btn-default" onclick="addQualification()">添加
+											+</button>
+									</div>
+								</div>
+								<table class="table table2">
+									<tbody id="qualificationList">
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</form>
+					<div class="panel panel2" id="technologicalAdvantageHide">
+						<div class="panel-heading">公司优势</div>
+						<div class="panel-body">
+							<div class="form-horizontal">
+								<div class="form-group">
+									<label for="name" class="col-sm-5 control-label w380">贵厂在哪些特殊工艺上具有低成本优势或技术优势</label>
+									<div class="col-sm-7">
+										<input type="text" class="form-control w420 "
+											id="technologicalAdvantage" placeholder="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-sm-5 control-label w380">最熟悉的材料类型或型号</label>
+									<div class="col-sm-7">
+										<input type="text" class="form-control w420 "
+											id="dominantMaterialModel" placeholder="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-sm-5 control-label w380">优势的工件大小</label>
+									<div class="col-sm-7" id="dominantMaterialSize">
+										<label class="radio-inline"> <input type="radio"
+											name="inlineRadioOptions" value="2"> 大
+										</label> <label class="radio-inline"> <input type="radio"
+											name="inlineRadioOptions" value="1"> 中
+										</label> <label class="radio-inline"> <input type="radio"
+											name="inlineRadioOptions" value="0"> 小
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-sm-5 control-label w380">工艺强项</label>
+									<div class="col-sm-7 posirela">
+										<input class="form-control w300 select2" id="mainProcess"
+											value=""></input>
+										<div class="dx w300" id="mainProcessForeach">
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="注塑">注塑
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="吸塑">吸塑
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="滚塑">滚塑
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="吹塑">吹塑
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="挤塑">挤塑
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="其他塑料工艺">其他塑料工艺
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="不锈钢铸造(硅溶胶、水玻璃)">不锈钢铸造(硅溶胶、水玻璃)
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="压铸(铝、锌、镁、铜等)">压铸(铝、锌、镁、铜等)
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="砂铸(钢、铁、铜、铝等)">砂铸(钢、铁、铜、铝等)
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="重力铸造(铝、铜等)">重力铸造(铝、铜等)
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="其他铸造">其他铸造
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="其他塑料工艺">其他塑料工艺
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="热锻">热锻
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="冷锻">冷锻
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="钣金加工（切割、折弯、焊接、组装）">钣金加工（切割、折弯、焊接、组装）
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="冲压拉伸">冲压拉伸
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="旋压">旋压
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="铝挤压">铝挤压
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="3轴以上精密加工">3轴以上精密加工
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="高速车床">高速车床
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="高速铣床">高速铣床
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="普通车铣钻磨">普通车铣钻磨
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="其他机加工">其他机加工
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="现成商品采">现成商品采
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox" name="mainProcess"
+													value="其他采购">其他采购
+												</label>
+											</div>
+										</div>
+										<div class="ts">最多只能选3个</div>
+									</div>
+								</div>
+								<div class="form-group cds">
+									<label class="col-sm-5 control-label w380">场地大小</label>
+									<div class="col-sm-7" id="siteSizeHtml">
+										<div class="radio">
+											<input type="radio" name="siteSize" value="0" />能达到世界500强公司的验厂标准或者汽配行业Tier1的验厂标准
+										</div>
+										<div class="radio">
+											<input type="radio" name="siteSize" value="1" />能通过正常的验厂
+										</div>
+										<div class="radio">
+											<input type="radio" name="siteSize" value="2" />暂不允许验厂
+										</div>
+									</div>
+								</div>
+
+								<div class="btns">
+									<button class="btn btn-default" onclick="addFactoryAdvantage()">保存</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel3" id="cooperativeEnterpriseSHide">
+						<div class="panel-heading">知名合作企业（最多5个）</div>
+						<div class="panel-body posirela">
+							<form class="form-horizontal posirela"
+								id="cooperativeEnterpriseS" onsubmit="return false"></form>
+							<div class="add add3">
+								<button class="btn btn-default pull-right">删除 -</button>
+								<button class="btn btn-default pull-right">添加 +</button>
+							</div>
+							<div class="btns">
+								<button class="btn btn-default"
+									onclick="addCooperativeEnterprise()">保存</button>
+							</div>
+
+						</div>
+					</div>
+					<div class="panel panel4" id="acceptConditionHide">
+						<div class="panel-heading">可接受询盘条件</div>
+						<div class="panel-body">
+							<div class="radio">
+								<label> <input type="radio" name="optionsRadios"
+									value="1"> 任何订单：只要金额大于 <select class="form-control"
+									id="acceptMoney">
+										<option value="0-20万">0-20万</option>
+										<option value="20-40万">20-40万</option>
+										<option value="40-60万">40-60万</option>
+										<option value="60万+">60万+</option>
+										<option value="">无要求</option>
+								</select>元，并且和 符合本司主要工艺能力
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input type="radio" name="optionsRadios"
+									value="2"> 只接受 与本公司 产品相关性高的产品，但可以完全定制
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input type="radio" name="optionsRadios"
+									value="3">只接受 与本公司 产品相关性高的产品，但可以小部分定制
+								</label>
+							</div>
+							<div class="btns">
+								<button class="btn btn-default"
+									onclick="updateAcceptCondition()">保存</button>
+							</div>
+						</div>
+					</div>
+					<form id="upload_file_form" method="post"
+						enctype="multipart/form-data" autocomplete="off"
+						onsubmit="return false">
+						<input type="hidden" name="equipmentName" />
+						<div class="panel" id="equipmentHide">
+							<div class="panel-heading">
+								关键设备清单 <span>（请填写至少3件设备）</span>
+							</div>
+							<div class="panel-body">
+								<div class="add">
+									<button class="btn btn-default" onclick="addEquipmentShow()">添加
+										+</button>
+									<div class="tsxx"></div>
+								</div>
+								<table class="table table1 table1_1">
+									<thead>
+										<tr>
+											<th class="th1">设备名称</th>
+											<th class="th2">型号</th>
+											<th class="th3">台数</th>
+											<th class="th4" colspan="2">备注</th>
+										</tr>
+									</thead>
+									<tbody id="equipmentList">
+										
+									</tbody>
+									
+								</table>
+								<div class="form-group clearfix">
+									<label for="name" class="col-sm-2 control-label  w200">更多设备上传(excel、word、pdf)：</label>
+									<div class="col-sm-8 more_sb">
+										<div class="scfj">
+											上传附件 <input type="file" name="file1"
+												onchange="upload_equipment(this)" />
+										</div>
+										<div class="fjmc">
+											<span style="cursor: pointer; color: #006dcc;"></span> <i
+												class="iconfont">&#xe62b;</i>
+										</div>
+									</div>
+								</div>
+								<div class="form-horizontal form_last">
+									<div class="form-group">
+										<label for="name" class="col-sm-2 control-label  w200">主要生产设备运行视频：</label>
+										<div class="col-sm-8 ">
+											<div class=" w670  videos clearfix">
+												<em style="float: right; color: red;">（.mp4 .ogg格式）</em> <input
+													type="file" id="uploadProduction"
+													onchange="uploadProductionVideo(this)" name="file"
+													accept="video/*"> <input type="hidden"
+													id="productionVideo" name="productionVideo" value="">
+												<div class="sp pull-left">
+													<span class="iconfont">&#xe6ed;</span><br />上传视频
+												</div>
+												<div class="mm pull-left" id="productionVideoDiv">
+													<i id="productionVideoUrl"></i> <span
+														id="delProductionVideoHtml"> <em class="iconfont"
+														onclick="delProductionVideo()">&#xe62b;</em>
+													</span>
+												</div>
+												<input type="hidden" name="videoBoxUrl" id="videoBoxUrl"
+													value="" />
+												<div class="video_bf">
+													<video id="video_box" controls="controls" autoplay loop>
+
+													</video>
+													<span class="iconfont">&#xe643;</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group mb30">
+										<label class="col-sm-2 control-label w200">上传生产环境照片：</label>
+										<div class="col-sm-8 w670 posirela padlr ml mb52 gc">
+											<div id="productionEnvironment"></div>
+											<div class="sm posiabso">
+												文件上传最大 5M<br />允许上传的文件类型包括 (.png, .jpg, .jpeg,.gif, .bmp)
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+
+	<div class="w-out-box" id="show_upload_dialog" style="display: none;">
+		<div class="weui_mask"></div>
+		<div class="w-weui_dialog" style="width: 510px;">
+			<div id="container">
+
+				<div class="content">
+					<h1>上传进度</h1>
+				</div>
+
+				<!-- Progress bar -->
+				<div id="progress_bar" class="ui-progress-bar ui-container">
+					<div class="ui-progress" style="width: 0%;" id="ui-progress-upload">
+						<span class="ui-label" style="display: none;">正在加载...<b
+							class="value">0%</b></span>
+					</div>
+				</div>
+				<!-- /Progress bar -->
+				<a class="close-reveal-modal" style="color: #eee; font-size: 22px;"
+					href="javascript:void(0);" onclick="cancel_upload()">×</a>
+				<div class="content" id="main_content" style="display: none;">
+					<p>加载完成。</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- SEO代码 开始-->
+	<div style="display: none">
+		快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘
+
+		Keywords: <a href="https://www.kuaizhizao.cn/" title="快制造"
+			target="_blank"><strong>快制造</strong></a> <a
+			href="https://www.kuaizhizao.cn/" title="外发加工" target="_blank"><strong>外发加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑模具" target="_blank"><strong>注塑模具</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机械加工" target="_blank"><strong>机械加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金加工" target="_blank"><strong>钣金加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具厂" target="_blank"><strong>塑料模具厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑加工" target="_blank"><strong>注塑加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具设计与制造" target="_blank"><strong>塑料模具设计与制造</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸厂" target="_blank"><strong>压铸厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="零件加工" target="_blank"><strong>零件加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸加工订单" target="_blank"><strong>外贸加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="非标定制" target="_blank"><strong>非标定制</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外发订单" target="_blank"><strong>外发订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外协加工" target="_blank"><strong>外协加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="加工订单" target="_blank"><strong>加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑订单" target="_blank"><strong>注塑订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸订单" target="_blank"><strong>压铸订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金订单" target="_blank"><strong>钣金订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机加工询盘" target="_blank"><strong>机加工询盘</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸询盘" target="_blank"><strong>外贸询盘</strong></a>
+	</div>
+	<!-- SEO代码 开始-->
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script type="text/javascript" src="/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script src="/zh/icn/edit_enterprise_archives.js"></script>
+<script type="text/javascript" src="/js/upload-base.js"></script>
+<script type="text/javascript" src="/js/easydialog.min.js"></script>
+<script src="/js/dateFormat.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script src="/js/base64.js"></script>
+<script type="text/javascript" src="/js/getAddress.js"></script>
+<script src="/lib/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script
+	src="/lib/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+    $('#header').load('header.html');
+	$('#footer').load('footer.html');
+
+     /*企业档案默认侧边栏效果*/
+    $('.section_in nav li:nth-child(2)').children('span').show()
+    /* 侧边栏效果 */
+    $('.section_in nav li').hover(function(){
+        $(this).children('span').show();
+        $(this).siblings().not('.section_in nav li:nth-child(2)').children('span').hide();
+        $(this).children('a').css({'color':'#006dcc'});
+        $(this).siblings().not('.section_in nav li:nth-child(2)').children('a').css({'color':'#333'});
+    });
+    $('.section_in nav li').mouseout(function(){
+        $('.section_in nav li').not('.section_in nav li:nth-child(2)').children('span').hide();
+        $('.section_in nav li').not('.section_in nav li:nth-child(2)').children('a').css({'color':'#333'});
+    });
+    /* body 高度控制底部位置 */
+    var h1 = $(document.body).height();
+    var h2 = window.screen.availHeight  ;
+    if(h1 < h2){
+        $('#footer').addClass('footer1')
+    }else{
+        $('#footer').removeClass('footer1');
+    };
+	
+    /*地区选择效果*/
+    $('.modify_files .select1').click(function(){
+        $('.modify_files .dxtc').toggle();
+    })
+    $('.dxtc span').click(function(){
+        $('.modify_files .dxtc').hide();
+    })
+    $('.category_list li').hover(function(){
+        $(this).css({
+            "background-color": "#006dcc",
+            "color": "#fff"
+        }).siblings().css({
+            "background-color": "#fff",
+            "color": "#333"
+        })
+        $(this).children('span').css({
+            "background":"url(/images/products/arr3.png)"
+        }).siblings().children('span').css({
+            "background":"url(/images/products/arr2.png)"
+        })
+    })
+    $('.category_list li').click(function(){
+        $(this).css({
+            "background-color": "#006dcc",
+            "color": "#fff"
+        }).siblings().css({
+            "background-color": "#fff",
+            "color": "#333"
+        })
+        $(this).children('span').css({
+            "background":"url(/images/products/arr3.png)"
+        }).siblings().children('span').css({
+            "background":"url(/images/products/arr2.png)"
+        })
+    })
+
+    /*  工艺强项多选 */
+//     $('.modify_files .select2').click(function(){
+//         $('.modify_files .dx').toggle();
+//         var mainProcess =[];  
+//         $("#mainProcessForeach").find('.checkbox').each(function () {
+//     	 if($(this).find("input").is(':checked')){
+//     		 mainProcess.push($(this).find("input").val()); 
+//     	 }
+//         });
+//         $("#mainProcess").val(mainProcess);
+//     })
+    /* 加强工艺多选限制*/
+    $('.dx input:checkbox').click(function(){
+        var len = $('.dx input:checkbox:checked').length;
+       if(len > 3){
+           $(this).attr("checked",false).removeAttr('disabled');
+           $('.panel2 .ts').show();
+           $('.panel2 .ts').slideUp(2000);
+          
+       }
+     })
+     
+     
+     //选择工艺
+	$('#mainProcessForeach').find('input[type="checkbox"]').change(function(){
+		var mainProcess = '';
+		$('#mainProcessForeach').find('input[type="checkbox"]').each(function(){
+			if($(this).is(':checked')){
+				mainProcess +=$(this).val() + ",";
+			}
+		})   
+		if(mainProcess != null && mainProcess != '' && mainProcess != undefined){
+			mainProcess = mainProcess.substring(0,mainProcess.length-1);
+		}
+		$('#mainProcess').val(mainProcess);
+	})
+    //处理工艺显示
+	   $("#mainProcess").on("click", function(e){
+		    $("#mainProcessForeach").show();
+
+		    $(document).on("click", function(){
+		    	$("#mainProcessForeach").hide();
+		    });
+
+		    e.stopPropagation();
+		});
+		$("#mainProcessForeach").on("click", function(e){
+		    e.stopPropagation();
+		}); 
+     
+    /*5秒后 提示弹窗消失*/ 
+//     var time1 = 5;
+//     var setInterval;
+//     setInterval(function(){          	
+//           time1--;
+//           if(time1 < 0){
+//           	timer = 0;
+//           	$('.panel2 .ts').hide();
+//           }
+//     },1000)    
+     /* 日历插件 */
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        /*weekStart: 1,*/
+        todayBtn:  1,
+        autoclose: 1,
+        /*todayHighlight: 1,*/
+        startView: 4,
+        minView: 4,
+        maxView: 4,
+        forceParse: 0,
+        showMeridian: 1
+    });
+    $('.table-condensed tfoot').remove();
+
+    $('.form_date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 4,
+        forceParse: 0
+    });
+    
+    //添加合作企业
+    $('.add3 button:last').click(function(){
+        var n = $('.panel3 form').children().length;
+        var d= '一' ;
+        if(n == 1){
+            d = '二';
+        }
+        if(n == 2){
+            d = '三';
+        }
+        if(n == 3){
+            d = '四';
+        }
+        if(n == 4){
+            d = '五';
+        }
+        
+        var addformgroup;
+        if(n == 0){
+            addformgroup = $('<div class="form-group posirela">' +
+                    '<label for="name" class="col-sm-2 control-label">第 ' + d + '主要用户</label> ' +
+                    '<div class="col-sm-10"> ' +
+                    	'<input type="text" class="form-control w450" id="name" placeholder="">'+
+    	                '<div class="add add3 add4">'+
+    	                '</div>'+
+                    '</div> ' +
+                    '</div>');
+        }else{
+        	addformgroup = $('<div class="form-group posirela">' +
+                    '<label for="name" class="col-sm-2 control-label">第 ' + d + '主要用户</label> ' +
+                    '<div class="col-sm-10"> ' +
+                    	'<input type="text" class="form-control w450" id="name" placeholder="">'+
+    	                '<div class="add add3 add4" onclick="delCooperativeEnterprise(this)">'+
+    	                '<button class="btn btn-default pull-right">删除 -</button>'+
+    	                '</div>'+
+                    '</div> ' +
+                    '</div>');
+        }
+
+        if(n > 4){
+            addformgroup = ''
+           	easyDialog.open({
+				container : {
+					header : '提示信息',
+					content : '最多添加5个'
+				},
+				overlay : false,
+				autoClose : 1000
+			});
+            return false;
+        }
+        $('.panel3 form').append(addformgroup);
+        $('.add3 button:first').show();
+    })
+    
+    //删除合作企业
+    $('.add3 button:first').click(function(){
+    	$('.panel3 form').find('.posirela:last').remove();   
+    	var tl = $('.panel3 form').find('.posirela').length;
+    	if(tl == 0){
+    		$('.add3 button:first').hide();
+    	}
+    	
+    })
+    
+    $('#equipmentName,#equipmentModel,#number,#equipmentType').siblings('span') 
+    .css({'position':'absolute','top':'50%','margin-top':'-25px','height':'50px','line-height':'50px','z-index':'0'});
+    
+   
+    
+    /* 上传视频点击播放*/
+   $('.videos .mm i').click(function(){
+   	$('.videos  .video_bf').show();
+   	$("#video_box").attr("src",$("#videoBoxUrl").val());
+   })
+   /*点击关闭按钮*/
+   $('.video_bf span').click(function(){
+  	 $('.videos  .video_bf').hide();
+//  	 $("#video_box").attr("src","");
+   })
+
+    
+</script>
+
+<script type="text/javascript">
+	function loadProvince(regionId) {
+		$("#province").html("");
+		$("#province").append("<option value=''>请选择省份</option>");
+		var jsonStr = getAddress(regionId, 0);
+		for ( var k in jsonStr) {
+			$("#province").append(
+					"<option value='"+k+"'>" + jsonStr[k] + "</option>");
+		}
+		if (regionId.length != 6) {
+			$("#city").html("");
+			$("#city").append("<option value=''>请选择城市</option>");
+			$("#district").html("");
+			$("#district").append("<option value=''>请选择区域</option>");
+		} else {
+			$("#province").val(regionId.substring(0, 2) + "0000");
+			loadCity(regionId);
+		}
+	}
+
+	function loadCity(regionId) {
+		$("#city").html("");
+		$("#city").append("<option value=''>请选择城市</option>");
+		if (regionId.length != 6) {
+			$("#district").html("");
+			$("#district").append("<option value=''>请选择区域</option>");
+		} else {
+			var jsonStr = getAddress(regionId, 1);
+			for ( var k in jsonStr) {
+				$("#city").append(
+						"<option value='"+k+"'>" + jsonStr[k] + "</option>");
+			}
+			if (regionId.substring(2, 6) == "0000") {
+				$("#district").html("");
+				$("#district").append("<option value=''>请选择区域</option>");
+			} else {
+				$("#city").val(regionId.substring(0, 4) + "00");
+				loadArea(regionId);
+			}
+		}
+	}
+
+	function loadArea(regionId) {
+		$("#district").html("");
+		$("#district").append("<option value=''>请选择区域</option>");
+		if (regionId.length == 6) {
+			var jsonStr = getAddress(regionId, 2);
+			for ( var k in jsonStr) {
+				$("#district").append(
+						"<option value='"+k+"'>" + jsonStr[k] + "</option>");
+			}
+			if (regionId.substring(4, 6) != "00") {
+				$("#district").val(regionId);
+			}
+		}
+	}
+	function getCountry() {
+		loadProvince('0');
+	}
+	function getChinaProv(regionId) {
+		loadCity(regionId);
+	}
+	function getChinaCity(regionId) {
+		loadArea(regionId);
+	}
+
+window.onload = function(){
+	getCountry();
+}
+</script>

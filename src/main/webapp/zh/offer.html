@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<meta name="Keywords"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<meta name="Description"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+
+<title>快制造-供应商报价</title>
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script src="/lib/respond/respond.js"></script>
+<link rel="stylesheet" href="/css/css.css" />
+<link rel="stylesheet" href="/css/easydialog.css" />
+<link rel="stylesheet" href="/css/progressBar.css" />
+<link rel="stylesheet" href="/css/ui.css" />
+<link rel="stylesheet" href="/css/ui.progress-bar.css" />
+</head>
+<body>
+
+	<div class="supplier_detail supplier_offer">
+		<input type="hidden" id="filePath">
+		<div id="header"></div>
+		<div class="section">
+			<div class="container w12">
+				<div class="row">
+					<h2>
+						<span style="font-size: 30px;">test</span><span id="quote_title"
+							style="font-size: 26px; padding-right: 64px;"></span> 询盘编号 #<span
+							id="quoteId" style="font-size: 26px;"></span> - <small>可报价</small>
+					</h2>
+					<nav>
+						<ul class="clearfix" id="title_ul">
+							<li><a href="###">询盘明细</a></li>
+							<li><a href="###" class="active">报价</a></li>
+							<li><a href="###">大货</a></li>
+						</ul>
+					</nav>
+					<div class="t1 t11 clearfix">
+						<a href="###" id="add_quote" class="sc pull-left text-center"
+							onclick="submit_quote('1',this)">提交报价</a> <a
+							href="/zh/quote_list.html?quoteStatus=1"
+							class="sc xp pull-left text-center">返回报价列表页面</a>
+					</div>
+					<div class="lj_info">
+						<div class="lj_title">
+							<span class="pull-left"></span>零件信息
+						</div>
+						<div class="li_detail ">
+							<div id="product_list" class="clearfix"></div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="container w12 tj">
+				<form class="form-horizontal" id="file_upload_id"
+					action="/upload/uploadAttachmentAndChangeName.do"
+					onsubmit="return false;" method="post"
+					enctype="multipart/form-data">
+					<div class="form-group">
+						<label for="firstname" class="col-sm-2 control-label">报价有效期：</label>
+						<div class="col-sm-10 colsm10">
+							<label class="radio-inline"> <input type="radio"
+								name="inlineRadioOptions" id="inlineRadio1" value="7">
+								7天
+							</label> <label class="radio-inline"> <input type="radio"
+								name="inlineRadioOptions" id="inlineRadio2" value="30">
+								30天
+							</label> <label class="radio-inline"> <input type="radio"
+								name="inlineRadioOptions" id="inlineRadio2" value="60">
+								60天
+							</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label"><span></span>支付条款：</label>
+						<div class="col-sm-10 colsm10">
+							<select style="width: 227px; height: 34px;" id="payment_select"
+								class="form-control">
+								<option value="同意采购商定义的支付方式">同意采购商定义的支付方式</option>
+								<option value="30%预付，其余出货前付清">30%预付，其余出货前付清</option>
+								<option value="50%预付，其余出货前付清">50%预付，其余出货前付清</option>
+								<option value="出货后30天付款">出货后30天付款</option>
+								<option value="可协商">可协商</option>
+								<option value="其他">其他</option>
+							</select>
+							<textarea class="form-control textarea1" id="paymentRemark"
+								style="display: none;"></textarea>
+						</div>
+					</div>
+					<input type="hidden" id="filePath">
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">备注</label>
+						<div class="col-sm-10 colsm10">
+							<textarea class="form-control textarea2" id="quote_remark"></textarea>
+						</div>
+
+					</div>
+					<div class="form-group pull-right">
+						<div style="float: left; width: 120px; overflow: hidden;">
+							<input type="text" class="pull-left"
+								style="width: 120px; float: none !important; text-decoration: underline;"
+								id="fileName" name="selectDrawingName" />
+						</div>
+						<input type="file"
+							style="position: absolute; width: 109px; opacity: 0; margin-left: 126px; z-index: 555;"
+							name="file_upload" onchange="show_drawingName(this)">
+						<button class="fj">
+							<i></i>选择文件
+						</button>
+					</div>
+
+				</form>
+			</div>
+
+			<div class="container w12 qt">
+				<div class="qt_title">
+					<p>
+						其他条件 <span>*</span>
+					</p>
+				</div>
+				<div class="qt_detail">
+					<p>除了价格因素外，你觉得贵司为何适合做这个订单。（产品经验，技术，设备...）</p>
+					<textarea class="form-control" id="quoteReasons"></textarea>
+				</div>
+			</div>
+
+			<div class="container w12 historys">
+				<div class="history_price ">
+					<p class="pt">历史报价</p>
+					<div class="history clearfix"></div>
+				</div>
+			</div>
+
+			<div class="container w12 tjbtn">
+				<button class="btn btn-default btn3 pull-right"
+					onclick="submit_quote('1',this)">提交报价</button>
+			</div>
+
+		</div>
+
+		<div id="footer"></div>
+	</div>
+
+	<div class="w-out-box" id="show_upload_dialog" style="display: none;">
+		<div class="weui_mask"></div>
+		<div class="w-weui_dialog" style="width: 510px;">
+			<div id="container">
+
+				<div class="content">
+					<h1>上传进度</h1>
+				</div>
+
+				<!-- Progress bar -->
+				<div id="progress_bar" class="ui-progress-bar ui-container">
+					<div class="ui-progress" style="width: 0%;" id="ui-progress-upload">
+						<span class="ui-label" style="display: none;">正在加载...<b
+							class="value">0%</b></span>
+					</div>
+				</div>
+				<!-- /Progress bar -->
+				<a class="close-reveal-modal" style="color: #eee; font-size: 22px;"
+					href="javascript:void(0);" onclick="cancel_upload()">×</a>
+				<div class="content" id="main_content" style="display: none;">
+					<p>加载完成。</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- SEO代码 开始-->
+	<div style="display: none">
+		快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘
+
+		Keywords: <a href="https://www.kuaizhizao.cn/" title="快制造"
+			target="_blank"><strong>快制造</strong></a> <a
+			href="https://www.kuaizhizao.cn/" title="外发加工" target="_blank"><strong>外发加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑模具" target="_blank"><strong>注塑模具</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机械加工" target="_blank"><strong>机械加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金加工" target="_blank"><strong>钣金加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具厂" target="_blank"><strong>塑料模具厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑加工" target="_blank"><strong>注塑加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具设计与制造" target="_blank"><strong>塑料模具设计与制造</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸厂" target="_blank"><strong>压铸厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="零件加工" target="_blank"><strong>零件加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸加工订单" target="_blank"><strong>外贸加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="非标定制" target="_blank"><strong>非标定制</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外发订单" target="_blank"><strong>外发订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外协加工" target="_blank"><strong>外协加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="加工订单" target="_blank"><strong>加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑订单" target="_blank"><strong>注塑订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸订单" target="_blank"><strong>压铸订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金订单" target="_blank"><strong>钣金订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机加工询盘" target="_blank"><strong>机加工询盘</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸询盘" target="_blank"><strong>外贸询盘</strong></a>
+	</div>
+	<!-- SEO代码 开始-->
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script>
+<script src="/js/inquiry/offer.js"></script>
+<script>
+	$('#header').load('header.html');
+	$('#footer').load('footer.html');
+    $('.inquiry_detail .section nav li a').hover(function(){
+        $(this).addClass('active')
+        .parent().siblings('li').children('a').removeClass('active');
+    })
+     
+       /*历史报价显示隐藏切换*/
+  $('.supplier_offer .history .p1:first-child i').css({
+                'background':'url(/images/red.png) no-repeat'
+            })
+    $('.supplier_offer .history .p1 i').click(function(){
+        var $this = $(this).parent().next('table');
+        if($this.hasClass('dis')){
+        	$this.removeClass('dis');
+                $this.show();
+            $(this).css({
+                'background':'url(/images/red.png) no-repeat'
+            })
+        }else{
+        	$this.addClass('dis');
+            $this.hide();
+            $(this).css({
+                'background':'url(/images/green.png) no-repeat'
+            })
+        }
+    })
+
+</script>
+
+</html>
+

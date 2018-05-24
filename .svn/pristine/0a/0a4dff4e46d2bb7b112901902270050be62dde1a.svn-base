@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cbt.dao.PreferenceSetMapper" >
+  <resultMap id="BaseResultMap" type="com.cbt.entity.PreferenceSet" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="factory_id" property="factoryId" jdbcType="VARCHAR" />
+    <result column="language" property="language" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="award_disc" property="awardDisc" jdbcType="VARCHAR" />
+    <result column="invited_tender" property="invitedTender" jdbcType="VARCHAR" />
+    <result column="news" property="news" jdbcType="VARCHAR" />
+    <result column="update_record" property="updateRecord" jdbcType="VARCHAR" />
+    <result column="secrecy_apply_yes" property="secrecyApplyYes" jdbcType="VARCHAR" />
+    <result column="update_schedule" property="updateSchedule" jdbcType="VARCHAR" />
+    <result column="receive_evaluation" property="receiveEvaluation" jdbcType="VARCHAR" />
+    <result column="secrecy_apply_no" property="secrecyApplyNo" jdbcType="VARCHAR" />
+    <result column="inquiry_warn" property="inquiryWarn" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, factory_id, language, currency, award_disc, invited_tender, news, update_record, 
+    secrecy_apply_yes, update_schedule, receive_evaluation, secrecy_apply_no, inquiry_warn,create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from preference_set
+    where factory_id = #{factoryId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from preference_set
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cbt.entity.PreferenceSet" >
+    insert into preference_set (id, factory_id, language, 
+      currency, award_disc, invited_tender, 
+      news, update_record, secrecy_apply_yes, 
+      update_schedule, receive_evaluation, secrecy_apply_no, 
+      inquiry_warn,create_time)
+    values (#{id,jdbcType=INTEGER}, #{factoryId,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, 
+      #{currency,jdbcType=VARCHAR}, #{awardDisc,jdbcType=VARCHAR}, #{invitedTender,jdbcType=VARCHAR}, 
+      #{news,jdbcType=VARCHAR}, #{updateRecord,jdbcType=VARCHAR}, #{secrecyApplyYes,jdbcType=VARCHAR}, 
+      #{updateSchedule,jdbcType=VARCHAR}, #{receiveEvaluation,jdbcType=VARCHAR}, #{secrecyApplyNo,jdbcType=VARCHAR}, 
+      #{inquiryWarn,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cbt.entity.PreferenceSet" >
+    insert into preference_set
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="factoryId != null" >
+        factory_id,
+      </if>
+      <if test="language != null" >
+        language,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="awardDisc != null" >
+        award_disc,
+      </if>
+      <if test="invitedTender != null" >
+        invited_tender,
+      </if>
+      <if test="news != null" >
+        news,
+      </if>
+      <if test="updateRecord != null" >
+        update_record,
+      </if>
+      <if test="secrecyApplyYes != null" >
+        secrecy_apply_yes,
+      </if>
+      <if test="updateSchedule != null" >
+        update_schedule,
+      </if>
+      <if test="receiveEvaluation != null" >
+        receive_evaluation,
+      </if>
+      <if test="secrecyApplyNo != null" >
+        secrecy_apply_no,
+      </if>
+      <if test="inquiryWarn != null" >
+        inquiry_warn,
+      </if>
+      <if test="createTime != null" >
+        create_Time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null" >
+        #{factoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null" >
+        #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="awardDisc != null" >
+        #{awardDisc,jdbcType=VARCHAR},
+      </if>
+      <if test="invitedTender != null" >
+        #{invitedTender,jdbcType=VARCHAR},
+      </if>
+      <if test="news != null" >
+        #{news,jdbcType=VARCHAR},
+      </if>
+      <if test="updateRecord != null" >
+        #{updateRecord,jdbcType=VARCHAR},
+      </if>
+      <if test="secrecyApplyYes != null" >
+        #{secrecyApplyYes,jdbcType=VARCHAR},
+      </if>
+      <if test="updateSchedule != null" >
+        #{updateSchedule,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveEvaluation != null" >
+        #{receiveEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="secrecyApplyNo != null" >
+        #{secrecyApplyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inquiryWarn != null" >
+        #{inquiryWarn,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime!=null">
+       #{createTime,jdbcType=TIMESTAMP}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cbt.entity.PreferenceSet" >
+    update preference_set
+    <set >
+      <if test="factoryId != null" >
+        factory_id = #{factoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null" >
+        language = #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="awardDisc != null" >
+        award_disc = #{awardDisc,jdbcType=VARCHAR},
+      </if>
+      <if test="invitedTender != null" >
+        invited_tender = #{invitedTender,jdbcType=VARCHAR},
+      </if>
+      <if test="news != null" >
+        news = #{news,jdbcType=VARCHAR},
+      </if>
+      <if test="updateRecord != null" >
+        update_record = #{updateRecord,jdbcType=VARCHAR},
+      </if>
+      <if test="secrecyApplyYes != null" >
+        secrecy_apply_yes = #{secrecyApplyYes,jdbcType=VARCHAR},
+      </if>
+      <if test="updateSchedule != null" >
+        update_schedule = #{updateSchedule,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveEvaluation != null" >
+        receive_evaluation = #{receiveEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="secrecyApplyNo != null" >
+        secrecy_apply_no = #{secrecyApplyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inquiryWarn != null" >
+        inquiry_warn = #{inquiryWarn,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cbt.entity.PreferenceSet" >
+    update preference_set
+    set factory_id = #{factoryId,jdbcType=VARCHAR},
+      language = #{language,jdbcType=VARCHAR},
+      currency = #{currency,jdbcType=VARCHAR},
+      award_disc = #{awardDisc,jdbcType=VARCHAR},
+      invited_tender = #{invitedTender,jdbcType=VARCHAR},
+      news = #{news,jdbcType=VARCHAR},
+      update_record = #{updateRecord,jdbcType=VARCHAR},
+      secrecy_apply_yes = #{secrecyApplyYes,jdbcType=VARCHAR},
+      update_schedule = #{updateSchedule,jdbcType=VARCHAR},
+      receive_evaluation = #{receiveEvaluation,jdbcType=VARCHAR},
+      secrecy_apply_no = #{secrecyApplyNo,jdbcType=VARCHAR},
+      inquiry_warn = #{inquiryWarn,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

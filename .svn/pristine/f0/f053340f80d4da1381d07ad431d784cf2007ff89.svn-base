@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>快制造-登录</title>
+     <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/css.css"/>
+    <script src="/lib/html5sshiv/html5shiv.min.js"></script>
+    <script src="/lib/respond/respond.js"></script>
+    <style>
+        @media (min-width: 1200px) {
+            .container {
+                width: 1200px;
+                padding:0;
+            }
+        }
+    </style>
+</head>
+<body class="retrieve_password">
+<div class="retrieve_password_in ">
+    <div class="head ">
+        <div class="head_in container w12">
+            <a href="/index.html" class="logo"><img src="/images/logo.jpg" alt=""/></a>
+            <span></span>
+        </div>
+    </div>
+    <div class="section">
+       <div class="section-in clearfix">
+            <div class="imgs pull-left">
+                <img src="/images/passowrd.png" alt=""/>
+            </div>
+           <div class="words pull-left">
+                <p>如果电子邮件地址是你用来注册的那个，我们将发送给您一封邮件用来充值您的密码。<br />如果您不能在收件箱中找到这封邮件，请查看您的垃圾箱。</p>
+               <p class="ptwo">一份邮件已经被送到 <b>yangyanyan4228@yahoo.com</b>，请根据邮件中的指示在24小<br />时内重新设置密码。将会在48小时候生效。<br /> <span class="da4">如果你看不到邮件，请查看您的垃圾邮件箱</span></p>
+               <p>本页面将会在 <span class="cc0">5</span>  秒钟后重新定向。</p>
+           </div>
+       </div>
+    </div>
+</div>
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>

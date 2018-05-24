@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<meta name="Keywords"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<meta name="Description"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<title>快制造-首页</title>
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/css.css" />
+<!-- <script src="http://html5media.googlecode.com/svn/trunk/src/html5media.min.js"></script> -->
+<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script src="/lib/respond/respond.js"></script>
+<script type="text/javascript" src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script>
+</head>
+<body>
+	<div class="home">
+		<header class="header" id="header">
+			<div class="header_top">
+				<div class="header_bottom">
+					<div class="header_bottom_in w12 clearfix">
+						<a href="/zh/index.html" class="logo pull-left"> <img
+							src="/images/head.png" alt="" />
+						</a>
+						<div class="header_top_in dl_zc w12 clearfix">
+
+							<div class="change_language">
+								<a href="#"  class="lange_a" onclick="change_lan()">中 / EN</a>
+							</div>
+
+							<div class="head_R pull-right">
+								<div class="head_l pull-left">
+									<div class="xxs head_hover">
+										<div class="xx yhm afterLogin">
+											<span class="iconfont">&#xe6c9;</span><span id="username"></span>
+											<!-- <span class="iconf1 s1"></span>  -->
+										</div>
+										<div class="xxlist">
+											<a href="/zh/account_management.html">账户管理</a> <a href="#"
+												onclick="exit()"><span class="iconfont">&#xe60a;</span>退出
+											</a>
+										</div>
+
+									</div>
+									<a href="/zh/business_view.html" class="bk ywkb afterLogin">业务看板</a>
+									<div class="xxs head_hover">
+										<div class="xx afterLogin"
+											onclick="window.location='/zh/news.html'">
+											消息 <span id="newMessageCount" class="gs"></span>
+
+										</div>
+										<div class="xxlist news_xx" style="width: 130px;">
+											<a href="/zh/news.html">所有消息</a><a
+												href="/zh/news.html?status=1">未读消息<em
+												style="color: #da4f49" id="unRead"></em></a> <a
+												href="/zh/news.html?status=3">授盘通知<em
+												style="color: #da4f49" id="award"></em></a><a
+												href="/zh/news.html?status=4">生产进度更新<em
+												style="color: #da4f49" id="updateProcess"></em></a> <a
+												href="/zh/news.html?status=2">已发出的消息</a>
+										</div>
+									</div>
+								</div>
+
+								<div class="xxs kzz gys head_hover">
+									<div class="xx xp beforLogin">
+										工厂入口
+										<!--<span class="iconf s2"></span>-->
+									</div>
+									<div class="xxlist xplist clearfix">
+										<div class="N l_sm">
+											<ul>
+												<li>作为供应商，我可以：</li>
+												<li><span></span> 完善档案，<a href="/zh/new_inquiry.html">轻松找到适合自己的各种询盘</a>；</li>
+												<li><span></span> <a href="/zh/quote_list.html">查找询盘</a>，在线提交报价给采购商；</li>
+												<li><span></span> 查看 <a href="/zh/big_buyer.html">大买家采购项目</a>
+													，在线给大客户评价；</li>
+
+												<li class="home_head_dl"><a href="/zh/login.html"
+													class="active">登录</a> <a href="/zh/register_zh.html?type=1"
+													class="supp_register">注册</a></li>
+											</ul>
+										</div>
+
+									</div>
+								</div>
+								<div class="xxs kzz head_hover">
+									<div class="xx xp beforLogin mlr5">
+										采购商入口
+										<!--<span class="iconf s2 "></span>-->
+									</div>
+									<div class="xxlist xplist clearfix">
+										<div class="N l_sm">
+											<ul class="pur_register">
+												<li>作为采购商，我可以：</li>
+												<li><span></span> <a href="/zh/quickly_release.html">发布询盘</a>，获取全中国范围内的供应商报价；</li>
+												<li><span></span> 通过工厂库 <a
+													href="/zh/comments_echart.html">搜索和筛选心仪供应商</a> ，并添加收藏；</li>
+												<li><span></span> 直接发送询盘给有意向的供应商，<a
+													href="/zh/quickly_release.html">获取报价</a>；</li>
+												<li><span></span> 在线管理我的供应商，更快速的建立合作关系；</li>
+												<li class="home_head_dl"><a href="/zh/login.html"
+													class="active">登录</a> <a href="/zh/register_zh.html?type=2"
+													class="pur_register">注册</a></li>
+											</ul>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="xxs kzz head_hover">
+									<div class="xx xp xp_new afterLogin">
+										<span class="iconfont">&#xe63f;</span>询盘
+										<!-- <span class="iconf s2"></span> -->
+									</div>
+									<div class="xxlist xplist xpwidth clearfix">
+										<div class="L" id="supplier_list">
+											供应商 <a href="/zh/quote_list.html"><button
+													class="btn btn-default">可报价询盘查看</button></a>
+										</div>
+										<div class="L">
+											采购商 <a href="/zh/purchase_list.html"><button
+													class="btn btn-default">我发出的询盘</button></a>
+										</div>
+									</div>
+								</div>
+
+								<a href="/zh/enterprise_archives.html"
+									class="bk qy x xp head_hover afterLogin mlr52">企业档案<!-- <span
+						class="iconf s2"></span> --></a>
+								<!--<a href="###"
+						class="head_hover afterLogin ml20">更多服务<span class="iconf s2"></span></a>-->
+
+								<div class="afterLogin xxs kzz head_hover more_news">
+									<div class="xx xp serve">更多服务</div>
+									<div class="xxlist xplist clearfix" style="display: none">
+										<a href="/zh/products.html">产品库</a>
+									</div>
+								</div>
+
+								<a href="/zh/quote_list.html" class="ml20 beforLogin">最新询盘</a> <!-- <a
+									href="/zh/comments_echart.html" class="ml20 beforLogin">工厂库</a>
+								<a href="/zh/products.html" class="ml20 beforLogin">产品库</a> --> <a
+									href="/zh/quickly_release.html"><button
+										class="btn btn-default pull-right">快速发布询盘</button></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="section w12 home-in">
+			<div class="home-top clearfix">
+				<div class="banner pull-left">
+					<div id="carousel-example-generic" class="carousel slide"
+						data-ride="carousel">
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+							<li data-target="#carousel-example-generic" data-slide-to="0"
+								class="active"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+
+						</ol>
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner" role="listbox">
+							<div class="item active">
+								<img src="/images/banner1.png" alt="...">
+								<div class="carousel-caption"></div>
+							</div>
+							<div class="item">
+								<img src="/images/banner2.png" alt="...">
+								<div class="carousel-caption"></div>
+							</div>
+							<div class="item">
+								<img src="/images/banner3.png" alt="...">
+								<div class="carousel-caption"></div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="info pull-right">
+					<div class="info-top">
+						<span>欢迎来到快制造</span>
+					</div>
+					<div class="info-imgs">
+						<div class="imgs">
+							<img id="factoryLogo" src="/images/logo.png" alt="" />
+
+						</div>
+						<p>真实的询盘，可靠的报价</p>
+						<p>快速的制造 和 严格的质量控制</p>
+					</div>
+					<div class="info-bottom" id="s_div"></div>
+				</div>
+			</div>
+			<div class="next_step clearfix">
+				<p class="pull-left">
+					<img src="../images/next.png">
+					免费翻阅最新询盘，免费报价，实时追踪
+				</p>
+				<div class="next_btn pull-left">					
+					<button>
+						<em>现在就点击下方</em><span>报价</span><em>按钮，开始接单</em>
+					</button>
+				</div>
+			</div>
+			<div class="latest-inquiry">
+				<div class="loop clearfix" id="new_quote" style="display: none;">
+					<span class="pull-left">最新下单:</span>
+					<div class="factory pull-left">
+						<ul class="factory_in clearfix" id="order_factory">
+						</ul>
+					</div>
+				</div>
+				<div class="l-title clearfix">
+					<em class="pull-left iconfont">&#xe648;</em> <span
+						class="pull-left">最新询盘</span> <a href="/zh/new_inquiry.html"
+						class="pull-left">更多</a>
+					<div class="pull-right add_price">
+						<span class="s1">最近一周新询盘预估总额：</span><span class="s2"
+							id="estimatedPrice"></span><span class="s3" id="estimatedDate"></span>
+					</div>
+				</div>
+				   
+				<div class="products">
+					<ul class="clearfix" id="newQuote">
+
+
+					</ul>
+				</div>
+			</div>
+
+		</div>
+		<footer class="footer">
+			<div class="footer_in w12">
+				<div class="logo">
+					<img src="/images/foot.png" alt="" />
+				</div>
+				<div class="b_a">备案许可编号:<br>沪ICP备17041761号-3</div>
+				<div class="dls">
+					<dl class="pull-left">
+						<dt>新手指南</dt>
+						<dd>
+							<a href="/zh/new_inquiry.html">在线制造</a>
+						</dd>
+						<dd>
+							<a href="/zh/register_zh.html">采购商入门</a>
+						</dd>
+						<dd>
+							<a href="/zh/register_zh.html">供应商入门</a>
+						</dd>
+					</dl>
+					<dl class="pull-left">
+						<dt>采购商服务</dt>
+						<dd>
+							<a href="###">服务介绍</a>
+						</dd>
+						<dd>
+							<a href="/zh/comments_echart.html">寻找供应商</a>
+						</dd>
+						<dd>
+							<a href="/zh/quickly_release.html">询盘发布</a>
+						</dd>
+						<dd>
+							<a href="###">采购培训</a>
+						</dd>
+					</dl>
+					<dl class="pull-left">
+						<dt>供应商服务</dt>
+						<dd>
+							<a href="###">服务介绍</a>
+						</dd>
+						<dd>
+							<a href="/zh/new_inquiry.html">找订单</a>
+						</dd>
+						<dd>
+							<a href="###">企业展示</a>
+						</dd>
+						<dd>
+							<a href="###">VIP服务</a>
+						</dd>
+					</dl>
+					<dl class="pull-left">
+						<dt>帮助中心</dt>
+						<dd>
+							<a href="###">服务协议</a>
+						</dd>
+						<dd>
+							<a href="###">法律声明</a>
+						</dd>
+						<dd>
+							<a href="###">隐私条款</a>
+						</dd>
+						<dd>
+							<a href="###">联系我们</a>
+						</dd>
+					</dl>
+				</div>
+				<div class="qrcode">
+					<span>欢迎关注快制造微信服务号</span> <img src="/images/qrcode.jpg">
+				</div>
+			</div>
+		</footer>
+
+	</div>
+	<!-- SEO代码 开始-->
+	<div style="display: none">
+		快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘
+
+		Keywords: <a href="https://www.kuaizhizao.cn/" title="快制造"
+			target="_blank"><strong>快制造</strong></a> <a
+			href="https://www.kuaizhizao.cn/" title="外发加工" target="_blank"><strong>外发加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑模具" target="_blank"><strong>注塑模具</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机械加工" target="_blank"><strong>机械加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金加工" target="_blank"><strong>钣金加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具厂" target="_blank"><strong>塑料模具厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑加工" target="_blank"><strong>注塑加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具设计与制造" target="_blank"><strong>塑料模具设计与制造</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸厂" target="_blank"><strong>压铸厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="零件加工" target="_blank"><strong>零件加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸加工订单" target="_blank"><strong>外贸加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="非标定制" target="_blank"><strong>非标定制</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外发订单" target="_blank"><strong>外发订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外协加工" target="_blank"><strong>外协加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="加工订单" target="_blank"><strong>加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑订单" target="_blank"><strong>注塑订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸订单" target="_blank"><strong>压铸订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金订单" target="_blank"><strong>钣金订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机加工询盘" target="_blank"><strong>机加工询盘</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸询盘" target="_blank"><strong>外贸询盘</strong></a>
+	</div>
+	<!-- SEO代码 开始-->
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script src="/js/getNationalFlag.js"></script>
+
+
+<script src="/js/translate/md5.js"></script>
+<script src="/js/translate/index.js"></script>
+
+
+<script src="/js/index/index.js?v=20180515"></script>
+<script src="/js/getServerName.js"></script>
+
+
+
+
+<script>
+	$('.buyer-purchase li').hover(
+			function() {
+				$(this).children('.li-hover').addClass('active').siblings()
+						.children('.li-hover').removeClass('active');
+			}, function() {
+				$(this).children('.li-hover').removeClass('active');
+			})
+
+	/*导航栏鼠标经过效果*/
+	$('.inquiry_detail .section nav li a').hover(
+			function() {
+				$(this).addClass('active').parent().siblings('li')
+						.children('a').removeClass('active');
+			})
+
+	//*顶部鼠标经过子信息出现效果*/
+	$('.header_top_in .xxs').hover(function() {
+		$(this).children('.xx').css({
+			'border-color' : 'transparent',
+			'border-bottom-color' : 'transparent',
+			'background-color' : '#0046cd'
+		})
+		$(this).children('.xxlist').show();
+	}, function() {
+		$(this).children('.xx').css({
+			'border-color' : 'transparent',
+			'background-color' : 'transparent'
+		})
+		$(this).children('.xxlist').hide();
+	})
+	/*更多消息里面鼠标经过效果*/
+	$('.xxlist a').hover(function() {
+		$(this).css({
+			'color' : '#006DCC'
+		}).siblings().css({
+			'color' : '#666'
+		})
+	})
+
+	$('.xxlist .home_head_dl a').hover(function() {
+		$(this).css({
+			'background-color' : '#006DCC',
+			'color' : '#fff'
+		})
+	}, function() {
+		$('.xxlist .home_head_dl a').css({
+			'background-color' : '#fff',
+			'border' : '1px solid #006DCC',
+			'color' : '#006DCC'
+		})
+
+	})
+
+	$('.beforLogin').show();
+	$('.afterLogin').hide();
+
+	var factoryInfo = getCookie("F_INFO");
+	var userName = getCookie("userName");
+	if (userName != null && userName != '' && userName != undefined) {
+		var base = new Base64();
+		userName = base.decode(userName);
+		$('#username').text(userName);
+		$('.beforLogin').hide()
+		$('.afterLogin').show()
+	}
+
+	function exit() {
+
+		$.post("/account/clearCookie.do", function(result) {
+			if (result.state == 0) {
+				window.location = "/zh/login.html";
+			}
+		})
+
+	}
+	var newMessage_interval = setInterval(function() {
+
+		if (factoryInfo == null || factoryInfo == '') {
+			return false;
+		}
+		$.ajax({
+			url : "/noteMessage/newMessageCount.do",
+			cache : false,
+			success : function(data) {
+
+				if (data.state == 0) {
+
+					var summap = data.data
+
+					if (summap) {
+
+						var count = summap.unRead
+						var award = summap.award
+						var updateProcess = summap.updateProcess
+						$('#unRead').text(count ? count : "")
+						$('#newMessageCount').text(count ? count : "")
+						$('#award').text(award ? award : "")
+						$('#updateProcess').text(
+								updateProcess ? updateProcess : "")
+
+					}
+
+				}
+			}
+		});
+	}, 60000);
+
+	/*视频播放控制*/
+	$('.home .bf_botton').click(function() {
+		$(this).siblings('.div_video').show();
+		var div_h = $('.home .div_video').height();
+		console.log(div_h);
+		var video_h = $(this).parent().find('video').height();
+		console.log(video_h);
+		var m_t = (div_h - video_h) / 2;
+		$(this).parent().find('video').css({
+			'margin-top' : m_t + 'px'
+		});
+
+	})
+
+	$('.home .close_button').click(function() {
+		$(this).parent().hide();
+	})
+
+	// 让视频居中对齐
+
+	/*语言改变设置*/
+	function change_lan() {
+
+		var lan = getCookie("language");
+		if (lan == 'en') {
+			lan = 'zh'
+		} else {
+			lan = 'en'
+		}
+
+		$.post("/account/changeLanguage.do", {
+			"language" : lan
+		}, function(result) {
+			
+			var	serverName = getServerName(lan);	
+			if (lan == 'en') {
+				window.location = serverName + '/en/index.html';
+			} else {
+				window.location = serverName + '/zh/index.html';
+			}
+		});
+
+	}
+</script>
+
+
+<script>
+	if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+
+		window.location.href = "http://kuaizhizao.cn/m-zh/quote_list.html";
+
+	} else if (/(Android)/i.test(navigator.userAgent)) {
+
+		window.location.href = "http://kuaizhizao.cn/m-zh/quote_list.html";
+
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

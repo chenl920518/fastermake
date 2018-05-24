@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<meta name="Keywords"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<meta name="Description"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<title>快制造-供应商询盘详情</title>
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script src="/lib/respond/respond.js"></script>
+<!--   <link rel="stylesheet" href="/css/css.css"/> -->
+<link rel="stylesheet" href="/css/details.css" />
+<link rel="stylesheet" href="/css/easydialog.css" />
+<link rel="stylesheet" href="/css/progressBar.css" />
+<link rel="stylesheet" href="/css/ui.css" />
+<link rel="stylesheet" href="/css/ui.progress-bar.css" />
+<script>document.write('<link rel="stylesheet" href="/css/css.css?time="'  + Date.now() + '"><\/script>');</script>
+</head>
+<body>
+	<div class="supplier_detail purchase_supplier">
+
+		<div class="tc">
+			<div class="tc_con">
+				<div class="tc_con-title">
+					提示<em></em>
+				</div>
+				<div class="inps">
+					<div class="inp clearfix">
+						<em class="pull-left"></em> <span class="pull-left">该询盘已经加入收藏夹
+							方便你访问</span>
+					</div>
+					<div class="inp clearfix">
+						<em class="pull-left"></em> <span class="pull-left">请尽快报价</span>
+					</div>
+					<div class="inp clearfix">
+						<em class="pull-left"></em> <span class="pull-left">如果对该需求有不清楚的地方，可积极和采购商沟通</span>
+					</div>
+				</div>
+				<p>
+					<span class="span1" id="count_down">3s</span>后自动返回询盘列表页
+				</p>
+			</div>
+		</div>
+		<div id="header"></div>
+		<div class="section">
+			<div class="container w12">
+				<div class="row">
+					<h2>
+						<span style="font-size: 30px;"></span><span id="quote_title"
+							style="font-size: 26px; padding-right: 64px;"></span> 询盘编号 #<span
+							id="quoteId" style="font-size: 26px;"></span> - <small>可报价</small>
+					</h2>
+					<nav>
+						<ul class="clearfix" id="title_ul">
+							<li><a href="###" class="active">询盘明细</a></li>
+							<li><a href="#" onclick="to_offer()">报价</a></li>
+						</ul>
+					</nav>
+					<div class="t1 t1_7 clearfix">
+						<div class="sc sc01 detail_sc pull-left"
+							onclick="addOrCancelCollect()">
+							<span id="collect_order">收藏</span>
+						</div>
+						<div class="sc bj pull-left to-quote" onclick="to_offer()">
+							<a href="###" class="to-quote">马上报价</a>
+						</div>
+						<span style="font-size: 14px; color: red;" id="note"></span>
+					</div>
+
+					<div class="con w12 container con_1">
+						<div class="card" style="display: none;">
+							<div class="close">
+								<span class="glyphicon glyphicon-remove"></span>
+							</div>
+							<h3>报价团队</h3>
+							<div class="card_1" id="sales_div">
+								<span></span><br /> <em>客户采购代表</em><br />
+								<div class="pic">
+									<img src="">
+								</div>
+							</div>
+							<div class="card_1 card_1_2" id="quoter_div">
+								<span></span><br /> <em>报价管理工程师</em><br />
+								<div class="pic">
+									<img src="">
+								</div>
+							</div>
+
+							<div class="card_1" id="assistant_div">
+								<span></span><br /> <em>报价助理</em><br /> <span class="contact"></span><br />
+								<span class="contace qq"></span>
+								<div class="pic">
+									<img src="">
+								</div>
+							</div>
+							<div class="bj_ewm">
+								<!-- <div class="close"><span class="glyphicon glyphicon-remove"></span></div> -->
+								<p>扫二维码手机报价，功能一致</p>
+								<div class="imgs">
+									<img src="" id="qr_code" />
+								</div>
+							</div>
+
+						</div>
+
+						<div class="xpxi clearfix">
+							<div class="title pull-left">
+								<!--<span class="pull-left"></span>-->
+								询盘信息
+							</div>
+						</div>
+						<div class="xp_detail clearfix">
+							<ul>
+								<li><span>采购商来自：</span>
+									<div>
+										<img src="/images/zg.png" alt="" /> <i id="country"></i>
+									</div></li>
+								<li><span>采用工艺：</span>
+									<div>
+										<i id="process"></i>
+									</div></li>
+								<li><span>已报价工厂数：</span>
+									<div>
+										<i class="jing" id="current_number"></i>
+									</div></li>
+							</ul>
+							<ul>
+								<li><span>保密协议：</span>
+									<div>
+										<i id="confidentiality_agreement"></i>
+									</div></li>
+								<li><span>要求交货期：</span>
+									<div>
+										<i id="delivery_date"></i>
+									</div></li>
+
+
+							</ul>
+							<ul>
+								<li><span>创建时间：</span>
+									<div>
+										<i id="publish_date">2017-10-16</i>
+									</div></li>
+								<li><span>报价截止日期：</span>
+									<div>
+										<i id="end_date">2017-10-20</i>
+									</div></li>
+							</ul>
+						</div>
+
+						<div class="describe">
+							<span>询盘简述&nbsp;</span><em></em>
+						</div>
+						<div class="lj_info">
+							<div class="lj_title">
+								<!-- <span class="iconfont">&#xe60c;</span> -->零件信息 <a id="drawing_path">图纸下载</a>
+							</div>
+							<div class="lj_det" id="product_div">
+
+								<table class=table>
+									<thead id="product_thead">
+										<tr>
+											<th class="th1"></th>
+											<th class="th2">零件名称</th>
+											<th class="th2">基本工艺</th>
+											<th class="th2">材料</th>
+											<th>重量</th>
+											<th class="th6 th61">订量一</th>
+											<th class="th6 th62">订量二</th>
+											<th class="th6 th63">订量三</th>
+											<th>年用量预估</th>
+										</tr>
+									</thead>
+									<tbody id="product_tbody">
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="quotation clearfix">
+							<div class="q_left pull-left">
+								<table class="tab1">
+									<thead id="comparison_thead">
+										<tr>
+											<th class="f9" style="width: 100px;">资质审核</th>
+
+										</tr>
+									</thead>
+									<tbody id="comparison_tbody">
+										<tr>
+											<td class="f9" style="width: 100px;">我的情况</td>
+
+										</tr>
+										<tr>
+											<td colspan="6" class="td3"></td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="divp" id="limit_quote">
+									<button class="to-quote" onclick="to_offer()">报价</button>
+									<!--                                 <span>6 天 20 小时</span> <em>才能报价（普通会员不能享受优先报价询盘的服务）</em> -->
+								</div>
+
+							</div>
+							<form id="file_upload_id" onsubmit="return false;" method="post"
+								enctype="multipart/form-data">
+								<input type="hidden" id="filePath" /> <input type="hidden"
+									id="orderId" name="orderId" />
+								<div class="q_right pull-right">
+									<div class="title">
+										<i class="iconfont">&#xe63a;</i>发送消息给采购商
+									</div>
+									<div class="q_detail" id="quote_message">
+										<div id="message"></div>
+										<textarea class="form-control" id="message_details"></textarea>
+										<div class="btn">
+											<input type="text"
+												style="width: 100px; margin-left: -130px; text-decoration: underline;"
+												id="fileName" name="selectDrawingName" /> <span></span> <input
+												type="file"
+												style="position: absolute; margin-top: -30px; width: 16px; margin-left: -25px; opacity: 0; overflow: hidden;"
+												name="file_upload" onchange="show_drawingName(this)">
+											<button onclick="send_message(this)">发送</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+	<!-- SEO代码 开始-->
+	<div style="display: none">
+		快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘
+
+		Keywords: <a href="https://www.kuaizhizao.cn/" title="快制造"
+			target="_blank"><strong>快制造</strong></a> <a
+			href="https://www.kuaizhizao.cn/" title="外发加工" target="_blank"><strong>外发加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑模具" target="_blank"><strong>注塑模具</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机械加工" target="_blank"><strong>机械加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金加工" target="_blank"><strong>钣金加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具厂" target="_blank"><strong>塑料模具厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑加工" target="_blank"><strong>注塑加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具设计与制造" target="_blank"><strong>塑料模具设计与制造</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸厂" target="_blank"><strong>压铸厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="零件加工" target="_blank"><strong>零件加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸加工订单" target="_blank"><strong>外贸加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="非标定制" target="_blank"><strong>非标定制</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外发订单" target="_blank"><strong>外发订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外协加工" target="_blank"><strong>外协加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="加工订单" target="_blank"><strong>加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑订单" target="_blank"><strong>注塑订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸订单" target="_blank"><strong>压铸订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金订单" target="_blank"><strong>钣金订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机加工询盘" target="_blank"><strong>机加工询盘</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸询盘" target="_blank"><strong>外贸询盘</strong></a>
+	</div>
+	<!-- SEO代码 开始-->
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script src="/js/dateFormat.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script src="/js/getNationalFlag.js"></script>
+<script src="/js/inquiry/details.js"></script>
+
+
+<script>
+$('#header').load('header.html');
+$('#footer').load('footer.html');
+
+/*零件信息显示隐藏切换*/
+$('.supplier_detail .lj_det tbody tr:first-child em').css({
+	'background':'url(/images/red.png) no-repeat'
+})
+$('.supplier_detail .lj_det tbody em').click(function(){
+    var $this = $(this).parent().parent().next('.trcol');
+    if($this.hasClass('currdis')){
+            $this.removeClass('currdis');
+            $this.show();
+        $(this).css({
+            'background':'url(/images/red.png) no-repeat'
+        })
+    }else{
+        $this.addClass('currdis');
+         $this.hide();
+        $(this).css({
+            'background':'url(/images/green.png) no-repeat'
+        })
+    }
+})
+/* 隔行换色*/
+$(".supplier_detail .lj_det tbody tr:not('.trcol'):even").css({
+	'background-color':'#f9f9f9'
+})
+
+/*点击收藏，弹窗出现*/
+
+// 	$('.t1 .sc01').click(function(){
+// 	    $('.supplier_detail .tc').show();
+// 	})
+$(' .tc_con-title em').click(function(){
+    $('.supplier_detail .tc').hide();
+})
+
+
+$('.inquiry_detail .section nav li a').hover(function(){
+    $(this).addClass('active')
+            .parent().siblings('li').children('a').removeClass('active');
+})
+
+/* 点击关闭按钮，报价员消失 */
+ $('.supplier_detail .card .close').on('click',function(){
+	 $(this).parent().hide();
+ })
+$('.supplier_detail .bj_ewm .close').on('click',function(){
+	 $(this).parent().hide();
+ })
+
+</script>
+</html>
+
+

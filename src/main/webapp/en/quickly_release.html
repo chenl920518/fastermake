@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<title>quickpart release</title>
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="/lib/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" href="/css/easydialog.css" />
+<link rel="stylesheet" href="/css/css.css" />
+<link rel="stylesheet" href="/css/matrix-style.css" />
+<link rel="stylesheet" href="/css/progressBar.css" />
+<link rel="stylesheet" href="/css/ui.css" />
+<link rel="stylesheet" href="/css/ui.progress-bar.css" />
+
+<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script src="/lib/respond/respond.js"></script>
+
+<style>
+@media ( min-width : 1200px) {
+	.container {
+		width: 1200px;
+		background-color: #fff;
+	}
+}
+
+.page1 .parentDiv {
+	width: 460px;
+}
+
+.page1 .childenSpan {
+	padding: 6px 12px;
+	display: none;
+}
+
+.form-horizontal .control-label {
+	padding-top: 7px;
+}
+
+.page1.quickly_release .sc .drawFile {
+	left: 689px;
+}
+
+.deleteQuantityList {
+	cursor: pointer;
+}
+
+.addQuantityList {
+	cursor: pointer;
+}
+
+.ff5 {
+	margin-left: 25px;
+}
+
+.weui_mask_new {
+	position: fixed;
+	z-index: 1000;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.6);
+}
+.div_transparent{
+	position:fixed;
+	width:100%;
+	height:100%;
+	background-color:transparent;
+    z-index: 100000;
+    display:none;
+}
+</style>
+</head>
+<body>
+	<div class="quickly_release_div ">
+	<div class="div_transparent"></div>
+		<div id="header"></div>
+
+		<div class="quickly_release product_invitation page1 quickly_release_en">
+
+			<div class="section">
+				<div class="nav_head container">
+					<a href="###" class="a1">1.Create RFQ</a> <a href="###">2.Complete
+						RFQ </a> <a href="###">3.Register/Sign In</a> <a href="###">4. Review
+						and Submit</a> <a href="###">5.Verification Infomation</a> <a
+						href="###">6.Receive Quotes</a>
+					<h4 class="h4_en1">Create RFQs</h4>
+				</div>
+				<div class="panel panel-default container">
+					<div class="panel-heading posirela">
+						<ol class="breadcrumb">
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Sent RFQ</a></li>
+							<li>Creat RFQ</li>
+						</ol>
+						
+					</div>
+					<div class="panel-body">
+						<h3 class="h3_en2">
+							<i></i>General Info
+						</h3>
+						<form class="form-horizontal quickly_form">
+							<input type="hidden" name="fileName" value="" /> <input
+								type="hidden" name="orderId" value=""> <input
+								type="hidden" name="libraryFactoryId" value="" />
+								<table class="table-bordered">
+									<thead>
+										<tr>
+											<th class="th1"><div class="d1"><span class="ffhh">*</span>RFQ Name</div></th>
+											<th class="th2"><div class="d1"><span class="ffhh">*</span>Qty</div></th>
+											<th class="th3"><div class="d1">Unit(optional)</div></th>
+											<th class="th4"><div class="d1">Target Price(optional)</div></th>
+											<th class="th5"><div class="d1">Material(optional)</div></th>
+											<th class="th6"><div class="d1">Weight(optional)</div></th>
+											<th class="th7"><div class="d1">Note(optional)</div></th>
+										</tr>
+									</thead>
+									<tbody id="firstProduct" class="addProducts">
+										<tr>
+											<td><textarea class="form-control" id="quoteTitle" name="quoteTitle" require></textarea></td>
+											<td><textarea type="text" class="form-control th2" name="quantityList" require></textarea></td>
+											<td class="td_input_select">
+												<div class="top">
+													<input type="text" class="form-control" name="quantityUnit" placeholder="Pcs">
+													<span class="caret"></span>
+												</div>
+												<ul class="form-control">
+													<li>Pcs</li>
+													<li>Sets</li>
+												</ul>
+											</td>
+											<td><textarea type="text" class="form-control" name="targetPrice"></textarea></td>
+											<td><textarea type="text" class="form-control" name="materials"></textarea></td>
+											<td>
+												<div class="form-group has-success has-feedback">													
+													<div class="input-group div_w135">
+														<input type="text" class="form-control" name="weight" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+														<span class="input-group-addon">KG</span>
+													</div>
+													 <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>	
+												</div>
+											</td>
+											<td><textarea type="text" class="form-control w190" name="productRemark"></textarea></td>
+										</tr>
+									</tbody>
+								</table>
+							
+							<div class="form-group">
+								<label for="" class="control-label col-sm-2"><i
+									class="ffhh">*</i>Drawings</label>
+								<div class="col-sm-6">
+									<div class="sc posirela">
+										<span onclick="uploadProduct(this)"><i class="iconfont">&#xe66e;</i>Drawings</span>If
+										you have multiple drawings, you can put them in one zip file.
+										<input type="file" name="files" class="posiabso upclass" /> <span
+											id="showdrawfile" class="s1 s13 s132 s1_1"
+											style="display: none"><em class="iconem"
+											onclick="deleteQuicklyfile(this)"></em></span> <input type="hidden"
+											id="drawingName" name="drawingName" value="" /> <input
+											type="hidden" id="drawingPath" name="drawingPath" value="" />
+									</div>
+									<span id="drawSpan"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-sm-2 control-label w150"><i>*</i>Manufacture
+									Technique:</label>
+								<div class="col-sm-8">
+									<label class="radio-inline w132 w335"> <input
+										id="mainCategoryAuto" name="mainCategory" value="0"
+										onclick="cleanData()" type="radio"> Get suggestions
+										from Quickpart engineers
+									</label> <label class="radio-inline"> <input id="mainCategory"
+										type="radio" name="mainCategory" value="1"
+										onclick="showTree(this)"> Choose Manufacturing
+										Processes 
+									</label>
+									<div id="treeviewForRfq" class="dxtc">
+										<ul class="category_list pull-left" id="select_main_process"></ul>
+										<ul class="category_list pull-left" id="select_second"></ul>
+									</div>
+									<span id="mainCategoryText"
+										style="color: blue; margin-left: 20px; position: absolute; top: 8px;"></span>
+									<input type="hidden" id="mainProcess" name="mainProcess"
+										value="">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="" class="col-sm-2 control-label w150"><i
+									class="">*</i>Intention</label>
+								<div class="col-sm-8">
+									<label class="radio-inline w132"> <input type="radio"
+										name="quotePurpose" value="0">Real RFQ
+									</label> <label class="radio-inline"> <input type="radio"
+										name="quotePurpose" value="1"> Establish a long-term
+										partnership with suppliers
+									</label>
+								</div>
+							</div>
+
+
+							<div class="form-group bmxy">
+								<label for="" class="col-sm-2 control-label w150"><i
+									class="">*</i>NDAs</label>
+								<div class="col-sm-8">
+									<label class="radio-inline w132"> <input type="radio"
+										name="confidentialityAgreement"
+										onclick="showQuicklyUploadEnter(this)" value="0"> None
+									</label> <label class="radio-inline w160"> <input type="radio"
+										name="confidentialityAgreement"
+										onclick="showQuicklyUploadEnter(this)" value="1">
+										Quickpart Standard NDA
+									</label> <label class="radio-inline"> <input type="radio"
+										name="confidentialityAgreement"
+										onclick="showQuicklyUploadEnter(this)" value="2">
+										Upload your own NDA
+									</label>
+									<div class="sc posirela" style="display: none"
+										id="confidentialityQuicklyFile">
+										<span class="s1 s11" onclick="uploadProduct(this)"><i
+											class="iconfont">&#xe66e;</i>Upload</span>Maximum 30M <input
+											type="file" name="files" class="posiabso upclass" /> <span
+											id="UploadfileName" class="s1 s13"><em class="iconem"
+											onclick="deleteQuicklyfile(this)"></em></span> <input type="hidden"
+											name="confidentialityFileName" value="" /> <input
+											type="hidden" name="filePath" value="" />
+
+									</div>
+									<span></span>
+								</div>
+							</div>
+                  </form>
+                  </div>
+
+				<div class="container ntxtbtn">
+					<button class="btn next firstNext">Next</button>
+				</div>
+			</div>
+
+		</div>
+   </div>
+
+
+		<div id="footer"></div>
+
+
+		<div class="w-out-box" id="show_upload_dialog" style="display: none">
+			<div class="weui_mask"></div>
+			<div class="w-weui_dialog" style="width: 510px;">
+				<div id="container">
+
+					<div class="content">
+						<h1>Upload Progress</h1>
+					</div>
+
+					<!-- Progress bar -->
+					<div id="progress_bar" class="ui-progress-bar ui-container">
+						<div class="ui-progress" style="width: 0%;"
+							id="ui-progress-upload">
+							<span class="ui-label" style="display: none;">loading...<b
+								class="value">0%</b></span>
+						</div>
+					</div>
+					<!-- /Progress bar -->
+					<a class="close-reveal-modal" style="color: #eee; font-size: 22px;"
+						href="javascript:void(0);" onclick="cancel_upload()">×</a>
+					<div class="content" id="main_content" style="display: none;">
+						<p>Loading complete</p>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+</body>
+</html>
+
+<script type="text/javascript" src="/en/icn/verification.js"></script>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/upload-base.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script type="text/javascript" src="/js/easydialog.min.js"></script>
+<script type="text/javascript" src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/en/icn/quickly_release.js"></script>
+
+
+<script type="text/javascript" src="/js/base64.js"></script>
+<script src="/lib/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/lib/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+
+
+
+<script>
+    $('#header').load('header.html');
+    $('#footer').load('footer.html');
+    
+/*头部样式切换*/
+	$('.nav_head a:not(".a1")').click(function() {
+		$('.nav_head a').css({
+			'text-decotation' : 'none'
+		});
+		/*$(this).css({
+			'background' : 'url(/images/products/t4.png)'
+		});*/
+	})
+
+
+
+    /* 日历插件*/
+    $('.form_date').datetimepicker({
+        language:  'zh-en',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 4,
+        forceParse: 0
+    });
+</script>
+<script>
+
+	$('.quickly_release_en .top input').focus(function(){
+		$('.div_transparent').show();
+		$('.quickly_release_en .td_input_select ul').show();
+	})
+	$('.quickly_release_en .top input').click(function(){
+		$('.div_transparent').show();
+		$('.quickly_release_en .td_input_select ul').show();
+	})
+	$('.quickly_release_en .top input').keydown(function(){
+		$('.div_transparent').hide();
+		$('.quickly_release_en .td_input_select ul').hide();
+	})
+	$('.quickly_release_en .td_input_select ul li').click(function(){
+		$('.div_transparent').hide();
+		$('.quickly_release_en .td_input_select ul').hide();
+		var li_val = $(this).text();
+		$('.quickly_release_en .top input').val(li_val);
+	})
+	$('.div_transparent').click(function(){
+		$('.div_transparent').hide();
+		$('.quickly_release_en .td_input_select ul').hide();
+	})
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

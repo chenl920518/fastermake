@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<title>quickpart-index</title>
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link rel="stylesheet"
+	href="/lib/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/css.css" />
+<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script src="/lib/respond/respond.js"></script>
+<script type="text/javascript" src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script>
+
+</head>
+<body>
+	<div class="home home_en">
+		<header class="header header_en" id="header">
+			<div class="header_top">
+				<div class="header_bottom">
+					<div class="header_bottom_in w12 clearfix">
+						<a href="/en/index.html" class="logo pull-left"><img
+							src="/images/head_en.png" alt="" /></a>
+						<div class="header_top_in dl_zc w12 clearfix">
+							<div class="change_language"><a class="lange_a" href="#" onclick="change_lan()">中 / EN</a></div>	
+							<div class="head_R pull-right">
+								<div class="head_l pull-left">								
+									</a> <a href="/en/login.html"
+										class="bk dl_zc head_hover ml20 beforLogin">Sign</a> 
+									<div class="xxs head_hover">
+										<div class="xx yhm afterLogin">
+											<span class="iconfont">&#xe6c9;</span><span id="username"></span>
+										</div>
+										<div class="xxlist">
+											<a href="#" onclick="exit()"><span class="iconfont">&#xe60a;</span>Exit
+											</a>
+										</div>
+
+									</div>									
+								</div>
+								<div class="xxs kzz gys head_hover">									
+									<div class="xxlist xplist clearfix">
+										<!-- <div class="N l_sm">
+											<ul>
+												<li>作为供应商，我可以：</li>
+												<li><span></span> 完善档案，<a
+													href="/zh/new_inquiry.html">轻松找到适合自己的各种询盘</a>；</li>
+												<li><span></span> <a href="/zh/quote_list.html">查找询盘</a>，在线提交报价给采购商；</li>
+												<li><span></span> 查看 <a href="/zh/big_buyer.html">大买家采购项目</a>
+													，在线给大客户评价；</li>
+
+												<li class="home_head_dl"><a
+													href="/en/login.html" class="active">SIGN</a> <a
+													href="/en/register_en.html">REGISTER</a></li>
+											</ul>
+										</div> -->
+
+									</div>
+								</div>
+								<div class="xxs kzz head_hover">
+									<div class="xx xp beforLogin mlr5">
+										Purchaser Access
+									</div>
+									<div class="xxlist xplist clearfix">
+										<div class="N l_sm">											
+											<ul>
+												<li>if you have continuous needs to find new suppliers and get quites,you can post your profile or RFQ here and build a selected supply network.</li>
+												<li><span></span>Interested suppliers will contact you,and you can choose the ones that fits your criteria</li>
+												<li><span></span>when you post a new RFQ,it will only reach the suppliers pre-selected by you.</li>
+												<li><span></span>After follow-up collaborations(audits,productions),you can keep the goods ones gradually build a supply network.</li>
+												<li class="home_head_dl"><a
+													href="/en/login.html" class="active">Sign</a> <a
+													href="/en/register_en.html">Register</a></li>
+											</ul>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="xxs kzz head_hover">									
+									<div class="xxlist xplist xpwidth clearfix">										
+									</div>
+								</div>
+								
+									<div class="xx xp head_hover">
+									    <a href="/en/purchase_list.html">
+										<span class="iconfont">&#xe63f;</span>My RFQs
+										</a>
+									</div>									
+									<a class="xx xp head_hover afterLogin" href="###">
+										Business Panel
+									</a>
+									<a class="xx xp head_hover afterLogin" href="###">
+										Messages
+									</a>
+									<a class="xx xp head_hover" href="/en/account_management.html">
+										My Account
+									</a>								
+
+								<a href="/en/quickly_release.html"><button
+										class="btn btn-default pull-right">Sent RFQ</button></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+
+
+
+		<div class="section w12 home-in">
+			<div class="home-top clearfix">
+				<div class="banner pull-left">
+					<div id="carousel-example-generic" class="carousel slide"
+						data-ride="carousel">
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+							<!-- <li data-target="#carousel-example-generic" data-slide-to="0"
+								class="active"></li> -->
+							<!-- <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="2"></li> -->
+							<!--                         <li data-target="#carousel-example-generic" data-slide-to="3"></li> -->
+							<!--                         <li data-target="#carousel-example-generic" data-slide-to="4" ></li> -->
+						</ol>
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner" role="listbox">
+							<!-- <div class="item active">
+								<img src="/images/banner1.png" alt="...">
+								<div class="carousel-caption"></div>
+							</div>
+							<div class="item">
+								<img src="/images/banner2.png" alt="...">
+								<div class="carousel-caption"></div>
+							</div> -->
+	                        <div class="item active">
+	                            <img src="/images/banner3.png" alt="...">
+	                            <div class="carousel-caption"></div>
+	                        </div>
+							<!--                         <div class="item"> -->
+							<!--                             <img src="/images/img4.png" alt="..."> -->
+							<!--                             <div class="carousel-caption"> -->
+
+							<!--                             </div> -->
+							<!--                         </div> -->
+							<!--                         <div class="item"> -->
+							<!--                             <img src="/images/img5.png" alt="..."> -->
+							<!--                             <div class="carousel-caption"> -->
+
+							<!--                             </div> -->
+							<!--                         </div> -->
+						</div>
+					</div>
+				</div>
+				<div class="info pull-right">
+					<div class="info-top">
+						<span>Welcome to Quickpart</span>
+					</div>
+					<div class="info-imgs">
+						<div class="imgs">
+							<img id="factoryLogo" src="/images/logo_en.png"
+								alt="" />
+						</div>
+						<p>RELIABLE QUOTES FAST PRODUCTION</p>
+						<p>AND HIGH QUALITY </p> 
+					</div>
+					<div class="info-bottom" id="s_div"></div>
+				</div>				
+			</div>
+			<div class="next_step">
+				<p>
+					Quickpart.cn Is Chinese Largest <b>Direct Communication</b> Soucing Marketplace
+				</p>
+				<div class="next_btn">
+					<!-- <img src="../images/next.png"> -->	
+					<span>Totally free</span>				
+					<a class="a_link">Get Started</a>
+				</div>
+			</div>
+			<div class="latest-inquiry">
+				<div class="l-title clearfix">
+					<em class="pull-left iconfont">&#xe648;</em> <span class="pull-left">Latest RFQs</span> <a
+						href="/en/new_inquiry.html" class="pull-left">More</a>
+						<div class="pull-right add_price"><span class="s1">New estimates for the latest week:</span><span class="s2" id="estimatedPrice"></span><span class="s3" id="estimatedDate"></span></div>
+				</div>
+				<div class="products">
+					<ul class="clearfix" id="newQuote">
+<!-- 						<li> -->
+<!-- 							<div class="top"> -->
+<!-- 								<img src="/images/zg.png" alt=""> -->
+<!-- 								<a href="/inquiry/details.do?orderId=100197">100000</a> -->
+<!-- 								<span>冲压拉伸test</span> -->
+<!-- 								<em class="xpdate">2018-2-24</em> -->
+<!-- 							</div> -->
+<!-- 							<div class="center"> -->
+<!-- 								<div class="div_video">	 -->
+<!-- 									<video src="" autoplay="" controls="" loop=""></video>	 -->
+<!-- 									<div class="close_button" onclick="closeVideo(this)"> -->
+<!-- 										<span class="iconfont"></span> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 								<img src="/static_img/quote_file/drawing/20180201192935.jpg" alt=""> -->
+<!-- 							 </div> -->
+<!-- 							<div class="bottom clearfix"> -->
+<!-- 								<div class="bot-left pull-left"> -->
+<!-- 									<span>dzvdf</span> -->
+<!-- 									<span>za3 bs1004A</span> -->
+<!-- 									<em>95000 件</em><br> -->
+<!-- 								</div> -->
+<!-- 								<div class="bot-right pull-right"> -->
+<!-- 									<a href="/inquiry/details.do?orderId=100197">报价</a> -->
+<!-- 									<div> -->
+<!-- 										<i>报价人数:</i> -->
+<!-- 										<em><b>1</b>/6</em> -->
+<!-- 									</div> -->
+								
+<!-- 								</div> -->
+								
+<!-- 							</div> -->
+<!-- 						</li> -->
+
+					</ul>
+				</div>
+			</div>
+			<!-- <div class="buyer-purchase">
+				<div class="l-title clearfix">
+					<em class="pull-left iconfont">&#xe64e;</em> <span class="pull-left">大买家采购专区</span>
+					<a href="/zh/big_buyer.html" class="pull-left">更多</a>
+				</div>
+				<div class="products">
+					<ul class="clearfix" id="newBigBuyer">
+
+
+					</ul>
+				</div>
+			</div> -->
+		</div>
+		<footer class="footer footer_en">
+			<div class="footer_in w12">
+				<div class="logo"><img src="/images/head_en.png" alt="" /></div>
+				<div class="b_a">:沪ICP备17041761号-2</div>
+				<p>--is a subsidiary of <a href="china-sourcing.com">china-sourcing.com<a></p>				
+			</div>
+		</footer>
+		
+	</div>
+</body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script src="/js/getNationalFlag.js"></script>
+<script src="/en/icn/index.js"></script>
+<script src="/js/getServerName.js"></script>
+
+
+<script>
+$.post("/account/changeLanguage.do",
+		{"language":'en'},
+function(result){
+});   			
+
+
+
+
+    $('.buyer-purchase li').hover(function(){
+        $(this).children('.li-hover').addClass('active')
+                .siblings().children('.li-hover').removeClass('active');
+    },function(){
+        $(this).children('.li-hover').removeClass('active');
+    })
+    
+
+
+    /*导航栏鼠标经过效果*/
+	$('.inquiry_detail .section nav li a').hover(
+			function() {
+				$(this).addClass('active').parent().siblings('li')
+						.children('a').removeClass('active');
+			})	
+	
+		
+			
+			
+	//*顶部鼠标经过子信息出现效果*/
+	$('.header_top_in .xxs').hover(function() {
+		$(this).children('.xx').css({
+			'border-color' : 'transparent',
+			'border-bottom-color' : 'transparent',
+			'background-color' : '#0046cd'
+		})
+		$(this).children('.xxlist').show();
+	}, function() {
+		$(this).children('.xx').css({
+			'border-color' : 'transparent',
+			'background-color' : 'transparent'
+		})
+		$(this).children('.xxlist').hide();
+	})
+	/*更多消息里面鼠标经过效果*/
+	$('.xxlist a').hover(function() {
+		$(this).css({
+			'color' : '#006DCC'
+		}).siblings().css({
+			'color' : '#666'
+		})
+	})
+	
+	$('.xxlist .home_head_dl a').hover(function() {
+		$(this).css({
+			'background-color':'#006DCC',
+			'color' : '#fff'
+		})
+	},function(){
+		$('.xxlist .home_head_dl a').css({
+			'background-color':'#fff',
+			'border':'1px solid #006DCC',
+			'color' : '#006DCC'
+		})
+		
+	})
+
+    $('.beforLogin').show();
+	$('.afterLogin').hide();
+    var userName = getCookie("userName");
+	if (userName != null && userName != '' && userName != undefined) {
+		var base = new Base64();
+		userName = base.decode(userName);
+		$('#username').text(userName);
+		$('.beforLogin').hide()
+		$('.afterLogin').show()
+	}
+ 
+     function exit(){
+        
+		$.post("/account/clearCookie.do",
+			function(result){
+			if(result.state == 0){
+				window.location = "/en/login.html";
+			}			
+		})
+
+		
+	}
+//    var newMessage_interval = setInterval(function() {
+//  		$.ajax({
+//  					url : "/noteMessage/newMessageCount.do",
+//  					cache : false,
+//  					success : function(data) {
+ 					
+//  						if(data.state==0){
+ 							
+// 	                        var summap = data.data
+							
+// 							if(summap){
+								
+// 							var count = summap.unRead
+// 							var award = summap.award
+// 							var updateProcess = summap.updateProcess
+//  							$('#unRead').text(count?count:"")
+//  							$('#newMessageCount').text(count?count:"")
+//  							$('#award').text(award?award:"")
+// 							$('#updateProcess').text(updateProcess?updateProcess:"")
+ 							
+ 							
+ 							
+//  						}
+ 						
+//  						}
+//  					}
+//  				});
+//  	}, 12000);  
+    
+          
+    
+
+   		/*视频播放控制*/
+        $('.home .bf_botton').click(function(){
+          $(this).siblings('.div_video').show();
+        })
+        $('.home .close_button').click(function(){
+          $(this).parent().hide();
+        })
+        
+        
+	    /*语言改变设置*/        
+   		function change_lan(){
+        	
+   			var lan = getCookie("language");
+   			if(lan == 'en'){
+   				lan = 'zh'
+   			}else{
+   				lan = 'en'
+   			}
+   			
+        	$.post("/account/changeLanguage.do",
+        			{"language":lan},
+        	function(result){
+        				
+        			var	serverName = getServerName(lan);	
+      	        	if(lan == 'en'){
+      	        		window.location = serverName+'/en/index.html';
+      	        	}else{
+      	        		window.location = serverName+'/zh/index.html';
+      	        	}
+        	});   			
+
+   		}
+        
+   		
+   		
+
+</script>

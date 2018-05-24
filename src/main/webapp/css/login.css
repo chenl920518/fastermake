@@ -1,0 +1,244 @@
+.register {
+  background-color: #fff;
+}
+.register .header {
+  width: 100%;
+  height: 140px;
+  border-bottom: 1px solid #ddd;
+}
+.register .header .header_con {
+  height: 140px;
+  padding-top: 40px;
+}
+.register .header .header_con em {
+  display: inline-block;
+  width: 146px;
+  height: 39px;
+  background-color: #999;
+  vertical-align: middle;
+}
+.register .header .header_con span {
+  display: inline-block;
+  width: 120px;
+  height: 39px;
+  line-height: 39px;
+  border-left: 1px solid #dddddd;
+  font-size: 24px;
+  font-family: MicrosoftYaHei;
+  color: #333333;
+  text-align: center;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+.register .section {
+  width: 100%;
+  height: auto;
+}
+.register .section .section_con {
+  position: relative;
+}
+.register .section .section_con .title_change {
+  width: 800px;
+  text-align: center;
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  margin-left: -400px;
+}
+.register .section .section_con .title_change a {
+  display: inline-block;
+  width: 250px;
+  height: 60px;
+  border-bottom: 1px solid transparent;
+  line-height: 60px;
+  text-decoration: none;
+}
+.register .section .section_con .title_change a:hover {
+  text-decoration: none;
+  border-bottom-color: #0088cc;
+}
+.register .section .section_con .title_change .active {
+  border-bottom-color: #0088cc;
+}
+.register .section .section_con .inps {
+  padding-top: 30px;
+  width: 800px;
+  margin-left: 140px;
+}
+.register .section .section_con .inps form {
+  width: 820px;
+  margin: 0 auto;
+}
+.register .section .section_con .inps input {
+  width: 300px;
+  height: 36px;
+  background: #ffffff;
+  border-radius: 0;
+}
+.register .section .section_con .inps #stateId,
+.register .section .section_con .inps #provinceId {
+  width: 150px;
+  height: 36px;
+  background: #ffffff;
+  border-radius: 0;
+}
+.register .section .section_con .inps label {
+  color: #666666;
+  line-height: 30px;
+}
+.register .section .section_con .inps .static {
+  width: 300px;
+  margin-left: 15px;
+}
+.register .section .section_con .inps .left_g {
+  width: 204px;
+  height: 200px;
+  background: #ffffff;
+  margin-left: 15px;
+}
+.register .section .section_con .inps .right_g {
+  margin-left: 0;
+}
+.register .section .section_con .inps .btnnext {
+  background-color: #006dcc;
+  margin-top: 10px;
+  width: 300px;
+  height: 36px;
+  border-radius: 3px ;
+  font-size: 16px;
+  color: #ffffff;
+}
+.register .section .section_con .btn_L_R {
+  width: 98px;
+  height: 200px;
+}
+.register .section .section_con .btn_L_R .btnL {
+  width: 45px;
+  height: 25px;
+  background: #ffffff;
+  border-radius: 3px ;
+  border: 1px solid #999;
+  margin: 0 auto;
+}
+.register .section .section_con .btn_L_R .btnL span,
+.register .section .section_con .btn_L_R .btnL em {
+  display: block;
+  width: 8px;
+  height: 14px;
+  background: url(../images/rightbtn.png) no-repeat;
+  margin: 0 auto;
+  margin-top: 5px;
+}
+.register .section .section_con .btn_L_R .btnL em {
+  background: url(../images/leftbtn.png) no-repeat;
+}
+.register .section .section_con .btn_L_R .btnL1 {
+  margin: 66px auto 20px ;
+}
+.register .footer {
+  width: 100%;
+  height: 66px;
+  background: url(../images/footbg.png) no-repeat;
+  background-size: contain;
+  margin-top: 170px;
+}
+.register .footer .language {
+  text-align: center;
+  padding-top: 16px;
+}
+.register .footer .language a {
+  font-size: 15px;
+  color: #0088cc;
+  font-family: "Arial Regular";
+}
+.register .footer .language .a1 {
+  margin-right: 30px;
+}
+.register .footer p {
+  text-align: center;
+  font-size: 15px;
+  color: #333;
+  font-family: "Arial Regular";
+}
+.sign {
+  background-color: #fff;
+}
+.sign .head {
+  height: 100px;
+  background-color: #fff;
+  line-height: 100px;
+}
+.sign .head em {
+  display: inline-block;
+  width: 146px;
+  height: 39px;
+  background-color: #006dcc;
+  vertical-align: middle;
+}
+.sign .head span {
+  display: inline-block;
+  width: 116px;
+  height: 40px;
+  background: url(../images/rk.png) no-repeat;
+  vertical-align: middle;
+}
+.sign .section {
+  height: 600px;
+  background: url(../images/signbg.jpg) no-repeat center top;
+  background-size: cover;
+}
+.sign .section .sign_info .panel {
+  width: 395px;
+  height: 365px;
+  background-color: #fff;
+  position: absolute;
+  top: 80px;
+  right: 0;
+  border-radius: 0;
+}
+.sign .section .sign_info .panel a {
+  font-size: 14px;
+  color: #006ac7;
+  float: right;
+}
+.sign .section .sign_info .panel-heading {
+  border-bottom: 1px solid #ddd;
+  height: 70px;
+  line-height: 70px;
+  padding: 0 30px;
+  color: #666;
+  font-size: 18px;
+  font-weight: 700;
+}
+.sign .section .sign_info .panel-body {
+  padding: 30px 30px 0 30px;
+}
+.sign .section .sign_info .panel-body .form-control {
+  border-radius: 0;
+  margin-bottom: 36px;
+}
+.sign .section .sign_info .panel-body .btn {
+  background-color: #006dcc;
+  color: #fff;
+  height: 47px;
+  font-size: 18px;
+  line-height: 47px;
+  padding: 0;
+  display: block;
+  margin-bottom: 20px;
+}
+.sign .section .sign_info .panel-body label {
+  font-size: 14px;
+  color: #333;
+  font-weight: normal;
+}
+.sign .section .sign_info .panel-body label input[type='checkbox'] {
+  margin-right: 8px;
+  float: left;
+}
+.sign .section .sign_info .panel-body .form-control2 {
+  padding-left: 0;
+  padding-right: 0;
+  display: block;
+  margin-bottom: 0;
+}

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>Supplier Inquiry Details</title>
+  <link rel="shortcut icon" href="/img/favicon.ico"/>
+  <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/lib/html5sshiv/html5shiv.min.js"></script>
+  <script src="/lib/respond/respond.js"></script>
+  <link rel="stylesheet" href="/css/css.css"/>
+  <link rel="stylesheet" href="/css/details.css" />
+   <link rel="stylesheet" href="/css/easydialog.css" />
+ <link rel="stylesheet" href="/css/progressBar.css" />
+ <link rel="stylesheet" href="/css/ui.css" />
+ <link rel="stylesheet" href="/css/ui.progress-bar.css" /> 
+</head>
+<body>
+  <div class="supplier_detail purchase_supplier supplier_detail_e">
+     
+     <div class="tc">
+          <div class="tc_con">
+              <div class="tc_con-title">Note<em></em></div>
+              <div class="inps">
+                  <div class="inp clearfix">
+                      <em class="pull-left"></em>
+                      <span class="pull-left">The inquiry has been added to your favorites to facilitate your visit.</span>
+                  </div>
+                  <div class="inp clearfix">
+                      <em class="pull-left"></em>
+                      <span class="pull-left">Please quote as soon as possible</span>
+                  </div>
+                  <div class="inp clearfix">
+                      <em class="pull-left"></em>
+                      <span class="pull-left">If the demand is unclear, you can actively communicate with buyers.</span>
+                  </div>
+              </div>
+              <p><span class="span1" id="count_down">3s</span>automatically return to the inquiry list page.</p>
+          </div>
+      </div>
+      <div id="header"></div>  
+      <div class="section">
+         <div class="container w12">
+             <div class="row">
+                  <h2><span style="font-size:30px;"></span><span id="quote_title" style="font-size:26px;padding-right: 64px;"></span>
+                   Inquiry number #<span id="quoteId" style="font-size:26px;"></span> 
+                      <small></small>
+                  </h2>
+                  <nav>
+                      <ul class="clearfix" id="title_ul">
+                          <li>
+                              <a href="###" class="active">Inquiries</a>
+                          </li>
+                          <!-- <li>
+                              <a href="#" onclick="to_offer()">报价</a>
+                          </li> -->
+<!--                             <li> -->
+<!--                                 <a style="color:#999;">消息</a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a style="color:#999;">保密协议</a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a style="color:#999;">打样</a> -->
+<!--                             </li> -->
+<!--                           <li> -->
+<!--                               <a href="###">大货</a> -->
+<!--                           </li> -->
+                      </ul>
+                  </nav>
+                 <div class="t1 t1_7 clearfix">
+                     <div class="sc sc01 detail_sc pull-left" onclick="addOrCancelCollect()" >
+                         <span  id="collect_order">Collection</span>
+                     </div>
+<!--                      <div class="sc bj pull-left"> -->
+<!--                          <a href="###" class="to-quote" onclick="to_offer()">Immediate Quotation</a> -->
+<!--                      </div> -->
+                 </div>
+<!--                    <div class="panel panel1"> -->
+<!-- 	                   	<div class="panel-heading">未通过理由</div> -->
+<!-- 	                   	<div class="panel-body "> -->
+<!-- 	                   		<div class="reason1 clearfix"> -->
+<!-- 	                   			<em>原因：</em> -->
+<!-- 	                   			<span>价格偏贵</span> -->
+<!-- 	                   		</div> -->
+<!-- 	                   		<div class="reason2 clearfix"> -->
+<!-- 	                   			<em>补充说明：</em> -->
+<!-- 	                   			<span>伊顿公司于1993 年进入中国市场并设立首家合资企业，此后通过并购、合资和独资的形式迅速发展在中国的业务。</span> -->
+<!-- 	                   		</div> -->
+<!-- 	                   	</div> -->
+<!--                    </div> -->
+<!--                    <div class="panel panel1 panel2"> -->
+<!-- 	                   	<div class="panel-heading">项目状态</div> -->
+<!-- 	                   	<div class="panel-body "> -->
+<!-- 	                   		<div class="reason1 clearfix"> -->
+<!-- 	                   			<em>跟进情况</em> -->
+<!-- 	                   			<span>未拿到订单</span> -->
+<!-- 	                   		</div> -->
+<!-- 	                   		<div class="reason2 clearfix"> -->
+<!-- 	                   			<em>当前订单情况</em> -->
+<!-- 	                   			<span class="ed1">已拒绝</span> -->
+<!-- 	                   		</div> -->
+<!-- 	                   	</div> -->
+<!--                    </div> -->
+<!--                    <div class="panel panel3_1"> -->
+<!--                    		<div class="panel-heading">价格水平</div> -->
+<!--                    		<div class="panel-body"> -->
+<!--                    			<div class="title clearfix"> -->
+<!--                    				<div class="time pull-left"> -->
+<!--                    					<em>报价时间：</em> -->
+<!--                    					<em>2017-12-08</em> -->
+<!--                    				</div> -->
+<!--                    				<div class="money pull-left"> -->
+<!--                    					<em>报价金额：</em> -->
+<!--                    					<em>30万</em> -->
+<!--                    				</div> -->
+<!--                    				<div class="rank pull-left"> -->
+<!--                    					<em>排名：</em> -->
+<!--                    					<em>第1名</em> -->
+<!--                    					<em>（最便宜）</em> -->
+<!--                    				</div> -->
+<!--                    			</div> -->
+<!--                    			<table class="table"> -->
+<!--                    				<thead> -->
+<!--                    					<tr> -->
+<!--                    						<th></th> -->
+<!--                    						<th>企业规模</th> -->
+<!--                    						<th>成立日期</th> -->
+<!--                    						<th>认证</th> -->
+<!--                    						<th>场地</th> -->
+<!--                    					</tr> -->
+<!--                    				</thead> -->
+<!--                    				<tbody> -->
+<!--                    					<tr> -->
+<!--                    						<td>本公司</td> -->
+<!--                    						<td>20人</td> -->
+<!--                    						<td>2016年</td> -->
+<!--                    						<td>无</td> -->
+<!--                    						<td>普通验厂</td> -->
+<!--                    					</tr> -->
+<!--                    					<tr> -->
+<!--                    						<td>第2名</td> -->
+<!--                    						<td>20人</td> -->
+<!--                    						<td>2016年</td> -->
+<!--                    						<td>无</td> -->
+<!--                    						<td>普通验厂</td> -->
+<!--                    					</tr> -->
+<!--                    				</tbody> -->
+<!--                    			</table> -->
+<!--                    		</div> -->
+<!--                    </div> -->
+                 <div class="con w12 container con_1">
+                 	   <div class="card" style="display:none;">
+                 	        <div class="card_1" id="sales_div">
+                 	   			<span></span><br/>
+                 	   			<em>Customer Purchasing Representative</em><br/>
+                 	   			<div class="pic"><img src="/images/1.png"></div>
+                 	   		</div>
+                 	   		<div class="card_1 card_1_2" id="quoter_div">
+                 	   			<span></span><br/>
+                 	   			<em>Quote Management Engineer</em><br/>
+                 	   			<div class="pic"><img src="/images/1.png"></div>
+                 	   		</div>
+
+                 	   		<div class="card_1" id="assistant_div">
+                 	   			<span></span><br/>
+                 	   			<em>Quote Assistant</em><br/>
+                 	   			<span class="contact"></span>
+                 	   			<div class="pic"><img src="/images/1.png"></div>
+                 	   		</div>
+                 	   </div>       		       
+                     <div class="xpxi clearfix">
+                         <div class="title pull-left"><!--<span class="pull-left"></span>-->Enquiry Information</div>
+                     </div>
+                     <div class="xp_detail clearfix">
+                         <ul>
+                             <li>
+                                 <span>Purchasers come from:</span>
+                                 <div>
+                                     <img src="/images/zg.png" alt=""/>
+                                     <i id="country">china</i></div>
+                             </li>
+                             <li>
+                                 <span>Main process:</span>
+                                 <div><i id="process">other</i></div>
+                             </li>
+                              <li>
+                                 <span>Number of quoted factories:</span>
+                                 <div><i class="jing" id="current_number"></i></div>
+                             </li>
+                         </ul>
+                         <ul>
+                             <li>
+                                 <span>NDAs：</span>
+                                 <div>
+                                     <i id="confidentiality_agreement">none</i></div>
+                             </li>
+                             <li>
+                                 <span>Delivery date：</span>
+                                 <div><i id="delivery_date">2017-11-20</i></div>
+                             </li>
+
+         
+                         </ul>
+                         <ul>
+                             <li>
+                                 <span>Published time:</span>
+                                 <div>
+                                     <i id="publish_date">2017-10-16</i></div>
+                             </li>
+                             <li>
+                                 <span>Quotation deadline：</span>
+                                 <div><i id="end_date">2017-10-20</i></div>
+                             </li>
+                         </ul>
+                     </div>
+
+<!--                      <div class="describe"> -->
+<!--                      	<span>报价详情:&nbsp;</span><em>详情描述详情描述详情描述详情描述详情描述详情描述详情描述</em> -->
+<!--                      </div> -->
+                <div class="lj_info">
+                     <div class="lj_title">
+                      <span class="iconfont">&#xe60c;</span>Part information 
+                     </div>
+                     <div class="lj_det" id="product_div">
+  
+                         <table class=table>
+                         	<thead id="product_thead">
+                         		<tr>
+                         			<th style="width: 210px;"></th>
+                         			<th>Part Name</th>
+                         			<th>Process</th>
+                         			<th>Material</th>
+                         			<th>Weight</th>
+                         			<th class="th6 th61">Order One</th>
+                         			<th class="th6 th62">Order Two</th>
+                         			<th class="th6 th63">Order Three</th>
+                         			<th>Annual Estimate</th>                          			
+                         		</tr>
+                         	</thead>
+                         	<tbody id="product_tbody">
+
+
+  
+                         	</tbody>
+                         </table>
+                     </div>
+                 </div>
+                 
+                 
+                      <div class="quotation clearfix">
+                          <div class="q_left pull-left">
+                              <table class="tab1">
+                                  <thead id="comparison_thead">
+                                  <tr>
+                                      <th class="f9" style="width: 100px;">Qualification Audit</th>
+
+                                  </tr>
+                                  </thead>
+                                  <tbody id="comparison_tbody">
+                                  <tr>
+                                      <td class="f9" style="width: 100px;">My Situation</td>
+
+                                  </tr>
+                                  <tr>
+                                      <td colspan="6" class="td3"></td>
+                                  </tr>
+                                  </tbody>
+                              </table>
+<!--                               <div class="divp" id="limit_quote"><button class="to-quote" onclick="to_offer()">Offer</button> -->
+<!--                                 <span>6 天 20 小时</span> <em>才能报价（普通会员不能享受优先报价询盘的服务）</em> -->
+                              </div>
+
+                          </div>
+                       <form id="file_upload_id"  onsubmit="return false;" method="post" enctype="multipart/form-data">
+                         <input type="hidden" id="filePath">                          
+                         <input type="hidden" id="orderId" name="orderId">                          
+                         <div class="q_right pull-right">
+                             <div class="title"><i class="iconfont">&#xe63a;</i>Send a message to purchaser</div>
+                             <div class="q_detail" id="quote_message">
+                                 <div id="message"></div>
+                                 <textarea class="form-control" id="message_details"></textarea>
+                                 <div class="btn">
+                                 <input type="text" style="width: 100px;margin-left: -130px;text-decoration: underline;" id="fileName" name="selectDrawingName"/>
+                                     <span></span>                                       
+				                   <input type="file" style="position: absolute;margin-top: -30px;width: 10px; margin-left: -25px;opacity: 0;" name="file_upload" onchange="show_drawingName(this)">
+                                     <button onclick="send_message(this)">Send</button>
+                                 </div>
+                             </div>
+                         </div>
+                       </form>
+                     </div>
+                 
+             </div>
+         </div>
+      </div>
+
+  	</div>
+  	<div id="footer"></div>
+
+ </div> 
+</body>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script src="/js/dateFormat.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script> 
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script src="/en/icn/details.js"></script> 
+
+<script>
+$('#header').load('/en/header.html');
+$('#footer').load('/en/footer.html');
+
+/*零件信息显示隐藏切换*/
+$('.supplier_detail .lj_det tbody tr:first-child em').css({
+	'background':'url(/images/red.png) no-repeat'
+})
+$('.supplier_detail .lj_det tbody em').click(function(){
+    var $this = $(this).parent().parent().next('.trcol');
+    if($this.hasClass('currdis')){
+            $this.removeClass('currdis');
+            $this.show();
+        $(this).css({
+            'background':'url(/images/red.png) no-repeat'
+        })
+    }else{
+        $this.addClass('currdis');
+         $this.hide();
+        $(this).css({
+            'background':'url(/images/green.png) no-repeat'
+        })
+    }
+})
+/* 隔行换色*/
+$(".supplier_detail .lj_det tbody tr:not('.trcol'):even").css({
+	'background-color':'#f9f9f9'
+})
+
+/*点击收藏，弹窗出现*/
+
+// 	$('.t1 .sc01').click(function(){
+// 	    $('.supplier_detail .tc').show();
+// 	})
+$(' .tc_con-title em').click(function(){
+    $('.supplier_detail .tc').hide();
+})
+
+
+$('.inquiry_detail .section nav li a').hover(function(){
+    $(this).addClass('active')
+            .parent().siblings('li').children('a').removeClass('active');
+})
+
+
+
+
+</script>
+</html>
+
+

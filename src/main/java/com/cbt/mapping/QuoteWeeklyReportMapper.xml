@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cbt.dao.QuoteWeeklyReportMapper" >
+  <resultMap id="BaseResultMap" type="com.cbt.entity.QuoteWeeklyReport" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="upload_date" property="uploadDate" jdbcType="DATE" />
+    <result column="photo_path" property="photoPath" jdbcType="VARCHAR" />
+    <result column="photo_path_compress" property="photoPathCompress" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="document_path" property="documentPath" jdbcType="VARCHAR" />
+    <result column="file_type" property="fileType" jdbcType="INTEGER" />
+    <result column="is_read" property="isRead" jdbcType="INTEGER" />
+    <result column="read_time" property="readTime" jdbcType="TIMESTAMP" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, upload_date, photo_path, photo_path_compress, remark, document_path, 
+    file_type, is_read, read_time, file_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from quote_weekly_report
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  
+  <!--根据询盘号查询   根据类型分类显示-->
+  <select id="queryByOrderId" resultMap="BaseResultMap">
+  
+    select * from  
+    (
+     select  * from quote_weekly_report             
+      where EXISTS 
+		   (  
+		    select id from 
+		                (  
+				        select max(id) as id from quote_weekly_report where order_id = #{orderId,jdbcType=INTEGER}  
+				          group by upload_date,file_type      
+				         ) t   
+		    where t.id=quote_weekly_report.id  
+		   )and file_type = 0   
+	 union all 
+	 select <include refid="Base_Column_List" />  from quote_weekly_report 
+	 where file_type != 0  and order_id = #{orderId,jdbcType=INTEGER}    
+    )s 		   
+	order by upload_date desc	   
+  </select>
+  
+  
+   <!-- 供应商查询所有图片 文档 -->
+   <select id="queryByOrderIdAndSupplier" resultMap="BaseResultMap"> 
+     select <include refid="Base_Column_List" />    
+     from quote_weekly_report       
+     where order_id = #{orderId,jdbcType=INTEGER}  
+	 order by upload_date desc	   
+   </select>
+  
+  
+  
+  
+  <!--根据询盘号和上传时间查询图片-->
+  <select id="queryByOrderIdAndDate" resultMap="BaseResultMap">
+     select  <include refid="Base_Column_List" />   
+      from quote_weekly_report    
+      where order_id = #{orderId,jdbcType=INTEGER}    
+      and upload_date = #{uploadDate,jdbcType=DATE}          
+      and file_type = 0  
+      order by upload_date desc 
+  </select>
+  
+  
+  
+  
+  
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from quote_weekly_report
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  		<!--批量插入销售订单关联关系 -->
+  <insert id="insertPhotosBatch" parameterType="java.util.List">
+	    insert into quote_weekly_report 
+		    (
+		   order_id, upload_date, photo_path, photo_path_compress, remark, 
+           file_name,file_type
+            )
+	    values
+	    <foreach collection="list" item="item" index="index" separator=",">
+	      (           
+		    #{item.orderId},#{item.uploadDate},#{item.photoPath},#{item.photoPathCompress},#{item.remark},
+		    #{item.fileName}, #{item.fileType}
+	      )
+	    </foreach>
+	</insert>
+  
+  
+  
+  
+  <insert id="insert" parameterType="com.cbt.entity.QuoteWeeklyReport" >
+    insert into quote_weekly_report (id, order_id, upload_date, 
+      photo_path, photo_path_compress, remark, 
+      document_path, file_type, is_read, 
+      read_time)
+    values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{uploadDate,jdbcType=DATE}, 
+      #{photoPath,jdbcType=VARCHAR}, #{photoPathCompress,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{documentPath,jdbcType=VARCHAR}, #{fileType,jdbcType=INTEGER}, #{isRead,jdbcType=INTEGER}, 
+      #{readTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cbt.entity.QuoteWeeklyReport" useGeneratedKeys="true"  keyProperty="id">
+    insert into quote_weekly_report
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="uploadDate != null" >
+        upload_date,
+      </if>
+      <if test="photoPath != null" >
+        photo_path,
+      </if>
+      <if test="photoPathCompress != null" >
+        photo_path_compress,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="documentPath != null" >
+        document_path,
+      </if>
+      <if test="fileType != null" >
+        file_type,
+      </if>
+      <if test="isRead != null" >
+        is_read,
+      </if>
+      <if test="readTime != null" >
+        read_time,
+      </if>
+      <if test="fileName != null" >
+        file_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="uploadDate != null" >
+        #{uploadDate,jdbcType=DATE},
+      </if>
+      <if test="photoPath != null" >
+        #{photoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="photoPathCompress != null" >
+        #{photoPathCompress,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="documentPath != null" >
+        #{documentPath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null" >
+        #{fileType,jdbcType=INTEGER},
+      </if>
+      <if test="isRead != null" >
+        #{isRead,jdbcType=INTEGER},
+      </if>
+      <if test="readTime != null" >
+        #{readTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cbt.entity.QuoteWeeklyReport" >
+    update quote_weekly_report
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="uploadDate != null" >
+        upload_date = #{uploadDate,jdbcType=DATE},
+      </if>
+      <if test="photoPath != null" >
+        photo_path = #{photoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="photoPathCompress != null" >
+        photo_path_compress = #{photoPathCompress,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="documentPath != null" >
+        document_path = #{documentPath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null" >
+        file_type = #{fileType,jdbcType=INTEGER},
+      </if>
+      <if test="isRead != null" >
+        is_read = #{isRead,jdbcType=INTEGER},
+      </if>
+      <if test="readTime != null" >
+        read_time = #{readTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cbt.entity.QuoteWeeklyReport" >
+    update quote_weekly_report
+    set order_id = #{orderId,jdbcType=INTEGER},
+      upload_date = #{uploadDate,jdbcType=DATE},
+      photo_path = #{photoPath,jdbcType=VARCHAR},
+      photo_path_compress = #{photoPathCompress,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      document_path = #{documentPath,jdbcType=VARCHAR},
+      file_type = #{fileType,jdbcType=INTEGER},
+      is_read = #{isRead,jdbcType=INTEGER},
+      read_time = #{readTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

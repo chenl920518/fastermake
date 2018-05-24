@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<meta name="Keywords"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<meta name="Description"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<title>快制造-产品-完善产品信息</title>
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="/lib/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" href="/css/easydialog.css" />
+<link rel="stylesheet" href="/css/css.css" />
+<link rel="stylesheet" href="/css/matrix-style.css" />
+<link rel="stylesheet" href="/css/progressBar.css" />
+<link rel="stylesheet" href="/css/ui.css" />
+<link rel="stylesheet" href="/css/ui.progress-bar.css" />
+<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script src="/lib/respond/respond.js"></script>
+
+<style>
+@media ( min-width : 1200px) {
+	.container {
+		width: 1200px;
+		background-color: #fff;
+	}
+}
+
+h3 span {
+	color: #333;
+	font-size: 16px;
+}
+
+.fileimg {
+	display: block;
+	width: 16px;
+	height: 17px;
+	background: url(/images/products/fj.png) no-repeat;
+	position: absolute;
+	top: 10px;
+	left: 24px;
+}
+
+.colsm110 {
+	margin-left: -60px;
+	width: 1000px;
+}
+
+.form-horizontal .control-label {
+	padding-top: 7px;
+}
+
+.ff5 {
+	position: absolute;
+	top: 38px;
+	left: 17px;
+}
+
+.ff5div {
+	position: relative;
+	margin-bottom: 9px;
+}
+
+.deleteQuantityList {
+	cursor: pointer;
+}
+
+.addQuantityList {
+	cursor: pointer;
+}
+
+.addProduct {
+	cursor: pointer;
+}
+
+.weui_mask_new {
+	position: fixed;
+	z-index: 1000;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.6);
+}
+
+.uploadfileCss {
+	position: relative;
+	margin-top: 0;
+}
+
+.uploadfileCss .mm {
+	width: 275px;
+	height: 36px;
+	border: 1px solid #ddd;
+	line-height: 36px;
+	padding-left: 15px;
+	font-size: 14px;
+	color: #999;
+	position: relative;
+	left: -20px;
+	top: 0px;
+	cursor: pointer;
+	display: none;
+}
+
+.uploadfileCss .mm span {
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background-color: #999;
+	color: #fff;
+	text-align: center;
+	line-height: 22px;
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	top: 5px;
+}
+
+.uploadfileCss .mm span em {
+	font-size: 12px;
+}
+
+.uploadfileCss .nn {
+	width: 275px;
+	height: 36px;
+	border: 1px solid #ddd;
+	line-height: 36px;
+	padding-left: 15px;
+	font-size: 14px;
+	color: #999;
+	position: absolute;
+	left: 600px;
+	top: 0px;
+	cursor: pointer;
+	display: none;
+}
+
+.uploadfileCss .nn span {
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background-color: #999;
+	color: #fff;
+	text-align: center;
+	line-height: 22px;
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	top: 5px;
+}
+
+.uploadfileCss .nn span em {
+	font-size: 12px;
+}
+
+.blt {
+	border-left-color: transparent;
+	background-color: #fff;
+}
+
+.ml-70 {
+	margin-left: -60px;
+}
+
+.ml-70 .brt {
+	border-right-color: transparent;
+	background-color: #fff;
+	width: 135px;
+}
+
+.ml-70 .input-group-addon {
+	background-color: #fff;
+}
+
+.ffhh {
+	color: #ff4a4a;
+}
+
+.beforLoginSpan {
+	position: relative;
+	top: 8px;
+	font-size: 14px;
+	color: #999999;
+}
+</style>
+</head>
+<body>
+	<div class="product_invitation">
+		<div id="header"></div>
+		<div class="section">
+			<div class="nav_head container">
+				<a href="###" class="a1">1.创建询盘获取报价</a> <a href="###" class="a2">2.完善询盘信息</a>
+				<a href="###">3.注册登录</a> <a href="###">4.确认询盘信息</a> <a href="###">5.快制造检查和发布</a>
+				<a href="###">6.收到报价</a>
+				<h4>创建询盘获取报价</h4>
+			</div>
+			<div class="panel panel-default container contain1">
+				<div class="panel-heading">
+					<ol class="breadcrumb">
+						<li><a href="#">首页</a></li>
+						<li><a href="#">快速创建询盘</a></li>
+						<li>完善询盘信息</li>
+					</ol>
+				</div>
+				<div class="panel-body" id="headData">
+					<h3>
+						<i></i>更多询盘信息
+					</h3>
+					<form class="form-horizontal moreInfo" role="form">
+
+						<div class="form-group">
+							<label for="" class="col-sm-2 control-label"><span>*</span>询盘类别</label>
+							<div class="colsm-10 colsm106 clearfix">
+								<div class="col-sm-6 colsm6 colsm61">
+
+									<div class="inps">
+										<input type="radio" name="quoteWay" value="1" /> <label
+											for="inps1" class="labels1 label1_2">只给定向供应商报价</label> <span
+											class="pttj">(平台推荐供应商)</span>
+									</div>
+									<div class="pics clearfix">
+										<label for="inps1" class="labels2"> <span class="s1"></span>
+											<span class="s2"></span> <span class="s3"></span> <span
+											class="s21"></span> <span class="s41"></span></label>
+									</div>
+
+
+									<p>当你使用平台一段时间后，你也可主动逐渐收藏一批供应商，你将可以只选他们报价；对于新用户，我们会根据你设置的供应商标准，选择3-8家供应商，只把你的询盘发给他们报价</p>
+								</div>
+								<div class="col-sm-6 colsm6 colsm62">
+									<div class="inps">
+										<input type="radio" name="quoteWay" value="0" /><label
+											for="inps2" class="labels1">发布你的询盘在市场上，让更多工厂可以看到</label>
+									</div>
+									<div class="pics clearfix">
+										<label for="inps2" class="labels2"> <span class="s42"></span>
+											<span class="s22"></span> <span class="s1 s12"></span> <span
+											class="s23"></span> <span class="s43"></span></label>
+									</div>
+									<p>
+										我们会做下面3件事情以保护你的隐私:<br /> (1) 询盘上不会有贵司名字<br /> (2)
+										你可以要求工厂签署保密协议才能看图纸<br /> (3) 你可以设置严格的标准，不符合标准的供应商也无法看到此询盘
+
+									</p>
+								</div>
+
+							</div>
+							<span id="quoteWayError" style="margin-left: 150px;"></span>
+
+						</div>
+						<div class="form-group" id="factoryList">
+							<label for="" class="col-sm-2 control-label">邀请报价</label>
+							<div class="col-sm-10 colsm10 posirela">
+								<span class="selectarror selspan"></span> <input type="text"
+									class="form-control w300 select2 zgrzinp" id="mainFactory"
+									name="inviteFactoryName" value="" readonly="readonly">
+								<input type="hidden" id="inviteFactory" name="inviteFactory"
+									value="">
+								<div class="dx w300 zgrzdx" id="mainFactoryForeach"></div>
+								<span id="factoryListV"></span>
+							</div>
+							<span class="beforLogin beforLoginSpan">登录后可选择其他供应商</span>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-2 control-label w150"><span>*</span>报价截止日期</label>
+							<div class="col-sm-4 ml-70">
+								<div class="input-group date form_date col-sm-6 w200"
+									data-date="" data-date-format="yyyy-mm-dd">
+									<input id="quoteEndDate" name="quoteEndDate"
+										class="form-control brt brt_7" size="16" type="text" value=""
+										place="选择日期" field="报价截止日期" placeholder="选择日期" readonly
+										requiredate> <span
+										class="input-group-addon blt posirela"><i
+										class="line1 posiabso"></i></span> <span class="input-group-addon"><span
+										class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+								<span></span>
+
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="" class="col-sm-2 control-label w150"><span>*</span>交货日期</label>
+							<div class="col-sm-4 ml-70">
+								<div class="input-group date form_date col-sm-6 w200"
+									data-date="" data-date-format="yyyy-mm-dd">
+									<input id="deliveryDate" name="deliveryDate"
+										class="form-control brt" size="16" type="text" value=""
+										place="选择日期" field="交货日期" placeholder="选择日期" readonly
+										requiredate> <span
+										class="input-group-addon blt posirela"><i
+										class="line1 posiabso"></i></span> <span class="input-group-addon"><span
+										class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+								<span></span>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-2 control-label">货运条款</label>
+							<div class="col-sm-10 colsm10">
+								<!--<input type="text" class="form-control" id="firstname" placeholder="">-->
+								<select name="quoteFreightTerm" id="quoteFreightTerm"
+									class="form-control" onchange="showCity(this)">
+									<option value="出厂价">出厂价</option>
+									<option value="运送到目的地价">运送到目的地价</option>
+								</select>
+							</div>
+						</div>
+						<div id="deliveryAddress" class="form-group" style="display: none">
+							<label for="" class="col-sm-2 control-label">送货地</label>
+							<div class="col-sm-10 colsm10 colsm102">
+								<!-- <input type="date" class="form-control " id="firstname" >-->
+								<select name="city" id="city" class="form-control" require
+									field="送货城市">
+									<option value=""></option>
+									<option value="上海">上海</option>
+									<option value="北京">北京</option>
+									<option value="江苏">江苏</option>
+									<option value="广东">广东</option>
+									<option value="山东">山东</option>
+									<option value="河南">河南</option>
+									<option value="河北">河北</option>
+									<option value="安徽">安徽</option>
+									<option value="福建">福建</option>
+									<option value="天津">天津</option>
+									<option value="重庆">重庆</option>
+									<option value="山西">山西</option>
+									<option value="内蒙古">内蒙古</option>
+									<option value="辽宁">辽宁</option>
+									<option value="四川">四川</option>
+									<option value="贵州">贵州</option>
+									<option value="云南">云南</option>
+									<option value="陕西">陕西</option>
+									<option value="吉林">吉林</option>
+									<option value="黑龙江">黑龙江</option>
+									<option value="江西">江西</option>
+									<option value="湖北">湖北</option>
+									<option value="湖南">湖南</option>
+									<option value="广西">广西</option>
+									<option value="海南">海南</option>
+									<option value="甘肃">甘肃</option>
+									<option value="宁夏">宁夏</option>
+									<option value="青海">青海</option>
+									<option value="西藏">西藏</option>
+									<option value="香港">香港</option>
+									<option value="澳门">澳门</option>
+									<option value="台湾">台湾</option>
+									<option value="浙江">浙江</option>
+									<option value="新疆">新疆</option>
+								</select><span></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-2 control-label">询盘备注</label>
+							<div class="col-sm-10 colsm10">
+								<textarea id="quoteRemark" name="quoteRemark"
+									class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="addProducts container container2"></div>
+			<div id="bottom">
+				<div class="container container2 container3 container4 container5">
+					<h3>
+						<i></i>设置供应商报价条件
+					</h3>
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<form class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="firstname" class="col-sm-2 control-label">供应商所在区域限定</label>
+									<div class="col-sm-10 colsm10 colsm107">
+										<label class="radio-inline"> <input type="radio"
+											name="quoteLocation" value="0"> 不限
+										</label> <label class="radio-inline"> <input type="radio"
+											name="quoteLocation" value="1"> 江浙沪
+										</label> <label class="radio-inline"> <input type="radio"
+											name="quoteLocation" value="2"> 深圳广东福建
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="" class="col-sm-2 control-label">雇员数量</label>
+									<div class="col-sm-10 colsm10 colsm105">
+										<!--<input type="text" class="form-control" id="firstname" placeholder="">-->
+										<select name="staffNumber" id="staffNumber"
+											class="form-control">
+											<option value="">不限</option>
+											<option value="0-49">0-49</option>
+											<option value="50-99">50-99</option>
+											<option value="100-200">100-200</option>
+											<option value="201-500">201-500</option>
+											<option value="500+">500+</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="" class="col-sm-2 control-label">资格认证</label>
+
+
+									<div class="col-sm-10 colsm10 posirela">
+										<span class="selectarror selspan"></span> <input
+											class="form-control w300 select2 zgrzinp" type="text"
+											id="qualificationName" name="qualification" value=""
+											readonly="readonly">
+
+										<div class="dx w300 zgrzdx" id="qualificationForeach">
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="ISO 9001">ISO 9001
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="ISO 9004">ISO 9004
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="VDA 6.1">VDA 6.1
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="QS9000">QS9000
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="QUALIFAS">QUALIFAS
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck" value="CCC">CCC
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="AS9100">AS9100
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="AS9000">AS9000
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="ANSI/ESD S20.20">ANSI/ESD S20.20
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="AS 9003">AS 9003
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="AS 9102">AS 9102
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="ASME">ASME
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="ASME Nuclear">ASME Nuclear
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck" value="ASQ">ASQ
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="CE Mark (Europe)">CE Mark (Europe)
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck" value="FAA">FAA
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="FDA - U.S. Food and Drug Administration">FDA
+													- U.S. Food and Drug Administration
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="Federal Firearms License (FFL)">Federal
+													Firearms License (FFL)
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="ISO 14000">ISO 14000
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="ISO 14001">ISO 14001
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="ISO 1725">ISO 1725
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="ISO 9000">ISO 9000
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="ISO 9002">ISO 9002
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="ISO 9003">ISO 9003
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="ISO Compliant">ISO Compliant
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="TS 16949">TS 16949
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="ISO13485:2003(E)">ISO13485:2003(E)
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="OHSAS 18001">OHSAS 18001
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="QS 9000 TE Supplement">QS 9000 TE Supplement
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="RC14001">RC14001
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="SA8000">SA8000
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="TL9000">TL9000
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck" value="UL">UL
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="HACCP - Hazard Analysis and Critical Control Point">HACCP
+													- Hazard Analysis and Critical Control Point
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="QC08000">QC08000
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="IRIS">IRIS
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="ISO 3834">ISO 3834
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="DIN 18800">DIN 18800
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck"
+													value="DIN 6700">DIN 6700
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"
+													onclick="checkqcValue()" name="qualificationck" value="API">API
+												</label>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="container container6">
+					<button id="saveButton" class="btn btn-default">下一步</button>
+				</div>
+			</div>
+			<div class="w-out-box" id="show_upload_dialog" style="display: none">
+				<div class="weui_mask"></div>
+				<div class="w-weui_dialog" style="width: 510px;">
+					<div id="container">
+
+						<div class="content">
+							<h1>上传进度</h1>
+						</div>
+
+						<!-- Progress bar -->
+						<div id="progress_bar" class="ui-progress-bar ui-container">
+							<div class="ui-progress" style="width: 0%;"
+								id="ui-progress-upload">
+								<span class="ui-label" style="display: none;">正在加载...<b
+									class="value">0%</b></span>
+							</div>
+						</div>
+						<!-- /Progress bar -->
+						<a class="close-reveal-modal"
+							style="color: #eee; font-size: 22px;" href="javascript:void(0);"
+							onclick="cancel_upload()">×</a>
+						<div class="content" id="main_content" style="display: none;">
+							<p>加载完成。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="weui_mask_new" style="display: none"></div>
+		</div>
+		<div id="footer"></div>
+	</div>
+	<!-- SEO代码 开始-->
+	<div style="display: none">
+		快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘
+
+		Keywords: <a href="https://www.kuaizhizao.cn/" title="快制造"
+			target="_blank"><strong>快制造</strong></a> <a
+			href="https://www.kuaizhizao.cn/" title="外发加工" target="_blank"><strong>外发加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑模具" target="_blank"><strong>注塑模具</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机械加工" target="_blank"><strong>机械加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金加工" target="_blank"><strong>钣金加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具厂" target="_blank"><strong>塑料模具厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑加工" target="_blank"><strong>注塑加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具设计与制造" target="_blank"><strong>塑料模具设计与制造</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸厂" target="_blank"><strong>压铸厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="零件加工" target="_blank"><strong>零件加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸加工订单" target="_blank"><strong>外贸加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="非标定制" target="_blank"><strong>非标定制</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外发订单" target="_blank"><strong>外发订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外协加工" target="_blank"><strong>外协加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="加工订单" target="_blank"><strong>加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑订单" target="_blank"><strong>注塑订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸订单" target="_blank"><strong>压铸订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金订单" target="_blank"><strong>钣金订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机加工询盘" target="_blank"><strong>机加工询盘</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸询盘" target="_blank"><strong>外贸询盘</strong></a>
+	</div>
+	<!-- SEO代码 开始-->
+
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+
+<script src="/zh/icn/verification.js"></script>
+
+<script type="text/javascript" src="/js/upload-base.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script type="text/javascript" src="/js/easydialog.min.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script>
+<script src="/lib/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script
+	src="/lib/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="/zh/icn/improve_info.js"></script>
+
+<script>
+	$('#header').load('header.html');
+	$('#footer').load('footer.html');
+	/*头部样式切换*/
+	$('.nav_head a:not(".a1")').click(function() {
+		$('.nav_head a').css({
+			'text-decotation' : 'none'
+		});
+		/*$(this).css({
+			'background' : 'url(/images/products/t4.png)'
+		});*/
+	})
+	/*选者框样式切换*/
+	$('.checkbox label').click(function() {
+		if ($('label em').css('display') == 'block') {
+			$('label em').css({
+				'display' : 'none'
+			});
+		} else {
+			$('label em').css({
+				'display' : 'block'
+			});
+		}
+	})
+
+	/* 资格认证多选切换*/
+	$('.product_invitation .zgrzinp').click(function() {
+		$(this).parent().find('.zgrzdx').toggle();
+		/*$('.product_invitation  .zgrzdx').toggle();*/
+	})
+	$('.product_invitation .selspan').click(function() {
+		$(this).parent().find('.zgrzdx').toggle();
+		/*$('.product_invitation  .zgrzdx').toggle();*/
+	})
+
+	/*询盘类别扩大选中区域*/
+
+	/* 日历插件*/
+	$('.form_date').datetimepicker({
+		language : 'zh-CN',
+		weekStart : 1,
+		todayBtn : 1,
+		autoclose : 1,
+		todayHighlight : 1,
+		startView : 2,
+		minView : 4,
+		forceParse : 0
+	});
+</script>
+
+
+

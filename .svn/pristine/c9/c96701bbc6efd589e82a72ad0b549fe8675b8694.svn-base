@@ -1,0 +1,94 @@
+.purchase .section .section_in div.title {
+  background-color: #006dcc;
+}
+.purchase .section .section_in .contain_right .contain_right_title {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+.purchase .section .section_in .contain_right .contain_right_title span {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: #666666;
+  margin-top: 2px;
+  margin-right: 10px;
+}
+.purchase .section .section_in .contain_right .contain_right_title em {
+  font-size: 16px;
+  color: #666;
+}
+.purchase .section .section_in .contain_right .con_right_top .ss .inp {
+  position: relative;
+}
+.purchase .section .section_in .contain_right .con_right_top .ss .inp input::-webkit-input-placeholder {
+  color: #c2c2c2;
+}
+.purchase .section .section_in .contain_right .con_right_top .ss .inp input::-moz-placeholder {
+  color: #c2c2c2;
+}
+.purchase .section .section_in .contain_right .con_right_top .ss .inp input:-ms-input-placeholder {
+  color: #c2c2c2;
+}
+.purchase .section .section_in .contain_right .con_right_top .ss .inp span {
+  right: 12px;
+  top: 8px;
+}
+.purchase .section .section_in .contain_right .con_right_top .ss .gl {
+  cursor: pointer;
+}
+.purchase .section .section_in .contain_right .con_right_top .ss .gl ul li {
+  font-size: 14px;
+  color: #333;
+}
+.purchase .section .section_in .contain_right .con_right_top .sc {
+  width: 110px;
+  height: 34px;
+  line-height: 34px;
+  color: #666;
+}
+.purchase .section .section_in .contain_right .con_right_bottom .table1 thead .t2,
+.purchase .section .section_in .contain_right .con_right_bottom .table2 thead .t2 {
+  width: 90px;
+}
+.purchase .section .section_in .contain_right .con_right_bottom .table1 thead .t3,
+.purchase .section .section_in .contain_right .con_right_bottom .table2 thead .t3 {
+  width: 45px;
+}
+.purchase .section .section_in .contain_right .con_right_bottom .table1 thead .t5,
+.purchase .section .section_in .contain_right .con_right_bottom .table2 thead .t5 {
+  width: 43px;
+}
+.purchase .section .section_in .contain_right .con_right_bottom .table1 thead .t6,
+.purchase .section .section_in .contain_right .con_right_bottom .table2 thead .t6 {
+  width: 46px;
+}
+.purchase .section .section_in .contain_right .con_right_bottom .table1 thead .t8,
+.purchase .section .section_in .contain_right .con_right_bottom .table2 thead .t8 {
+  width: 49px;
+  padding-left: 16px;
+}
+.purchase .section .section_in .contain_right .con_right_bottom .table1 tbody .d7,
+.purchase .section .section_in .contain_right .con_right_bottom .table2 tbody .d7 {
+  position: relative;
+}
+.purchase .section .section_in .contain_right .con_right_bottom .table1 tbody .d7 span,
+.purchase .section .section_in .contain_right .con_right_bottom .table2 tbody .d7 span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #da4f49;
+  text-align: center;
+  line-height: 12px;
+  color: #fff;
+  font-size: 10px;
+  position: absolute;
+  top: 45px;
+  right: -5px;
+  font-family: "Arial";
+}
+.purchase .section .section_in .contain_right .con_right_bottom .table1 tbody .d8,
+.purchase .section .section_in .contain_right .con_right_bottom .table2 tbody .d8 {
+  padding-left: 16px;
+}

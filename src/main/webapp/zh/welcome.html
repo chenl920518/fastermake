@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>快制造-供应商报价</title>
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/lib/html5sshiv/html5shiv.min.js"></script>
+    <script src="/lib/respond/respond.js"></script>
+    <link rel="stylesheet" href="/css/css.css"/>
+    <style>
+    	
+    	#footer{
+    		position:fixed;
+    		left:0;
+    		bottom:0; n             
+    		width: 100%;
+    	}     	
+    	 	
+    </style>
+    
+</head>
+<body>
+<div class="welcome">
+    <div id="header"></div>
+    <div class="section">
+        <div class="container_in clearfix">
+            <div class="title">恭喜您成为快制造的会员</div>
+            <div class="next_step">
+                <p>下面您可以：</p>
+                <div class="steps clearfix">
+                    <div class="step">
+                        <a href="/zh/edit_enterprise_archives.html"><i class="iconfont">&#xe647;</i></a>
+                        <span>完善公司信息</span>
+                    </div>
+                    <div class="step step2">
+                        <a href="/zh/quickly_release.htmll"><i class="iconfont">&#xe619;</i></a>
+                        <span>马上发布询盘</span>
+                        
+                        
+                        
+                    </div>
+                   <!--  <div class="step">
+                        <a href="###"><i class="iconfont">&#xe780;</i></a>
+                        <span>一键开通询盘功能</span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+</div>
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script> 
+<script src="/js/inquiry/offer.js"></script>
+<script>
+	$('#header').load('header.html');
+	$('#footer').load('footer.html');
+    $('.inquiry_detail .section nav li a').hover(function(){
+        $(this).addClass('active')
+        .parent().siblings('li').children('a').removeClass('active');
+    })   
+    
+   $('.welcome .next_step .steps .step a').not('.step:last-child a').append('<em></em>');
+   $('.welcome .next_step .steps .step a').hover(function(){
+   	$(this).find('em').animate({
+   			'width':'120px',
+   			'height':'120px',
+   			'top':'-10px',
+   			'left':'-10px'  		
+	},200)
+   },function(){
+   	$(this).find('em').animate({
+   			'width':'100px',
+   			'height':'100px',  		
+   			'top':'0px',
+   			'left':'0px'  		
+	},200)
+   })
+   
+   /*body长度控制效果*/
+    /*var h1 = $(document.body).height() + 230 ;*/
+    var h1 = $(document.body).height() ;
+    console.log(h1)
+
+    var h2 = window.screen.availHeight  ;
+    console.log(h2)
+    if(h1 < h2){
+        $('#footer').addClass('footer1');
+    }else{
+        $('#footer').removeClass('footer1');
+    }
+    
+</script>

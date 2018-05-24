@@ -1,0 +1,1070 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.dao.QuoteProductMapper">
+  <resultMap id="BaseResultMap" type="com.cbt.entity.QuoteProduct">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="materials" jdbcType="VARCHAR" property="materials" />
+    <result column="process" jdbcType="VARCHAR" property="process" />
+    <result column="quantity_list" jdbcType="VARCHAR" property="quantityList" />
+    <result column="quantity_unit" jdbcType="VARCHAR" property="quantityUnit" />
+    <result column="delivery_date" jdbcType="DATE" property="deliveryDate" />
+    <result column="drawing_path" jdbcType="VARCHAR" property="drawingPath" />
+    <result column="drawing_path_compress" jdbcType="VARCHAR" property="drawingPathCompress" />
+    <result column="annual_quantity" jdbcType="VARCHAR" property="annualQuantity" />
+    <result column="target_price" jdbcType="DOUBLE" property="targetPrice" />
+    <result column="target_price_status" jdbcType="INTEGER" property="targetPriceStatus" />
+    <result column="delivery_type" jdbcType="INTEGER" property="deliveryType" />
+    <result column="product_remark" jdbcType="LONGVARCHAR" property="productRemark" />    
+    <result column="weight" jdbcType="DOUBLE" property="weight" />    
+    <result column="file_parh" jdbcType="VARCHAR" property="fileParh"/>
+    <result column="country" jdbcType="VARCHAR" property="country"/>
+    <result column="quote_location" jdbcType="INTEGER" property="state"/>
+    <result column="publish_date" jdbcType="DATE" property="publishDate"/>
+    <result column="cgs_quotation_id" jdbcType="INTEGER" property="cgsQuotationId"/>   
+    <result column="video_path" jdbcType="VARCHAR" property="videoPath"/>   
+    <result column="target_mold_price" jdbcType="DOUBLE" property="targetMoldPrice"/>   
+    
+    
+    <result column="main_process" jdbcType="VARCHAR" property="mainProcess"/>
+    <result column="quote_title" jdbcType="VARCHAR" property="quoteTitle"/>
+    <result column="collect_state" jdbcType="INTEGER" property="collectState"/>   
+    <result column="quote_state" jdbcType="INTEGER" property="quoteState"/>   
+    <result column="order_status" jdbcType="INTEGER" property="orderStatus"/>   
+    <result column="message_status" jdbcType="INTEGER" property="messageStatus"/>   
+    <result column="is_inspected_factory" jdbcType="INTEGER" property="isInspectedFactory"/>   
+    <result column="is_inspected_product" jdbcType="INTEGER" property="isInspectedProduct"/>   
+    <result column="is_process" jdbcType="INTEGER" property="isProcess"/>   
+    <result column="invite_factory" jdbcType="VARCHAR" property="inviteFactory"/>   
+    <result column="csg_order_id" jdbcType="VARCHAR" property="csgOrderId"/>   
+    <result column="current_number" jdbcType="INTEGER" property="currentNumber"/>   
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, customer_id, order_id, product_name, materials, process, quantity_list, quantity_unit, 
+    delivery_date, drawing_path, drawing_path_compress, annual_quantity, target_price, 
+    target_price_status, delivery_type,product_remark,weight,cgs_quotation_id,video_path,  
+    target_mold_price    
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from quote_product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="queryByCgsQuotationId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select  
+    <include refid="Base_Column_List"/> 
+    from quote_product  
+    where cgs_quotation_id = #{cgsQuotationId,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from quote_product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <delete id="deleteByOrderId" parameterType="java.lang.Integer">
+  delete from quote_product
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  
+  
+  <insert id="insert" parameterType="com.cbt.entity.QuoteProduct">
+    insert into quote_product (id, customer_id, order_id, 
+      product_name, materials, process, 
+      quantity_list, quantity_unit, delivery_date, 
+      drawing_path, drawing_path_compress, annual_quantity, 
+      target_price, target_price_status, delivery_type, 
+      product_remark,video_path,target_mold_price)
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, 
+      #{productName,jdbcType=VARCHAR}, #{materials,jdbcType=VARCHAR}, #{process,jdbcType=VARCHAR}, 
+      #{quantityList,jdbcType=VARCHAR}, #{quantityUnit,jdbcType=VARCHAR}, #{deliveryDate,jdbcType=DATE}, 
+      #{drawingPath,jdbcType=VARCHAR}, #{drawingPathCompress,jdbcType=VARCHAR}, #{annualQuantity,jdbcType=VARCHAR}, 
+      #{targetPrice,jdbcType=DOUBLE}, #{targetPriceStatus,jdbcType=INTEGER}, #{deliveryType,jdbcType=INTEGER}, 
+      #{productRemark,jdbcType=LONGVARCHAR},#{videoPath,jdbcType=VARCHAR},#{targetMoldPrice,jdbcType=DOUBLE})
+  </insert>
+   <insert id="insertList" useGeneratedKeys="true" parameterType="java.util.List">  
+      
+       insert into quote_product ( customer_id, order_id, 
+      product_name, materials, process, 
+      quantity_list, quantity_unit, delivery_date, 
+      drawing_path, drawing_path_compress, annual_quantity, 
+      target_price, target_price_status, delivery_type, 
+      product_remark,file_path, weight,cgs_quotation_id,video_path,target_mold_price) values
+        <foreach collection="list" item="item" index="index" separator="," >  
+           (#{item.customerId,jdbcType=INTEGER}, #{item.orderId,jdbcType=INTEGER}, 
+      #{item.productName,jdbcType=VARCHAR}, #{item.materials,jdbcType=VARCHAR}, #{item.process,jdbcType=VARCHAR}, 
+      #{item.quantityList,jdbcType=VARCHAR}, #{item.quantityUnit,jdbcType=VARCHAR}, #{item.deliveryDate,jdbcType=DATE}, 
+      #{item.drawingPath,jdbcType=VARCHAR}, #{item.drawingPathCompress,jdbcType=VARCHAR}, #{item.annualQuantity,jdbcType=VARCHAR}, 
+      #{item.targetPrice,jdbcType=DOUBLE}, #{item.targetPriceStatus,jdbcType=INTEGER}, #{item.deliveryType,jdbcType=INTEGER}, 
+      #{item.productRemark,jdbcType=LONGVARCHAR}, #{item.filePath,jdbcType=LONGVARCHAR}, #{item.weight,jdbcType=DOUBLE},
+      #{item.cgsQuotationId,jdbcType=INTEGER}, #{item.videoPath,jdbcType=VARCHAR},#{item.targetMoldPrice,jdbcType=DOUBLE})  
+        </foreach>  
+    </insert>  
+  <insert id="insertSelective" parameterType="com.cbt.entity.QuoteProduct">
+    insert into quote_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="materials != null">
+        materials,
+      </if>
+      <if test="process != null">
+        process,
+      </if>
+      <if test="quantityList != null">
+        quantity_list,
+      </if>
+      <if test="quantityUnit != null">
+        quantity_unit,
+      </if>
+      <if test="deliveryDate != null">
+        delivery_date,
+      </if>
+      <if test="drawingPath != null">
+        drawing_path,
+      </if>
+      <if test="drawingPathCompress != null">
+        drawing_path_compress,
+      </if>
+      <if test="annualQuantity != null">
+        annual_quantity,
+      </if>
+      <if test="targetPrice != null">
+        target_price,
+      </if>
+      <if test="targetPriceStatus != null">
+        target_price_status,
+      </if>
+      <if test="deliveryType != null">
+        delivery_type,
+      </if>
+      <if test="productRemark != null">
+        product_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="materials != null">
+        #{materials,jdbcType=VARCHAR},
+      </if>
+      <if test="process != null">
+        #{process,jdbcType=VARCHAR},
+      </if>
+      <if test="quantityList != null">
+        #{quantityList,jdbcType=VARCHAR},
+      </if>
+      <if test="quantityUnit != null">
+        #{quantityUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryDate != null">
+        #{deliveryDate,jdbcType=DATE},
+      </if>
+      <if test="drawingPath != null">
+        #{drawingPath,jdbcType=VARCHAR},
+      </if>
+      <if test="drawingPathCompress != null">
+        #{drawingPathCompress,jdbcType=VARCHAR},
+      </if>
+      <if test="annualQuantity != null">
+        #{annualQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="targetPrice != null">
+        #{targetPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="targetPriceStatus != null">
+        #{targetPriceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryType != null">
+        #{deliveryType,jdbcType=INTEGER},
+      </if>
+      <if test="productRemark != null">
+        #{productRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cbt.entity.QuoteProduct">
+    update quote_product
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="materials != null">
+        materials = #{materials,jdbcType=VARCHAR},
+      </if>
+      <if test="process != null">
+        process = #{process,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="quantityList != null">
+        quantity_list = #{quantityList,jdbcType=VARCHAR},
+      </if>
+      <if test="quantityUnit != null">
+        quantity_unit = #{quantityUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryDate != null">
+        delivery_date = #{deliveryDate,jdbcType=DATE},
+      </if>
+      <if test="drawingPath != null">
+        drawing_path = #{drawingPath,jdbcType=VARCHAR},
+      </if>
+      <if test="drawingPathCompress != null">
+        drawing_path_compress = #{drawingPathCompress,jdbcType=VARCHAR},
+      </if>
+      <if test="annualQuantity != null">
+        annual_quantity = #{annualQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="targetPrice != null">
+        target_price = #{targetPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="targetPriceStatus != null">
+        target_price_status = #{targetPriceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryType != null">
+        delivery_type = #{deliveryType,jdbcType=INTEGER},
+      </if>
+<!--       <if test="productRemark != null"> -->
+        product_remark = #{productRemark,jdbcType=LONGVARCHAR},
+<!--       </if> -->
+      <if test="videoPath != null">
+        video_path = #{videoPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cbt.entity.QuoteProduct">
+    update quote_product
+    set customer_id = #{customerId,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=INTEGER},
+      product_name = #{productName,jdbcType=VARCHAR},
+      materials = #{materials,jdbcType=VARCHAR},
+      process = #{process,jdbcType=VARCHAR},
+      quantity_list = #{quantityList,jdbcType=VARCHAR},
+      quantity_unit = #{quantityUnit,jdbcType=VARCHAR},
+      delivery_date = #{deliveryDate,jdbcType=DATE},
+      drawing_path = #{drawingPath,jdbcType=VARCHAR},
+      drawing_path_compress = #{drawingPathCompress,jdbcType=VARCHAR},
+      annual_quantity = #{annualQuantity,jdbcType=VARCHAR},
+      target_price = #{targetPrice,jdbcType=DOUBLE},
+      target_price_status = #{targetPriceStatus,jdbcType=INTEGER},
+      delivery_type = #{deliveryType,jdbcType=INTEGER},
+      product_remark = #{productRemark,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cbt.entity.QuoteProduct">
+    update quote_product
+    set customer_id = #{customerId,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=INTEGER},
+      product_name = #{productName,jdbcType=VARCHAR},
+      materials = #{materials,jdbcType=VARCHAR},
+      process = #{process,jdbcType=VARCHAR},
+      quantity_list = #{quantityList,jdbcType=VARCHAR},
+      quantity_unit = #{quantityUnit,jdbcType=VARCHAR},
+      delivery_date = #{deliveryDate,jdbcType=DATE},
+      drawing_path = #{drawingPath,jdbcType=VARCHAR},
+      drawing_path_compress = #{drawingPathCompress,jdbcType=VARCHAR},
+      annual_quantity = #{annualQuantity,jdbcType=VARCHAR},
+      target_price = #{targetPrice,jdbcType=DOUBLE},
+      target_price_status = #{targetPriceStatus,jdbcType=INTEGER},
+      delivery_type = #{deliveryType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+ 
+   <!-- 根据询盘号查询 -->
+   <select id="queryByOrderId" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"/>
+      from quote_product where order_id = #{orderId,jdbcType=INTEGER} 
+   </select>
+   
+   
+   
+   <!--根据主要工艺查询询盘列表（每种工艺询盘只显示6个）-->
+   <select id="queryProductByMainProcess" resultMap="BaseResultMap">
+    
+  select      
+  d.id, d.customer_id, d.order_id, d.product_name, d.materials, d.process, d.quantity_list, d.quantity_unit, 
+  d.delivery_date, d.drawing_path, d.drawing_path_compress, d.annual_quantity, d.target_price, d.weight, 
+  d.target_price_status, d.delivery_type,d.product_remark,d.video_path,d.country,d.quote_location,d.publish_date,d.main_process,d.quote_title  
+         
+  from
+      (
+      select 
+        p.id, q.customer_id, p.order_id, p.product_name, p.materials, p.process, p.quantity_list, p.quantity_unit, 
+	    p.delivery_date, p.drawing_path, p.drawing_path_compress, p.annual_quantity, p.target_price, p.weight, 
+	    p.target_price_status, p.delivery_type,p.product_remark,p.video_path,q.country,q.quote_location,q.publish_date,
+	    q.main_process,q.quote_title,q.current_number,q.quote_end_date                
+      from quote_product p left join quote_info q on p.order_id = q.order_id              
+      where 1=1 and (q.quote_way = 0 or (q.quote_way = 1 and csg_order_id is not null))
+            and q.order_status in (1,2,5,6)   
+			and  
+			q.main_process in  
+			<foreach item="item" index="index" collection="processes" open="(" separator="," close=")"> 
+			    #{item} 
+			</foreach>   
+<!-- 			 and  q.current_number &lt; 5  -->
+   and (q.quote_end_date &gt;= SYSDATE() || csg_order_id is not null) group by q.order_id       
+      )d 
+   order by d.publish_date desc limit #{start}, #{pageSize}           
+   </select>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+      <!--查询报价产品根据询盘号分组 -->
+   <select id="queryProductGroupByOrderId" resultMap="BaseResultMap">
+    
+  select      
+  d.id, d.customer_id, d.order_id, d.product_name, d.materials, d.process, d.quantity_list, d.quantity_unit, 
+  d.delivery_date, d.drawing_path, d.drawing_path_compress, d.annual_quantity, d.target_price, d.weight, 
+  d.target_price_status, d.delivery_type,d.product_remark,d.video_path,d.country,d.quote_location,d.publish_date,
+  d.main_process,d.quote_title, d.current_number, c.collect_state,m.id as message_status          
+  from
+      (
+      select 
+        p.id, q.customer_id, p.order_id, p.product_name, p.materials, p.process, p.quantity_list, p.quantity_unit, 
+	    p.delivery_date, p.drawing_path, p.drawing_path_compress, p.annual_quantity, p.target_price, p.weight, 
+	    p.target_price_status, p.delivery_type,p.product_remark,p.video_path,q.country,q.quote_location,q.publish_date,
+	    q.main_process,q.quote_title,q.current_number,q.quote_end_date               
+      from quote_product p left join quote_info q on p.order_id = q.order_id             
+      where  1=1 and (q.quote_way = 0 or (q.quote_way = 1 and csg_order_id is not null))   
+     <if test="orderStatus != null"> 
+        and q.order_status = #{orderStatus,jdbcType=INTEGER}
+     </if>
+     <!-- add by jason begin -->
+     <if test="bigBuyerId != null">
+        and q.customer_id = #{bigBuyerId,jdbcType=INTEGER}
+     </if>
+      <!-- add by jason end -->
+     <if test="process != null and process != ''"> 
+			and
+			q.main_process like
+			CONCAT('%',#{process,jdbcType=VARCHAR},'%') 
+     </if>
+     <if test="customerType != null"> 
+			and
+			q.customer_type = #{customerType,jdbcType=INTEGER}
+     </if>
+<!--      <if test="factoryId != null and bigBuyerId == null">    -->
+<!-- 			and -->
+<!-- 			q.customer_id  <![CDATA[ <> ]]> #{factoryId,jdbcType=VARCHAR} -->
+<!--      </if> -->
+     <if test="product != null and product != ''"> 
+            and
+           <trim prefix="(" suffix=")" suffixOverrides=",">
+			q.quote_title like
+			CONCAT('%',#{product,jdbcType=VARCHAR},'%')
+			or q.order_id like
+			CONCAT('%',#{product,jdbcType=INTEGER},'%')
+		    </trim> 
+     </if>
+<!--      and  q.current_number &lt; 5  -->
+    and (q.quote_end_date &gt;= SYSDATE()  || csg_order_id is not null)  
+    <if test="factoryId != null">  
+    and q.order_id  not in (
+					        select s.order_id from supplier_quote_info s where 1=1     
+						    and s.factory_id = #{factoryId,jdbcType=VARCHAR}   
+	                       )
+    </if>
+      group by q.order_id   
+      )d 
+ left join 
+	  (
+	 select collect_tab.id as collect_state,order_id from collect_tab  
+	  
+	 where 1=1
+	 <if test="factoryId != null">  
+	 and  factory_id = #{factoryId,jdbcType=VARCHAR}  
+	 </if>
+	 
+	 )c 
+ on d.order_id = c.order_id  
+ <!-- 查询是否发送消息，用于移动端显示 -->
+ left join  quote_message m  
+ on d.order_id = m.order_id    
+ and  factory_id = #{factoryId,jdbcType=VARCHAR}    
+ GROUP BY order_id 
+ order by d.publish_date desc limit #{start}, #{pageSize}           
+   </select>
+ 
+ 
+ 
+	 <!-- 查询询盘数 -->
+	  <select id="totalOrder" resultType="int"> 
+	    select count(pd.id)  from  
+	    (
+        select  
+        p.id, p.customer_id, p.order_id, p.product_name, p.materials, p.process, p.quantity_list, p.quantity_unit, 
+	    p.delivery_date, p.drawing_path, p.drawing_path_compress, p.annual_quantity, p.target_price, 
+	    p.target_price_status, p.delivery_type,p.product_remark,q.country,q.quote_title,q.main_process                 
+	    from quote_product p left join quote_info q on p.order_id = q.order_id             
+	      where  1=1  and (q.quote_way = 0 or (q.quote_way = 1 and csg_order_id is not null))   
+	     <if test="orderStatus != null"> 
+	        and q.order_status = #{orderStatus,jdbcType=INTEGER}
+	     </if>
+	        <!-- add by jason begin -->
+          <if test="bigBuyerId != null">
+            and q.customer_id = #{bigBuyerId,jdbcType=INTEGER}
+          </if>
+          <!-- add by jason end -->
+
+	     <if test="process != null and process != ''"> 
+				and
+				q.main_process like
+				CONCAT('%',#{process,jdbcType=VARCHAR},'%') 
+	     </if>
+	     <if test="customerType != null"> 
+				and
+				q.customer_type = #{customerType,jdbcType=INTEGER}
+	     </if>
+	     <if test="factoryId != null and bigBuyerId == null">   
+			and
+			q.customer_id  <![CDATA[ <> ]]> #{factoryId,jdbcType=VARCHAR}
+         </if>
+	     <if test="product != null and product != ''"> 
+	            and
+	           <trim prefix="(" suffix=")" suffixOverrides=",">
+				q.quote_title like
+				CONCAT('%',#{product,jdbcType=VARCHAR},'%')
+				or q.order_id like
+				CONCAT('%',#{product,jdbcType=INTEGER},'%')
+			    </trim> 
+	     </if>
+<!-- 	     and  q.current_number &lt; 5  -->
+	     and (q.quote_end_date &gt;= SYSDATE() || csg_order_id is not null)
+	      <if test="factoryId != null">  
+		 and q.order_id not in (select s.order_id from supplier_quote_info s where 1=1   
+							    and s.factory_id = #{factoryId,jdbcType=VARCHAR} 
+		                       )  
+		  </if>                      
+	     group by q.order_id   
+		)pd     
+	  </select>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	 <!--查询所有询盘产品-->
+   <select id="queryAllProductGroupByOrderId" resultMap="BaseResultMap">
+    
+  select      
+  d.id, d.customer_id, d.order_id, d.product_name, d.materials, d.process, d.quantity_list, d.quantity_unit, 
+  d.delivery_date, d.drawing_path, d.drawing_path_compress, d.annual_quantity, d.target_price, d.weight, 
+  d.target_price_status, d.delivery_type,d.product_remark,d.video_path,d.country,d.quote_location,d.publish_date,d.main_process,
+  d.quote_title,d.invite_factory,c.collect_state        
+  from
+      (
+      select 
+        p.id, p.customer_id, p.order_id, p.product_name, p.materials, p.process, p.quantity_list, p.quantity_unit, 
+	    p.delivery_date, p.drawing_path, p.drawing_path_compress, p.annual_quantity, p.target_price, p.weight, 
+	    p.target_price_status, p.delivery_type,p.product_remark,p.video_path,q.country,q.quote_location,q.publish_date,
+	    q.main_process,q.quote_title,q.invite_factory               
+      from quote_product p left join quote_info q on p.order_id = q.order_id             
+      where  1=1  and (q.quote_way = 0 or (q.quote_way = 1 and csg_order_id is not null))
+     <if test="orderStatus != null"> 
+        and q.order_status = #{orderStatus,jdbcType=INTEGER}
+     </if>
+    and q.order_id  not in (select s.order_id from supplier_quote_info s where s.factory_id = #{factoryId,jdbcType=VARCHAR})  
+    group by q.order_id   
+      )d 
+ left join 
+	 (
+	 select collect_tab.id as collect_state,order_id from collect_tab   
+	 where factory_id = #{factoryId,jdbcType=VARCHAR}  
+	 )c 
+ on d.order_id = c.order_id  order by d.publish_date desc limit 0,20            
+   </select>
+	  
+	  
+	 <!--查询邀请询盘-->
+  
+  <select id="queryInvitationOrder" resultMap="BaseResultMap">   
+  select      
+	  d.id, d.customer_id, d.order_id, d.product_name, d.materials, d.process, d.quantity_list, d.quantity_unit, 
+	  d.delivery_date, d.drawing_path, d.drawing_path_compress, d.annual_quantity, d.target_price, d.weight, 
+	  d.target_price_status, d.delivery_type,d.product_remark,d.video_path,d.country,d.quote_location,d.publish_date,d.main_process,
+	  d.quote_title,d.invite_factory,c.collect_state          
+  from
+	      (
+	      select 
+	        p.id, p.customer_id, p.order_id, p.product_name, p.materials, p.process, p.quantity_list, p.quantity_unit, 
+		    p.delivery_date, p.drawing_path, p.drawing_path_compress, p.annual_quantity, p.target_price, p.weight, 
+		    p.target_price_status, p.delivery_type,p.product_remark,p.video_path,q.country,q.quote_location,q.publish_date,
+		    q.main_process,q.quote_title,q.invite_factory                
+	      from quote_product p left join quote_info q on p.order_id = q.order_id             
+	      where  1=1  
+	          <if test="orderStatus != null"> 
+                  and q.order_status = #{orderStatus,jdbcType=INTEGER}  
+              </if>
+	         <if test="process != null and process != ''"> 
+					and  
+					q.main_process like    
+					CONCAT('%',#{process,jdbcType=VARCHAR},'%') 
+		     </if>
+		     <if test="product != null and product != ''"> 
+		            and
+		           <trim prefix="(" suffix=")" suffixOverrides=",">
+					q.quote_title  like
+					CONCAT('%',#{product,jdbcType=VARCHAR},'%')
+					or q.order_id like   
+					CONCAT('%',#{product,jdbcType=INTEGER},'%')
+				    </trim> 
+		     </if> 
+		     <if test="factoryId != null and factoryId != ''"> 
+		            and
+					q.invite_factory like
+					CONCAT('%',#{factoryId,jdbcType=VARCHAR},'%') 
+		     </if> 
+	    and q.order_id  not in (select s.order_id from supplier_quote_info s where s.factory_id = #{factoryId,jdbcType=VARCHAR})   
+	    and p.customer_id != #{factoryId,jdbcType=VARCHAR}
+	    group by q.order_id   
+	      )d 
+	 left join 
+		 (
+		 select collect_tab.id as collect_state,order_id from collect_tab   
+		 where factory_id = #{factoryId,jdbcType=VARCHAR}  
+		 )c 
+    on d.order_id = c.order_id  order by d.publish_date desc             
+   </select>	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+   <!--查询工厂报价中的产品 -->
+   <select id="queryByFactoryGroupByOrderId" resultMap="BaseResultMap">
+  
+    select 
+      sd.id, sd.customer_id, sd.order_id, sd.product_name, sd.materials, sd.process, sd.quantity_list, sd.quantity_unit, 
+	  sd.delivery_date, sd.drawing_path, sd.drawing_path_compress, sd.annual_quantity, sd.target_price, sd.weight, 
+	  sd.target_price_status, sd.delivery_type,sd.product_remark,sd.video_path,sd.country,sd.quote_location,sd.publish_date,sd.main_process,
+	  sd.quote_title,sd.collect_state,quote.quote_status as quote_state,quote.is_inspected_factory,quote.is_inspected_product,
+	  quote.is_process  
+
+      from
+		  ( 
+    
+		  select      
+		  d.id, d.customer_id, d.order_id, d.product_name, d.materials, d.process, d.quantity_list, d.quantity_unit, 
+		  d.delivery_date, d.drawing_path, d.drawing_path_compress, d.annual_quantity, d.target_price, d.weight, 
+		  d.target_price_status, d.delivery_type,d.product_remark,d.video_path,d.country,d.quote_location,d.publish_date,d.main_process,d.quote_title,
+		  c.collect_state        
+		  from
+		      (
+		      select 
+		        p.id, p.customer_id, p.order_id, p.product_name, p.materials, p.process, p.quantity_list, p.quantity_unit, 
+			    p.delivery_date, p.drawing_path, p.drawing_path_compress, p.annual_quantity, p.target_price, p.weight, 
+			    p.target_price_status, p.delivery_type,p.product_remark,p.video_path,q.country,q.quote_location,q.publish_date,q.main_process,q.quote_title             
+		      from quote_product p left join quote_info q on p.order_id = q.order_id             
+		      where  1=1  
+		     <if test="process != null and process != ''"> 
+					and
+					q.main_process like
+					CONCAT('%',#{process,jdbcType=VARCHAR},'%') 
+		     </if>
+		     <if test="product != null and product != ''"> 
+		            and
+		           <trim prefix="(" suffix=")" suffixOverrides=",">
+					q.quote_title  like
+					CONCAT('%',#{product,jdbcType=VARCHAR},'%')
+					or q.order_id like
+					CONCAT('%',#{product,jdbcType=INTEGER},'%')
+				    </trim> 
+		     </if>
+		     and q.order_id in (select s.order_id from supplier_quote_info s where  
+			     s.factory_id = #{factoryId,jdbcType=VARCHAR} and is_active = 1   
+			      <choose>  
+		             <when test="quoteStatus == 1">and (s.quote_status = #{quoteStatus,jdbcType=INTEGER} or s.quote_status = 6)</when>  
+		             <when test="quoteStatus != 1">and s.quote_status = #{quoteStatus,jdbcType=INTEGER}</when>  
+		          </choose> 		 
+				)  
+		     group by q.order_id   
+		      )d 
+		 left join 
+			 (
+			 select collect_tab.id as collect_state,order_id from collect_tab   
+			 where factory_id = #{factoryId,jdbcType=VARCHAR}  
+			  )c 
+		 on d.order_id = c.order_id 
+		 )sd 
+   left join 
+	 supplier_quote_info quote 
+	 on sd.order_id = quote.order_id 
+	 and quote.is_active = 1 and quote.factory_id = #{factoryId,jdbcType=VARCHAR} 
+ order by sd.publish_date desc limit #{start}, #{pageSize}           
+   </select> 
+	  
+	  
+	  
+
+	 <!-- 查询报价中的数量 -->
+	  <select id="totalQuoteOrder" resultType="int"> 
+	    select count(pd.id)  from  
+	    (
+        select  
+        p.id, p.customer_id, p.order_id, p.product_name, p.materials, p.process, p.quantity_list, p.quantity_unit, 
+	    p.delivery_date, p.drawing_path, p.drawing_path_compress, p.annual_quantity, p.target_price, 
+	    p.target_price_status, p.delivery_type,p.product_remark,q.country,q.quote_title,q.main_process             
+	    from quote_product p left join quote_info q on p.order_id = q.order_id             
+	      where  1=1  
+	     <if test="process != null and process != ''"> 
+				and
+				q.main_process like
+				CONCAT('%',#{process,jdbcType=VARCHAR},'%') 
+	     </if>
+	     <if test="product != null and product != ''"> 
+	            and
+	           <trim prefix="(" suffix=")" suffixOverrides=",">
+				q.quote_title like
+				CONCAT('%',#{product,jdbcType=VARCHAR},'%')
+				or q.order_id like
+				CONCAT('%',#{product,jdbcType=INTEGER},'%')
+			    </trim> 
+	     </if>
+		and q.order_id in (select s.order_id from supplier_quote_info s where  
+		s.factory_id = #{factoryId,jdbcType=VARCHAR}  and is_active = 1   
+		<if test="quoteStatus != null"> 
+		  <choose>  
+             <when test="quoteStatus == 1">and (s.quote_status = #{quoteStatus,jdbcType=INTEGER} or s.quote_status = 6)</when>  
+             <when test="quoteStatus != 1">and s.quote_status = #{quoteStatus,jdbcType=INTEGER}</when>  
+          </choose> 
+		</if> 
+
+		)   
+        group by q.order_id   
+		)pd     
+	  </select>
+	
+	
+	
+	
+	
+		  
+   <!--查询工厂已授盘（包含已授盘、已完成、生产中） -->
+   <select id="queryFinishByFactoryGroupByOrderId" resultMap="BaseResultMap">
+  select 
+      sd.id, sd.customer_id, sd.order_id, sd.product_name, sd.materials, sd.process, sd.quantity_list, sd.quantity_unit, 
+	  sd.delivery_date, sd.drawing_path, sd.drawing_path_compress, sd.annual_quantity, sd.target_price, sd.weight, 
+	  sd.target_price_status, sd.delivery_type,sd.product_remark,sd.video_path,sd.country,sd.quote_location,sd.publish_date,sd.main_process,
+	  sd.quote_title,sd.collect_state,quote.quote_status as quote_state,quote.is_inspected_factory,quote.is_inspected_product,
+	  quote.is_process  
+
+      from
+		  ( 
+		  select      
+		  d.id, d.customer_id, d.order_id, d.product_name, d.materials, d.process, d.quantity_list, d.quantity_unit, 
+		  d.delivery_date, d.drawing_path, d.drawing_path_compress, d.annual_quantity, d.target_price, d.weight, 
+		  d.target_price_status, d.delivery_type,d.product_remark,d.video_path,d.country,d.quote_location,d.publish_date,d.main_process,
+		  d.quote_title,c.collect_state         
+		  from
+		      (
+		      select 
+		        p.id, p.customer_id, p.order_id, p.product_name, p.materials, p.process, p.quantity_list, p.quantity_unit, 
+			    p.delivery_date, p.drawing_path, p.drawing_path_compress, p.annual_quantity, p.target_price, p.weight, 
+			    p.target_price_status, p.delivery_type,p.product_remark,p.video_path,q.country,q.quote_location,q.publish_date,q.main_process,q.quote_title             
+		      from quote_product p left join quote_info q on p.order_id = q.order_id             
+		      where  1=1  
+		     <if test="process != null and process != ''"> 
+					and
+					q.main_process like
+					CONCAT('%',#{process,jdbcType=VARCHAR},'%') 
+		     </if>
+		     <if test="product != null and product != ''"> 
+		            and
+		           <trim prefix="(" suffix=")" suffixOverrides=",">
+					q.quote_title  like
+					CONCAT('%',#{product,jdbcType=VARCHAR},'%')
+					or q.order_id like
+					CONCAT('%',#{product,jdbcType=INTEGER},'%')
+				    </trim> 
+		     </if>
+		     and q.order_id in (select s.order_id from supplier_quote_info s where  
+			     s.factory_id = #{factoryId,jdbcType=VARCHAR}  
+				 and s.quote_status in (2,3,5) 
+				)  
+		     group by q.order_id   
+		      )d 
+		 left join 
+			 (
+			 select collect_tab.id as collect_state,order_id from collect_tab   
+			 where factory_id = #{factoryId,jdbcType=VARCHAR}  
+			 )c 
+		 on d.order_id = c.order_id 
+		 )sd 
+   left join 
+	 supplier_quote_info quote 
+	 on sd.order_id = quote.order_id 
+	 and quote.is_active = 1 and quote.factory_id = #{factoryId,jdbcType=VARCHAR}  
+	 order by sd.publish_date desc limit #{start}, #{pageSize}           
+   </select> 
+	  
+	  
+	  
+
+	 <!-- 查询工厂已授盘数量 -->
+	  <select id="totalFinishQuoteOrder" resultType="int"> 
+	    select count(pd.id)  from  
+	    (
+        select  
+        p.id, p.customer_id, p.order_id, p.product_name, p.materials, p.process, p.quantity_list, p.quantity_unit, 
+	    p.delivery_date, p.drawing_path, p.drawing_path_compress, p.annual_quantity, p.target_price, 
+	    p.target_price_status, p.delivery_type,p.product_remark,q.country,q.quote_title,q.main_process          
+	    from quote_product p left join quote_info q on p.order_id = q.order_id             
+	      where  1=1  
+	     <if test="process != null and process != ''"> 
+				and
+				q.main_process like
+				CONCAT('%',#{process,jdbcType=VARCHAR},'%') 
+	     </if>
+	     <if test="product != null and product != ''"> 
+	            and
+	           <trim prefix="(" suffix=")" suffixOverrides=",">
+				q.quote_title like
+				CONCAT('%',#{product,jdbcType=VARCHAR},'%')
+				or q.order_id like
+				CONCAT('%',#{product,jdbcType=INTEGER},'%')
+			    </trim> 
+	     </if>
+		and q.order_id in (select s.order_id from supplier_quote_info s where  
+		s.factory_id = #{factoryId,jdbcType=VARCHAR}   
+	    and s.quote_status in (2,3,5) 
+		)   
+        group by q.order_id   
+		)pd     
+	  </select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	  	  
+	  
+	  <!--查询收藏的产品 -->
+   <select id="queryByCollectOrderId" resultMap="BaseResultMap">
+    
+  select      
+  d.id, d.customer_id, d.order_id, d.product_name, d.materials, d.process, d.quantity_list, d.quantity_unit, 
+  d.delivery_date, d.drawing_path, d.drawing_path_compress, d.annual_quantity, d.target_price, d.weight, 
+  d.target_price_status, d.delivery_type,d.product_remark,d.video_path,d.country,d.quote_location,d.publish_date,d.main_process,d.quote_title,
+  c.collect_state,c.quote_state        
+  from
+      (
+      select 
+        p.id, p.customer_id, p.order_id, p.product_name, p.materials, p.process, p.quantity_list, p.quantity_unit, 
+	    p.delivery_date, p.drawing_path, p.drawing_path_compress, p.annual_quantity, p.target_price, p.weight, 
+	    p.target_price_status, p.delivery_type,p.product_remark,p.video_path,q.country,q.quote_location,q.publish_date,q.main_process,q.quote_title           
+      from quote_product p left join quote_info q on p.order_id = q.order_id             
+      where  1=1  
+     <if test="process != null and process != ''"> 
+			and
+			q.main_process like
+			CONCAT('%',#{process,jdbcType=VARCHAR},'%') 
+     </if>
+     <if test="product != null and product != ''"> 
+            and
+           <trim prefix="(" suffix=")" suffixOverrides=",">
+			q.quote_title  like
+			CONCAT('%',#{product,jdbcType=VARCHAR},'%')
+			or q.order_id like
+			CONCAT('%',#{product,jdbcType=INTEGER},'%')
+		    </trim> 
+     </if>
+     and q.order_id in (select c.order_id from collect_tab c where c.factory_id = #{factoryId,jdbcType=VARCHAR})   
+     group by q.order_id   
+      )d 
+ left join 
+	 (	 
+	select t.id as collect_state,t.order_id,t.collect_date,t.factory_id, sq.quote_status as quote_state from collect_tab t  
+	  left join 
+		 (
+	     select a.quote_status,a.order_id from supplier_quote_info as a where create_time = (select max(create_time) from supplier_quote_info
+         where a.order_id=order_id  )
+         )sq
+	   on t.order_id = sq.order_id  
+	   where t.factory_id = #{factoryId,jdbcType=VARCHAR}  	   
+	 )c 
+ on d.order_id = c.order_id   order by c.collect_date desc limit #{start}, #{pageSize}           
+   </select> 
+	  
+	  
+	  
+
+	 <!-- 查询收藏中的数量 -->
+	  <select id="totalCollectCount" resultType="int"> 
+	    select count(pd.id)  from  
+	    (
+        select  
+        p.id, p.customer_id, p.order_id, p.product_name, p.materials, p.process, p.quantity_list, p.quantity_unit, 
+	    p.delivery_date, p.drawing_path, p.drawing_path_compress, p.annual_quantity, p.target_price, 
+	    p.target_price_status, p.delivery_type,p.product_remark,q.country,q.quote_title,q.main_process              
+	    from quote_product p left join quote_info q on p.order_id = q.order_id             
+	      where  1=1  
+	     <if test="process != null and process != ''"> 
+				and
+				q.main_process like
+				CONCAT('%',#{process,jdbcType=VARCHAR},'%') 
+	     </if>
+	     <if test="product != null and product != ''"> 
+	            and
+	           <trim prefix="(" suffix=")" suffixOverrides=",">
+				q.quote_title like
+				CONCAT('%',#{product,jdbcType=VARCHAR},'%')
+				or q.order_id like
+				CONCAT('%',#{product,jdbcType=INTEGER},'%')
+			    </trim> 
+	     </if>
+		and q.order_id in (select c.order_id from collect_tab c where c.factory_id = #{factoryId,jdbcType=VARCHAR})   
+        group by q.order_id   
+		)pd     
+	  </select>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  <!-- 采购商查看自己发布的询盘 -->
+   <select id="queryByFactoryIdGroupByOrderIdAdmin" resultMap="BaseResultMap">
+    
+      select 
+        p.id, p.customer_id, p.order_id, p.product_name, p.materials, p.process, p.quantity_list, p.quantity_unit, 
+	    p.delivery_date, p.drawing_path, p.drawing_path_compress, p.annual_quantity, p.target_price, p.weight, 
+	    p.target_price_status, p.delivery_type,p.product_remark,p.video_path,q.country,q.quote_location,q.publish_date,
+	    q.main_process,q.quote_title,q.order_status,q.csg_order_id      	              
+      from quote_info q left join quote_product p on q.order_id = p.order_id             
+      where  q.customer_id = #{factoryId,jdbcType=VARCHAR}    
+     <if test="process != null and process != ''"> 
+			and
+			q.main_process like
+			CONCAT('%',#{process,jdbcType=VARCHAR},'%') 
+     </if>
+     <if test="product != null and product != ''"> 
+            and
+           <trim prefix="(" suffix=")" suffixOverrides=",">
+			q.quote_title like 
+			CONCAT('%',#{product,jdbcType=VARCHAR},'%')
+			or q.order_id like
+			CONCAT('%',#{product,jdbcType=INTEGER},'%')
+		    </trim> 
+     </if> 
+     <if test="orderStatus != null">
+		and q.order_status = #{orderStatus,jdbcType=INTEGER}   
+	  </if> 
+	group by p.order_id  order by q.publish_date desc          
+   </select>
+   
+   	  <!-- 采购商查看自己发布的询盘数量 -->
+   <select id="totalByFactoryIdAdmin" resultType="int">
+     
+      select count(d.id) from   
+	      (
+	      select 
+	        p.id, p.customer_id, p.order_id, p.product_name, p.materials, p.process, p.quantity_list, p.quantity_unit, 
+		    p.delivery_date, p.drawing_path, p.drawing_path_compress, p.annual_quantity, p.target_price, p.weight, 
+		    p.target_price_status, p.delivery_type,p.product_remark,q.country,q.quote_location,q.publish_date,
+		    q.main_process,q.quote_title,q.order_status      	              
+	      from quote_product p left join quote_info q on p.order_id = q.order_id             
+	      where  q.customer_id = #{factoryId,jdbcType=VARCHAR}    
+	     <if test="process != null and process != ''"> 
+				and
+				q.main_process like
+				CONCAT('%',#{process,jdbcType=VARCHAR},'%') 
+	     </if>
+	     <if test="product != null and product != ''"> 
+	            and
+	           <trim prefix="(" suffix=")" suffixOverrides=",">
+				q.quote_title like 
+				CONCAT('%',#{product,jdbcType=VARCHAR},'%')
+				or q.order_id like
+				CONCAT('%',#{product,jdbcType=INTEGER},'%')
+			    </trim> 
+	     </if> 
+	     <if test="orderStatus != null">
+			and q.order_status = #{orderStatus,jdbcType=INTEGER}   
+		 </if> 
+		 group by p.order_id  
+	    )d        
+   </select>
+   
+   
+   
+	  <!-- 采购商查看自己发布的询盘(普通用户) -->
+   <select id="queryByFactoryIdGroupByOrderId" resultMap="BaseResultMap">
+    
+      select 
+        p.id, p.customer_id, p.order_id, p.product_name, p.materials, p.process, p.quantity_list, p.quantity_unit, 
+	    p.delivery_date, p.drawing_path, p.drawing_path_compress, p.annual_quantity, p.target_price, p.weight, 
+	    p.target_price_status, p.delivery_type,p.product_remark,p.video_path,q.country,q.quote_location,q.publish_date,
+	    q.main_process,q.quote_title,q.order_status,q.csg_order_id      	              
+      from 
+        (
+        select qs.customer_id,qs.country,qs.order_id,qs.quote_location,qs.publish_date,qs.main_process,qs.quote_title,
+        qs.order_status, qs.csg_order_id  
+        from quote_info qs inner join user_order u on qs.order_id = u.order_id 
+        where u.factory_user_id = #{factoryUserId,jdbcType=INTEGER}  
+        )q
+      left join 
+      quote_product p on q.order_id = p.order_id             
+      where  q.customer_id = #{factoryId,jdbcType=VARCHAR}    
+     <if test="process != null and process != ''"> 
+			and
+			q.main_process like
+			CONCAT('%',#{process,jdbcType=VARCHAR},'%') 
+     </if>
+     <if test="product != null and product != ''"> 
+            and
+           <trim prefix="(" suffix=")" suffixOverrides=",">
+			q.quote_title like 
+			CONCAT('%',#{product,jdbcType=VARCHAR},'%')
+			or q.order_id like
+			CONCAT('%',#{product,jdbcType=INTEGER},'%')
+		    </trim> 
+     </if> 
+     <if test="orderStatus != null">
+		and q.order_status = #{orderStatus,jdbcType=INTEGER}   
+	  </if> 
+	group by p.order_id  order by q.publish_date desc          
+   </select>
+	  
+	  
+   
+   	  <!-- 采购商查看自己发布的询盘数量(普通用户) -->
+   <select id="totalByFactoryId" resultType="int">
+     
+      select count(d.id) from   
+	      (
+	      select 
+	        p.id, p.customer_id, p.order_id, p.product_name, p.materials, p.process, p.quantity_list, p.quantity_unit, 
+		    p.delivery_date, p.drawing_path, p.drawing_path_compress, p.annual_quantity, p.target_price, p.weight, 
+		    p.target_price_status, p.delivery_type,p.product_remark,q.country,q.quote_location,q.publish_date,
+		    q.main_process,q.quote_title,q.order_status      	              
+	      from  
+		     (
+	        select qs.customer_id,qs.country,qs.order_id,qs.quote_location,qs.publish_date,qs.main_process,qs.quote_title,
+	        qs.order_status,qs.csg_order_id    
+	        from quote_info qs inner join user_order u on qs.order_id = u.order_id 
+	        where u.factory_user_id = #{factoryUserId,jdbcType=INTEGER}  
+	        )q
+	      left join quote_product p on p.order_id = q.order_id             
+	      where  q.customer_id = #{factoryId,jdbcType=VARCHAR}    
+	     <if test="process != null and process != ''"> 
+				and
+				q.main_process like
+				CONCAT('%',#{process,jdbcType=VARCHAR},'%') 
+	     </if>
+	     <if test="product != null and product != ''"> 
+	            and
+	           <trim prefix="(" suffix=")" suffixOverrides=",">
+				q.quote_title like 
+				CONCAT('%',#{product,jdbcType=VARCHAR},'%')
+				or q.order_id like
+				CONCAT('%',#{product,jdbcType=INTEGER},'%')
+			    </trim> 
+	     </if> 
+	     <if test="orderStatus != null">
+			and q.order_status = #{orderStatus,jdbcType=INTEGER}   
+		 </if> 
+		 group by p.order_id  
+	    )d        
+   </select>
+	  
+	  
+	  
+	  
+	  
+	  
+  <!-- 查询一周报价产品 -->  
+  <select id="queryProductByWeek" resultMap="BaseResultMap">
+       select  q2.* from 
+       quote_info q1 
+       left join quote_product q2 
+       on 
+       q1.order_id = q2.order_id     
+       where q1.publish_date &gt; DATE_SUB(CURDATE(), INTERVAL 1 WEEK) and q1.order_status not in(0,3,7);
+  </select>  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+</mapper>

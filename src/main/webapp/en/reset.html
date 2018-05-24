@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>Reset Password</title>
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/easydialog.css" />
+    <link rel="stylesheet" href="/css/css.css"/>
+    <script src="/lib/html5sshiv/html5shiv.min.js"></script>
+    <script src="/lib/respond/respond.js"></script>
+    <script src="/js/easydialog.min.js"></script>
+    <style>
+        @media (min-width: 1200px) {
+            .container {
+                width: 1200px;
+                padding:0;
+            }
+        }
+        
+        #easyDialogBox{
+        margin-top: -180px !important;
+        }
+    </style>
+</head>
+<body class="forget_password">
+<div class="sign forget_password">
+    <div class="head ">
+        <div class="head_in container w12">
+            <a href="/zh/index.html" class="logo"><img src="/images/head_146-39.png" alt=""/></a>
+            <span></span>
+        </div>
+    </div>
+    
+    
+    <div class="section">
+    
+       <div class="section_in">
+            <h3>Reset Password</h3>
+           <form class="form-horizontal" onclick="return false;">
+               <div class="form-group">
+                   <label  class="col-sm-2 control-label" style="width: 20%;">New Password <span class="da4"></span></label>
+                   <div class="col-sm-4">
+                       <input type="password" class="form-control w336" id="pwd" placeholder="Enter a new password ">
+                   </div>
+               </div>
+               <div class="form-group" style="padding-top: 20px;">
+                   <label  class="col-sm-2 control-label" style="width: 20%;">Confirm Password <span class="da4"></span></label>
+                   <div class="col-sm-4">
+                       <input type="password" class="form-control w336" id="re-pwd" placeholder="Confirm the new password">
+                   </div>
+               </div>
+               <div class="form-group">
+                   <label  class="col-sm-2 control-label" style="width: 20%;"></label>
+                   <div class="col-sm-4">
+                       <!--<input type="text" class="form-control w336 bgcc0" placeholder="">-->
+                       <button class="btn btn-default w336 bgcc0" id="login" onclick="changePwd()">Confim</button>
+                   </div>
+               </div>
+           </form>          
+       </div>
+      
+    </div>
+	
+</div>
+</body>
+
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script>
+<script type="text/javascript" src="/js/cookie_util.js"></script> 
+<script type="text/javascript">
+   //获取语言
+   var language = getCookie("language");
+   var str = null;
+   var email = null;
+   var validateCode;
+   $(function(){
+	  str = window.location.search;
+	  if(str != null && str != ''){
+		  str = str.substr(1);
+		  email = str.split("&")[0].split("=")[1]; 
+		  validateCode = str.split("&")[1].split("=")[1]; 
+		  var base = new Base64();
+		  validateCode = base.decode(validateCode);
+	  }
+	  
+	  if(validateCode == null || validateCode == '' || validateCode == undefined){
+		  if(language == 'en'){
+			   window.location = "/en/forgot.html"; 
+		   }else{
+		       window.location = "/zh/forgot.html";
+		   }
+	  }else{		   
+	        var date = new Date(validateCode.replace(/-/g,"/").split(".")[0]);
+	        var now = new Date();
+	        var ms = 2 * (1000 * 60 * 60 * 24)
+	        var newDate = new Date(date.getTime() + ms);
+		    if(newDate < now){
+				  if(language == 'en'){
+					   window.location = "/en/forgot.html"; 
+				   }else{
+				       window.location = "/zh/forgot.html";
+				   }	
+		   }    	    
+	  }
+	  
+   })
+
+
+   //忘记密码
+   function changePwd(){
+	   
+	   var pwd =  $('#pwd').val();
+	   var pwd1 =  $('#re-pwd').val();
+	   if(pwd == null || pwd == ''){
+		   easyDialog.open({
+	    		  container : {
+	    		    content : 'Password can not be empty'
+	    		  },
+	    		  overlay : false,
+	    		  autoClose : 1000   			    		  
+	    		});
+		  return false; 
+	   }
+	   var psdReg = /^[0-9a-zA-Z_]{6,15}$/;//密码正则
+			if (!psdReg.test(pwd)) {
+				  easyDialog.open({
+		    		  container : {
+		    		    content : '6-15 digits or letters'
+		    		  },
+		    		  overlay : false,
+		    		  autoClose : 1000   			    		  
+		    		});
+				return false;
+			} 
+	   
+	   if(pwd != pwd1){
+		   easyDialog.open({
+	    		  container : {
+	    		    content : 'Passwords must match'
+	    		  },
+	    		  overlay : false,
+	    		  autoClose : 1000   			    		  
+	    		});
+		  return false; 
+	   }
+  
+	   $.post("/account/resetPwd.do",
+         	  { 
+	          "pwd" : pwd,
+	          "email" : email 
+         	  },
+     	   function(result){
+     	     if(result.state == 0){
+     	       easyDialog.open({
+		    		  container : {
+		    		    content : 'Successfully modified'
+		    		  },
+		    		  overlay : false,
+		    		  autoClose : 1000   			    		  
+		    		});
+     	       
+     	       setTimeout(login, 1000); 
+     	    	 
+     	     }else{
+     	        easyDialog.open({
+		    		  container : {
+		    		    content : 'Edit failed,please try again'
+		    		  },
+		    		  overlay : false,
+		    		  autoClose : 1000   			    		  
+		    		});
+     	     }  
+     	 }); 
+	   
+   } 
+   
+ 
+   function login(){
+	    if(language == 'en'){
+	    window.location = "/en/login.html";	
+	    }else{
+	    window.location = "/zh/login.html";	
+	    }
+   }
+</script>

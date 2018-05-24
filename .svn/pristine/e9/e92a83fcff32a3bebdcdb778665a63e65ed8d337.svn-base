@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<meta name="Keywords"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<meta name="Description"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<title>快制造-供应商报价</title>
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/easydialog.css" />
+<link rel="stylesheet" href="/css/css.css" />
+<link rel="stylesheet" href="/css/matrix-style.css" />
+<link rel="stylesheet" href="/css/progressBar.css" />
+<link rel="stylesheet" href="/css/ui.css" />
+<link rel="stylesheet" href="/css/ui.progress-bar.css" />
+<script src="/lib/jquery/jquery.min.js"></script>
+<!--<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+
+<style>
+@media ( min-width : 1200px) {
+	.container {
+		width: 1200px;
+		padding: 0;
+	}
+}
+
+.col-xs-8-add {
+	width: 67.666667%;
+}
+</style>
+</head>
+
+<body>
+	<div class="enterprise_archives product_create ">
+		<div id="header"></div>		
+		<div class="section ">
+			<div class="section_in container clearfix">
+				<nav class="pull-left media-left ">
+					<ul>
+						<li><span></span> <a href="/zh/enterprise_archives.html"><em
+								class="iconfont">&#xe617;</em>企业档案 </a></li>
+						<li><span></span> <a href="/zh/edit_enterprise_archives.html"><em
+								class="iconfont">&#xe607;</em>修改档案</a></li>
+						<li class="li3"><span></span> <a
+							href="/zh/account_management.html"><em class="iconfont">&#xe607;</em>账户管理
+						</a></li>
+						<li><span></span> <a href="/zh/product_totalpage.html"><em
+								class="iconfont">&#xe65b;</em>产品库</a></li>
+					</ul>
+				</nav>
+				<div class="contain_right pull-right">
+					<h3>上海凯融信息科技有限公司</h3>
+					<div class="panels clearfix">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">添加产品</h3>
+							</div>
+							<form id="create_form"
+								action="/productManage/createNewProduct.do" method="post"
+								enctype="multipart/form-data" autocomplete="off">
+								<input type="hidden" id="id" name="id"> <input
+									type="hidden" id="factoryId" name="factoryId"> <input
+									type="hidden" id="fileName" name="fileName"> <input
+									type="hidden" id="index" value=""> <input type="hidden"
+									id="filePath1" name="filePath1"> <input type="hidden"
+									id="comprocessPath1" name="comprocessPath1"> <input
+									type="hidden" id="filePath2" name="filePath2"> <input
+									type="hidden" id="comprocessPath2" name="comprocessPath2">
+								<input type="hidden" id="filePath3" name="filePath3"> <input
+									type="hidden" id="comprocessPath3" name="comprocessPath3">
+								<input type="hidden" id="filePath4" name="filePath4"> <input
+									type="hidden" id="comprocessPath4" name="comprocessPath4">
+
+								<div class="panel-body">
+									<div class="form-group">
+										<div class="row">
+											<div class="col-xs-2 ">
+												<div class="checkbox">
+													<label for="" class="control-form:label"> <i>*</i>中文产品名称
+													</label>
+												</div>
+											</div>
+											<div class="col-xs-8 margin20">
+												<input id="productName" name="productName"
+													class="form-control" type="text" value=""> <span
+													class="ffb"></span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-xs-2 ">
+												<div class="checkbox">
+													<label for="" class=""> <i>*</i>英文产品名称
+													</label>
+												</div>
+											</div>
+											<div class="col-xs-8 margin20">
+												<input id="enProductName" name="enProductName"
+													class="form-control" type="text" value=""> <span
+													class="ffb"></span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-xs-2 ">
+												<div class="checkbox">
+													<label for="" class=""> <i>*</i>加工工艺
+													</label>
+												</div>
+											</div>
+											<div class="col-xs-6 margin20">
+												<div class="row">
+													<div class="col-xs-6 w230">
+														<select id="mainCategory" name="mainCategory"
+															class="form-control" onchange="initSubCategory(-1)">
+															<option value="">请选择</option>
+															<option value=""></option>
+
+
+														</select> <span class="ffb"></span>
+													</div>
+													<div class="col-xs-6 w230 colxs62">
+														<select id="subCategory" name="subCategory"
+															class="form-control">
+															<option value="">请选择</option>
+															<option value=""></option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-xs-2 ">
+												<div class="checkbox">
+													<label for="" class=""> <i>*</i>材料
+													</label>
+												</div>
+											</div>
+											<div class="col-xs-6 margin20">
+												<div class="row">
+													<div class="col-xs-6 w230">
+														<select id="materials" name="materials"
+															class="form-control">
+															<option value="">请选择</option>
+															<option value=""></option>
+															<option value="合金钢">合金钢</option>
+															<option value="铝">铝</option>
+															<option value="黄铜">黄铜</option>
+															<option value="青铜">青铜</option>
+															<option value="碳类复合材料">碳类复合材料</option>
+															<option value="碳钢">碳钢</option>
+															<option value="铸钢">铸钢</option>
+															<option value="陶瓷类">陶瓷类</option>
+															<option value="钴">钴</option>
+															<option value="复合材料">复合材料</option>
+															<option value="紫铜">紫铜</option>
+															<option value="弹性体">弹性体</option>
+															<option value="黑色金属">黑色金属</option>
+															<option value="泡沫塑料">泡沫塑料</option>
+															<option value="玻璃类">玻璃类</option>
+															<option value="金">金</option>
+															<option value="哈氏合金">哈氏合金</option>
+															<option value="铁">铁</option>
+															<option value="铅合金">铅合金</option>
+															<option value="镁合金">镁合金</option>
+															<option value="磁性材料">磁性材料</option>
+															<option value="镍合金">镍合金</option>
+															<option value="贵金属">贵金属</option>
+															<option value="其他（有色）金属">其他（有色）金属</option>
+															<option value="其它">其它</option>
+															<option value="塑料与橡胶">塑料与橡胶</option>
+															<option value="白金">白金</option>
+															<option value="银">银</option>
+															<option value="不锈钢">不锈钢</option>
+															<option value="热塑性塑料">热塑性塑料</option>
+															<option value="热固性塑料">热固性塑料</option>
+															<option value="锡合金">锡合金</option>
+															<option value="钛合金">钛合金</option>
+															<option value="工具钢">工具钢</option>
+															<option value="钨合金">钨合金</option>
+															<option value="锌合金">锌合金</option>
+														</select> <span class="ffb"></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<div class="row">
+											<div class="col-xs-2 ">
+												<div class="checkbox">
+													<label for="" class="control-form:label"> <i>*</i>价格
+													</label>
+												</div>
+											</div>
+											<div class="col-xs-4 margin20">
+												<form class="form-inline w200">
+													<div class="form-group has-success has-feedback">
+														<div class="input-group">
+															<!--<span class="input-group-addon">@</span>-->
+															<input type="text" class="form-control" id="minquote"
+																name="minquote"> <span class="input-group-addon">人民币</span>
+
+														</div>
+													</div>
+												</form>
+												<span id="minquoteError" class="ffb"></span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-xs-2 ">
+												<div class="checkbox">
+													<label for="" class="control-form"> <i>*</i>最低采购量
+													</label>
+												</div>
+											</div>
+											<div class="col-xs-8 margin20">
+
+												<div class="row">
+													<div class="col-xs-6 w230">
+
+														<input id="minAqmountPurchased" name="minAqmountPurchased"
+															class="form-control w260" type="text" value=""> <span
+															class="ffb"></span>
+
+													</div>
+													<div class="col-xs-6 w230 colxs6">
+														<select id="purchasedUnit" name="purchasedUnit"
+															class="form-control">
+															<option value="件">件</option>
+															<option value="吨">吨</option>
+														</select><span class="ffb"></span>
+													</div>
+
+
+
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-xs-2 ">
+												<div class="checkbox">
+													<label for="" class=""> <i>*</i>所属行业
+													</label>
+												</div>
+											</div>
+											<div class="col-xs-6 margin20">
+												<div class="row">
+													<div class="col-xs-6 selts" tabindex="2">
+														<input id="inductry" name="inductry"
+															class="form-control w260 select1" readonly="readonly" /><span
+															class="ffb"></span>
+														<div class="dxtc" tabindex="3">
+															<ul class="category_list pull-left" id="select_inductry">
+
+															</ul>
+															<!--  <ul class="category_list pull-left" id="select_second">
+
+													</ul>-->
+															<ul class="category_list pull-left ul3" id="select_third">
+
+															</ul>
+														</div>
+													</div>
+													<div class="col-xs-6 tip">
+														<em></em> <span>为匹配更好、更多的供应商报价，建议您将询价物料的所属行业选择到最后一级</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-xs-2 ">
+												<div class="checkbox">
+													<label for="" class="control-form:label"> <i
+														class="transparent">*</i>用途
+													</label>
+												</div>
+											</div>
+											<div class="col-xs-5 margin20">
+												<textarea id="productInfo" name="productInfo"
+													class="form-control w780" type="text" value=""></textarea>
+
+											</div>
+										</div>
+									</div>
+									<div class="imgs">
+										<div class="row">
+											<div class="col-xs-2 ">
+												<div class="checkbox">
+													<label for="" class="control-form:label"> <i>*</i>产品图片
+													</label>
+												</div>
+											</div>
+											<div class=" col-xs-8-add  col-xs-8 margin20 colxs82"
+												id="picShow">
+
+
+												<div id="addpic" class="col-xs-3 addpic">
+													<a href="javascript:void(0);" class="lasta text-center"
+														onclick="uploadFile()"> <img
+														src="/images/products/add.png" alt=""
+														class="img-responsive" /><br /> <em>上传图片</em> <input
+														id="uploadFile" name="files" type="file"
+														accept=".png, .jpg, .jpeg,.gif, .bmp"
+														style="display: none" onchange="show_drawingName(this)" />
+
+													</a>
+												</div>
+
+												<div id="addLocation" class="col-xs-10 introduce">
+													<span id="picCheck" class="ffb"></span>
+												</div>
+												<div class="col-xs-10 introduce">
+													文件上传最大 10M . <br /> 允许上传的文件类型包括 (.png, .jpg, .jpeg,.gif,
+													.bmp)
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</form>
+
+							<div class="w-out-box" id="show_upload_dialog"
+								style="display: none;">
+								<div class="weui_mask"></div>
+								<div class="w-weui_dialog" style="width: 510px;">
+									<div id="container">
+
+										<div class="content">
+											<h1>上传进度</h1>
+										</div>
+
+										<!-- Progress bar -->
+										<div id="progress_bar" class="ui-progress-bar ui-container">
+											<div class="ui-progress" style="width: 0%;"
+												id="ui-progress-upload">
+												<span class="ui-label" style="display: none;">正在加载...<b
+													class="value">0%</b></span>
+											</div>
+										</div>
+										<!-- /Progress bar -->
+										<a class="close-reveal-modal"
+											style="color: #eee; font-size: 22px;"
+											href="javascript:void(0);" onclick="cancel_upload()">×</a>
+										<div class="content" id="main_content" style="display: none;">
+											<p>加载完成。</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel-footer">
+								<div class="col-xs-2">
+									<div class="checkbox">
+										<label for="" class="control-form:label"> </label>
+									</div>
+								</div>
+								<div class="col-xs-4 margin30">
+									<buton id="saveButton" class="btn btn-default">保存</buton>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+		<div id="footer"></div>
+	</div>
+	<!-- SEO代码 开始-->
+	<div style="display: none">
+		快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘
+
+		Keywords: <a href="https://www.kuaizhizao.cn/" title="快制造"
+			target="_blank"><strong>快制造</strong></a> <a
+			href="https://www.kuaizhizao.cn/" title="外发加工" target="_blank"><strong>外发加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑模具" target="_blank"><strong>注塑模具</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机械加工" target="_blank"><strong>机械加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金加工" target="_blank"><strong>钣金加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具厂" target="_blank"><strong>塑料模具厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑加工" target="_blank"><strong>注塑加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具设计与制造" target="_blank"><strong>塑料模具设计与制造</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸厂" target="_blank"><strong>压铸厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="零件加工" target="_blank"><strong>零件加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸加工订单" target="_blank"><strong>外贸加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="非标定制" target="_blank"><strong>非标定制</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外发订单" target="_blank"><strong>外发订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外协加工" target="_blank"><strong>外协加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="加工订单" target="_blank"><strong>加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑订单" target="_blank"><strong>注塑订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸订单" target="_blank"><strong>压铸订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金订单" target="_blank"><strong>钣金订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机加工询盘" target="_blank"><strong>机加工询盘</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸询盘" target="_blank"><strong>外贸询盘</strong></a>
+	</div>
+	<!-- SEO代码 开始-->
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+
+<script type="text/javascript" src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script type="text/javascript" src="/lib/respond/respond.js"></script>
+<script type="text/javascript" src="/lib/bootstrap/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/easydialog.min.js"></script>
+<script type="text/javascript" src="/js/upload-base.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script type="text/javascript" src="/zh/icn/product_edit.js"></script>
+
+<script>
+	
+	$('#header').load('header.html');
+	$('#footer').load('footer.html');
+
+    /*顶部鼠标经过子信息出现效果*/
+    $('.header_top_in .xxs').hover(function(){
+        $(this).children('.xx').css({
+            'border-color':'#dfdfdf',
+            'border-bottom-color':'transparent',
+            'background-color':'#fff'
+        })
+        $(this).children('.xxlist').show();
+    },function(){
+        $(this).children('.xx').css({
+            'border-color':'transparent',
+        })
+        $(this).children('.xxlist').hide();
+    })
+    /*更多消息里面鼠标经过效果*/
+    $('.xxlist a').hover(function(){
+        $(this). css({'color':'#006DCC'}).siblings().css({'color':'#666'})
+    })
+
+    /*顶部向下箭头点击变成向上箭头*/
+    $('.header_top_in .head_hover').hover(function(){
+        $(this).css({'background-color':'#fff'})
+                .find('.iconf').css({
+                    'background':'url(/images/xs.png)'
+                });
+    },function(){
+        $(this).find('.iconf').css({
+            'background':'url(/images/xx.png)'
+        });
+    })
+
+   /*产品库默认侧边栏效果*/
+    	$('.section_in nav li:nth-child(4)').children('span').show();
+         
+         $('.section_in nav li:nth-child(4)').children('a').css({'color':'#006dcc'});
+            
+            
+    /* 侧边栏效果 */
+    $('.section_in nav li').hover(function(){
+        $(this).children('span').show();
+        $(this).siblings().not('.section_in nav li:nth-child(4)').children('span').hide();
+        $(this).children('a').css({'color':'#006dcc'});
+        $(this).siblings().not('.section_in nav li:nth-child(4)').children('a').css({'color':'#333'});
+    });
+    $('.section_in nav li').mouseout(function(){
+        $('.section_in nav li').not('.section_in nav li:nth-child(4)').children('span').hide();
+        $('.section_in nav li').not('.section_in nav li:nth-child(4)').children('a').css({'color':'#333'});
+    });
+
+</script>

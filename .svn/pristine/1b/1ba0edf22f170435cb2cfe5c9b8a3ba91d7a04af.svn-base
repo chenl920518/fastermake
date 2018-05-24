@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>Login</title>
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/easydialog.css" />
+    <link rel="stylesheet" href="/css/css.css"/>
+    <script src="/lib/html5sshiv/html5shiv.min.js"></script>
+    <script src="/lib/respond/respond.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.10.2.js"></script> 
+    <script type="text/javascript" src="/js/easydialog.min.js"></script>
+    <script type="text/javascript" src="/js/cookie_util.js"></script> 
+    <script type="text/javascript" src="/js/base64.js"></script> 
+    <script src="/js/login_en.js"></script>
+    <style>
+        @media (min-width: 1200px) {
+            .container {
+                width: 1200px;
+                padding:0;
+            }
+        }
+        
+        #easyDialogBox{
+        margin-top: -310px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="sign login_en">
+        <div class="head ">
+            <div class="head_in container w12">
+                 <a href="index.html" class="logo"><img src="/images/head_en_146-39.png" alt=""/></a>
+                <span></span>
+            </div>
+        </div>
+        <div class="section">
+            <div class="sign_info w12 posirela">
+                <div class="panel">
+                    <div class="panel-heading">SIGN IN <a href="/en/register_en.html">REGISTER</a></div>
+                    <div class="panel-body" style="display:block">
+                        <input type="text" class="form-control" id="loginEmail" placeholder="Please enter the mailbox"/>
+                        <input type="password" class="form-control" id="u_pwd" placeholder="Please enter the login password"/>
+                        <a href="###" class="form-control btn forget_pwd" id="login" onclick="login()">SIGN IN</a>
+                        <div class="clearfix">
+
+                           <label>
+                                <input type="checkbox" id="remember">Remember Me
+                            </label>
+                            <a href="forgot.html" class="pull-right forget_pwd">Forgot your password?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+</html>

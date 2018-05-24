@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<meta name="Keywords"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<meta name="Description"
+	content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<title>快制造-消息中心</title>
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/lib/html5sshiv/html5shiv.min.js"></script>
+<script src="/lib/respond/respond.js"></script>
+<link rel="stylesheet" href="/css/css.css" />
+<link rel="stylesheet" href="/css/easydialog.css" />
+<link rel="stylesheet" href="/css/matrix-style.css" />
+<link rel="stylesheet" href="/css/progressBar.css" />
+<link rel="stylesheet" href="/css/ui.css" />
+<link rel="stylesheet" href="/css/ui.progress-bar.css" />
+<style>
+@media ( min-width : 1200px) {
+	.container {
+		width: 1200px;
+		padding: 0;
+	}
+}
+
+.ff4 {
+	color: #ff4a4a;
+}
+
+table tbody tr {
+	cursor: pointer;
+}
+
+.original {
+	/* font-size: 12px; */
+	color: #333;
+	margin: 50px 0 20px 0;
+}
+</style>
+</head>
+<body>
+	<div id="totalDiv" class="news news_detail">
+
+		<div id="header"></div>
+		<div class="section ">
+			<div class="section_in container ">
+				<nav class="">
+					<!-- <button>创建新消息</button> -->
+					<ul id="chooseStatus">
+						<li><span></span> <a>所有消息 </a></li>
+						<li><span></span> <a>未读消息 <i id="inodeNewMessageCount"></i></a></li>
+						<li class="li3"><span></span> <a>已发送 </a></li>
+						<li><span></span> <a>授盘通知<i id="inodeNewAwardCount"></i></a></li>
+						<li><span></span><a>生产进度更新<i
+								id="inodeNewUpdateProcessCount"></i></a></li>
+					</ul>
+				</nav>
+				<div class="contain_right page1">
+					<h3 class="posirela">
+						<span></span>消息中心
+					</h3>
+
+					<div class="panel">
+						<div class="panel-body">
+							<div class="ss posirela">
+								<div class="pull-left all_select">
+									<input type="checkbox" onchange="selectAll(this)" /> <span>全选(包含后页的所有消息)&nbsp;&nbsp;&nbsp;标记为</span>
+									<select class="form-control"
+										onchange="select_read_status(this)">
+										<option></option>
+										<option value="1">已读</option>
+										<option value="0">未读</option>
+									</select>
+								</div>
+								<input id="selectKey" class="form-control pull-right w300"
+									placeholder="公司名称 | 消息内容"> <span class="iconfont"
+									onclick="selectByKey()">&#xe678;</span> <select id="status"
+									onchange="chooseStatus()" class="form-control pull-right w200">
+									<option value="0">全部</option>
+									<option value="1">未读消息</option>
+									<option value="2">已发送</option>
+									<option value="3">授盘通知</option>
+									<option value="4">生产进度更新</option>
+								</select>
+							</div>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>选择</th>
+										<th>状态</th>
+										<th>来自</th>
+										<th>主题</th>
+										<th>日期</th>
+									</tr>
+								</thead>
+								<tbody id="messageTable">
+									
+								</tbody>
+							</table>
+							
+							<div id="biuuu_link"
+								style="text-align: center; padding-bottom: 50px;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="contain_right page2" style="display: none">
+					<h3 class="posirela h31">
+						<span></span>消息中心
+					</h3>
+					<div class="panel">
+						<div class="panel-body">
+							<div class="btns">
+								<a href="javascript:void(0);" onclick="showPage1()">返回</a> <a
+									href="javascript:void(0);" onclick="showPage3()">回复</a>
+							</div>
+							<div id="messageBody"></div>							
+						</div>
+					</div>
+				</div>
+				<div class="contain_right page3" style="display: none">
+					<h3 class="posirela h31">
+						<span></span>消息中心
+					</h3>
+					<div class="panel">
+						<div class="panel-body">
+							<div class="btns">
+								<a href="javascript:void(0);" onclick="showPage2()">返回</a> <a
+									href="javascript:void(0);" onclick="replyMessage()"><i
+									class="iconfont">&#xe625;</i>发送</a><span id="detailIsNull"></span>
+							</div>
+
+							<form id="reply_form">
+								<input name="receiverId" type="hidden"> <input
+									name="sendId" type="hidden"> <input name="dialogueId"
+									type="hidden"> <input name="orderId" type="hidden">
+
+								<div class="sj">
+									<span>收件人： </span><em id="replyToName"></em>
+								</div>
+								<div class="sj">
+									<span>主 题： </span><b><input type="text"
+										class="new_zt_input" name="messageTitle" value="" /></b>
+								</div>
+								<div class="fj">
+									<span><i class="iconfont">&#xe66e;</i><i
+										onclick="uploadProduct(this)">添加附件 </i><input name="files"
+										type="file" onchange="show_drawingName(this)" /></span> <span>(最大
+										<em>10m</em>)
+									</span> <span class="s3" style="display: none"></span> <input
+										type="hidden" name="fileName" value="" /> <input type="hidden"
+										name="filePath" value="" />
+
+								</div>
+
+								<div class="inputs">
+									<textarea name="messageDetails"></textarea>
+									<div class="original">------------ 原始信息 ------------</div>
+									<div id="replayMessageBody"></div>
+									
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div id="footer"></div>
+		<div id="tempDivId">
+			<div class="tempDiv" style="display: none">
+				<div class="summary">
+					<h3 class="messageTitle"></h3>
+					<div>
+						<span>发件人：</span> <em class="sendName"></em>
+					</div>
+					<div>
+						<span>收件人：</span><em class="receiverName"></em>
+					</div>
+					<div>
+						<span class="createTime"></span>
+					</div>
+				</div>
+				<div class="content">
+					<p class="p1 messageUrl"></p>
+					<p class="messageDetails p2"></p>
+					<p class="messageFile p2"></p>
+					
+				</div>
+			</div>
+		</div>
+
+
+		<div class="w-out-box" id="show_upload_dialog" style="display: none">
+			<div class="weui_mask"></div>
+			<div class="w-weui_dialog" style="width: 510px;">
+				<div id="container">
+
+					<div class="content">
+						<h1>上传进度</h1>
+					</div>
+
+					<!-- Progress bar -->
+					<div id="progress_bar" class="ui-progress-bar ui-container">
+						<div class="ui-progress" style="width: 0%;"
+							id="ui-progress-upload">
+							<span class="ui-label" style="display: none;">正在加载...<b
+								class="value">0%</b></span>
+						</div>
+					</div>
+					<!-- /Progress bar -->
+					<a class="close-reveal-modal" style="color: #eee; font-size: 22px;"
+						href="javascript:void(0);" onclick="cancel_upload()">×</a>
+					<div class="content" id="main_content" style="display: none;">
+						<p>加载完成。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- SEO代码 开始-->
+	<div style="display: none">
+		快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘
+
+		Keywords: <a href="https://www.kuaizhizao.cn/" title="快制造"
+			target="_blank"><strong>快制造</strong></a> <a
+			href="https://www.kuaizhizao.cn/" title="外发加工" target="_blank"><strong>外发加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑模具" target="_blank"><strong>注塑模具</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机械加工" target="_blank"><strong>机械加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金加工" target="_blank"><strong>钣金加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具厂" target="_blank"><strong>塑料模具厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑加工" target="_blank"><strong>注塑加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="塑料模具设计与制造" target="_blank"><strong>塑料模具设计与制造</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸厂" target="_blank"><strong>压铸厂</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="零件加工" target="_blank"><strong>零件加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸加工订单" target="_blank"><strong>外贸加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="非标定制" target="_blank"><strong>非标定制</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外发订单" target="_blank"><strong>外发订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外协加工" target="_blank"><strong>外协加工</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="加工订单" target="_blank"><strong>加工订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="注塑订单" target="_blank"><strong>注塑订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="压铸订单" target="_blank"><strong>压铸订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="钣金订单" target="_blank"><strong>钣金订单</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="机加工询盘" target="_blank"><strong>机加工询盘</strong></a>
+		<a href="https://www.kuaizhizao.cn/" title="外贸询盘" target="_blank"><strong>外贸询盘</strong></a>
+	</div>
+	<!-- SEO代码 开始-->
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/upload-base.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script src="/lib/laypage/laypage.js"></script>
+<script src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script>
+<script type="text/javascript" src="/js/easydialog.min.js"></script>
+<script src="/zh/icn/news.js"></script>
+
+<script>
+	$('#header').load('header.html');
+	$('#footer').load('footer.html');
+
+	/*侧边栏默认效果*/
+	$('.section_in nav li:first-child').children('span').show();
+	$('.section_in nav li:first-child').children('a').css({'color' : '#006dcc'});			
+		
+	/* 侧边栏效果 */
+	$('.section_in nav li').click(function() {
+		$(this).children('span').slideDown();
+		$(this).siblings().children('span').hide();
+		$(this).children('a').css({
+			'color' : '#006dcc'
+		});
+		$(this).siblings().children('a').css({
+			'color' : '#333'
+		})
+	})
+    
+	
+</script>

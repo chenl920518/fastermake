@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>快制造-采购商大货生产生生成每周报告</title>
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/lib/datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <script src="/lib/html5sshiv/html5shiv.min.js"></script>
+    <script src="/lib/respond/respond.js"></script>
+    <link rel="stylesheet" href="/css/easydialog.css" />
+    <link rel="stylesheet" href="/css/css.css"/>
+    <style>
+        @media (min-width: 1200px) {
+            .container {
+                width: 1200px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="purchase_detail supplier_big_goods supplier_big_goods_generation purchase_big_report">
+	<div class="tc">
+        <div class="tc_in clearfix">
+            <div class="in_l pull-left">
+                <div class="big_imgs">
+                    <div class="big_btns">
+                        <i class="iconfont pull-left">&#xe717;</i>
+                        <i class="iconfont pull-right">&#xe624;</i>
+                    </div>
+                    <div class="lis">
+                        <ul class="clearfix" id="big_photo">
+<!--                             <li> -->
+<!--                                 <a href="###">1<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">2<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">3<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">4<img src="" alt=""/></a> -->
+<!--                             </li> -->
+                        </ul>
+                    </div>
+                    <div class="zs">
+                        <span>1</span>
+                        <i>/</i>
+                        <span id="total_tl">1</span>
+                    </div>
+                </div>
+                <div class="small_imgs">
+                    <div class="small_btns">
+                        <i class="iconfont pull-left">&#xe717;</i>
+                        <i class="iconfont pull-right">&#xe624;</i>
+                    </div>
+                    <div class="small_ul">
+                        <ul class="clearfix" id="small_photo">
+<!--                             <li> -->
+<!--                                 <a href="###">1<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">2<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">3<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">4<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">5<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">6<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">7<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">8<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">9<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">10<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">11<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">12<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">13<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">14<img src="" alt=""/></a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="###">15<img src="" alt=""/></a> -->
+<!--                             </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="in_r pull-left">
+                <div class="panel">
+                    <div class="panel-heading posirela">
+<!--                         <span>by:<em>peter</em></span> -->
+                        <span id="upload_date">2017年12月10日 14:08</span>
+                        <span><i class="iconfont">&#xe643;</i></span>
+                    </div>
+                    <div class="panel-body"><p  id="remark" style="word-break: break-all;">这是图片</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="header"></div>
+    <div class="section">
+        <div class="container container1">
+            <h3><span style="font-size:30px;"></span><span id="quote_title" style="font-size:26px;padding-right: 64px;"></span>
+                                                  询盘编号 #<span id="quoteId" style="font-size:26px;"></span>-<small></small></h3>
+            <div class="panel1s">
+                <div class="panel panel1_1" style="display:none;" id="panel1">
+                    <div class="panel-heading">项目情况：<b>您的询盘详情已经提交给工厂确认</b></div>
+                </div>
+                <div class="panel panel1_2" style="display:none;" id="panel2">
+                    <div class="panel-heading">项目情况</div>
+                    <div class="panel-body">
+                        <h4><b>伊顿（中国）投资有限公司</b>拒绝您大货生产的要求，对方回复如下:</h4>
+                        <p>伊顿公司于1993 年进入中国市场并设立首家合资企业，此后通过并购、合资和独资的形式迅速发展在中国的业务。2004年，公司亚太区总部从香港搬到上海。2009年，公司位于上海市长宁区的新亚太区总部大楼正式落成启动。 今天，伊顿公司旗下所有业务都已在中国制造产品，包括：不间断电源系统、中压开关面板、开关设备、真空断路器、装配器、电气自动化系统、汽车空调、电源操控、软硬管道装配器、离合器和刹车、引擎阀、液压机、变速器、液压软管装配器和适配器、导向控制阀门、叶轮泵以及电源系统等。</p>
+                        <a href="###">您可以修改最后确认价格后再次发起大货确认。</a>
+                    </div>
+                </div>
+                <div class="panel panel1_3" style="display:none;" id="panel3">
+                    <div class="panel-heading">项目情况</div>
+                    <div class="panel-body">
+                        <h4><b>伊顿（中国）投资有限公司</b>已经确认您的条件，请付款 <b> xxx</b>元给以下账号来正式开启大货生产：</h4>
+                        <div class="fk clearfix">
+                            <div class="imgs pull-left">
+                                <img src="/images/panel1_3.png" alt=""/>
+                            </div>
+                            <div class="sm pull-left">
+                                <p class="posirela">银行账户：<em>上海凯融信息科技有限公司</em></p>
+                                <p>银行账号：<span>1234567890123456789</span></p>
+                                <a href="###">如付款已完成，请点击此处</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel1_4" style="display:none;" id="panel4"> 
+                    <div class="panel-heading">项目情况：<b>已提交快制造进行进账确认</b></div>
+                </div>
+                <div class="panel panel1_5" style="display:none;" id="panel5">
+                    <div class="panel-heading">项目情况：<b>项目款已收到，项目进行中</b></div>
+                </div>
+            </div>
+            <div class="panel panel2 panel3">
+                <div class="panel-heading posirela">工厂报价 <!--<span>0</span><button class="pull-right ljbj">编辑</button>--></div>
+                <div class="panel-body">
+                    <table class="table tabs3 ">
+                        <thead >
+                        <tr>
+                            <th class="w210">缩略图</th>
+                            <th>零件名称</th>
+                            <th>基本工艺</th>
+                            <th>材料</th>
+                            <th>重量（KG）</th>
+                            <th class="th6 th61">数量</th>
+                            <th class="th6 th62">单价(元)</th>
+                            <th class="th6 th63">模具费(元)</th>
+                        </tr>
+                        </thead>
+                        <tbody id="product_tbody">
+                       
+                        </tbody>
+                    </table>
+                    <div class="confirm">
+                        <div class="pay clearfix">
+                            <em>付款条件：</em>
+                            <div class="confirm_span">
+                                <span id="payment_term"></span>
+                            </div>
+                        </div>
+                        <div class="pay clearfix">
+                            <em>要求确认：</em>
+                            <div class="confirm_span" id="requirement">
+         
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            
+            <div class="panel panel4_1">
+                <div class="panel-heading">每周报告 </div>
+                <div class="panel-body clearfix">
+                    <div class="body-L pull-left">
+                        <div class="report-content panel" ">  
+                        	<div class="panel-heading">
+                        		<i class="iconfont">&#xe637;</i><span>图片快照</span>
+                        	</div>
+                        	<div class="panel-body">
+                        		
+                        		<div class="imgs">
+                        			
+                        				<i class="iconfont ">&#xe693;</i>
+                        				<i class="iconfont i2">&#xe6ba;</i>
+                        			
+                        			<div class="imgs_in">
+	                        			<ul class="clearfix" id="photo_ul">
+	
+	                      
+	                        			</ul>
+                        			</div>
+                        		</div>
+                        	</div>
+                        </div>
+                    </div>
+                    <div class="body-R pull-right">
+                        <p><i></i></p>
+                        <ul id="progress_ul">
+                          
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel4_2">
+                <div class="panel-body ">
+                    <div class="proves clearfix">
+                        <div class="prove_l">
+                            <p>材料质量报告 / 材质证明</p>
+                            <div class="imgs"><img src="/images/prov1.png" alt=""/></div>
+                            <ul id="material_ul">
+                              
+                            </ul>
+                        </div>
+                        <div class="prove_r">
+                            <p>出货质量报告</p>
+                            <div class="imgs"><img src="/images/prov2.png" alt=""/></div>
+                            <ul id="quanlity_ul">
+                            
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="btns">
+                        <div class="btns_1" style="display:none;">
+                            <div class="div_a">要求快制造提供第三方检验报告</div>
+                            <i class="iconfont">&#xe65c;</i><em>费用为 <span>1000</span> 元</em>
+                        </div>
+<!--                         <div class="btns_2" style="display:none;"> -->
+<!--                             <div class="div_a"> -->
+<!--                                 <em class="iconfont">&#xe868;</em><span>尚未发起第三方检验要求</span> -->
+<!--                             </div> -->
+<!--                         </div> -->
+                        <div class="btns_3" style="display:none;">
+                            <div class="div_a">
+                                <em class="iconfont">&#xe868;</em><span>已收到检验要求</span>
+                            </div>
+                        </div>
+                        <div class="btns_4" style="display:none;">
+                            <div class="div_a">
+                                <em class="iconfont">&#xe868;</em><span>已检验即将生成检验报告</span>
+                            </div>
+                        </div>
+                        <div class="btns_5" style="display:none;">
+                            <div class="div_a">
+                                <em class="iconfont">&#xe868;</em><span>已有检验报告，<a href="###">检测报告.txt</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer" ></div>
+</div>
+	<!-- 51la统计代码 --><script type="text/javascript" src="//js.users.51.la/19493791.js"></script></body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/js/inquiry/purchase_big_goods_report.js"></script>
+<script src="/lib/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/lib/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+    $('#header').load('header.html');
+    $('#footer').load('footer.html');
+    /* panel1切换效果*/
+    $('.panel1 a').click(function(){
+        $(this).addClass('activea').siblings().removeClass('activea');
+    })
+   
+    /*工厂报价显示隐藏切换*/
+    $('.panel3 tbody tr:first-child em').css({
+        'background':'url(/images/red.png) no-repeat'
+    })
+    $('.panel3 tbody em').click(function(){
+        var $this = $(this).parent().parent().next('.trcol');
+        if($this.hasClass('currdis')){
+            $this.removeClass('currdis');
+            $this.show();
+            $(this).css({
+                'background':'url(/images/red.png) no-repeat'
+            })
+        }else{
+            $this.addClass('currdis');
+            $this.hide();
+            $(this).css({
+                'background':'url(/images/green.png) no-repeat'
+            })
+        }
+    });
+    /* panel3隔行换色*/
+    $(".panel3 tbody tr:not('.trcol'):even").css({
+        'background-color':'#f9f9f9'
+    });
+    /* panel3 th  宽度控制*/
+    $('.panel3 th:first-child').nextUntil('.panel3 th:last-child').css({
+        'width':'136px'
+    })
+
+
+    /* panel4 里面的 li 隔行换色*/
+    $('.supplier_big_goods_generation .panel4 li:even').css({
+        'background-color':'#f9f9f9'
+    })
+    /* b不符合理由多选切换*/
+    $('.supplier_big_goods_generation .no_confirm').click(function(){
+        $(this).parent().find('.zgrzdx').toggle();
+        /*$('.product_invitation  .zgrzdx').toggle();*/
+    })
+    $('.supplier_big_goods_generation .selspan').click(function(){
+        $(this).parent().find('.zgrzdx').toggle();
+        /*$('.product_invitation  .zgrzdx').toggle();*/
+    })
+    
+    /*body 内容高度控制 底部位置 */
+//     var h1 = $(document.body).height() + 230 ;
+//     var h2 = window.screen.availHeight  ;
+//     if(h1 < h2){
+//         $('#footer').addClass('footer1');
+//     }else{
+//         $('#footer').removeClass('footer1');
+//     }
+    
+    
+     /* 弹窗显示和隐藏*/
+//      $('.purchase_big_report .report-content li').click(function(){
+//         $('.purchase_big_report .tc').show();
+//      })
+    $('.purchase_big_report .tc .in_r span:last-child').click(function(){
+        $('.purchase_big_report .tc').hide();
+    })
+    
+    
+    
+   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

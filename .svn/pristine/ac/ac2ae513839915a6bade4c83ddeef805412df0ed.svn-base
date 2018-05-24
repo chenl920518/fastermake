@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.dao.ProductLibraryMapper">
+
+	<resultMap id="BaseResultMap" type="com.cbt.entity.ProductLibrary">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="factory_id" jdbcType="VARCHAR" property="factoryId" />
+		<result column="product_name" jdbcType="VARCHAR" property="productName" />
+		<result column="drawing_path" jdbcType="VARCHAR" property="drawingPath" />
+		<result column="drawing_path_group" jdbcType="VARCHAR"
+			property="drawingPathGroup" />
+		<result column="process" jdbcType="VARCHAR" property="process" />
+		<result column="main_process" jdbcType="VARCHAR" property="mainProcess" />
+		<result column="materials" jdbcType="VARCHAR" property="materials" />
+		<result column="min_amount_purchased" jdbcType="VARCHAR"
+			property="minAqmountPurchased" />
+		<result column="purchased_unit" jdbcType="VARCHAR" property="purchasedUnit" />
+		<result column="product_info" jdbcType="VARCHAR" property="productInfo" />
+
+		<result column="currency" jdbcType="VARCHAR" property="currency" />
+		<result column="region" jdbcType="VARCHAR" property="region" />
+		<result column="min_quote" jdbcType="VARCHAR" property="minquote" />
+		<result column="max_quote" jdbcType="VARCHAR" property="maxquote" />
+
+		<result column="compress_drawing_path" jdbcType="VARCHAR"
+			property="compressDrawingPath" />
+		<result column="compress_drawing_path_group" jdbcType="VARCHAR"
+			property="compressDrawingPathGroup" />
+		<result column="inductry" jdbcType="VARCHAR" property="inductry" />
+		<result column="en_product_name" jdbcType="VARCHAR" property="enProductName" />
+		<result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,factory_id,product_name,drawing_path,drawing_path_group,process,main_process,materials,product_info,
+		region,min_quote,max_quote,min_amount_purchased,purchased_unit,currency,create_date,compress_drawing_path,
+		compress_drawing_path_group,inductry,en_product_name
+	</sql>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from product_library
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+
+
+
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		product_library
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+
+	<select id="selectByFactoryId" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from product_library
+		where 1=1
+
+		<!--  <if test="#{process} != null">
+			and process like '${process}%'
+		</if>-->
+
+		and factory_id = #{factoryId,jdbcType=VARCHAR}
+		
+		order by create_date desc
+
+	</select>
+	
+	
+	
+	
+	
+	<select id="selectCountByFactoryId" resultType="int">
+		select
+		count(1)
+		from product_library
+		where 1=1
+
+		<!--<if test="#{process} != null">
+			and process like '${process}%'
+		</if>-->
+		and factory_id = #{factoryId,jdbcType=VARCHAR}
+
+	</select>
+	
+	
+	
+	<select id="selectCountByFIdAndPName" resultType="int">
+		select
+		count(1)
+		from product_library
+		where 1=1
+
+		<if test="#{productName} != null">
+			and product_name like '%${productName}%'
+		</if>
+		and factory_id = #{factoryId,jdbcType=VARCHAR}
+
+	</select>
+	
+     
+     <select id="selectByFactoryIdAndPage" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from product_library
+		where 1=1
+
+		<!--  <if test="#{process} != null">
+			and process like '${process}%'
+		</if>-->
+
+		and factory_id = #{factoryId,jdbcType=VARCHAR}
+		
+		order by create_date desc limit #{start}, #{pageSize}
+
+	</select>
+     
+    
+	<select id="selectByCondition" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from product_library where 1=1
+
+
+		<if test="materialsGroup!=null">
+			<foreach item="materialsGroup" index="index" collection="materialsGroup"
+				open="and materials in (" separator="," close=")">
+				#{materialsGroup}
+			</foreach>
+		</if>
+
+		<if test="processGroup!=null">
+			<foreach item="processGroup" index="index" collection="processGroup"
+				open="and main_process in (" separator="," close=")">
+				#{processGroup}
+			</foreach>
+		</if>
+
+		<if test="regionGroup!=null">
+			<foreach item="regionGroup" index="index" collection="regionGroup"
+				open="and region in (" separator="," close=")">
+				#{regionGroup}
+			</foreach>
+		</if>
+
+
+		<if test="productName!=null">
+			and product_Name like '%${productName}%'
+		</if>
+
+		order by create_date desc limit #{start}, #{pageSize}
+
+	</select>
+
+
+	<select id="totalOrder" resultType="int" parameterType="java.util.Map">
+		select count(pds.id) from (
+		select
+		<include refid="Base_Column_List" />
+		from product_library where 1=1
+
+
+		<if test="materialsGroup!=null">
+			<foreach item="materialsGroup" index="index" collection="materialsGroup"
+				open="and materials in (" separator="," close=")">
+				#{materialsGroup}
+			</foreach>
+		</if>
+
+		<if test="processGroup!=null">
+			<foreach item="processGroup" index="index" collection="processGroup"
+				open="and process in (" separator="," close=")">
+				#{processGroup}
+			</foreach>
+		</if>
+
+		<if test="regionGroup!=null">
+			<foreach item="regionGroup" index="index" collection="regionGroup"
+				open="and region in (" separator="," close=")">
+				#{regionGroup}
+			</foreach>
+		</if>
+
+
+		<if test="productName!=null">
+			and product_Name like '%${productName}%'
+		</if>
+		)pds
+
+
+	</select>
+
+
+
+	<insert id="insertNewProduct" parameterType="com.cbt.entity.ProductLibrary">
+		insert into
+		product_library
+		(
+		factory_id,product_name,drawing_path,drawing_path_group,process,main_process,materials,product_info,
+		region,min_quote,max_quote,min_amount_purchased,purchased_unit,currency,create_date,en_product_name,inductry,compress_drawing_path,compress_drawing_path_group
+
+		)
+		values
+		(
+		#{factoryId,jdbcType=VARCHAR},
+		#{productName,jdbcType=VARCHAR},
+		#{drawingPath,jdbcType=VARCHAR},
+		#{drawingPathGroup,jdbcType=VARCHAR},
+		#{process,jdbcType=VARCHAR},
+		#{mainProcess,jdbcType=VARCHAR},
+		#{materials,jdbcType=VARCHAR},
+		#{productInfo,jdbcType=VARCHAR},
+		#{region,jdbcType=VARCHAR},
+		#{minquote,jdbcType=VARCHAR},
+		#{maxquote,jdbcType=VARCHAR},
+		#{minAqmountPurchased,jdbcType=VARCHAR},
+		#{purchasedUnit,jdbcType=VARCHAR},
+		#{currency,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{enProductName,jdbcType=VARCHAR},
+		#{inductry,jdbcType=VARCHAR},
+		#{compressDrawingPath,jdbcType=VARCHAR},
+		#{compressDrawingPathGroup,jdbcType=VARCHAR}
+		)
+	</insert>
+
+
+
+
+	<insert id="insertMessageToFactory" parameterType="com.cbt.entity.ProductLibraryMessage">
+		insert into
+		product_library_message
+		(factory_id,buyer_id,plan_buy_count,plan_buy_count_unit,plan_buy_price,plan_buy_price_unit,plan_info,createDate)
+		values ( #{factoryId,jdbcType=VARCHAR},#{buyerId,jdbcType=VARCHAR},
+		#{planBuyCount,jdbcType=VARCHAR},
+		#{planBuyCountUnit,jdbcType=VARCHAR},#{planBuyPrice,jdbcType=VARCHAR},
+		#{planBuyPriceUnit,jdbcType=VARCHAR},#{planInfo,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP})
+	</insert>
+
+    
+    
+    <select id="selectProductPreference" resultType="int">
+        select count(1) from product_preference_set where factory_id =  #{factoryId,jdbcType=VARCHAR} 
+        and product_id=#{productId,jdbcType=VARCHAR}
+
+    </select>
+    
+
+    <insert id="insertProductPreference">
+		insert into
+		product_preference_set
+		(factory_id,product_id,create_date)
+		values ( #{factoryId,jdbcType=VARCHAR},#{productId,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP})
+	</insert>
+
+
+   <delete id="deleteProductPreference">
+       delete from product_preference_set where factory_id =  #{factoryId,jdbcType=VARCHAR} and product_id = #{productId,jdbcType=VARCHAR} 
+   </delete>
+   
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.cbt.entity.ProductLibrary">
+		update product_library
+		<set>
+			<if test="factoryId != null">
+				factory_id = #{factoryId,jdbcType=VARCHAR},
+			</if>
+			<if test="productName != null">
+				product_name=#{productName,jdbcType=VARCHAR},
+			</if>
+
+			<if test="drawingPath != null">
+				drawing_path=#{drawingPath,jdbcType=VARCHAR},
+			</if>
+
+			<if test="drawingPathGroup != null">
+				drawing_path_group=#{drawingPathGroup,jdbcType=VARCHAR},
+			</if>
+
+			<if test="process != null">
+				process=#{process,jdbcType=VARCHAR},
+			</if>
+			<if test="mainProcess != null">
+				main_process=#{mainProcess,jdbcType=VARCHAR},
+			</if>
+			
+
+			<if test="materials != null">
+				materials=#{materials,jdbcType=VARCHAR},
+			</if>
+
+			<if test="productInfo != null">
+				product_info=#{productInfo,jdbcType=VARCHAR},
+			</if>
+
+			<if test="region != null">
+				region=#{region,jdbcType=VARCHAR},
+			</if>
+
+
+			<if test="minquote != null">
+				min_quote=#{minquote,jdbcType=VARCHAR},
+			</if>
+
+
+			<if test="maxquote != null">
+				max_quote=#{maxquote,jdbcType=VARCHAR},
+			</if>
+
+			<if test="minAqmountPurchased != null">
+				min_amount_purchased=#{minAqmountPurchased,jdbcType=VARCHAR},
+			</if>
+
+			<if test="purchasedUnit != null">
+				purchased_unit= #{purchasedUnit,jdbcType=VARCHAR},
+			</if>
+
+			<if test="currency != null">
+				currency=#{currency,jdbcType=VARCHAR},
+			</if>
+
+			<if test="createDate != null">
+				create_date=#{createDate,jdbcType=TIMESTAMP},
+			</if>
+
+			<if test="enProductName != null">
+				en_product_name=#{enProductName,jdbcType=VARCHAR},
+			</if>
+
+			<if test="inductry != null">
+				inductry=#{inductry,jdbcType=VARCHAR},
+			</if>
+
+			<if test="compressDrawingPath != null">
+				compress_drawing_path=#{compressDrawingPath,jdbcType=VARCHAR},
+			</if>
+
+			<if test="compressDrawingPathGroup != null">
+				compress_drawing_path_group=#{compressDrawingPathGroup,jdbcType=VARCHAR}
+			</if>
+
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>	
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+<meta name="Keywords" content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">	
+<meta name="Description" content="快制造,外发加工,注塑模具,机械加工,钣金加工,塑料模具厂,注塑加工,塑料模具设计与制造,压铸厂,零件加工,外贸加工订单,非标定制,外发订单,外协加工,加工订单,注塑订单,压铸订单,钣金订单,机加工询盘,外贸询盘">
+<title>快制造-公共头部</title>
+ <link rel="shortcut icon" href="/img/favicon.ico"/>
+ <link rel="stylesheet" href="/css/easydialog.css" /> 
+ <link rel="stylesheet" href="/css/progressBar.css" />
+ <link rel="stylesheet" href="/css/ui.css" />
+ <link rel="stylesheet" href="/css/ui.progress-bar.css" />
+</head>
+<body>
+	<header class="header" id="header">
+		<div class="header_top">
+			<!-- <div class="header_top_in w12 clearfix">
+				<div class="head_l pull-left">
+					<a class="head_hover beforLogin"><span class="iconfont yhm">&#xe608;</span>手机端
+					</a> <a  href="/zh/login.html"
+						class="bk head_hover ml20 beforLogin">请登录</a> <a 
+						href="/zh/register_zh.html" class="bk head_hover ml20 beforLogin">请注册</a>
+
+					<div class="xxs head_hover">
+						<div class="xx yhm afterLogin">
+							<span id="username"></span><span class="iconf1 s1"></span> <span
+								class="iconf s2"></span>
+						</div>
+						<div class="xxlist">
+							<a href="/zh/account_management.html">账户管理</a> <a href="#" onclick="exit()"><span class="iconfont">&#xe60a;</span>退出
+							</a>
+						</div>
+
+					</div>
+					<a href="/zh/business_view.html" class="bk afterLogin">业务看板</a>
+					<div class="xxs head_hover">
+						<div class="xx  afterLogin">
+							消息 <span id="newMessageCount" class="gs"></span> <span class="iconf s2"></span>
+						</div>
+						<div class="xxlist news_xx">
+							<a href="###">创建消息</a> <a href="/zh/news.html?status=1">未读消息</a> <a href="/zh/news.html">所有消息</a>
+							<a href="###">授盘通知</a> <a href="###">生产进度更新</a> <a href="/zh/news.html?status=2">已发出的消息</a>
+						</div>
+					</div>
+				</div>
+				<div class="head_R pull-right">
+					<div class="xxs kzz head_hover">
+						<div class="xx xp beforLogin">
+							供应商<span class="iconf s2"></span>
+						</div>
+						<div class="xxlist xplist clearfix">
+							<div class="N l_sm">
+								<ul>
+									<li>作为供应商，我可以：</li>
+									<li><span></span> 完善档案，<a href="/zh/edit_enterprise_archives.html">轻松找到适合自己的各种询盘</a>；</li>
+									<li><span></span> <a href="###">查找询盘</a>，在线提交报价给采购商；</li>
+									<li><span></span> 查看 <a href="###">大买家采购项目</a> ，在线给大客户评价；
+									</li>
+
+									<li><a href="/zh/login.html" class="active">登录</a>
+										<a href="/zh/register_zh.html">注册</a></li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+					<div class="xxs kzz head_hover">
+						<div class="xx xp beforLogin mlr5">
+							采购商<span class="iconf s2 "></span>
+						</div>
+						<div class="xxlist xplist clearfix">
+							<div class="N l_sm">
+								<ul>
+									<li>作为采购商，我可以：</li>
+									<li><span></span> <a href="">发布询盘</a>，获取全中国范围内的供应商报价；</li>
+									<li><span></span> 通过工厂库 <a href="edit_enterprise_archives.html">搜索和筛选心仪供应商</a>
+										，并添加收藏；</li>
+									<li><span></span> 直接发送询盘给有意向的供应商，<a href="###">获取报价</a>；</li>
+									<li><span></span> 在线管理我的供应商，更快速的建立合作关系；</li>
+									<li><a href="/zh/login.html" class="active">登录</a>
+										<a href="/zh/register_zh.html">注册</a></li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="xxs kzz head_hover">
+						<div class="xx xp afterLogin">
+							快制造询盘<span class="iconf s2"></span>
+						</div>
+						<div class="xxlist xplist xpwidth clearfix">
+							<div class="L" id="supplier_list">
+								供应商 <a href="/zh/quote_list.html"><button class="btn btn-default">可报价询盘查看</button></a>
+							</div>
+							<div class="L">
+								采购商 <a href="/zh/purchase_list.html"><button class="btn btn-default">我发出的询盘</button></a>
+							</div>
+						</div>
+					</div>
+
+					  <a href="/zh/enterprise_archives.html" class="bk head_hover afterLogin mlr52">企业档案<span
+						class="iconf s2"></span></a> 
+						<a href="###"
+						class="head_hover afterLogin ml20">更多服务<span class="iconf s2"></span></a>
+					
+					<div class="afterLogin xxs kzz head_hover more_news"  >
+                        <div class="xx xp ">更多服务<span class="iconf s2"></span></div>
+                        <div class="xxlist xplist clearfix" style="display:none">
+                            <a href="/zh/comments_echart.html">工厂库</a>
+                            <a href="/zh/big_buyer.html">大买家采购专区</a>
+                            <a href="/zh/products.html">产品库</a>
+                        </div>
+                    </div>
+					
+					
+
+					<div class="xxs head_hover">
+						<div class="xx ">  
+							更多服务 <span id="" class="gs"></span> <span class="iconf s2"></span>
+						</div>
+						<div class="xxlist">
+							<a href="###">大买家采购专区</a> 
+							<a href="###">工厂库</a> 							
+							<a href="###">产品库</a>																			
+						</div>
+					</div>
+
+
+
+					<a href="/zh/quote_list.html" class="ml20 beforLogin">最新询盘</a>
+					<a href="/zh/big_buyer.html" class="ml20 beforLogin">大买家采购专区</a>
+					<a href="/zh/comments_echart.html" class="ml20 beforLogin">工厂库</a> 					
+					<a href="/zh/products.html" class="ml20 beforLogin">产品库</a>
+					<div class="xxs kzz head_hover ml20 mlr52 beforLogin">
+						<div class="xx xp">中文 | En</div>
+						<div class="xxlist xplist clearfix language">
+							<div class="L">
+								<a href="###">中文</a>
+							</div>
+							<div class="L L2">
+								<a href="###">English</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div> -->
+			
+			
+			
+			<div class="header_bottom">
+				<div class="header_bottom_in w12 clearfix">
+					<!--<div class="logo pull-left"></div>-->
+				        <a href="/zh/index.html" class="logo pull-left"><img src="/images/head.png" alt=""/></a>
+				        <div class="header_top_in dl_zc w12 clearfix">
+							
+				<div class="head_R pull-right">
+				
+				
+				
+					<div class="head_l pull-left">
+						
+						<!--<a class="head_hover beforLogin"><span class="iconfont yhm">&#xe608;</span>手机端
+						</a> -->
+                        <!--<div class="change_language"><a href="#" onclick="change_lan()">中</a> / <a href="###">EN</a></div> -->
+						<!-- <a  href="/zh/login.html" class="bk dl_zc head_hover ml20 beforLogin">请登录</a> 
+						<a href="/zh/register_zh.html" class="bk dl_zc head_hover ml20 beforLogin">请注册</a> -->
+	
+						<div class="xxs head_hover">
+							<div class="xx yhm afterLogin">
+								<span class="iconfont">&#xe6c9;</span><span id="username"></span><!-- <span class="iconf1 s1"></span>  -->
+							</div>
+							<div class="xxlist">
+								<a href="/zh/account_management.html">账户管理</a> <a href="#" onclick="exit()"><span class="iconfont">&#xe60a;</span>退出
+								</a>
+							</div>
+	
+						</div>
+						<a href="/zh/business_view.html" class="bk ywkb afterLogin">业务看板</a>
+						<div class="xxs head_hover">
+							<div class="xx afterLogin" onclick="window.location='/zh/news.html'">
+								消息 <span id="newMessageCount" class="gs"></span>
+							</div>
+							<div class="xxlist news_xx" style="width: 130px;">
+								 <a href="/zh/news.html">所有消息</a><a href="/zh/news.html?status=1">未读消息<em style="color:#da4f49" id="unRead"></em></a>
+								<a href="/zh/news.html?status=3">授盘通知<em style="color:#da4f49" id="award"></em></a> <a href="/zh/news.html?status=4">生产进度更新<em style="color:#da4f49" id="updateProcess"></em></a> <a href="/zh/news.html?status=2">已发出的消息</a>
+							</div>
+						</div> 
+					</div>
+			
+					<div class="xxs kzz gys head_hover">
+						<div class="xx xp beforLogin">
+							工厂入口<!--<span class="iconf s2"></span>-->
+						</div>
+						<div class="xxlist xplist clearfix">
+							<div class="N l_sm">
+								<ul>
+									<li>作为供应商，我可以：</li>
+									<li><span></span> 完善档案，<a href="/zh/edit_enterprise_archives.html">轻松找到适合自己的各种询盘</a>；</li>
+									<li><span></span> <a href="###">查找询盘</a>，在线提交报价给采购商；</li>
+									<li><span></span> 查看 <a href="###">大买家采购项目</a> ，在线给大客户评价；
+									</li>
+
+									<li class="home_head_dl"><a href="/zh/login.html" class="active">登录</a>
+										<a href="/zh/register_zh.html">注册</a></li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+					<div class="xxs kzz head_hover">
+						<div class="xx xp beforLogin mlr5">
+							采购商入口<!--<span class="iconf s2 "></span>-->
+						</div>
+						<div class="xxlist xplist clearfix">
+							<div class="N l_sm">
+								<ul>
+									<li>作为采购商，我可以：</li>
+									<li><span></span> <a href="">发布询盘</a>，获取全中国范围内的供应商报价；</li>
+									<li><span></span> 通过工厂库 <a href="edit_enterprise_archives.html">搜索和筛选心仪供应商</a>
+										，并添加收藏；</li>
+									<li><span></span> 直接发送询盘给有意向的供应商，<a href="###">获取报价</a>；</li>
+									<li><span></span> 在线管理我的供应商，更快速的建立合作关系；</li>
+									<li class="home_head_dl"><a href="/zh/login.html" class="active">登录</a>
+										<a href="/zh/register_zh.html">注册</a></li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="xxs kzz head_hover">
+						<div class="xx xp xp_new afterLogin">
+							<span class="iconfont">&#xe63f;</span>询盘<!-- <span class="iconf s2"></span> -->
+						</div>
+						<div class="xxlist xplist xpwidth clearfix">
+							<div class="L" id="supplier_list">
+								供应商 <a href="/zh/quote_list.html"><button class="btn btn-default">可报价询盘查看</button></a>
+							</div>
+							<div class="L">
+								采购商 <a href="/zh/purchase_list.html"><button class="btn btn-default">我发出的询盘</button></a>
+							</div>
+						</div>
+					</div>
+
+					  <a href="/zh/enterprise_archives.html" class="bk qy x xp head_hover afterLogin mlr52">企业档案<!-- <span
+						class="iconf s2"></span> --></a> 
+						<!--<a href="###"
+						class="head_hover afterLogin ml20">更多服务<span class="iconf s2"></span></a>-->
+					
+					<div class="afterLogin xxs kzz head_hover more_news"  >
+                        <div class="xx xp serve">更多服务<!-- <span class="iconf s2"></span> --></div>
+                        <div class="xxlist xplist clearfix" style="display:none">
+                            <!-- <a href="/zh/big_buyer.html">大买家采购专区</a> -->
+<!--                             <a href="/zh/comments_echart.html">工厂库</a>                             -->
+                            <a href="/zh/products.html">产品库</a>
+                        </div>
+                    </div>
+
+					<a href="/zh/quote_list.html" class="ml20 beforLogin">最新询盘</a>
+					<!-- <a href="/zh/big_buyer.html">大买家采购专区</a> -->
+<!-- 					<a href="/zh/comments_echart.html" class="ml20 beforLogin">工厂库</a> 					 -->
+<!-- 					<a href="/zh/products.html" class="ml20 beforLogin">产品库</a>					 -->
+                     <a href="/zh/quickly_release.html" ><button class="btn btn-default pull-right">快速发布询盘</button></a>
+				</div>
+			</div>					
+				</div>
+			</div>
+		</div>
+	</header>
+</body>
+</html>
+<script src="/js/cookie_util.js"></script>
+<script type="text/javascript" src="/js/upload-base.js"></script>
+<script src="/js/easydialog.min.js"></script>
+<script type="text/javascript" src="/js/base64.js"></script> 
+<script src="/js/getServerName.js"></script>
+<script>
+	/*导航栏鼠标经过效果*/
+	$('.inquiry_detail .section nav li a').hover(
+			function() {
+				$(this).addClass('active').parent().siblings('li')
+						.children('a').removeClass('active');
+			})
+
+	//*顶部鼠标经过子信息出现效果*/
+	$('.header_top_in .xxs').hover(function() {
+		$(this).children('.xx').css({
+			'border-color' : 'transparent',
+			'border-bottom-color' : 'transparent',
+			'background-color' : '#0046cd'
+		})
+		$(this).children('.xxlist').show();
+	}, function() {
+		$(this).children('.xx').css({
+			'border-color' : 'transparent',
+			'background-color' : 'transparent'
+		})
+		$(this).children('.xxlist').hide();
+	})
+	/*更多消息里面鼠标经过效果*/
+	$('.xxlist a').hover(function() {
+		$(this).css({
+			'color' : '#006DCC'
+		}).siblings().css({
+			'color' : '#666'
+		})
+	})
+	
+	$('.xxlist .home_head_dl a').hover(function() {
+		$(this).css({
+			'background-color':'#006DCC',
+			'color' : '#fff'
+		})
+	},function(){
+		$('.xxlist .home_head_dl a').css({
+			'background-color':'#fff',
+			'border':'1px solid #006DCC',
+			'color' : '#006DCC'
+		})
+		
+	})
+	
+	
+	   /*语言改变设置*/        
+   		function change_lan(){
+        	
+			  var lan = getCookie("language");
+				if(lan == 'en'){
+					lan = 'zh'
+				}else{
+					lan = 'en'
+				}
+		
+              $.post("/account/changeLanguage.do",
+        			{"language": lan},    	
+        			function(result){
+      	        	var url = window.location.search;        	
+      	        	if(lan == 'en'){
+      	        		url = url.replace('zh','en');
+    		            window.location = url;      	        		 
+      	        	}else{
+      	        		url = url.replace('en','zh');
+  	        			window.location = url;
+  	        		}
+        	});   			
+
+   		}
+	
+
+	/*顶部向下箭头点击变成向上箭头
+	$('.header_top_in .head_hover').hover(function() {
+		$(this).css({
+			'background-color' : '#fff'
+		}).find('.iconf').css({
+			'background' : 'url(/images/xs.png) no-repeat'
+		});
+	}, function() {
+		$(this).css('background-color', 'transparent');
+		$(this).find('.iconf').css({
+			'background' : 'url(/images/xx.png) no-repeat'
+		});
+	})*/
+
+	$('.beforLogin').show()
+	$('.afterLogin').hide()
+	var userName = getCookie("userName");
+	var factoryInfo = getCookie("F_INFO");
+	var factoryType;
+	if (userName != null && userName != '' && userName != undefined) {
+		var base = new Base64();
+		userName = base.decode(userName);
+		$('#username').text(userName);
+		$('.beforLogin').hide()
+		$('.afterLogin').show()
+	}
+	if (userName != null && userName != '' && userName != undefined) {
+		var base = new Base64();
+		factoryInfo = base.decode(factoryInfo);
+		var strs = factoryInfo.split('&');
+		factoryType = strs[strs.length-1];
+		if(factoryType == 2){
+			$('#supplier_list').find('a').attr('href',"#").css({"background-color":"#ddd"});			
+		}else if(factoryType == 1){
+			$('#supplier_list').next().find('a').attr('href',"#").css({"background-color":"#ddd"});
+		}
+	}
+
+	function exit(){
+        
+		$.post("/account/clearCookie.do",
+			function(result){
+			if(result.state == 0){
+				//根据cookie判断不同语言退出页面
+				var	serverName = getServerName(lan);	
+				var lan = getCookie("language");
+				if(lan == 'en'){
+					window.location = serverName+"/en/login.html";
+				}else{
+					window.location = serverName+"/zh/login.html";
+				}
+			}			
+		})
+
+		
+	}
+
+	//计算新消息数量  add by jason  请不要删除，我先注释了
+	var newMessage_interval = setInterval(function() {
+		
+		if(factoryInfo == null || factoryInfo == ''){
+			return false;
+		}
+		
+		$.ajax({
+					url : "/noteMessage/newMessageCount.do",
+					cache : false,
+					success : function(data) {
+					
+						if(data.state==0){
+							
+							var summap = data.data
+							
+							if(summap){
+								
+								var count = summap.unRead
+								var award = summap.award
+								var updateProcess = summap.updateProcess
+								$('#unRead').text(count?count:"")
+								$('#newMessageCount').text(count?count:"")
+								$('#inodeNewMessageCount').text(count?count:"")
+								$('#award').text(award?award:"")
+								$('#inodeNewAwardCount').text(award?award:"")
+								$('#updateProcess').text(updateProcess?updateProcess:"")
+								$('#inodeNewUpdateProcessCount').text(updateProcess?updateProcess:"")
+								
+							}
+						
+						}
+						
+						
+					}
+				});
+	}, 60000);
+	
+	
+</script>
